@@ -1,0 +1,731 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Curioni — Detalhe do Produto (PDP • Conversão)</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#fbfbf8;
+      --paper:#ffffff;
+      --text:#0f1115;
+      --muted:#5a606b;
+      --line: rgba(15,17,21,.10);
+
+      --accent:#b79245;
+      --accentSoft: rgba(183,146,69,.12);
+
+      --title:"Playfair Display", serif;
+      --body:"Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+      --container: 1180px;
+      --radius: 18px;
+      --radius2: 26px;
+
+      --shadow: 0 18px 50px rgba(15,17,21,.10);
+      --shadow2: 0 26px 80px rgba(15,17,21,.14);
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: var(--body);
+      color: var(--text);
+      background:
+        radial-gradient(900px 520px at 15% 0%, rgba(183,146,69,.10), transparent 62%),
+        radial-gradient(760px 480px at 95% 10%, rgba(15,17,21,.05), transparent 55%),
+        var(--bg);
+      line-height:1.5;
+      letter-spacing:-0.01em;
+    }
+    a{ color:inherit; text-decoration:none; }
+    .container{ width:min(100% - 40px, var(--container)); margin:0 auto; }
+    .sr{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+
+    /* HEADER */
+    .topbar{
+      position: sticky;
+      top:0;
+      z-index: 60;
+      background: rgba(251,251,248,.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding: 14px 0;
+      gap: 14px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+      min-width: 180px;
+    }
+    .mark{
+      width: 34px; height: 34px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(15,17,21,.92), rgba(15,17,21,.55));
+      position: relative;
+    }
+    .mark:after{
+      content:"";
+      position:absolute; inset: 7px;
+      border-radius: 10px;
+      border: 1px solid rgba(183,146,69,.55);
+      background: rgba(183,146,69,.08);
+    }
+    .brand .name{
+      font-family: var(--title);
+      font-weight: 600;
+      letter-spacing: .02em;
+      font-size: 18px;
+      line-height: 1.1;
+    }
+    .brand .tag{
+      display:block;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: .10em;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+    .navlinks{
+      display:flex;
+      gap: 10px;
+      align-items:center;
+    }
+    .navlinks a{
+      font-size: 14px;
+      color: rgba(15,17,21,.86);
+      padding: 10px 12px;
+      border-radius: 14px;
+      transition: .18s ease;
+    }
+    .navlinks a:hover{ background: rgba(15,17,21,.05); }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      padding: 11px 14px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 500;
+      transition: .18s ease;
+      cursor:pointer;
+      white-space: nowrap;
+    }
+    .btn:hover{ transform: translateY(-1px); box-shadow: 0 10px 26px rgba(15,17,21,.08); }
+    .btn.primary{
+      background: var(--text);
+      color:#fff;
+      border-color: rgba(15,17,21,.20);
+    }
+    .btn.ghost{
+      border-color: rgba(183,146,69,.35);
+      background: rgba(183,146,69,.08);
+    }
+
+    /* BREADCRUMB */
+    .crumbs{
+      padding: 18px 0 10px;
+      color: rgba(15,17,21,.65);
+      font-size: 13px;
+    }
+    .crumbs a{ color: rgba(15,17,21,.74); }
+    .crumbs a:hover{ color: rgba(15,17,21,.92); }
+    .sep{ opacity:.55; padding: 0 8px; }
+
+    /* PDP LAYOUT */
+    .pdp{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 18px;
+      padding: 10px 0 42px;
+      align-items:start;
+    }
+
+    /* Gallery */
+    .gallery{
+      border-radius: var(--radius2);
+      border: 1px solid rgba(15,17,21,.10);
+      background: rgba(255,255,255,.78);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .galleryMain{
+      position: relative;
+      aspect-ratio: 16 / 11;
+      background: #eee;
+    }
+    .galleryMain img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      display:block;
+      filter: saturate(1.02);
+    }
+    .badge{
+      position:absolute;
+      top: 14px; left: 14px;
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(183,146,69,.35);
+      background: rgba(255,255,255,.78);
+      backdrop-filter: blur(10px);
+      font-size: 12px;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+      color: rgba(15,17,21,.78);
+    }
+    .dot{
+      width: 8px; height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(183,146,69,.18);
+    }
+
+    .thumbs{
+      display:flex;
+      gap: 10px;
+      padding: 12px;
+      border-top: 1px solid rgba(15,17,21,.08);
+      overflow:auto;
+      background: rgba(255,255,255,.92);
+    }
+    .thumb{
+      width: 92px; height: 68px;
+      border-radius: 14px;
+      border: 1px solid rgba(15,17,21,.10);
+      overflow:hidden;
+      flex: 0 0 auto;
+      cursor:pointer;
+      background: #f2f2f2;
+      transition: .15s ease;
+    }
+    .thumb:hover{ transform: translateY(-1px); }
+    .thumb.active{
+      border-color: rgba(183,146,69,.45);
+      box-shadow: 0 12px 28px rgba(15,17,21,.10);
+    }
+    .thumb img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      display:block;
+    }
+
+    /* Right column */
+    .rightCol{
+      display:grid;
+      gap: 12px;
+      position: sticky;
+      top: 92px;
+    }
+
+    .titleBlock{ padding: 2px 0; }
+    .kicker{
+      display:flex;
+      align-items:center;
+      gap: 8px;
+      color: rgba(15,17,21,.65);
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    h1{
+      font-family: var(--title);
+      font-size: clamp(32px, 2.6vw, 44px);
+      line-height: 1.05;
+      margin: 10px 0 6px;
+      letter-spacing: -0.02em;
+    }
+    .sub{
+      margin:0;
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 62ch;
+    }
+
+    .trustRow{
+      display:flex;
+      gap: 10px;
+      flex-wrap:wrap;
+      padding: 10px 0 2px;
+    }
+    .trustPill{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(15,17,21,.10);
+      background: rgba(255,255,255,.86);
+      font-size: 12px;
+      color: rgba(15,17,21,.78);
+    }
+    .ic{
+      width: 20px; height: 20px;
+      border-radius: 8px;
+      border: 1px solid rgba(15,17,21,.10);
+      background: rgba(15,17,21,.03);
+      display:grid;
+      place-items:center;
+      font-size: 12px;
+    }
+
+    /* Conversion box */
+    .buyBox{
+      border-radius: var(--radius2);
+      border: 1px solid rgba(15,17,21,.10);
+      background: rgba(255,255,255,.92);
+      box-shadow: var(--shadow);
+      padding: 16px;
+    }
+    .priceLine{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(15,17,21,.08);
+      margin-bottom: 12px;
+    }
+    .price{
+      font-size: 14px;
+      color: rgba(15,17,21,.72);
+    }
+    .price b{
+      display:block;
+      font-size: 22px;
+      letter-spacing: -0.01em;
+      color: rgba(15,17,21,.92);
+    }
+    .sku{
+      text-align:right;
+      font-size: 12px;
+      color: rgba(15,17,21,.55);
+    }
+
+    .fieldGrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    label{
+      display:block;
+      font-size: 12px;
+      color: rgba(15,17,21,.70);
+      margin-bottom: 6px;
+    }
+    select, input[type="text"], input[type="email"], input[type="tel"]{
+      width:100%;
+      padding: 11px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(15,17,21,.12);
+      background: rgba(15,17,21,.02);
+      outline: none;
+      font-size: 14px;
+      color: var(--text);
+      transition: .15s ease;
+    }
+    select:focus, input:focus{
+      border-color: rgba(183,146,69,.45);
+      background: rgba(183,146,69,.08);
+    }
+
+    .ctaRow{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .btn.full{ width:100%; }
+    .miniLinks{
+      display:flex;
+      justify-content:space-between;
+      gap: 10px;
+      margin-top: 10px;
+      font-size: 12px;
+      color: rgba(15,17,21,.60);
+    }
+    .miniLinks a{
+      color: rgba(15,17,21,.72);
+      border-bottom: 1px solid rgba(183,146,69,.35);
+      padding-bottom: 2px;
+    }
+
+    /* Content below fold */
+    .below{ padding: 22px 0 70px; }
+    .gridBelow{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 18px;
+      align-items:start;
+    }
+
+    .card{
+      border: 1px solid rgba(15,17,21,.10);
+      background: rgba(255,255,255,.88);
+      border-radius: var(--radius2);
+      box-shadow: 0 14px 36px rgba(15,17,21,.08);
+      padding: 18px;
+    }
+    .card h2{
+      font-family: var(--title);
+      font-size: 26px;
+      margin: 0 0 10px;
+      letter-spacing:-0.01em;
+    }
+    .card p{
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* Accordion */
+    details{
+      border-top: 1px solid rgba(15,17,21,.08);
+      padding: 12px 0;
+    }
+    details:first-of-type{ border-top: 0; padding-top: 0; }
+    summary{
+      list-style:none;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 14px;
+      font-weight: 600;
+      font-size: 14px;
+      color: rgba(15,17,21,.86);
+    }
+    summary::-webkit-details-marker{ display:none; }
+    .plus{
+      width: 34px; height: 34px;
+      border-radius: 14px;
+      border: 1px solid rgba(15,17,21,.10);
+      background: rgba(15,17,21,.03);
+      display:grid;
+      place-items:center;
+      font-size: 16px;
+      color: rgba(15,17,21,.70);
+      flex: 0 0 auto;
+      transition:.15s ease;
+    }
+    details[open] .plus{ transform: rotate(45deg); border-color: rgba(183,146,69,.35); background: rgba(183,146,69,.10); }
+    .specGrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .spec{
+      border: 1px solid rgba(15,17,21,.08);
+      background: rgba(255,255,255,.78);
+      border-radius: 16px;
+      padding: 12px;
+      font-size: 13px;
+      color: rgba(15,17,21,.78);
+    }
+    .spec b{ display:block; color: rgba(15,17,21,.90); margin-bottom: 3px; }
+
+    /* Social proof */
+    .proof{ display:grid; gap: 10px; }
+    .quote{
+      border: 1px solid rgba(15,17,21,.08);
+      background: rgba(255,255,255,.78);
+      border-radius: 18px;
+      padding: 14px;
+    }
+    .quote p{ margin:0 0 8px; color: rgba(15,17,21,.78); }
+    .quote small{ color: rgba(15,17,21,.55); }
+
+    /* Related */
+    .relatedGrid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .prod{
+      padding:0;
+      overflow:hidden;
+      border-radius: 22px;
+      border: 1px solid rgba(15,17,21,.10);
+      background: rgba(255,255,255,.92);
+      box-shadow: 0 14px 34px rgba(15,17,21,.08);
+      transition:.18s ease;
+    }
+    .prod:hover{ transform: translateY(-2px); box-shadow: 0 18px 44px rgba(15,17,21,.10); border-color: rgba(183,146,69,.30); }
+    .prod .img{
+      height: 210px;
+      background-size: cover;
+      background-position:center;
+      border-bottom: 1px solid rgba(15,17,21,.08);
+      position: relative;
+    }
+    .prod .img:after{
+      content:"";
+      position:absolute; inset:0;
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.82));
+    }
+    .prod .b{ padding: 14px; }
+    .prod h3{ margin:0 0 6px; font-size: 15px; }
+    .prod span{ color: var(--muted); font-size: 13px; }
+
+    /* Mobile sticky bar */
+    .mobileBar{
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      background: rgba(255,255,255,.88);
+      backdrop-filter: blur(14px);
+      border-top: 1px solid rgba(15,17,21,.10);
+      padding: 10px 14px;
+      display:none;
+      z-index: 70;
+    }
+    .mobileBar .row{
+      display:flex;
+      gap: 10px;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .mobileBar .mini{
+      display:flex;
+      flex-direction:column;
+      gap: 2px;
+      min-width: 140px;
+    }
+    .mobileBar .mini b{ font-size: 13px; }
+    .mobileBar .mini span{ font-size: 12px; color: rgba(15,17,21,.60); }
+
+    @media (max-width: 980px){
+      .pdp{ grid-template-columns: 1fr; }
+      .rightCol{ position: static; }
+      .gridBelow{ grid-template-columns: 1fr; }
+      .relatedGrid{ grid-template-columns: 1fr; }
+      .navlinks{ display:none; }
+      .mobileBar{ display:block; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="container">
+      <div class="nav">
+        <a class="brand" href="#">
+          <div class="mark" aria-hidden="true"></div>
+          <div>
+            <div class="name">CURIONI</div>
+            <small class="tag">Design brasileiro</small>
+          </div>
+        </a>
+
+        <nav class="navlinks" aria-label="Menu">
+          <a href="#">Produtos</a>
+          <a href="#">Novidades</a>
+          <a href="#">Sobre</a>
+        </nav>
+
+        <div style="display:flex; gap:10px; align-items:center;">
+          <a class="btn" href="#">Explorar</a>
+          <a class="btn primary" href="#orcamento">Fazer orçamento</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main class="container">
+    <div class="crumbs" aria-label="Breadcrumb">
+      <a href="#">Produtos</a><span class="sep">›</span>
+      <a href="#">Assentos</a><span class="sep">›</span>
+      <span aria-current="page">Cadeira Fly</span>
+    </div>
+
+    <section class="pdp" aria-label="Detalhe do produto">
+      <div class="gallery" aria-label="Galeria do produto">
+        <div class="galleryMain">
+          <span class="badge"><span class="dot"></span> Premiado • iF</span>
+          <img id="mainImg"
+               src="https://static.wixstatic.com/media/0c10a6_ccd1229e33df4ea4b9df9a81e17c9154~mv2.jpg/v1/fill/w_1200%2Ch_800%2Cq_90%2Cenc_avif%2Cquality_auto/0c10a6_ccd1229e33df4ea4b9df9a81e17c9154~mv2.jpg"
+               alt="Cadeira Fly — Curioni" />
+        </div>
+        <div class="thumbs" role="listbox" aria-label="Miniaturas">
+          <div class="thumb active" role="option" aria-selected="true" data-img="https://static.wixstatic.com/media/0c10a6_ccd1229e33df4ea4b9df9a81e17c9154~mv2.jpg/v1/fill/w_1200%2Ch_800%2Cq_90%2Cenc_avif%2Cquality_auto/0c10a6_ccd1229e33df4ea4b9df9a81e17c9154~mv2.jpg">
+            <img src="https://static.wixstatic.com/media/0c10a6_ccd1229e33df4ea4b9df9a81e17c9154~mv2.jpg/v1/fill/w_260%2Ch_180%2Cq_90%2Cenc_avif%2Cquality_auto/0c10a6_ccd1229e33df4ea4b9df9a81e17c9154~mv2.jpg" alt="Miniatura 1" />
+          </div>
+          <div class="thumb" role="option" aria-selected="false" data-img="https://static.wixstatic.com/media/0c10a6_5364934857ce49089a16e909fa3fffb1~mv2.jpg/v1/fill/w_1200%2Ch_800%2Cq_90%2Cenc_avif%2Cquality_auto/0c10a6_5364934857ce49089a16e909fa3fffb1~mv2.jpg">
+            <img src="https://static.wixstatic.com/media/0c10a6_5364934857ce49089a16e909fa3fffb1~mv2.jpg/v1/fill/w_260%2Ch_180%2Cq_90%2Cenc_avif%2Cquality_auto/0c10a6_5364934857ce49089a16e909fa3fffb1~mv2.jpg" alt="Miniatura 2" />
+          </div>
+          <div class="thumb" role="option" aria-selected="false" data-img="https://static.wixstatic.com/media/0c10a6_b4694dedfd144108b469bd97b9da7723~mv2.jpg/v1/fill/w_1200%2Ch_800%2Cq_90%2Cenc_avif%2Cquality_auto/0c10a6_b4694dedfd144108b469bd97b9da7723~mv2.jpg">
+            <img src="https://static.wixstatic.com/media/0c10a6_b4694dedfd144108b469bd97b9da7723~mv2.jpg/v1/fill/w_260%2Ch_180%2Cq_90%2Cenc_avif%2Cquality_auto/0c10a6_b4694dedfd144108b469bd97b9da7723~mv2.jpg" alt="Miniatura 3" />
+          </div>
+        </div>
+      </div>
+
+      <aside class="rightCol" aria-label="Compra e informações principais">
+        <div class="titleBlock">
+          <div class="kicker">Assentos • Cadeiras</div>
+          <h1>Cadeira Fly</h1>
+          <p class="sub">
+            Presença leve e estrutura precisa. Ideal para sala de jantar, áreas sociais e projetos comerciais.
+          </p>
+
+          <div class="trustRow" aria-label="Confiança e provas">
+            <span class="trustPill"><span class="ic">✓</span> Produção sob encomenda</span>
+            <span class="trustPill"><span class="ic">⎘</span> Ficha técnica</span>
+            <span class="trustPill"><span class="ic">⛟</span> Entrega & suporte</span>
+          </div>
+        </div>
+
+        <div class="buyBox" id="orcamento">
+          <div class="priceLine">
+            <div class="price">
+              <span>Preço sob consulta</span>
+              <b>Solicite orçamento</b>
+            </div>
+            <div class="sku">
+              Ref.: CUR-FLY-01<br/>Disponível: 6 acabamentos
+            </div>
+          </div>
+
+          <div class="fieldGrid">
+            <div>
+              <label for="acabamento">Acabamento</label>
+              <select id="acabamento">
+                <option>Madeira Natural</option>
+                <option>Madeira Nogueira</option>
+                <option>Madeira Ebanizada</option>
+                <option>Laca Off-white</option>
+              </select>
+            </div>
+            <div>
+              <label for="tecido">Revestimento</label>
+              <select id="tecido">
+                <option>Linho (claro)</option>
+                <option>Bouclé (bege)</option>
+                <option>Couro (caramelo)</option>
+                <option>Veludo (grafite)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="fieldGrid">
+            <div>
+              <label for="nome">Nome</label>
+              <input id="nome" type="text" placeholder="Seu nome" />
+            </div>
+            <div>
+              <label for="whats">WhatsApp</label>
+              <input id="whats" type="tel" placeholder="(00) 00000-0000" />
+            </div>
+          </div>
+
+          <div>
+            <label for="email">E-mail</label>
+            <input id="email" type="email" placeholder="seuemail@dominio.com" />
+          </div>
+
+          <div class="ctaRow">
+            <button class="btn primary full" id="ctaWhats">Solicitar orçamento no WhatsApp</button>
+            <button class="btn ghost full" id="ctaFicha">Baixar ficha técnica (PDF)</button>
+            <button class="btn full" id="ctaArq">Sou arquiteto — condições e suporte</button>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="below">
+      <div class="gridBelow">
+        <div class="card">
+          <h2>Detalhes</h2>
+          <p>Conteúdo técnico sem poluir: use acordeão para reduzir carga cognitiva.</p>
+
+          <details open>
+            <summary>Descrição <span class="plus">+</span></summary>
+            <p>Aqui entra a narrativa curta do design e uso no projeto.</p>
+          </details>
+
+          <details>
+            <summary>Dimensões & especificações <span class="plus">+</span></summary>
+            <div class="specGrid">
+              <div class="spec"><b>Altura</b> 82 cm</div>
+              <div class="spec"><b>Largura</b> 55 cm</div>
+              <div class="spec"><b>Profundidade</b> 54 cm</div>
+              <div class="spec"><b>Estrutura</b> Madeira maciça</div>
+            </div>
+          </details>
+        </div>
+
+        <div class="card">
+          <h2>Provas</h2>
+          <div class="proof">
+            <div class="quote"><p>“Acabamento impecável.”</p><small>Arquiteto parceiro</small></div>
+            <div class="quote"><p>“Atendimento rápido e suporte técnico.”</p><small>Especificação comercial</small></div>
+          </div>
+          <div style="margin-top:14px;">
+            <a class="btn primary full" href="#orcamento">Solicitar orçamento</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="mobileBar">
+    <div class="row">
+      <div class="mini"><b>Cadeira Fly</b><span>Orçamento rápido</span></div>
+      <a class="btn primary" href="#orcamento" style="height:44px;">Orçar</a>
+      <button class="btn ghost" id="mWhats" style="height:44px;">Whats</button>
+    </div>
+  </div>
+
+  <script>
+    const mainImg = document.getElementById("mainImg");
+    const thumbs = document.querySelectorAll(".thumb");
+    thumbs.forEach(t => {
+      t.addEventListener("click", () => {
+        mainImg.src = t.getAttribute("data-img");
+        thumbs.forEach(x => x.classList.remove("active"));
+        t.classList.add("active");
+      });
+    });
+
+    function buildMessage(){
+      const acabamento = document.getElementById("acabamento").value;
+      const tecido = document.getElementById("tecido").value;
+      const nome = document.getElementById("nome").value || "Olá";
+      return `Olá, me chamo ${nome}. Quero orçamento da *Cadeira Fly* (Ref. CUR-FLY-01).%0A` +
+             `Acabamento: ${acabamento}%0ARevestimento: ${tecido}%0A` +
+             `Pode me ajudar com prazo e valores?`;
+    }
+    const WHATS_NUMBER = "5511999999999"; // troque pelo número real
+
+    function goWhats(){
+      window.open(`https://wa.me/${WHATS_NUMBER}?text=${buildMessage()}`, "_blank", "noopener,noreferrer");
+    }
+    document.getElementById("ctaWhats").addEventListener("click", goWhats);
+    document.getElementById("mWhats").addEventListener("click", goWhats);
+
+    document.getElementById("ctaFicha").addEventListener("click", () => alert("Conectar PDF real aqui."));
+    document.getElementById("ctaArq").addEventListener("click", () => alert("Conectar fluxo/área do arquiteto aqui."));
+  </script>
+</body>
+</html>
