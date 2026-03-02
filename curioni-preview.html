@@ -116,14 +116,102 @@
       min-height: 540px;
       border-radius: var(--radius-lg);
       border: 1px solid var(--line);
-      background: linear-gradient(145deg, rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0.38)),
-        url('https://static.wixstatic.com/media/0c10a6_ccd1229e33df4ea4b9df9a81e17c9154~mv2.jpg/v1/fill/w_1200,h_800,al_c,q_90,enc_avif,quality_auto/0c10a6_ccd1229e33df4ea4b9df9a81e17c9154~mv2.jpg') center/cover;
       position: relative;
       box-shadow: var(--shadow);
       display: flex;
       align-items: flex-end;
       padding: 28px;
       color: #fff;
+      overflow: hidden;
+    }
+    .heroVisual::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(145deg, rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0.38));
+      z-index: 1;
+    }
+    .heroVisual::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: var(--hero-image);
+      background-position: center;
+      background-size: cover;
+      z-index: 0;
+      transition: transform 0.55s ease;
+    }
+    .heroVisual:hover::after { transform: scale(1.02); }
+    .heroContent, .heroCarouselControls { position: relative; z-index: 2; }
+    .heroCarouselControls {
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .carBtn {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      cursor: pointer;
+    }
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.45);
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+    .dot.active { width: 20px; background: #fff; }
+
+    .quickStrip {
+      margin-top: 14px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+    .quickItem {
+      border: 1px solid var(--line);
+      background: var(--paper);
+      border-radius: 14px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .quickItem strong { font-size: 16px; }
+    .quickItem span { color: var(--muted); font-size: 13px; }
+
+    .dealGrid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 16px; }
+    .dealHero, .dealList {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+    }
+    .dealHero { overflow: hidden; }
+    .dealHero .thumb { height: 320px; }
+    .dealBody { padding: 18px; }
+    .price { display: flex; align-items: center; gap: 10px; margin: 10px 0 14px; }
+    .price strong { font-size: 24px; font-family: var(--title); }
+    .price span { color: var(--muted); text-decoration: line-through; }
+    .dealList { padding: 16px; display: grid; gap: 12px; }
+    .miniDeal { display: grid; grid-template-columns: 92px 1fr auto; gap: 10px; align-items: center; }
+    .miniDeal .miniThumb { width: 92px; height: 74px; border-radius: 10px; background-size: cover; background-position: center; }
+    .miniDeal h4 { margin: 0 0 4px; font-size: 15px; }
+    .miniDeal p { margin: 0; color: var(--muted); font-size: 13px; }
+
+    .showcaseGrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .showcase { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); background: var(--paper); }
+    .showcase .thumb { height: 180px; }
+    .showcase .body h3 { font-size: 19px; }
     }
     .heroVisual h1 { margin: 10px 0 10px; font-family: var(--title); font-size: clamp(32px, 4vw, 56px); line-height: 1.04; max-width: 14ch; }
     .heroVisual p { margin: 0; color: rgba(255, 255, 255, 0.86); max-width: 45ch; }
@@ -223,13 +311,13 @@
     @media (max-width: 1040px) {
       .heroLayout { grid-template-columns: 1fr; }
       .heroVisual { min-height: 460px; }
-      .journeyGrid, .metricGrid, .productGrid, .proof, .foot { grid-template-columns: 1fr 1fr; }
+      .journeyGrid, .metricGrid, .productGrid, .proof, .foot, .quickStrip, .showcaseGrid, .dealGrid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 840px) {
       .nav { grid-template-columns: auto auto; justify-content: space-between; }
       .navlinks, .navcta .btn { display: none; }
       .menuBtn { display: inline-grid; place-items: center; }
-      .journeyGrid, .metricGrid, .productGrid, .proof, .foot { grid-template-columns: 1fr; }
+      .journeyGrid, .metricGrid, .productGrid, .proof, .foot, .quickStrip, .showcaseGrid, .dealGrid { grid-template-columns: 1fr; }
       .heroPanel { padding: 22px; }
       section { padding: 46px 0; }
     }
@@ -272,11 +360,18 @@
 
   <header class="hero">
     <div class="container heroLayout">
-      <div class="heroVisual">
-        <div>
-          <span class="kicker">Novo posicionamento de Home</span>
-          <h1>Uma Home que inspira e converte em vendas.</h1>
-          <p>Mantivemos o impacto do hero original e construímos uma jornada clara: descoberta, prova de valor e CTA comercial para acelerar decisões de arquitetos e clientes finais.</p>
+      <div class="heroVisual" id="heroVisual" style="--hero-image:url('https://images.unsplash.com/photo-1617098474202-0d0d7f60f7aa?auto=format&fit=crop&w=1400&q=80')">
+        <div class="heroContent">
+          <span class="kicker" id="heroKicker">Destaque da semana</span>
+          <h1 id="heroTitle">Banner rotativo para lançar novas coleções toda semana.</h1>
+          <p id="heroText">Transformamos a hero em um carrossel único para destacar campanhas, produtos estratégicos e novidades sem perder impacto visual.</p>
+        </div>
+        <div class="heroCarouselControls">
+          <button class="carBtn" id="prevHero" aria-label="Banner anterior">‹</button>
+          <button class="dot active" data-dot="0" aria-label="Banner 1"></button>
+          <button class="dot" data-dot="1" aria-label="Banner 2"></button>
+          <button class="dot" data-dot="2" aria-label="Banner 3"></button>
+          <button class="carBtn" id="nextHero" aria-label="Próximo banner">›</button>
         </div>
       </div>
 
@@ -297,6 +392,17 @@
       </aside>
     </div>
   </header>
+
+  <section>
+    <div class="container">
+      <div class="quickStrip">
+        <article class="quickItem"><strong>Frete planejado</strong><span>Condição especial para capitais e interior.</span></article>
+        <article class="quickItem"><strong>Compra por ambiente</strong><span>Monte kits para sala, jantar e escritório.</span></article>
+        <article class="quickItem"><strong>Atendimento consultivo</strong><span>Time comercial com apoio para especificação.</span></article>
+        <article class="quickItem"><strong>Novidades quinzenais</strong><span>Lançamentos constantes para manter o site vivo.</span></article>
+      </div>
+    </div>
+  </section>
 
   <section id="estrategia">
     <div class="container">
@@ -330,6 +436,62 @@
             <p>CTA de orçamento em pontos críticos da página, com opção para cliente final e profissional.</p>
           </article>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="sectionHead">
+        <div>
+          <h2>Ofertas e produtos de giro rápido</h2>
+          <p>Bloco com cara de e-commerce para ativar compra imediata e melhorar o ticket médio.</p>
+        </div>
+      </div>
+      <div class="dealGrid">
+        <article class="dealHero">
+          <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1582582429416-67d06d765cd8?auto=format&fit=crop&w=1200&q=80')"></div>
+          <div class="dealBody">
+            <h3>Combo Sala Curioni — Mesa + Poltronas</h3>
+            <p>Seleção pronta para acelerar decisão de compra e reduzir abandono por dúvida de combinação.</p>
+            <div class="price"><strong>R$ 8.490</strong><span>R$ 9.990</span></div>
+            <a class="btn primary" href="orcamento.html">Quero essa oferta</a>
+          </div>
+        </article>
+        <aside class="dealList">
+          <article class="miniDeal">
+            <div class="miniThumb" style="background-image:url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=700&q=80')"></div>
+            <div><h4>Sofá Modular Velo</h4><p>12x sem juros para projetos residenciais.</p></div>
+            <a class="btn" href="produtos-detalhes.html">Ver</a>
+          </article>
+          <article class="miniDeal">
+            <div class="miniThumb" style="background-image:url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=700&q=80')"></div>
+            <div><h4>Mesa Escultural Nexo</h4><p>Madeira natural com 15% off na semana.</p></div>
+            <a class="btn" href="produtos-detalhes.html">Ver</a>
+          </article>
+          <article class="miniDeal">
+            <div class="miniThumb" style="background-image:url('https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&fit=crop&w=700&q=80')"></div>
+            <div><h4>Kit Iluminação Aura</h4><p>Itens complementares para elevar percepção premium.</p></div>
+            <a class="btn" href="produtos-detalhes.html">Ver</a>
+          </article>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="sectionHead">
+        <div>
+          <h2>Compre por ambiente</h2>
+          <p>Uma vitrine inspiracional com lógica comercial para facilitar descoberta de produtos.</p>
+        </div>
+      </div>
+      <div class="showcaseGrid">
+        <article class="showcase"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1616047006789-b7af9f8b95e4?auto=format&fit=crop&w=800&q=80')"></div><div class="body"><h3>Living Aconchegante</h3><a class="btn ghost" href="produtos-detalhes.html">Explorar itens</a></div></article>
+        <article class="showcase"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=800&q=80')"></div><div class="body"><h3>Jantar Contemporâneo</h3><a class="btn ghost" href="produtos-detalhes.html">Explorar itens</a></div></article>
+        <article class="showcase"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1616627561950-9f746e330187?auto=format&fit=crop&w=800&q=80')"></div><div class="body"><h3>Home Office Premium</h3><a class="btn ghost" href="produtos-detalhes.html">Explorar itens</a></div></article>
+        <article class="showcase"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1560185007-c5ca9d2c014d?auto=format&fit=crop&w=800&q=80')"></div><div class="body"><h3>Suíte Boutique</h3><a class="btn ghost" href="produtos-detalhes.html">Explorar itens</a></div></article>
       </div>
     </div>
   </section>
@@ -448,6 +610,64 @@
   <script>
     const menuBtn = document.getElementById("menuBtn");
     const drawer = document.getElementById("drawer");
+    const heroVisual = document.getElementById("heroVisual");
+    const heroKicker = document.getElementById("heroKicker");
+    const heroTitle = document.getElementById("heroTitle");
+    const heroText = document.getElementById("heroText");
+    const prevHero = document.getElementById("prevHero");
+    const nextHero = document.getElementById("nextHero");
+    const dots = Array.from(document.querySelectorAll(".dot"));
+
+    const heroSlides = [
+      {
+        kicker: "Destaque da semana",
+        title: "Banner rotativo para lançar novas coleções toda semana.",
+        text: "Transformamos a hero em um carrossel único para destacar campanhas, produtos estratégicos e novidades sem perder impacto visual.",
+        image: "https://images.unsplash.com/photo-1617098474202-0d0d7f60f7aa?auto=format&fit=crop&w=1400&q=80"
+      },
+      {
+        kicker: "Campanha comercial",
+        title: "Promova ofertas sazonais sem mexer na estrutura da home.",
+        text: "Com apenas um banner ativo por vez, o visitante entende rápido a mensagem e avança para os blocos de compra.",
+        image: "https://images.unsplash.com/photo-1616627450489-9a8f33f6f5a3?auto=format&fit=crop&w=1400&q=80"
+      },
+      {
+        kicker: "Novo lançamento",
+        title: "Engajamento visual com foco em clique para produto e orçamento.",
+        text: "A rotação automática ajuda a manter a home viva e aumentar recorrência dos visitantes interessados em novidades.",
+        image: "https://images.unsplash.com/photo-1493666438817-866a91353ca9?auto=format&fit=crop&w=1400&q=80"
+      }
+    ];
+
+    let heroIndex = 0;
+
+    const renderHero = (index) => {
+      const slide = heroSlides[index];
+      heroVisual.style.setProperty("--hero-image", `url('${slide.image}')`);
+      heroKicker.textContent = slide.kicker;
+      heroTitle.textContent = slide.title;
+      heroText.textContent = slide.text;
+
+      dots.forEach((dot, dotIndex) => dot.classList.toggle("active", dotIndex === index));
+    };
+
+    const nextSlide = () => {
+      heroIndex = (heroIndex + 1) % heroSlides.length;
+      renderHero(heroIndex);
+    };
+
+    prevHero?.addEventListener("click", () => {
+      heroIndex = (heroIndex - 1 + heroSlides.length) % heroSlides.length;
+      renderHero(heroIndex);
+    });
+
+    nextHero?.addEventListener("click", nextSlide);
+    dots.forEach((dot, index) => dot.addEventListener("click", () => {
+      heroIndex = index;
+      renderHero(heroIndex);
+    }));
+
+    setInterval(nextSlide, 4600);
 
     if (menuBtn && drawer) {
       menuBtn.addEventListener("click", () => {
