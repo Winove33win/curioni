@@ -3,39 +3,43 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <title>Novidades | Curioni</title>
-  <meta name="description" content="Novidades da Curioni: lançamentos, parcerias, premiações e bastidores do design autoral. Explore conteúdos editoriais e avance para produtos, catálogo e orçamento." />
-  <link rel="canonical" href="https://www.curioni.com.br/novidades" />
-
-  <!-- Open Graph -->
-  <meta property="og:site_name" content="Curioni" />
-  <meta property="og:locale" content="pt_BR" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Novidades | Curioni" />
-  <meta property="og:description" content="Lançamentos, parcerias, premiações e bastidores do design Curioni. Conteúdos editoriais com acesso rápido para produtos e orçamento." />
-  <meta property="og:url" content="https://www.curioni.com.br/novidades" />
-  <meta property="og:image" content="https://static.wixstatic.com/media/0c10a6_ccd1229e33df4ea4b9df9a81e17c9154~mv2.jpg/v1/fill/w_1200,h_630,al_c,q_90,enc_avif,quality_auto/0c10a6_ccd1229e33df4ea4b9df9a81e17c9154~mv2.jpg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Novidades | Curioni" />
-  <meta name="twitter:description" content="Lançamentos, parcerias, premiações e bastidores do design Curioni." />
-  <meta name="twitter:image" content="https://static.wixstatic.com/media/0c10a6_ccd1229e33df4ea4b9df9a81e17c9154~mv2.jpg/v1/fill/w_1200,h_630,al_c,q_90,enc_avif,quality_auto/0c10a6_ccd1229e33df4ea4b9df9a81e17c9154~mv2.jpg" />
-
-  <!-- Performance -->
+  <title>Conteúdo e Novidades | Curioni</title>
+  <meta name="description" content="Novidades Curioni com links descritivos para coleções, produtos e orçamento." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://static.wixstatic.com" crossorigin />
-  <link rel="dns-prefetch" href="https://static.wixstatic.com" />
-
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
-
-  <!-- CSS e JS completos estão no arquivo de preview -->
+  <style>
+    body{margin:0;font-family:Inter,system-ui;background:#fbfbf8;color:#1c1c1c} .container{width:min(1100px,92%);margin:auto}
+    .topbar{position:sticky;top:0;background:#fbfbf8f0;border-bottom:1px solid #ddd} .nav{display:flex;justify-content:space-between;align-items:center;padding:14px 0;gap:14px}
+    .nav a{text-decoration:none;color:inherit} .links{display:flex;gap:14px;flex-wrap:wrap} .btn{padding:10px 14px;border-radius:12px;border:1px solid #d8d8d8;background:#fff}
+    h1,h2{font-family:"Playfair Display",serif} .hero{padding:44px 0 24px} .lead{max-width:64ch;color:#4d535f}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;padding:18px 0 40px}
+    .card{background:#fff;border:1px solid #ddd;border-radius:16px;padding:18px} .card a{color:#1f4d3a;font-weight:600}
+  </style>
 </head>
 <body>
-  <!-- Para ver o template completo com estilos e JS, abra o preview:
-       sandbox:/mnt/data/curioni-novidades-white-editorial.html -->
+  <div class="topbar"><div class="container nav">
+    <a href="curioni-preview.html"><strong>CURIONI</strong></a>
+    <nav class="links" aria-label="Menu principal">
+      <a href="curioni-preview.html#colecoes">Produtos</a>
+      <a href="profissionais.html">Profissionais</a>
+      <a href="biblioteca-tecnica.html">Biblioteca técnica</a>
+      <a href="novidades.html" aria-current="page">Conteúdo</a>
+      <a class="btn" href="orcamento.html">Orçar projeto</a>
+    </nav>
+  </div></div>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Novidades com caminhos claros para explorar e especificar</h1>
+      <p class="lead">Reorganizamos a página editorial para evitar links genéricos e oferecer ações previsíveis: ver produto, baixar ficha e solicitar orçamento.</p>
+    </section>
+
+    <section class="grid" aria-label="Publicações">
+      <article class="card"><h2>Lançamentos 2026</h2><p>Seleção de peças premiadas com foco em ambientações residenciais e contract.</p><a href="curioni-preview.html#destaques">Ver lançamentos da coleção</a></article>
+      <article class="card"><h2>Matérias e bastidores</h2><p>Histórias de processo criativo e materiais com orientação de uso e manutenção.</p><a href="biblioteca-tecnica.html">Abrir biblioteca de materiais</a></article>
+      <article class="card"><h2>Para arquitetos</h2><p>Condições e fluxo padronizado para especificação e envio de propostas.</p><a href="profissionais.html">Conhecer jornada profissional</a></article>
+    </section>
+  </main>
 </body>
 </html>
