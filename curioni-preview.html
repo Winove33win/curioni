@@ -3,385 +3,140 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Curioni — Home (White • Hero Simplificado)</title>
+  <title>Curioni — Home</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg: #fbfbf8;
-      --paper: #ffffff;
-      --text: #0f1115;
-      --muted: #5a606b;
-      --line: rgba(15,17,21,.10);
-
-      --accent: #b79245;
-      --accentSoft: rgba(183,146,69,.14);
-
-      --title: "Playfair Display", serif;
-      --body: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-
-      --container: 1180px;
-      --radius: 18px;
-      --radius2: 26px;
-      --shadow: 0 18px 45px rgba(15,17,21,.10);
+      --bg:#f7f6f4;
+      --paper:#ffffff;
+      --ink:#131417;
+      --muted:#626875;
+      --line:rgba(19,20,23,.12);
+      --accent:#b79245;
+      --accent-soft:rgba(183,146,69,.14);
+      --title:"Playfair Display",serif;
+      --body:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      --container:1180px;
+      --radius:18px;
+      --radius-lg:28px;
+      --shadow:0 18px 44px rgba(19,20,23,.1);
     }
 
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
+    *{box-sizing:border-box}
+    html,body{height:100%}
     body{
       margin:0;
-      font-family: var(--body);
-      color: var(--text);
+      font-family:var(--body);
+      color:var(--ink);
       background:
-        radial-gradient(900px 520px at 15% 0%, rgba(183,146,69,.10), transparent 62%),
-        radial-gradient(760px 480px at 95% 10%, rgba(15,17,21,.05), transparent 55%),
+        radial-gradient(1000px 560px at 10% 0%, rgba(183,146,69,.1), transparent 62%),
+        radial-gradient(780px 420px at 100% 6%, rgba(19,20,23,.06), transparent 56%),
         var(--bg);
-      line-height: 1.5;
-      letter-spacing: -0.01em;
+      line-height:1.5;
+      letter-spacing:-.01em;
     }
+    a{color:inherit;text-decoration:none}
+    .container{width:min(100% - 40px,var(--container));margin:0 auto}
 
-    a{ color: inherit; text-decoration: none; }
-    .container{ width: min(100% - 40px, var(--container)); margin: 0 auto; }
-
-    /* NAV */
     .topbar{
-      position: sticky;
-      top:0;
-      z-index: 50;
-      background: rgba(251,251,248,.86);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--line);
+      position:sticky;top:0;z-index:100;
+      backdrop-filter:blur(14px);
+      background:rgba(247,246,244,.86);
+      border-bottom:1px solid var(--line);
     }
-    .nav{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding: 14px 0;
-      gap: 14px;
-    }
-    .brand{
-      display:flex;
-      align-items:center;
-      gap: 12px;
-      min-width: 180px;
-    }
-    .mark{
-      width: 34px; height: 34px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, rgba(15,17,21,.92), rgba(15,17,21,.55));
-      position: relative;
-    }
-    .mark:after{
-      content:"";
-      position:absolute; inset: 7px;
-      border-radius: 10px;
-      border: 1px solid rgba(183,146,69,.55);
-      background: rgba(183,146,69,.08);
-    }
-    .brand .name{
-      font-family: var(--title);
-      font-weight: 600;
-      letter-spacing: .02em;
-      font-size: 18px;
-      line-height: 1.1;
-    }
-    .brand .tag{
-      display:block;
-      font-size: 11px;
-      color: var(--muted);
-      letter-spacing: .10em;
-      text-transform: uppercase;
-      margin-top: 2px;
-    }
+    .nav{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:12px}
+    .mark{width:36px;height:36px;border-radius:12px;background:linear-gradient(140deg,#1a1d23,#373c48);position:relative}
+    .mark:after{content:"";position:absolute;inset:7px;border-radius:9px;border:1px solid rgba(183,146,69,.55);background:rgba(183,146,69,.15)}
+    .name{font-family:var(--title);font-size:18px;font-weight:600;line-height:1.1}
+    .tag{display:block;color:var(--muted);font-size:11px;letter-spacing:.12em;text-transform:uppercase}
 
-    .navlinks{ display:flex; gap: 18px; align-items:center; }
-    .navlinks a{
-      font-size: 14px;
-      color: rgba(15,17,21,.82);
-      padding: 10px 10px;
-      border-radius: 12px;
-      transition: .18s ease;
-    }
-    .navlinks a:hover{ background: rgba(15,17,21,.05); }
+    .navlinks{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+    .navlinks a{padding:10px 12px;border-radius:999px;font-size:14px;color:rgba(19,20,23,.84);transition:.18s ease}
+    .navlinks a:hover{background:rgba(19,20,23,.06)}
 
-    .navcta{ display:flex; gap: 10px; align-items:center; }
+    .navcta{display:flex;align-items:center;gap:10px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 14px;border-radius:13px;border:1px solid var(--line);background:var(--paper);font-size:14px;font-weight:500;transition:.2s ease;cursor:pointer}
+    .btn:hover{transform:translateY(-1px);box-shadow:0 12px 28px rgba(19,20,23,.09)}
+    .btn.primary{background:var(--ink);border-color:rgba(19,20,23,.25);color:#fff}
+    .btn.ghost{background:var(--accent-soft);border-color:rgba(183,146,69,.4)}
+    .menuBtn{display:none;width:42px;height:42px;border-radius:13px;border:1px solid var(--line);background:var(--paper)}
+    .drawer{display:none;padding:12px 0 14px;border-top:1px solid var(--line)}
+    .drawer.open{display:block}
+    .drawer a{display:block;padding:10px 0;border-bottom:1px solid rgba(19,20,23,.07)}
 
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap: 10px;
-      padding: 11px 14px;
-      border-radius: 14px;
-      border: 1px solid var(--line);
-      background: var(--paper);
-      color: var(--text);
-      font-size: 14px;
-      font-weight: 500;
-      transition: .18s ease;
-      cursor:pointer;
-      white-space: nowrap;
-    }
-    .btn:hover{ transform: translateY(-1px); box-shadow: 0 10px 26px rgba(15,17,21,.08); }
-    .btn.primary{
-      background: var(--text);
-      color: #fff;
-      border-color: rgba(15,17,21,.20);
-    }
-    .btn.ghost{
-      border-color: rgba(183,146,69,.35);
-      background: rgba(183,146,69,.08);
-    }
+    header{padding:34px 0 12px}
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:stretch}
+    .heroPanel{padding:34px;border:1px solid var(--line);border-radius:var(--radius-lg);background:rgba(255,255,255,.8);box-shadow:var(--shadow)}
+    .kicker{display:inline-flex;gap:10px;align-items:center;padding:7px 12px;border-radius:999px;border:1px solid rgba(183,146,69,.45);background:var(--accent-soft);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:rgba(19,20,23,.8)}
+    .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(183,146,69,.18)}
+    h1{font-family:var(--title);font-size:clamp(36px,4vw,62px);line-height:1.02;margin:16px 0 12px}
+    .lead{margin:0;color:var(--muted);max-width:60ch}
 
-    .menuBtn{
-      display:none;
-      width: 42px; height: 42px;
-      border-radius: 14px;
-      border: 1px solid var(--line);
-      background: var(--paper);
-      cursor:pointer;
-    }
+    .searchCard{margin-top:22px;border:1px solid rgba(19,20,23,.12);background:var(--paper);border-radius:16px;padding:10px;display:grid;grid-template-columns:repeat(4,1fr) auto;gap:8px;align-items:center}
+    .field{padding:10px 12px;border-radius:12px;transition:.15s}
+    .field:hover{background:rgba(19,20,23,.04)}
+    .field b{display:block;font-size:12px}
+    .field span{display:block;font-size:13px;color:var(--muted)}
+    .searchBtn{border:none;border-radius:12px;padding:13px 18px;background:var(--ink);color:#fff;font-weight:600;cursor:pointer}
 
-    .drawer{
-      display:none;
-      border-top: 1px solid var(--line);
-      padding: 12px 0 16px;
-    }
-    .drawer.open{ display:block; }
-    .drawer a{
-      display:block;
-      padding: 12px 0;
-      color: rgba(15,17,21,.86);
-      border-bottom: 1px solid rgba(15,17,21,.08);
-    }
-    .drawer a:last-child{ border-bottom: 0; }
+    .heroMedia{border-radius:var(--radius-lg);overflow:hidden;min-height:470px;position:relative;border:1px solid var(--line);box-shadow:var(--shadow);background:url("https://static.wixstatic.com/media/0c10a6_ccd1229e33df4ea4b9df9a81e17c9154~mv2.jpg/v1/fill/w_687%2Ch_458%2Cq_90%2Cenc_avif%2Cquality_auto/0c10a6_ccd1229e33df4ea4b9df9a81e17c9154~mv2.jpg") center/cover}
+    .heroMedia:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.88))}
+    .mediaStats{position:absolute;z-index:2;left:16px;right:16px;bottom:16px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .mediaStats div{background:rgba(255,255,255,.92);border:1px solid rgba(19,20,23,.1);border-radius:14px;padding:10px 12px}
+    .mediaStats b{display:block;font-size:16px}
+    .mediaStats span{font-size:12px;color:var(--muted)}
 
-    /* HERO (simplificado - banner) */
-    header{ padding: 38px 0 12px; }
-    .hero{
-      display:grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap: 18px;
-      align-items: center;
-    }
-    .kicker{
-      display:inline-flex;
-      align-items:center;
-      gap: 10px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(183,146,69,.35);
-      background: rgba(183,146,69,.08);
-      color: rgba(15,17,21,.78);
-      font-size: 12px;
-      letter-spacing: .10em;
-      text-transform: uppercase;
-    }
-    .dot{
-      width: 8px; height: 8px;
-      border-radius: 999px;
-      background: var(--accent);
-      box-shadow: 0 0 0 4px rgba(183,146,69,.18);
-    }
-    h1{
-      font-family: var(--title);
-      font-size: clamp(36px, 3.6vw, 60px);
-      line-height: 1.03;
-      margin: 16px 0 10px;
-      letter-spacing: -0.02em;
-    }
-    .lead{
-      margin: 0 0 16px;
-      font-size: 16px;
-      color: var(--muted);
-      max-width: 62ch;
-    }
-    .heroActions{ display:flex; gap: 10px; flex-wrap:wrap; margin-top: 12px; }
+    section{padding:56px 0}
+    .sectionHead{display:flex;justify-content:space-between;gap:16px;align-items:flex-end;margin-bottom:18px}
+    .sectionHead h2{margin:0;font-size:30px;font-family:var(--title)}
+    .sectionHead p{margin:0;color:var(--muted);font-size:14px;max-width:62ch}
 
-    .heroImage{
-      border-radius: var(--radius2);
-      border: 1px solid var(--line);
-      overflow:hidden;
-      min-height: 440px;
-      box-shadow: var(--shadow);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.88)),
-        url("https://static.wixstatic.com/media/0c10a6_ccd1229e33df4ea4b9df9a81e17c9154~mv2.jpg/v1/fill/w_687%2Ch_458%2Cq_90%2Cenc_avif%2Cquality_auto/0c10a6_ccd1229e33df4ea4b9df9a81e17c9154~mv2.jpg");
-      background-size: cover;
-      background-position: center;
-    }
+    .highlights{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .card{border:1px solid var(--line);background:var(--paper);border-radius:var(--radius);padding:18px;transition:.2s}
+    .card:hover{transform:translateY(-2px);border-color:rgba(183,146,69,.35);box-shadow:0 14px 30px rgba(19,20,23,.08)}
+    .card small{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:rgba(19,20,23,.55)}
+    .card h3{margin:8px 0 6px;font-size:18px}
+    .card p{margin:0;color:var(--muted);font-size:14px}
 
-    /* SEÇÕES */
-    section{ padding: 54px 0; }
-    .sectionHead{
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap: 18px;
-      margin-bottom: 18px;
-    }
-    .sectionHead h2{
-      font-family: var(--title);
-      font-size: 30px;
-      margin: 0;
-      letter-spacing: -0.01em;
-    }
-    .sectionHead p{
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-      max-width: 62ch;
-    }
+    .collections{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .prod{padding:0;overflow:hidden}
+    .thumb{height:240px;background-size:cover;background-position:center;border-bottom:1px solid var(--line);position:relative}
+    .thumb:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.85))}
+    .body{padding:16px 18px 18px}
+    .body h3{margin:0 0 6px}
+    .body p{margin:0 0 12px;color:var(--muted);font-size:13px}
 
-    .grid3{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-    .grid2{ display:grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .finalCta{border-radius:var(--radius-lg);border:1px solid var(--line);padding:34px;background:linear-gradient(130deg,rgba(255,255,255,.95),rgba(255,255,255,.76)), url("https://static.wixstatic.com/media/0c10a6_b4694dedfd144108b469bd97b9da7723~mv2.jpg/v1/fill/w_980%2Ch_1225%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/01.jpg") center/cover;box-shadow:var(--shadow)}
+    .finalCta h2{font-family:var(--title);margin:0 0 10px;font-size:35px}
+    .finalCta p{margin:0 0 18px;color:var(--muted);max-width:65ch}
 
-    .card{
-      border: 1px solid var(--line);
-      background: var(--paper);
-      border-radius: var(--radius);
-      padding: 18px;
-      transition: .18s ease;
-    }
-    .card:hover{
-      transform: translateY(-2px);
-      border-color: rgba(183,146,69,.30);
-      box-shadow: 0 16px 38px rgba(15,17,21,.08);
-    }
+    footer{padding:30px 0 40px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+    .foot{display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:16px}
+    .foot h4{margin:0 0 8px;font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:rgba(19,20,23,.75)}
+    .foot a{display:block;padding:6px 0}
 
-    /* Provas (substitui excesso no hero) */
-    .proof b{ display:block; font-size: 14px; margin-bottom: 4px; }
-    .proof span{ color: var(--muted); font-size: 13px; }
-
-    /* Atalhos (Coleções rápidas) */
-    .shortcut{
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap: 12px;
-      min-height: 120px;
-      padding: 18px;
-      border-radius: 20px;
-      border: 1px solid var(--line);
-      background:
-        radial-gradient(420px 220px at 10% 0%, rgba(183,146,69,.10), transparent 55%),
-        var(--paper);
-      transition: .18s ease;
+    @media (max-width:1040px){
+      .hero{grid-template-columns:1fr}
+      .searchCard{grid-template-columns:1fr 1fr}
+      .searchBtn{grid-column:span 2}
+      .highlights,.collections{grid-template-columns:1fr 1fr}
     }
-    .shortcut:hover{
-      transform: translateY(-2px);
-      border-color: rgba(183,146,69,.35);
-      box-shadow: 0 16px 38px rgba(15,17,21,.08);
-    }
-    .shortcut small{
-      display:block;
-      color: rgba(15,17,21,.60);
-      font-size: 11px;
-      letter-spacing: .10em;
-      text-transform: uppercase;
-      margin-bottom: 6px;
-    }
-    .shortcut b{ display:block; font-size: 16px; letter-spacing:-0.01em; }
-    .shortcut a{
-      font-size: 13px;
-      padding-bottom: 2px;
-      border-bottom: 1px solid rgba(183,146,69,.45);
-      white-space: nowrap;
-    }
-
-    /* Coleções (cards com imagem) */
-    .prod{ padding:0; overflow:hidden; }
-    .thumb{
-      height: 220px;
-      background-size: cover;
-      background-position: center;
-      border-bottom: 1px solid var(--line);
-      position: relative;
-    }
-    .thumb:after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.82));
-    }
-    .prod .body{ padding: 16px 18px 18px; }
-    .prod h3{ margin:0 0 6px; font-size: 16px; letter-spacing: -0.01em; }
-    .prod p{ margin:0 0 12px; font-size: 13px; color: var(--muted); }
-    .link{
-      display:inline-flex;
-      align-items:center;
-      gap: 8px;
-      font-size: 13px;
-      padding: 10px 12px;
-      border-radius: 14px;
-      border: 1px solid rgba(15,17,21,.12);
-      background: rgba(15,17,21,.03);
-    }
-    .link:hover{
-      border-color: rgba(183,146,69,.35);
-      background: rgba(183,146,69,.10);
-    }
-
-    /* CTA FINAL */
-    .finalCta{
-      border-radius: var(--radius2);
-      border: 1px solid rgba(15,17,21,.12);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.60), rgba(255,255,255,.92)),
-        url("https://static.wixstatic.com/media/0c10a6_b4694dedfd144108b469bd97b9da7723~mv2.jpg/v1/fill/w_980%2Ch_1225%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/01.jpg");
-      background-size: cover;
-      background-position: center;
-      padding: 34px;
-      box-shadow: var(--shadow);
-      position: relative;
-      overflow:hidden;
-    }
-    .finalCta:before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background: linear-gradient(90deg, rgba(255,255,255,.95), rgba(255,255,255,.30));
-    }
-    .finalCta > *{ position: relative; z-index: 1; }
-    .finalCta h2{ font-family: var(--title); margin: 0 0 10px; font-size: 34px; }
-    .finalCta p{ margin: 0 0 18px; color: var(--muted); max-width: 66ch; }
-
-    footer{
-      padding: 30px 0 40px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 13px;
-    }
-    .footGrid{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr .8fr;
-      gap: 16px;
-      align-items:start;
-    }
-    .footGrid h4{
-      margin: 0 0 10px;
-      font-size: 13px;
-      letter-spacing: .10em;
-      text-transform: uppercase;
-      color: rgba(15,17,21,.78);
-    }
-    .footGrid a{ display:block; padding: 7px 0; color: var(--muted); }
-    .footGrid a:hover{ color: rgba(15,17,21,.88); }
-
-    @media (max-width: 980px){
-      .hero{ grid-template-columns: 1fr; }
-      .heroImage{ min-height: 320px; }
-      .grid3{ grid-template-columns: 1fr; }
-      .grid2{ grid-template-columns: 1fr; }
-      .navlinks{ display:none; }
-      .menuBtn{ display:inline-grid; place-items:center; }
+    @media (max-width:820px){
+      .nav{grid-template-columns:auto auto;justify-content:space-between}
+      .navlinks,.navcta .btn{display:none}
+      .menuBtn{display:inline-grid;place-items:center}
+      .highlights,.collections,.foot{grid-template-columns:1fr}
+      .heroPanel{padding:24px}
+      .mediaStats{grid-template-columns:1fr}
+      .sectionHead{flex-direction:column;align-items:flex-start}
     }
   </style>
 </head>
-
 <body>
   <div class="topbar">
     <div class="container">
@@ -395,237 +150,167 @@
         </a>
 
         <nav class="navlinks" aria-label="Menu principal">
-          <a href="#colecoes">Produtos</a>
-          <a href="novidades.html">Conteúdo</a>
+          <a href="#colecoes">Coleções</a>
+          <a href="#experiencias">Experiências</a>
+          <a href="novidades.html">Inspiração</a>
           <a href="profissionais.html">Profissionais</a>
           <a href="biblioteca-tecnica.html">Biblioteca técnica</a>
         </nav>
 
         <div class="navcta">
           <a class="btn" href="#colecoes">Explorar produtos</a>
-          <a class="btn primary" href="orcamento.html">Orçar projeto</a>
+          <a class="btn primary" href="orcamento.html">Iniciar projeto</a>
           <button class="menuBtn" id="menuBtn" aria-label="Abrir menu">☰</button>
         </div>
       </div>
 
       <div class="drawer" id="drawer">
-        <a href="#colecoes">Produtos</a>
-        <a href="novidades.html">Conteúdo</a>
+        <a href="#colecoes">Coleções</a>
+        <a href="#experiencias">Experiências</a>
+        <a href="novidades.html">Inspiração</a>
         <a href="profissionais.html">Profissionais</a>
         <a href="biblioteca-tecnica.html">Biblioteca técnica</a>
-        <a href="orcamento.html">Orçamento</a>
+        <a href="orcamento.html">Iniciar projeto</a>
       </div>
     </div>
   </div>
 
-  <!-- HERO (banner com menos informação) -->
   <header>
-    <div class="container">
-      <div class="hero">
-        <div>
-          <div class="kicker"><span class="dot"></span> Atenção ao detalhe • Forma • Função</div>
-          <h1>Design autoral para interiores com presença atemporal.</h1>
-          <p class="lead">
-            Um layout “galeria” em branco: leitura imediata, respiro e hierarquia editorial — sem poluir o hero.
-          </p>
+    <div class="container hero">
+      <div class="heroPanel">
+        <div class="kicker"><span class="dot"></span> Layout editorial • foco em conversão</div>
+        <h1>Minimalista, sofisticado e pensado para engajar.</h1>
+        <p class="lead">A nova home prioriza decisão rápida: navegação clara, destaque de coleções e uma jornada de especificação que valoriza a marca em cada bloco.</p>
 
-          <div class="heroActions">
-            <a class="btn primary" href="#colecoes">Ver coleções</a>
-            <a class="btn ghost" href="#destaques">Ver destaques</a>
-          </div>
+        <div class="searchCard" aria-label="Busca guiada de coleções">
+          <div class="field"><b>Ambiente</b><span>Residencial ou corporativo</span></div>
+          <div class="field"><b>Tipologia</b><span>Assentos, mesas, iluminação</span></div>
+          <div class="field"><b>Estilo</b><span>Contemporâneo, autoral, premium</span></div>
+          <div class="field"><b>Objetivo</b><span>Especificar ou comprar</span></div>
+          <button class="searchBtn">Descobrir</button>
         </div>
+      </div>
 
-        <div class="heroImage" role="img" aria-label="Imagem Curioni"></div>
+      <div class="heroMedia" role="img" aria-label="Ambiente Curioni com mobiliário autoral">
+        <div class="mediaStats">
+          <div><b>+120</b><span>projetos especificados</span></div>
+          <div><b>25 anos</b><span>de design brasileiro</span></div>
+          <div><b>iF Award</b><span>reconhecimento internacional</span></div>
+        </div>
       </div>
     </div>
   </header>
 
-  <!-- NOVA SEÇÃO 1 -->
-  <section id="diferenciais">
+  <section id="experiencias">
     <div class="container">
       <div class="sectionHead">
         <div>
-          <h2>O essencial em 10 segundos</h2>
-          <p>Três pilares de percepção em uma área própria — limpa e escaneável.</p>
+          <h2>Jornada inspirada em hospitalidade digital</h2>
+          <p>Blocos curtos, leitura escaneável e microinterações para estimular descoberta sem ruído visual.</p>
         </div>
       </div>
 
-      <div class="grid3">
-        <div class="card proof">
-          <b>Premiações</b>
-          <span>iF e marcos globais que reforçam excelência e autoria.</span>
-        </div>
-        <div class="card proof">
-          <b>Curadoria</b>
-          <span>Linhas consistentes e família de produtos com identidade.</span>
-        </div>
-        <div class="card proof">
-          <b>Distribuição</b>
-          <span>Parcerias e canais para especificação com suporte comercial.</span>
-        </div>
+      <div class="highlights">
+        <article class="card">
+          <small>Descobrir</small>
+          <h3>Navegação por intenção</h3>
+          <p>O usuário encontra a coleção ideal por contexto de uso, não apenas por categoria técnica.</p>
+        </article>
+        <article class="card">
+          <small>Confiar</small>
+          <h3>Provas de autoridade</h3>
+          <p>Prêmios, marcos e credenciais aparecem no momento certo para reforçar percepção premium.</p>
+        </article>
+        <article class="card">
+          <small>Converter</small>
+          <h3>CTA de alto contraste</h3>
+          <p>Convites claros para orçamento e especificação em pontos estratégicos de decisão.</p>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- NOVA SEÇÃO 2 -->
-  <section id="atalhos" style="padding-top: 0;">
-    <div class="container">
-      <div class="sectionHead">
-        <div>
-          <h2>Explore por trilhas</h2>
-          <p>Atalhos claros para navegação. Ajuda o usuário a decidir sem aumentar carga cognitiva no hero.</p>
-        </div>
-        <a class="btn" href="#colecoes">Ver tudo</a>
-      </div>
-
-      <div class="grid3">
-        <div class="shortcut">
-          <div>
-            <small>Coleção</small>
-            <b>Assentos</b>
-          </div>
-          <a href="#colecoes">Explorar →</a>
-        </div>
-        <div class="shortcut">
-          <div>
-            <small>Coleção</small>
-            <b>Iluminação</b>
-          </div>
-          <a href="#colecoes">Explorar →</a>
-        </div>
-        <div class="shortcut">
-          <div>
-            <small>Editorial</small>
-            <b>Novidades</b>
-          </div>
-          <a href="#destaques">Ver →</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- COLEÇÕES -->
-  <section id="colecoes">
+  <section id="colecoes" style="padding-top:0;">
     <div class="container">
       <div class="sectionHead">
         <div>
           <h2>Coleções em destaque</h2>
-          <p>Cards com imagem grande e descrição curta. Visual “catálogo”.</p>
+          <p>Visual de galeria para reforçar desejo e facilitar o próximo clique.</p>
         </div>
-        <a class="btn" href="produtos-detalhes.html">Ver todas</a>
+        <a class="btn" href="produtos-detalhes.html">Ver catálogo completo</a>
       </div>
 
-      <div class="grid3">
+      <div class="collections">
         <article class="card prod">
-          <div class="thumb" style="background-image:
-            url('https://static.wixstatic.com/media/0c10a6_ccd1229e33df4ea4b9df9a81e17c9154~mv2.jpg/v1/fill/w_687%2Ch_458%2Cq_90%2Cenc_avif%2Cquality_auto/0c10a6_ccd1229e33df4ea4b9df9a81e17c9154~mv2.jpg');"></div>
+          <div class="thumb" style="background-image:url('https://static.wixstatic.com/media/0c10a6_ccd1229e33df4ea4b9df9a81e17c9154~mv2.jpg/v1/fill/w_687%2Ch_458%2Cq_90%2Cenc_avif%2Cquality_auto/0c10a6_ccd1229e33df4ea4b9df9a81e17c9154~mv2.jpg')"></div>
           <div class="body">
-            <h3>Assentos</h3>
-            <p>Linhas puras, ergonomia e presença para projetos residenciais e comerciais.</p>
-            <a class="link" href="produtos-detalhes.html">Explorar →</a>
+            <h3>Assentos autorais</h3>
+            <p>Conforto, presença e ergonomia para espaços residenciais e corporativos.</p>
+            <a class="btn ghost" href="produtos-detalhes.html">Explorar linha</a>
           </div>
         </article>
 
         <article class="card prod">
-          <div class="thumb" style="background-image:
-            url('https://static.wixstatic.com/media/0c10a6_5364934857ce49089a16e909fa3fffb1~mv2.jpg/v1/fill/w_203%2Ch_254%2Cq_90%2Cenc_avif%2Cquality_auto/0c10a6_5364934857ce49089a16e909fa3fffb1~mv2.jpg');"></div>
+          <div class="thumb" style="background-image:url('https://static.wixstatic.com/media/0c10a6_5364934857ce49089a16e909fa3fffb1~mv2.jpg/v1/fill/w_203%2Ch_254%2Cq_90%2Cenc_avif%2Cquality_auto/0c10a6_5364934857ce49089a16e909fa3fffb1~mv2.jpg')"></div>
           <div class="body">
-            <h3>Iluminação</h3>
-            <p>Peças com equilíbrio e leitura escultórica, com materiais selecionados.</p>
-            <a class="link" href="produtos-detalhes.html">Explorar →</a>
+            <h3>Iluminação escultural</h3>
+            <p>Peças de impacto visual com materiais nobres e acabamento minucioso.</p>
+            <a class="btn ghost" href="produtos-detalhes.html">Explorar linha</a>
           </div>
         </article>
 
         <article class="card prod">
-          <div class="thumb" style="background-image:
-            url('https://static.wixstatic.com/media/0c10a6_b4694dedfd144108b469bd97b9da7723~mv2.jpg/v1/fill/w_980%2Ch_1225%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/01.jpg');"></div>
+          <div class="thumb" style="background-image:url('https://static.wixstatic.com/media/0c10a6_b4694dedfd144108b469bd97b9da7723~mv2.jpg/v1/fill/w_980%2Ch_1225%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/01.jpg')"></div>
           <div class="body">
-            <h3>Novidades</h3>
-            <p>Lançamentos e editoriais com destaque para eventos e prêmios.</p>
-            <a class="link" href="novidades.html">Ver →</a>
+            <h3>Lançamentos e editoriais</h3>
+            <p>Novidades, eventos e histórias de design para manter a marca relevante.</p>
+            <a class="btn ghost" href="novidades.html">Ver novidades</a>
           </div>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- DESTAQUES -->
-  <section id="destaques">
-    <div class="container">
-      <div class="sectionHead">
-        <div>
-          <h2>Destaques</h2>
-          <p>Editorial curto: premiações, marcos e histórias.</p>
-        </div>
-      </div>
-
-      <div class="grid2">
-        <div class="card">
-          <h3 style="margin:0 0 6px;">Cadeira Fly — iF Award</h3>
-          <p style="margin:0 0 12px; color:var(--muted); font-size:13px;">
-            Coloque aqui um resumo objetivo com link para o artigo completo.
-          </p>
-          <a class="btn primary" href="produtos-detalhes.html">Descobrir</a>
-        </div>
-
-        <div class="card">
-          <h3 style="margin:0 0 6px;">Fúrcula — presença internacional</h3>
-          <p style="margin:0 0 12px; color:var(--muted); font-size:13px;">
-            Reforce posicionamento global com editorial de alto padrão.
-          </p>
-          <a class="btn primary" href="novidades.html">Descobrir</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA FINAL -->
-  <section id="contato">
+  <section>
     <div class="container">
       <div class="finalCta">
-        <h2>Especifique Curioni no seu projeto</h2>
-        <p>
-          CTA simples e forte: orçamento / catálogo / contato comercial. O resto do site vira descoberta (galeria) até chegar aqui.
-        </p>
-        <div style="display:flex; gap:10px; flex-wrap:wrap;">
-          <a class="btn primary" href="orcamento.html">Fazer orçamento</a>
-          <a class="btn" href="biblioteca-tecnica.html">Baixar catálogo</a>
-          <a class="btn ghost" href="profissionais.html">Área do arquiteto</a>
+        <h2>Seu próximo projeto começa com Curioni.</h2>
+        <p>Uma experiência de navegação elegante que orienta, inspira e facilita a especificação. Escolha o caminho ideal para orçamento, suporte técnico ou atendimento especializado.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn primary" href="orcamento.html">Solicitar orçamento</a>
+          <a class="btn" href="biblioteca-tecnica.html">Baixar materiais técnicos</a>
+          <a class="btn ghost" href="profissionais.html">Área para arquitetos</a>
         </div>
       </div>
     </div>
   </section>
 
   <footer>
-    <div class="container">
-      <div class="footGrid">
-        <div>
-          <div class="brand" style="padding:0; margin-bottom:10px;">
-            <div class="mark" aria-hidden="true"></div>
-            <div>
-              <div class="name" style="font-size:18px;">CURIONI</div>
-              <small class="tag">Design brasileiro</small>
-            </div>
+    <div class="container foot">
+      <div>
+        <div class="brand" style="margin-bottom:8px">
+          <div class="mark" aria-hidden="true"></div>
+          <div>
+            <div class="name">CURIONI</div>
+            <small class="tag">Design brasileiro</small>
           </div>
-          <div>Contato: <a href="mailto:fale@curioni.com.br" style="display:inline; padding:0; color:rgba(15,17,21,.88); border-bottom:1px solid rgba(183,146,69,.40);">fale@curioni.com.br</a></div>
-          <div style="margin-top:8px;">© Curioni — Frame white • hero simplificado</div>
         </div>
-
-        <div>
-          <h4>Site</h4>
-          <a href="#colecoes">Produtos</a>
-          <a href="novidades.html">Conteúdo</a>
-          <a href="profissionais.html">Profissionais</a>
-          <a href="biblioteca-tecnica.html">Biblioteca técnica</a>
-        </div>
-
-        <div>
-          <h4>Suporte</h4>
-          <a href="#">Para arquitetos</a>
-          <a href="#">Para lojistas</a>
-          <a href="#">Cuidados</a>
-          <a href="#">Garantia</a>
-        </div>
+        <div>Contato: <a href="mailto:fale@curioni.com.br" style="display:inline;border-bottom:1px solid rgba(183,146,69,.45)">fale@curioni.com.br</a></div>
+        <div style="margin-top:8px">© Curioni — Home repaginada</div>
+      </div>
+      <div>
+        <h4>Navegação</h4>
+        <a href="#colecoes">Coleções</a>
+        <a href="novidades.html">Inspiração</a>
+        <a href="profissionais.html">Profissionais</a>
+        <a href="biblioteca-tecnica.html">Biblioteca técnica</a>
+      </div>
+      <div>
+        <h4>Atendimento</h4>
+        <a href="orcamento.html">Orçamento</a>
+        <a href="#">Suporte de produto</a>
+        <a href="#">Garantia</a>
+        <a href="#">Pós-venda</a>
       </div>
     </div>
   </footer>
@@ -633,13 +318,15 @@
   <script>
     const menuBtn = document.getElementById("menuBtn");
     const drawer = document.getElementById("drawer");
-    if(menuBtn && drawer){
+
+    if (menuBtn && drawer) {
       menuBtn.addEventListener("click", () => {
         drawer.classList.toggle("open");
         menuBtn.textContent = drawer.classList.contains("open") ? "✕" : "☰";
       });
-      drawer.querySelectorAll("a").forEach(a => {
-        a.addEventListener("click", () => {
+
+      drawer.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
           drawer.classList.remove("open");
           menuBtn.textContent = "☰";
         });
