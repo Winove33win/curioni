@@ -37,7 +37,7 @@ npm run build
 ### O que esse setup faz
 
 - `app.js` sobe um servidor HTTP Node que entrega os arquivos de `dist/`.
-- A URL `/` abre `curioni-preview.html` automaticamente.
+- O build gera `index.html` a partir de `curioni-preview.html` para compatibilidade com hospedagem estática e a URL `/` abre `index.html`.
 - As demais páginas continuam acessíveis por URL direta (ex.: `/produtos-detalhes.html`).
 
 ## Teste local rápido

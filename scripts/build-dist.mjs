@@ -45,6 +45,16 @@ async function buildDist() {
     }
   }
 
+
+  const previewPath = path.join(distDir, 'curioni-preview.html');
+  const indexPath = path.join(distDir, 'index.html');
+
+  try {
+    await cp(previewPath, indexPath);
+  } catch (error) {
+    console.warn('Aviso: curioni-preview.html não encontrado para gerar index.html');
+  }
+
   console.log('✅ Dist gerado em', distDir);
 }
 

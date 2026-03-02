@@ -21,7 +21,7 @@ const contentTypes = {
 
 function resolveFilePath(urlPath) {
   const safePath = path.normalize(decodeURIComponent(urlPath)).replace(/^([.]{2}[\\/])+/, '');
-  const requestedPath = safePath === '/' ? '/curioni-preview.html' : safePath;
+  const requestedPath = safePath === '/' ? '/index.html' : safePath;
   const absolutePath = path.join(distDir, requestedPath);
 
   if (!absolutePath.startsWith(distDir)) {
