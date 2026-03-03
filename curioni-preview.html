@@ -9,679 +9,477 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f3f2ef;
+      --bg: #f3f1ed;
       --paper: #ffffff;
-      --ink: #17181d;
-      --muted: #626776;
-      --line: rgba(23, 24, 29, 0.12);
-      --accent: #b79245;
-      --accent-soft: rgba(183, 146, 69, 0.16);
+      --ink: #161616;
+      --muted: #666;
+      --line: rgba(22,22,22,0.14);
+      --accent: #b18b42;
+      --container: 1240px;
       --title: "Playfair Display", serif;
       --body: "Inter", system-ui, sans-serif;
-      --container: 1180px;
       --radius: 18px;
-      --radius-lg: 26px;
-      --shadow: 0 16px 42px rgba(17, 18, 23, 0.1);
+      --shadow: 0 14px 30px rgba(23, 24, 27, 0.11);
     }
-
     * { box-sizing: border-box; }
+    html, body { margin: 0; }
     body {
-      margin: 0;
       font-family: var(--body);
       color: var(--ink);
       background: var(--bg);
-      line-height: 1.55;
-      letter-spacing: -0.01em;
+      line-height: 1.5;
     }
     a { color: inherit; text-decoration: none; }
     .container { width: min(100% - 40px, var(--container)); margin: 0 auto; }
 
-    .topbar {
+    .header {
       position: sticky;
       top: 0;
-      z-index: 80;
+      z-index: 90;
+      background: rgba(243,241,237,0.96);
+      backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--line);
-      background: rgba(243, 242, 239, 0.92);
-      backdrop-filter: blur(10px);
     }
-    .nav {
+    .utility {
+      border-bottom: 1px solid rgba(22,22,22,0.08);
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .utilityWrap { display: flex; justify-content: space-between; padding: 7px 0; gap: 10px; }
+    .utility nav { display: flex; gap: 14px; }
+
+    .mainNav {
       display: grid;
       grid-template-columns: auto 1fr auto;
       align-items: center;
-      gap: 14px;
-      padding: 12px 0;
+      gap: 16px;
+      padding: 13px 0;
     }
-    .brand { display: flex; align-items: center; gap: 12px; }
-    .mark {
-      width: 34px;
-      height: 34px;
-      border-radius: 11px;
-      background: linear-gradient(145deg, #1b1e26, #343a45);
-      position: relative;
+    .brand {
+      font-size: 44px;
+      line-height: .8;
+      letter-spacing: -0.04em;
+      font-weight: 600;
+      font-family: var(--title);
     }
-    .mark::after {
-      content: "";
-      position: absolute;
-      inset: 6px;
-      border-radius: 8px;
-      background: rgba(183, 146, 69, 0.17);
-      border: 1px solid rgba(183, 146, 69, 0.45);
-    }
-    .name { font-family: var(--title); font-size: 20px; line-height: 1; font-weight: 700; }
-    .tag { display: block; font-size: 11px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; }
-
-    .navlinks { display: flex; justify-content: center; gap: 6px; flex-wrap: wrap; }
-    .navlinks a {
-      font-size: 14px;
-      padding: 9px 11px;
-      border-radius: 999px;
-      color: rgba(23, 24, 29, 0.88);
-    }
-    .navlinks a:hover { background: rgba(23, 24, 29, 0.06); }
-
-    .navcta { display: flex; align-items: center; gap: 10px; }
-    .btn {
-      display: inline-flex;
-      align-items: center;
+    .menu {
+      display: flex;
       justify-content: center;
       gap: 8px;
-      border-radius: 12px;
-      border: 1px solid var(--line);
-      padding: 10px 14px;
-      background: var(--paper);
+      flex-wrap: wrap;
+    }
+    .menu a {
+      padding: 9px 13px;
+      border-radius: 999px;
+      font-size: 15px;
       font-weight: 500;
+    }
+    .menu a:hover,
+    .menu a.active { background: #e9e6df; }
+    .headerActions { display: flex; gap: 8px; align-items: center; }
+    .btn {
+      border: 1px solid var(--line);
+      background: var(--paper);
+      border-radius: 10px;
+      padding: 10px 13px;
       font-size: 14px;
       cursor: pointer;
+      white-space: nowrap;
     }
-    .btn.primary {
+    .btn.dark {
       background: var(--ink);
       color: #fff;
-      border-color: rgba(23, 24, 29, 0.24);
+      border-color: transparent;
     }
-    .btn.ghost { background: var(--accent-soft); border-color: rgba(183, 146, 69, 0.4); }
 
-    .menuBtn { display: none; width: 42px; height: 42px; border-radius: 12px; border: 1px solid var(--line); background: var(--paper); }
-    .drawer { display: none; border-top: 1px solid var(--line); padding: 10px 0; }
-    .drawer.open { display: block; }
-    .drawer a { display: block; padding: 9px 0; border-bottom: 1px solid rgba(23, 24, 29, 0.08); }
+    .catStrip {
+      border-top: 1px solid rgba(22,22,22,0.08);
+      background: #ebe8e1;
+    }
+    .catList {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+      padding: 15px 0;
+    }
+    .catList a {
+      border: 1px solid rgba(22,22,22,0.1);
+      border-radius: 10px;
+      padding: 10px 12px;
+      background: rgba(255,255,255,.65);
+      font-weight: 500;
+      font-size: 14px;
+      text-align: center;
+    }
 
-    section { padding: 58px 0; }
-    .sectionHead { display: flex; justify-content: space-between; align-items: flex-end; gap: 14px; margin-bottom: 20px; }
-    .sectionHead h2 { margin: 0; font-family: var(--title); font-size: clamp(28px, 3.3vw, 40px); line-height: 1.1; }
-    .sectionHead p { margin: 0; color: var(--muted); font-size: 15px; max-width: 66ch; }
+    section { padding: 48px 0; }
+    .sectionHead {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .sectionHead h2 {
+      margin: 0;
+      font-size: clamp(27px, 3.2vw, 42px);
+      font-family: var(--title);
+    }
+    .sectionHead p { margin: 0; color: var(--muted); max-width: 56ch; }
 
-    .hero { padding: 28px 0 12px; }
-    .heroLayout { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 18px; }
-    .heroVisual {
-      min-height: 540px;
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--line);
-      position: relative;
+    .heroBox {
+      min-height: 520px;
+      border-radius: 26px;
+      padding: 36px;
+      display: flex;
+      align-items: end;
+      color: #fff;
       box-shadow: var(--shadow);
-      display: flex;
-      align-items: flex-end;
-      padding: 28px;
-      color: #fff;
-      overflow: hidden;
+      background: linear-gradient(to top, rgba(0,0,0,.44), rgba(0,0,0,.13)),
+        url('https://images.unsplash.com/photo-1617098474202-0d0d7f60f7aa?auto=format&fit=crop&w=1800&q=80') center/cover;
     }
-    .heroVisual::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(145deg, rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0.38));
-      z-index: 1;
+    .heroBox h1 {
+      margin: 0 0 10px;
+      font-family: var(--title);
+      font-size: clamp(35px, 5vw, 62px);
+      line-height: 1.03;
+      max-width: 14ch;
     }
-    .heroVisual::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image: var(--hero-image);
-      background-position: center;
-      background-size: cover;
-      z-index: 0;
-      transition: transform 0.55s ease;
-    }
-    .heroVisual:hover::after { transform: scale(1.02); }
-    .heroContent, .heroCarouselControls { position: relative; z-index: 2; }
-    .heroCarouselControls {
-      position: absolute;
-      right: 20px;
-      bottom: 20px;
-      display: flex;
-      gap: 8px;
-      align-items: center;
-    }
-    .carBtn {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      border: 1px solid rgba(255, 255, 255, 0.45);
-      background: rgba(255, 255, 255, 0.12);
-      color: #fff;
-      cursor: pointer;
-    }
-    .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.45);
-      border: none;
-      padding: 0;
-      cursor: pointer;
-      transition: 0.2s ease;
-    }
-    .dot.active { width: 20px; background: #fff; }
+    .heroBox p { margin: 0; max-width: 60ch; color: rgba(255,255,255,.88); }
 
-    .quickStrip {
-      margin-top: 14px;
+    .categoriesGrid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
+      gap: 12px;
     }
-    .quickItem {
-      border: 1px solid var(--line);
-      background: var(--paper);
-      border-radius: 14px;
-      padding: 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-    .quickItem strong { font-size: 16px; }
-    .quickItem span { color: var(--muted); font-size: 13px; }
-
-    .dealGrid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 16px; }
-    .dealHero, .dealList {
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--paper);
-    }
-    .dealHero { overflow: hidden; }
-    .dealHero .thumb { height: 320px; }
-    .dealBody { padding: 18px; }
-    .price { display: flex; align-items: center; gap: 10px; margin: 10px 0 14px; }
-    .price strong { font-size: 24px; font-family: var(--title); }
-    .price span { color: var(--muted); text-decoration: line-through; }
-    .dealList { padding: 16px; display: grid; gap: 12px; }
-    .miniDeal { display: grid; grid-template-columns: 92px 1fr auto; gap: 10px; align-items: center; }
-    .miniDeal .miniThumb { width: 92px; height: 74px; border-radius: 10px; background-size: cover; background-position: center; }
-    .miniDeal h4 { margin: 0 0 4px; font-size: 15px; }
-    .miniDeal p { margin: 0; color: var(--muted); font-size: 13px; }
-
-    .showcaseGrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-    .showcase { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); background: var(--paper); }
-    .showcase .thumb { height: 180px; }
-    .showcase .body h3 { font-size: 19px; }
-    }
-    .heroVisual h1 { margin: 10px 0 10px; font-family: var(--title); font-size: clamp(32px, 4vw, 56px); line-height: 1.04; max-width: 14ch; }
-    .heroVisual p { margin: 0; color: rgba(255, 255, 255, 0.86); max-width: 45ch; }
-    .kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(255, 255, 255, 0.16);
-      border: 1px solid rgba(255, 255, 255, 0.36);
-      border-radius: 999px;
-      padding: 7px 12px;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.11em;
-    }
-
-    .heroPanel {
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      background: var(--paper);
-      padding: 28px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      box-shadow: var(--shadow);
-    }
-    .heroPanel h3 { margin: 0; font-family: var(--title); font-size: 32px; }
-    .heroPanel p { margin: 8px 0 0; color: var(--muted); }
-    .heroActions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
-
-    .metricGrid { margin-top: 22px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-    .metric {
-      padding: 14px;
-      border-radius: 14px;
-      background: var(--bg);
-      border: 1px solid rgba(23, 24, 29, 0.09);
-    }
-    .metric strong { display: block; font-size: 23px; font-family: var(--title); }
-    .metric span { color: var(--muted); font-size: 13px; }
-
-    .journey {
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      background: linear-gradient(160deg, #fefdf8, #f8f6ed);
-      padding: 26px;
-    }
-    .journeyGrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-    .step {
+    .catCard {
       padding: 16px;
+      background: var(--paper);
+      border: 1px solid var(--line);
       border-radius: 14px;
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid rgba(183, 146, 69, 0.23);
     }
-    .step small { text-transform: uppercase; letter-spacing: 0.11em; font-size: 11px; color: #85672d; }
-    .step h3 { margin: 5px 0 7px; font-size: 18px; }
-    .step p { margin: 0; color: var(--muted); font-size: 14px; }
+    .catCard h3 { margin: 0 0 8px; font-size: 19px; }
+    .catCard p { margin: 0; color: var(--muted); font-size: 14px; }
 
-    .productGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .card { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
-    .thumb { height: 240px; background-size: cover; background-position: center; }
-    .body { padding: 17px; }
-    .body h3 { margin: 0 0 8px; font-family: var(--title); font-size: 24px; }
-    .body p { margin: 0 0 12px; color: var(--muted); }
-
-    .proof {
+    .carousel {
+      position: relative;
+    }
+    .carouselViewport { overflow: hidden; }
+    .carouselTrack {
+      display: flex;
+      transition: transform .45s ease;
+    }
+    .slide {
+      min-width: 100%;
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+    .product {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .product .thumb {
+      height: 180px;
+      background-size: cover;
+      background-position: center;
+    }
+    .productBody { padding: 12px; }
+    .productBody strong { display: block; margin-bottom: 5px; }
+    .productBody small { display: block; color: var(--muted); margin-bottom: 10px; }
+
+    .controls {
+      position: absolute;
+      top: -62px;
+      right: 0;
+      display: flex;
+      gap: 8px;
+    }
+    .iconBtn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      cursor: pointer;
+    }
+
+    .inspiration {
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 14px;
+      align-items: stretch;
+    }
+    .inspirationText, .inspirationImage {
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      overflow: hidden;
+    }
+    .inspirationText { padding: 30px; }
+    .inspirationText h3 { margin: 0 0 9px; font-size: clamp(25px, 3vw, 38px); font-family: var(--title); }
+    .inspirationText p { margin: 0 0 16px; color: var(--muted); }
+    .inspirationImage { min-height: 300px; background: url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1400&q=80') center/cover; }
+
+    footer {
+      border-top: 1px solid var(--line);
+      margin-top: 24px;
+      padding: 32px 0 36px;
+    }
+    .foot {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
       gap: 16px;
     }
-    .proof .panel {
-      border-radius: var(--radius);
-      border: 1px solid var(--line);
-      background: var(--paper);
-      padding: 22px;
-    }
-    .list { margin: 12px 0 0; padding: 0; list-style: none; display: grid; gap: 9px; }
-    .list li { padding-left: 24px; position: relative; color: var(--muted); }
-    .list li::before { content: "•"; position: absolute; left: 8px; color: var(--accent); }
+    .foot h4 { margin: 0 0 10px; }
+    .foot a, .foot p { margin: 0 0 6px; display: block; color: var(--muted); }
 
-    .cta {
-      border: none;
-      border-radius: var(--radius-lg);
-      background: linear-gradient(145deg, #1a1d24, #2f3440);
-      color: #fff;
-      padding: 30px;
-      box-shadow: var(--shadow);
+    @media (max-width: 1080px) {
+      .catList, .categoriesGrid, .slide, .foot { grid-template-columns: 1fr 1fr; }
+      .mainNav { grid-template-columns: auto auto; }
+      .menu { display: none; }
+      .heroBox { min-height: 420px; }
+      .inspiration { grid-template-columns: 1fr; }
     }
-    .cta h2 { margin: 0 0 8px; font-family: var(--title); font-size: clamp(30px, 4vw, 44px); }
-    .cta p { margin: 0; max-width: 62ch; color: rgba(255, 255, 255, 0.84); }
-    .cta .heroActions { margin-top: 18px; }
-
-    footer { border-top: 1px solid var(--line); padding: 30px 0 40px; }
-    .foot { display: grid; grid-template-columns: 1.3fr 1fr 1fr 1fr; gap: 16px; }
-    .foot h4 { margin: 0 0 10px; font-size: 14px; }
-    .foot a { display: block; color: var(--muted); margin-bottom: 7px; font-size: 14px; }
-
-    @media (max-width: 1040px) {
-      .heroLayout { grid-template-columns: 1fr; }
-      .heroVisual { min-height: 460px; }
-      .journeyGrid, .metricGrid, .productGrid, .proof, .foot, .quickStrip, .showcaseGrid, .dealGrid { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 840px) {
-      .nav { grid-template-columns: auto auto; justify-content: space-between; }
-      .navlinks, .navcta .btn { display: none; }
-      .menuBtn { display: inline-grid; place-items: center; }
-      .journeyGrid, .metricGrid, .productGrid, .proof, .foot, .quickStrip, .showcaseGrid, .dealGrid { grid-template-columns: 1fr; }
-      .heroPanel { padding: 22px; }
-      section { padding: 46px 0; }
+    @media (max-width: 720px) {
+      .catList, .categoriesGrid, .slide, .foot { grid-template-columns: 1fr; }
+      .headerActions .btn:first-child { display: none; }
+      .brand { font-size: 34px; }
+      section { padding: 38px 0; }
+      .controls { top: -50px; }
     }
   </style>
 </head>
 <body>
-  <div class="topbar">
-    <div class="container">
-      <div class="nav">
-        <a class="brand" href="#">
-          <div class="mark" aria-hidden="true"></div>
-          <div>
-            <div class="name">CURIONI</div>
-            <small class="tag">Design brasileiro</small>
-          </div>
-        </a>
-
-        <nav class="navlinks" aria-label="Menu principal">
-          <a href="#colecoes">Coleções</a>
-          <a href="#estrategia">Estratégia</a>
-          <a href="#prova">Resultados</a>
-          <a href="#conversao">Orçamento</a>
+  <header class="header">
+    <div class="utility">
+      <div class="container utilityWrap">
+        <span>Design brasileiro autoral • Entrega nacional</span>
+        <nav aria-label="Links rápidos">
+          <a href="biblioteca-tecnica.html">Materiais técnicos</a>
+          <a href="profissionais.html">Área do arquiteto</a>
+          <a href="orcamento.html">Atendimento</a>
         </nav>
-
-        <div class="navcta">
-          <a class="btn" href="produtos-detalhes.html">Catálogo técnico</a>
-          <a class="btn primary" href="orcamento.html">Iniciar projeto</a>
-          <button class="menuBtn" id="menuBtn" aria-label="Abrir menu">☰</button>
-        </div>
-      </div>
-
-      <div class="drawer" id="drawer">
-        <a href="#colecoes">Coleções</a>
-        <a href="#estrategia">Estratégia</a>
-        <a href="#prova">Resultados</a>
-        <a href="orcamento.html">Solicitar orçamento</a>
       </div>
     </div>
-  </div>
 
-  <header class="hero">
-    <div class="container heroLayout">
-      <div class="heroVisual" id="heroVisual" style="--hero-image:url('https://images.unsplash.com/photo-1617098474202-0d0d7f60f7aa?auto=format&fit=crop&w=1400&q=80')">
-        <div class="heroContent">
-          <span class="kicker" id="heroKicker">Destaque da semana</span>
-          <h1 id="heroTitle">Banner rotativo para lançar novas coleções toda semana.</h1>
-          <p id="heroText">Transformamos a hero em um carrossel único para destacar campanhas, produtos estratégicos e novidades sem perder impacto visual.</p>
-        </div>
-        <div class="heroCarouselControls">
-          <button class="carBtn" id="prevHero" aria-label="Banner anterior">‹</button>
-          <button class="dot active" data-dot="0" aria-label="Banner 1"></button>
-          <button class="dot" data-dot="1" aria-label="Banner 2"></button>
-          <button class="dot" data-dot="2" aria-label="Banner 3"></button>
-          <button class="carBtn" id="nextHero" aria-label="Próximo banner">›</button>
-        </div>
+    <div class="container mainNav">
+      <a class="brand" href="#">curioni</a>
+      <nav class="menu" aria-label="Menu principal">
+        <a class="active" href="#sec-categorias">Produtos</a>
+        <a href="novidades.html">Novidades</a>
+        <a href="orcamento.html">Orçamento</a>
+        <a href="profissionais.html">Sobre</a>
+      </nav>
+      <div class="headerActions">
+        <a class="btn" href="produtos-detalhes.html">Catálogo</a>
+        <a class="btn dark" href="orcamento.html">Solicitar orçamento</a>
       </div>
+    </div>
 
-      <aside class="heroPanel">
-        <div>
-          <h3>Plano 90 dias</h3>
-          <p>Estrutura recomendada para crescer pedidos qualificados: conteúdo aspiracional + prova técnica + captação de leads.</p>
-          <div class="metricGrid">
-            <article class="metric"><strong>+28%</strong><span>mais cliques em produtos</span></article>
-            <article class="metric"><strong>+35%</strong><span>mais pedidos de orçamento</span></article>
-            <article class="metric"><strong>-22%</strong><span>queda na taxa de saída</span></article>
-          </div>
-        </div>
-        <div class="heroActions">
-          <a class="btn primary" href="orcamento.html">Quero esse plano</a>
-          <a class="btn ghost" href="profissionais.html">Sou arquiteto(a)</a>
-        </div>
-      </aside>
+    <div class="catStrip">
+      <div class="container catList">
+        <a href="#sec-assentos">Assentos</a>
+        <a href="#sec-mesas">Mesas</a>
+        <a href="#sec-complementos">Complementos</a>
+        <a href="#sec-iluminacao">Iluminação</a>
+        <a href="#sec-externa">Área externa</a>
+      </div>
     </div>
   </header>
 
-  <section>
-    <div class="container">
-      <div class="quickStrip">
-        <article class="quickItem"><strong>Frete planejado</strong><span>Condição especial para capitais e interior.</span></article>
-        <article class="quickItem"><strong>Compra por ambiente</strong><span>Monte kits para sala, jantar e escritório.</span></article>
-        <article class="quickItem"><strong>Atendimento consultivo</strong><span>Time comercial com apoio para especificação.</span></article>
-        <article class="quickItem"><strong>Novidades quinzenais</strong><span>Lançamentos constantes para manter o site vivo.</span></article>
-      </div>
-    </div>
-  </section>
-
-  <section id="estrategia">
-    <div class="container">
-      <div class="sectionHead">
-        <div>
-          <h2>Estratégia de marketing e vendas na própria página</h2>
-          <p>A nova estrutura foi desenhada para funcionar como funil: atrair com desejo visual, educar com autoridade e converter com oferta clara.</p>
-        </div>
-      </div>
-
-      <div class="journey">
-        <div class="journeyGrid">
-          <article class="step">
-            <small>Etapa 1</small>
-            <h3>Atrair</h3>
-            <p>Hero com produto protagonista, posicionamento premium e benefício objetivo nos primeiros 5 segundos.</p>
-          </article>
-          <article class="step">
-            <small>Etapa 2</small>
-            <h3>Engajar</h3>
-            <p>Blocos por coleção e contexto de uso para ajudar o visitante a se identificar com o ambiente ideal.</p>
-          </article>
-          <article class="step">
-            <small>Etapa 3</small>
-            <h3>Convencer</h3>
-            <p>Provas de qualidade, diferenciais técnicos e narrativa de marca para reduzir objeções.</p>
-          </article>
-          <article class="step">
-            <small>Etapa 4</small>
-            <h3>Converter</h3>
-            <p>CTA de orçamento em pontos críticos da página, com opção para cliente final e profissional.</p>
-          </article>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="container">
-      <div class="sectionHead">
-        <div>
-          <h2>Ofertas e produtos de giro rápido</h2>
-          <p>Bloco com cara de e-commerce para ativar compra imediata e melhorar o ticket médio.</p>
-        </div>
-      </div>
-      <div class="dealGrid">
-        <article class="dealHero">
-          <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1582582429416-67d06d765cd8?auto=format&fit=crop&w=1200&q=80')"></div>
-          <div class="dealBody">
-            <h3>Combo Sala Curioni — Mesa + Poltronas</h3>
-            <p>Seleção pronta para acelerar decisão de compra e reduzir abandono por dúvida de combinação.</p>
-            <div class="price"><strong>R$ 8.490</strong><span>R$ 9.990</span></div>
-            <a class="btn primary" href="orcamento.html">Quero essa oferta</a>
-          </div>
-        </article>
-        <aside class="dealList">
-          <article class="miniDeal">
-            <div class="miniThumb" style="background-image:url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=700&q=80')"></div>
-            <div><h4>Sofá Modular Velo</h4><p>12x sem juros para projetos residenciais.</p></div>
-            <a class="btn" href="produtos-detalhes.html">Ver</a>
-          </article>
-          <article class="miniDeal">
-            <div class="miniThumb" style="background-image:url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=700&q=80')"></div>
-            <div><h4>Mesa Escultural Nexo</h4><p>Madeira natural com 15% off na semana.</p></div>
-            <a class="btn" href="produtos-detalhes.html">Ver</a>
-          </article>
-          <article class="miniDeal">
-            <div class="miniThumb" style="background-image:url('https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&fit=crop&w=700&q=80')"></div>
-            <div><h4>Kit Iluminação Aura</h4><p>Itens complementares para elevar percepção premium.</p></div>
-            <a class="btn" href="produtos-detalhes.html">Ver</a>
-          </article>
-        </aside>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="container">
-      <div class="sectionHead">
-        <div>
-          <h2>Compre por ambiente</h2>
-          <p>Uma vitrine inspiracional com lógica comercial para facilitar descoberta de produtos.</p>
-        </div>
-      </div>
-      <div class="showcaseGrid">
-        <article class="showcase"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1616047006789-b7af9f8b95e4?auto=format&fit=crop&w=800&q=80')"></div><div class="body"><h3>Living Aconchegante</h3><a class="btn ghost" href="produtos-detalhes.html">Explorar itens</a></div></article>
-        <article class="showcase"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=800&q=80')"></div><div class="body"><h3>Jantar Contemporâneo</h3><a class="btn ghost" href="produtos-detalhes.html">Explorar itens</a></div></article>
-        <article class="showcase"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1616627561950-9f746e330187?auto=format&fit=crop&w=800&q=80')"></div><div class="body"><h3>Home Office Premium</h3><a class="btn ghost" href="produtos-detalhes.html">Explorar itens</a></div></article>
-        <article class="showcase"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1560185007-c5ca9d2c014d?auto=format&fit=crop&w=800&q=80')"></div><div class="body"><h3>Suíte Boutique</h3><a class="btn ghost" href="produtos-detalhes.html">Explorar itens</a></div></article>
-      </div>
-    </div>
-  </section>
-
-  <section id="colecoes">
-    <div class="container">
-      <div class="sectionHead">
-        <div>
-          <h2>Coleções para diferentes perfis de compra</h2>
-          <p>Organizamos as vitrines para facilitar a navegação comercial por intenção de projeto.</p>
-        </div>
-      </div>
-
-      <div class="productGrid">
-        <article class="card">
-          <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?auto=format&fit=crop&w=1000&q=80')"></div>
-          <div class="body">
-            <h3>Residencial Premium</h3>
-            <p>Peças autorais para salas e áreas de convivência com foco em conforto e presença.</p>
-            <a class="btn ghost" href="produtos-detalhes.html">Ver coleção</a>
-          </div>
-        </article>
-        <article class="card">
-          <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1000&q=80')"></div>
-          <div class="body">
-            <h3>Corporativo Sofisticado</h3>
-            <p>Soluções para recepção, reuniões e espaços colaborativos com design funcional.</p>
-            <a class="btn ghost" href="produtos-detalhes.html">Ver coleção</a>
-          </div>
-        </article>
-        <article class="card">
-          <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=1000&q=80')"></div>
-          <div class="body">
-            <h3>Hospitalidade</h3>
-            <p>Mobiliário de alta performance para hotéis, lounges e restaurantes contemporâneos.</p>
-            <a class="btn ghost" href="produtos-detalhes.html">Ver coleção</a>
+  <main>
+    <section id="sec-hero">
+      <div class="container">
+        <article class="heroBox">
+          <div>
+            <h1>Uma nova home de e-commerce para vender por categorias.</h1>
+            <p>Layout renovado com navegação otimizada, seções de departamentos e carrosséis em grade para destacar os produtos com mais clareza.</p>
           </div>
         </article>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="prova">
-    <div class="container">
-      <div class="sectionHead">
-        <div>
-          <h2>Prova de valor para fechar mais projetos</h2>
-          <p>Além de mostrar beleza, a página agora comunica por que a Curioni é uma escolha segura para compra.</p>
+    <section id="sec-categorias">
+      <div class="container">
+        <div class="sectionHead">
+          <h2>Categorias principais</h2>
+          <p>Cada departamento foi desenhado para facilitar comparação, descoberta e avanço para página de produto ou orçamento.</p>
+        </div>
+        <div class="categoriesGrid">
+          <article class="catCard"><h3>Assentos</h3><p>Cadeiras, sofás, bancos e poltronas para diferentes linguagens de projeto.</p></article>
+          <article class="catCard"><h3>Mesas</h3><p>Mesas de jantar, centro e laterais para residencial e corporativo.</p></article>
+          <article class="catCard"><h3>Complementos</h3><p>Buffets, carrinhos, tapetes e peças de apoio para completar ambientes.</p></article>
+          <article class="catCard"><h3>Iluminação</h3><p>Pendentes, arandelas e luminárias para criar atmosfera e sofisticação.</p></article>
         </div>
       </div>
-      <div class="proof">
-        <article class="panel">
-          <h3>Argumentos que vendem melhor</h3>
-          <ul class="list">
-            <li>Destaque para materiais, acabamentos e ficha técnica com acesso rápido.</li>
-            <li>Sequência visual planejada para reduzir dúvidas e aumentar tempo de navegação.</li>
-            <li>CTA repetido em pontos estratégicos para transformar interesse em orçamento.</li>
-          </ul>
-        </article>
-        <article class="panel">
-          <h3>Próximos passos de performance</h3>
-          <ul class="list">
-            <li>Campanhas de tráfego para o hero com segmentação por arquitetura/interiores.</li>
-            <li>Retargeting para visitantes de produto sem envio de orçamento.</li>
-            <li>Lead magnet: catálogo de acabamentos com formulário para equipe comercial.</li>
-          </ul>
-        </article>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="conversao">
-    <div class="container">
-      <article class="cta">
-        <h2>Vamos transformar esta Home em uma máquina de oportunidades.</h2>
-        <p>Se quiser, no próximo passo eu organizo as variações de copy para campanhas (Meta/Google), landing page de captura e roteiro comercial para WhatsApp com foco em fechamento.</p>
-        <div class="heroActions">
-          <a class="btn primary" href="orcamento.html">Solicitar orçamento</a>
-          <a class="btn" href="biblioteca-tecnica.html">Baixar materiais técnicos</a>
+    <section id="sec-lancamentos">
+      <div class="container">
+        <div class="sectionHead">
+          <h2>Lançamentos</h2>
+          <p>Carrossel em layout de grade para apresentar novidades em ritmo editorial de e-commerce.</p>
         </div>
-      </article>
-    </div>
-  </section>
+        <div class="carousel" data-carousel>
+          <div class="controls"><button class="iconBtn" data-prev>‹</button><button class="iconBtn" data-next>›</button></div>
+          <div class="carouselViewport"><div class="carouselTrack">
+            <div class="slide">
+              <article class="product"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80')"></div><div class="productBody"><strong>Sofá Curva</strong><small>Tecido boucle • 3 lugares</small><a class="btn" href="produtos-detalhes.html">Ver produto</a></div></article>
+              <article class="product"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1493666438817-866a91353ca9?auto=format&fit=crop&w=900&q=80')"></div><div class="productBody"><strong>Poltrona Alma</strong><small>Madeira maciça • Couro natural</small><a class="btn" href="produtos-detalhes.html">Ver produto</a></div></article>
+              <article class="product"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=900&q=80')"></div><div class="productBody"><strong>Mesa Vélo</strong><small>Tampo em pedra • Base metálica</small><a class="btn" href="produtos-detalhes.html">Ver produto</a></div></article>
+              <article class="product"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=900&q=80')"></div><div class="productBody"><strong>Abajur Lía</strong><small>Madeira + linho</small><a class="btn" href="produtos-detalhes.html">Ver produto</a></div></article>
+            </div>
+            <div class="slide">
+              <article class="product"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=900&q=80')"></div><div class="productBody"><strong>Cadeira Pierre</strong><small>Estrutura em freijó</small><a class="btn" href="produtos-detalhes.html">Ver produto</a></div></article>
+              <article class="product"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1616486886892-7d17c6ff1c24?auto=format&fit=crop&w=900&q=80')"></div><div class="productBody"><strong>Buffet Módulo</strong><small>Lâmina natural • 2,20m</small><a class="btn" href="produtos-detalhes.html">Ver produto</a></div></article>
+              <article class="product"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1616594039964-3f5b9f95e399?auto=format&fit=crop&w=900&q=80')"></div><div class="productBody"><strong>Pendente Arco</strong><small>Latão escovado</small><a class="btn" href="produtos-detalhes.html">Ver produto</a></div></article>
+              <article class="product"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1505692952047-1a78307da8f2?auto=format&fit=crop&w=900&q=80')"></div><div class="productBody"><strong>Banco Tenda</strong><small>Uso interno/externo</small><a class="btn" href="produtos-detalhes.html">Ver produto</a></div></article>
+            </div>
+          </div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sec-assentos">
+      <div class="container">
+        <div class="sectionHead"><h2>Assentos</h2><p>Cadeiras e poltronas com conforto de alto padrão para múltiplos cenários.</p></div>
+        <div class="carousel" data-carousel>
+          <div class="controls"><button class="iconBtn" data-prev>‹</button><button class="iconBtn" data-next>›</button></div>
+          <div class="carouselViewport"><div class="carouselTrack">
+            <div class="slide">
+              <article class="product"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1592078615290-033ee584e267?auto=format&fit=crop&w=900&q=80')"></div><div class="productBody"><strong>Cadeira Mestre</strong><small>Trama natural • Freijó</small><a class="btn" href="produtos-detalhes.html">Detalhes</a></div></article>
+              <article class="product"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1579656381226-5fc0f0100c3b?auto=format&fit=crop&w=900&q=80')"></div><div class="productBody"><strong>Poltrona Fartura</strong><small>Espuma HR • Linho</small><a class="btn" href="produtos-detalhes.html">Detalhes</a></div></article>
+              <article class="product"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=80')"></div><div class="productBody"><strong>Sofá Vértice</strong><small>Modular • 2,8m</small><a class="btn" href="produtos-detalhes.html">Detalhes</a></div></article>
+              <article class="product"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1550226891-ef816aed4a98?auto=format&fit=crop&w=900&q=80')"></div><div class="productBody"><strong>Banqueta Otto</strong><small>Assento estofado</small><a class="btn" href="produtos-detalhes.html">Detalhes</a></div></article>
+            </div>
+          </div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sec-mesas">
+      <div class="container">
+        <div class="sectionHead"><h2>Mesas</h2><p>Peças para encontros e composição de ambientes residenciais e corporativos.</p></div>
+        <div class="carousel" data-carousel>
+          <div class="controls"><button class="iconBtn" data-prev>‹</button><button class="iconBtn" data-next>›</button></div>
+          <div class="carouselViewport"><div class="carouselTrack">
+            <div class="slide">
+              <article class="product"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&w=900&q=80')"></div><div class="productBody"><strong>Mesa Nimbus</strong><small>Jantar • 2,40m</small><a class="btn" href="produtos-detalhes.html">Detalhes</a></div></article>
+              <article class="product"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=900&q=80')"></div><div class="productBody"><strong>Mesa Lateral Tau</strong><small>Mármore + aço</small><a class="btn" href="produtos-detalhes.html">Detalhes</a></div></article>
+              <article class="product"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?auto=format&fit=crop&w=900&q=80')"></div><div class="productBody"><strong>Mesa Centro Uno</strong><small>Vidro fumê</small><a class="btn" href="produtos-detalhes.html">Detalhes</a></div></article>
+              <article class="product"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1519947486511-46149fa0a254?auto=format&fit=crop&w=900&q=80')"></div><div class="productBody"><strong>Mesa Atelier</strong><small>Madeira maciça</small><a class="btn" href="produtos-detalhes.html">Detalhes</a></div></article>
+            </div>
+          </div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sec-complementos">
+      <div class="container">
+        <div class="sectionHead"><h2>Complementos e iluminação</h2><p>Itens que elevam acabamento visual e funcionalidade do projeto.</p></div>
+        <div class="carousel" data-carousel>
+          <div class="controls"><button class="iconBtn" data-prev>‹</button><button class="iconBtn" data-next>›</button></div>
+          <div class="carouselViewport"><div class="carouselTrack">
+            <div class="slide">
+              <article class="product"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1616486701797-0f33f61038e0?auto=format&fit=crop&w=900&q=80')"></div><div class="productBody"><strong>Buffet Horizonte</strong><small>Portas ripadas</small><a class="btn" href="produtos-detalhes.html">Detalhes</a></div></article>
+              <article class="product"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=900&q=80')"></div><div class="productBody"><strong>Arandela Vértice</strong><small>Luz indireta</small><a class="btn" href="produtos-detalhes.html">Detalhes</a></div></article>
+              <article class="product"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1616046229478-9901c5536a45?auto=format&fit=crop&w=900&q=80')"></div><div class="productBody"><strong>Carrinho Bar Duo</strong><small>Aço + madeira</small><a class="btn" href="produtos-detalhes.html">Detalhes</a></div></article>
+              <article class="product"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1600210492493-0946911123ea?auto=format&fit=crop&w=900&q=80')"></div><div class="productBody"><strong>Tapete Curva</strong><small>Fibras naturais</small><a class="btn" href="produtos-detalhes.html">Detalhes</a></div></article>
+            </div>
+          </div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sec-iluminacao">
+      <div class="container inspiration">
+        <article class="inspirationText">
+          <h3>Coleções por ambiente</h3>
+          <p>Do living ao gourmet externo, nossa curadoria separa os produtos por uso e linguagem visual para simplificar o processo de compra.</p>
+          <a class="btn dark" href="orcamento.html">Montar projeto com consultor</a>
+        </article>
+        <div class="inspirationImage" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <section id="sec-externa">
+      <div class="container">
+        <div class="sectionHead"><h2>Área externa</h2><p>Mobiliário para terraço, varanda e jardim com materiais de alta durabilidade.</p></div>
+        <div class="carousel" data-carousel>
+          <div class="controls"><button class="iconBtn" data-prev>‹</button><button class="iconBtn" data-next>›</button></div>
+          <div class="carouselViewport"><div class="carouselTrack">
+            <div class="slide">
+              <article class="product"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1519947486511-46149fa0a254?auto=format&fit=crop&w=900&q=80')"></div><div class="productBody"><strong>Cadeira Brisa</strong><small>Outdoor • Corda náutica</small><a class="btn" href="produtos-detalhes.html">Detalhes</a></div></article>
+              <article class="product"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=900&q=80')"></div><div class="productBody"><strong>Mesa Pátio</strong><small>Tampo mineral</small><a class="btn" href="produtos-detalhes.html">Detalhes</a></div></article>
+              <article class="product"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?auto=format&fit=crop&w=900&q=80')"></div><div class="productBody"><strong>Banco Deck</strong><small>Alumínio pintado</small><a class="btn" href="produtos-detalhes.html">Detalhes</a></div></article>
+              <article class="product"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1493666438817-866a91353ca9?auto=format&fit=crop&w=900&q=80')"></div><div class="productBody"><strong>Poltrona Sol</strong><small>Fácil manutenção</small><a class="btn" href="produtos-detalhes.html">Detalhes</a></div></article>
+            </div>
+          </div></div>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>
     <div class="container foot">
       <div>
-        <div class="brand" style="margin-bottom:8px">
-          <div class="mark" aria-hidden="true"></div>
-          <div>
-            <div class="name">CURIONI</div>
-            <small class="tag">Design brasileiro</small>
-          </div>
-        </div>
-        <p style="margin:0;color:var(--muted)">Contato comercial: <a href="mailto:fale@curioni.com.br" style="display:inline;border-bottom:1px solid rgba(183,146,69,.45)">fale@curioni.com.br</a></p>
+        <a class="brand" style="font-size:32px" href="#">curioni</a>
+        <p>fale@curioni.com.br</p>
+        <p>Curitiba • PR</p>
       </div>
       <div>
         <h4>Navegação</h4>
-        <a href="#colecoes">Coleções</a>
-        <a href="#estrategia">Estratégia</a>
-        <a href="#prova">Resultados</a>
+        <a href="#sec-categorias">Categorias</a>
+        <a href="#sec-lancamentos">Lançamentos</a>
+        <a href="novidades.html">Novidades</a>
       </div>
       <div>
         <h4>Comercial</h4>
         <a href="orcamento.html">Solicitar orçamento</a>
-        <a href="profissionais.html">Área para arquitetos</a>
+        <a href="profissionais.html">Projetos corporativos</a>
+        <a href="biblioteca-tecnica.html">Biblioteca técnica</a>
       </div>
       <div>
-        <h4>Recursos</h4>
-        <a href="biblioteca-tecnica.html">Biblioteca técnica</a>
-        <a href="novidades.html">Novidades</a>
+        <h4>Atendimento</h4>
+        <a href="produtos-detalhes.html">Detalhes de produto</a>
+        <a href="orcamento.html">WhatsApp</a>
+        <a href="mailto:fale@curioni.com.br">E-mail</a>
       </div>
     </div>
   </footer>
 
   <script>
-    const menuBtn = document.getElementById("menuBtn");
-    const drawer = document.getElementById("drawer");
-    const heroVisual = document.getElementById("heroVisual");
-    const heroKicker = document.getElementById("heroKicker");
-    const heroTitle = document.getElementById("heroTitle");
-    const heroText = document.getElementById("heroText");
-    const prevHero = document.getElementById("prevHero");
-    const nextHero = document.getElementById("nextHero");
-    const dots = Array.from(document.querySelectorAll(".dot"));
+    document.querySelectorAll('[data-carousel]').forEach((carousel) => {
+      const track = carousel.querySelector('.carouselTrack');
+      const slides = carousel.querySelectorAll('.slide');
+      const prev = carousel.querySelector('[data-prev]');
+      const next = carousel.querySelector('[data-next]');
+      let index = 0;
 
-    const heroSlides = [
-      {
-        kicker: "Destaque da semana",
-        title: "Banner rotativo para lançar novas coleções toda semana.",
-        text: "Transformamos a hero em um carrossel único para destacar campanhas, produtos estratégicos e novidades sem perder impacto visual.",
-        image: "https://images.unsplash.com/photo-1617098474202-0d0d7f60f7aa?auto=format&fit=crop&w=1400&q=80"
-      },
-      {
-        kicker: "Campanha comercial",
-        title: "Promova ofertas sazonais sem mexer na estrutura da home.",
-        text: "Com apenas um banner ativo por vez, o visitante entende rápido a mensagem e avança para os blocos de compra.",
-        image: "https://images.unsplash.com/photo-1616627450489-9a8f33f6f5a3?auto=format&fit=crop&w=1400&q=80"
-      },
-      {
-        kicker: "Novo lançamento",
-        title: "Engajamento visual com foco em clique para produto e orçamento.",
-        text: "A rotação automática ajuda a manter a home viva e aumentar recorrência dos visitantes interessados em novidades.",
-        image: "https://images.unsplash.com/photo-1493666438817-866a91353ca9?auto=format&fit=crop&w=1400&q=80"
+      const render = () => {
+        track.style.transform = `translateX(-${index * 100}%)`;
+      };
+
+      prev?.addEventListener('click', () => {
+        index = (index - 1 + slides.length) % slides.length;
+        render();
+      });
+
+      next?.addEventListener('click', () => {
+        index = (index + 1) % slides.length;
+        render();
+      });
+
+      if (slides.length > 1) {
+        setInterval(() => {
+          index = (index + 1) % slides.length;
+          render();
+        }, 5200);
       }
-    ];
-
-    let heroIndex = 0;
-
-    const renderHero = (index) => {
-      const slide = heroSlides[index];
-      heroVisual.style.setProperty("--hero-image", `url('${slide.image}')`);
-      heroKicker.textContent = slide.kicker;
-      heroTitle.textContent = slide.title;
-      heroText.textContent = slide.text;
-
-      dots.forEach((dot, dotIndex) => dot.classList.toggle("active", dotIndex === index));
-    };
-
-    const nextSlide = () => {
-      heroIndex = (heroIndex + 1) % heroSlides.length;
-      renderHero(heroIndex);
-    };
-
-    prevHero?.addEventListener("click", () => {
-      heroIndex = (heroIndex - 1 + heroSlides.length) % heroSlides.length;
-      renderHero(heroIndex);
     });
-
-    nextHero?.addEventListener("click", nextSlide);
-    dots.forEach((dot, index) => dot.addEventListener("click", () => {
-      heroIndex = index;
-      renderHero(heroIndex);
-    }));
-
-    setInterval(nextSlide, 4600);
-
-    if (menuBtn && drawer) {
-      menuBtn.addEventListener("click", () => {
-        drawer.classList.toggle("open");
-        menuBtn.textContent = drawer.classList.contains("open") ? "✕" : "☰";
-      });
-
-      drawer.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", () => {
-          drawer.classList.remove("open");
-          menuBtn.textContent = "☰";
-        });
-      });
-    }
   </script>
 </body>
 </html>
