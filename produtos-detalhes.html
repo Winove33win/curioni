@@ -229,6 +229,17 @@
       object-fit: cover;
       display:block;
     }
+    .image-fallback{
+      background:#d8d4cc !important;
+      color:#4b4944;
+      display:grid;
+      place-items:center;
+      text-align:center;
+      padding:12px;
+      font-size:13px;
+      width:100%;
+      height:100%;
+    }
 
     /* Right column */
     .rightCol{
@@ -565,19 +576,19 @@
       <div class="gallery" aria-label="Galeria do produto">
         <div class="galleryMain">
           <span class="badge"><span class="dot"></span> Premiado • iF</span>
-          <img id="mainImg"
-               src="https://static.wixstatic.com/media/0c10a6_ccd1229e33df4ea4b9df9a81e17c9154~mv2.jpg/v1/fill/w_1200%2Ch_800%2Cq_90%2Cenc_avif%2Cquality_auto/0c10a6_ccd1229e33df4ea4b9df9a81e17c9154~mv2.jpg"
+          <img id="mainImg" data-image-key="pdpMain1"
+               src="assets/asset-462125518391504902.jpg"
                alt="Cadeira Fly — Curioni" />
         </div>
         <div class="thumbs" role="listbox" aria-label="Miniaturas">
-          <div class="thumb active" role="option" aria-selected="true" data-img="https://static.wixstatic.com/media/0c10a6_ccd1229e33df4ea4b9df9a81e17c9154~mv2.jpg/v1/fill/w_1200%2Ch_800%2Cq_90%2Cenc_avif%2Cquality_auto/0c10a6_ccd1229e33df4ea4b9df9a81e17c9154~mv2.jpg">
-            <img src="https://static.wixstatic.com/media/0c10a6_ccd1229e33df4ea4b9df9a81e17c9154~mv2.jpg/v1/fill/w_260%2Ch_180%2Cq_90%2Cenc_avif%2Cquality_auto/0c10a6_ccd1229e33df4ea4b9df9a81e17c9154~mv2.jpg" alt="Miniatura 1" />
+          <div class="thumb active" role="option" aria-selected="true" data-image-key="pdpMain1" data-gallery-target="mainImg">
+            <img data-image-key="pdpMain1" src="assets/asset-462125518391504902.jpg" alt="Miniatura 1" />
           </div>
-          <div class="thumb" role="option" aria-selected="false" data-img="https://static.wixstatic.com/media/0c10a6_5364934857ce49089a16e909fa3fffb1~mv2.jpg/v1/fill/w_1200%2Ch_800%2Cq_90%2Cenc_avif%2Cquality_auto/0c10a6_5364934857ce49089a16e909fa3fffb1~mv2.jpg">
-            <img src="https://static.wixstatic.com/media/0c10a6_5364934857ce49089a16e909fa3fffb1~mv2.jpg/v1/fill/w_260%2Ch_180%2Cq_90%2Cenc_avif%2Cquality_auto/0c10a6_5364934857ce49089a16e909fa3fffb1~mv2.jpg" alt="Miniatura 2" />
+          <div class="thumb" role="option" aria-selected="false" data-image-key="pdpThumb2" data-gallery-target="mainImg">
+            <img data-image-key="pdpThumb2" src="assets/asset-462129685600288777.jpg" alt="Miniatura 2" />
           </div>
-          <div class="thumb" role="option" aria-selected="false" data-img="https://static.wixstatic.com/media/0c10a6_b4694dedfd144108b469bd97b9da7723~mv2.jpg/v1/fill/w_1200%2Ch_800%2Cq_90%2Cenc_avif%2Cquality_auto/0c10a6_b4694dedfd144108b469bd97b9da7723~mv2.jpg">
-            <img src="https://static.wixstatic.com/media/0c10a6_b4694dedfd144108b469bd97b9da7723~mv2.jpg/v1/fill/w_260%2Ch_180%2Cq_90%2Cenc_avif%2Cquality_auto/0c10a6_b4694dedfd144108b469bd97b9da7723~mv2.jpg" alt="Miniatura 3" />
+          <div class="thumb" role="option" aria-selected="false" data-image-key="pdpThumb3" data-gallery-target="mainImg">
+            <img data-image-key="pdpThumb3" src="assets/asset-462177549890211848.jpg" alt="Miniatura 3" />
           </div>
         </div>
       </div>
@@ -698,6 +709,7 @@
     </div>
   </div>
 
+  <script src="assets/image-inventory.js"></script>
   <script>
     const mainImg = document.getElementById("mainImg");
     const thumbs = document.querySelectorAll(".thumb");

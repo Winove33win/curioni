@@ -14,6 +14,7 @@
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;padding-bottom:28px}
     .card{background:#fff;border-radius:16px;border:1px solid #ddd;overflow:hidden;display:flex;flex-direction:column}
     .thumb{height:170px;background-size:cover;background-position:center}
+    .image-fallback{background:#d8d4cc !important;color:#4b4944;display:grid;place-items:center;text-align:center;padding:12px;font-size:13px}
     .body{padding:12px}
     .cat{font-size:12px;color:#656565}
     .price{font-weight:700;font-size:20px;margin:8px 0 10px}
@@ -47,19 +48,19 @@
 
     <section class="grid" id="productsGrid">
       <article class="card" data-category="assentos" data-name="Poltrona Alma">
-        <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1493666438817-866a91353ca9?auto=format&fit=crop&w=800&q=80')"></div>
+        <div class="thumb" data-image-key="prontaPoltronaAlma"></div>
         <div class="body"><div class="cat">Assentos</div><strong>Poltrona Alma</strong><div class="price">R$ 4.890</div><button>Comprar</button></div>
       </article>
       <article class="card" data-category="mesas" data-name="Mesa Vélo">
-        <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=800&q=80')"></div>
+        <div class="thumb" data-image-key="prontaMesaVelo"></div>
         <div class="body"><div class="cat">Mesas</div><strong>Mesa Vélo</strong><div class="price">R$ 8.950</div><button>Comprar</button></div>
       </article>
       <article class="card" data-category="iluminacao" data-name="Abajur Lía">
-        <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=800&q=80')"></div>
+        <div class="thumb" data-image-key="prontaAbajurLia"></div>
         <div class="body"><div class="cat">Iluminação</div><strong>Abajur Lía</strong><div class="price">R$ 1.740</div><button>Comprar</button></div>
       </article>
       <article class="card" data-category="complementos" data-name="Buffet Módulo">
-        <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1616486886892-7d17c6ff1c24?auto=format&fit=crop&w=800&q=80')"></div>
+        <div class="thumb" data-image-key="prontaBuffetModulo"></div>
         <div class="body"><div class="cat">Complementos</div><strong>Buffet Módulo</strong><div class="price">R$ 10.980</div><button>Comprar</button></div>
       </article>
     </section>
@@ -67,6 +68,7 @@
     <button class="secondary">Ver mais produtos</button>
   </main>
 
+  <script src="assets/image-inventory.js"></script>
   <script>
     const categoryFilter = document.getElementById('categoryFilter');
     const searchFilter = document.getElementById('searchFilter');

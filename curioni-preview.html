@@ -133,8 +133,7 @@
       align-items: end;
       color: #fff;
       box-shadow: var(--shadow);
-      background: linear-gradient(to top, rgba(0,0,0,.44), rgba(0,0,0,.13)),
-        url('https://images.unsplash.com/photo-1617098474202-0d0d7f60f7aa?auto=format&fit=crop&w=1800&q=80') center/cover;
+      background: linear-gradient(to top, rgba(0,0,0,.44), rgba(0,0,0,.13)), var(--image-url, none) center/cover;
     }
     .heroBox h1 { margin: 0 0 10px; font-family: var(--title); font-size: clamp(35px, 5vw, 62px); line-height: 1.03; max-width: 14ch; }
     .heroBox p { margin: 0; max-width: 60ch; color: rgba(255,255,255,.88); }
@@ -155,6 +154,7 @@
     .slide { min-width: 100%; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
     .product { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
     .product .thumb { height: 180px; background-size: cover; background-position: center; }
+    .image-fallback { background: #d8d4cc !important; color: #4b4944; display: grid; place-items: center; text-align: center; padding: 12px; font-size: 13px; }
     .productBody { padding: 12px; }
     .productBody strong { display: block; margin-bottom: 5px; }
     .productBody small { display: block; color: var(--muted); margin-bottom: 10px; }
@@ -226,7 +226,7 @@
   <main>
     <section id="sec-hero">
       <div class="container">
-        <article class="heroBox">
+        <article class="heroBox" data-image-key="homeHero">
           <div>
             <h1>Uma nova home com navegação por menu hambúrguer em qualquer tela.</h1>
             <p>Incluímos acesso rápido à nova área de Pronta Entrega com compra direta e ao fluxo de pedido exclusivo para arquitetos.</p>
@@ -300,16 +300,16 @@
           <div class="controls"><button class="iconBtn" data-prev>‹</button><button class="iconBtn" data-next>›</button></div>
           <div class="carouselViewport"><div class="carouselTrack">
             <div class="slide">
-              <article class="product"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80')"></div><div class="productBody"><strong>Sofá Curva</strong><small>Tecido boucle • 3 lugares</small><a class="btn" href="produtos-detalhes.html">Ver produto</a></div></article>
-              <article class="product"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1493666438817-866a91353ca9?auto=format&fit=crop&w=900&q=80')"></div><div class="productBody"><strong>Poltrona Alma</strong><small>Madeira maciça • Couro natural</small><a class="btn" href="produtos-detalhes.html">Ver produto</a></div></article>
-              <article class="product"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=900&q=80')"></div><div class="productBody"><strong>Mesa Vélo</strong><small>Tampo em pedra • Base metálica</small><a class="btn" href="produtos-detalhes.html">Ver produto</a></div></article>
-              <article class="product"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=900&q=80')"></div><div class="productBody"><strong>Abajur Lía</strong><small>Madeira + linho</small><a class="btn" href="produtos-detalhes.html">Ver produto</a></div></article>
+              <article class="product"><div class="thumb" data-image-key="launchSofaCurva"></div><div class="productBody"><strong>Sofá Curva</strong><small>Tecido boucle • 3 lugares</small><a class="btn" href="produtos-detalhes.html">Ver produto</a></div></article>
+              <article class="product"><div class="thumb" data-image-key="launchPoltronaAlma"></div><div class="productBody"><strong>Poltrona Alma</strong><small>Madeira maciça • Couro natural</small><a class="btn" href="produtos-detalhes.html">Ver produto</a></div></article>
+              <article class="product"><div class="thumb" data-image-key="launchMesaVelo"></div><div class="productBody"><strong>Mesa Vélo</strong><small>Tampo em pedra • Base metálica</small><a class="btn" href="produtos-detalhes.html">Ver produto</a></div></article>
+              <article class="product"><div class="thumb" data-image-key="launchAbajurLia"></div><div class="productBody"><strong>Abajur Lía</strong><small>Madeira + linho</small><a class="btn" href="produtos-detalhes.html">Ver produto</a></div></article>
             </div>
             <div class="slide">
-              <article class="product"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=900&q=80')"></div><div class="productBody"><strong>Cadeira Pierre</strong><small>Estrutura em freijó</small><a class="btn" href="produtos-detalhes.html">Ver produto</a></div></article>
-              <article class="product"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1616486886892-7d17c6ff1c24?auto=format&fit=crop&w=900&q=80')"></div><div class="productBody"><strong>Buffet Módulo</strong><small>Lâmina natural • 2,20m</small><a class="btn" href="produtos-detalhes.html">Ver produto</a></div></article>
-              <article class="product"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1616594039964-3f5b9f95e399?auto=format&fit=crop&w=900&q=80')"></div><div class="productBody"><strong>Pendente Arco</strong><small>Latão escovado</small><a class="btn" href="produtos-detalhes.html">Ver produto</a></div></article>
-              <article class="product"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1505692952047-1a78307da8f2?auto=format&fit=crop&w=900&q=80')"></div><div class="productBody"><strong>Banco Tenda</strong><small>Uso interno/externo</small><a class="btn" href="produtos-detalhes.html">Ver produto</a></div></article>
+              <article class="product"><div class="thumb" data-image-key="launchCadeiraPierre"></div><div class="productBody"><strong>Cadeira Pierre</strong><small>Estrutura em freijó</small><a class="btn" href="produtos-detalhes.html">Ver produto</a></div></article>
+              <article class="product"><div class="thumb" data-image-key="launchBuffetModulo"></div><div class="productBody"><strong>Buffet Módulo</strong><small>Lâmina natural • 2,20m</small><a class="btn" href="produtos-detalhes.html">Ver produto</a></div></article>
+              <article class="product"><div class="thumb" data-image-key="launchPendenteArco"></div><div class="productBody"><strong>Pendente Arco</strong><small>Latão escovado</small><a class="btn" href="produtos-detalhes.html">Ver produto</a></div></article>
+              <article class="product"><div class="thumb" data-image-key="launchBancoTenda"></div><div class="productBody"><strong>Banco Tenda</strong><small>Uso interno/externo</small><a class="btn" href="produtos-detalhes.html">Ver produto</a></div></article>
             </div>
           </div></div>
         </div>
@@ -345,6 +345,7 @@
     </div>
   </footer>
 
+  <script src="assets/image-inventory.js"></script>
   <script>
     document.querySelectorAll('[data-carousel]').forEach((carousel) => {
       const track = carousel.querySelector('.carouselTrack');

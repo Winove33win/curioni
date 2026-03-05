@@ -308,7 +308,7 @@
       height: 190px;
       background:
         linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.88)),
-        url("https://static.wixstatic.com/media/0c10a6_ccd1229e33df4ea4b9df9a81e17c9154~mv2.jpg/v1/fill/w_687%2Ch_458%2Cq_90%2Cenc_avif%2Cquality_auto/0c10a6_ccd1229e33df4ea4b9df9a81e17c9154~mv2.jpg");
+        var(--image-url, none);
       background-size: cover;
       background-position:center;
       border-bottom: 1px solid rgba(15,17,21,.10);
@@ -324,7 +324,7 @@
       border: 1px solid rgba(15,17,21,.10);
       background:
         linear-gradient(90deg, rgba(255,255,255,.92), rgba(255,255,255,.55)),
-        url("https://static.wixstatic.com/media/0c10a6_b4694dedfd144108b469bd97b9da7723~mv2.jpg/v1/fill/w_980%2Ch_1225%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/01.jpg");
+        var(--image-url, none);
       background-size: cover;
       background-position: center;
       min-height: 420px;
@@ -367,6 +367,7 @@
       letter-spacing: -0.02em;
     }
     p{ margin:0 0 14px; color: var(--muted); font-size: 15px; }
+    .image-fallback{background:#d8d4cc !important;color:#4b4944;display:grid;place-items:center;text-align:center;padding:12px;font-size:13px;}
 
     @media (max-width: 1080px){
       .searchWrap{ display:none; }
@@ -431,7 +432,7 @@
                 </div>
 
                 <div class="featured" aria-label="Destaque">
-                  <div class="img"></div>
+                  <div class="img" data-image-key="megaFeatured"></div>
                   <div class="body">
                     <b>Explore o catálogo completo</b>
                     <span>Navegue por coleções, filtros e busca. Chegue no produto em 2 cliques.</span>
@@ -468,7 +469,7 @@
 
   <main>
     <div class="container">
-      <div class="banner">
+      <div class="banner" data-image-key="megaBanner">
         <div class="copy">
           <div class="kicker2">Navegação • Clareza • Descoberta</div>
           <h1>Menu de produtos moderno e rápido.</h1>
@@ -485,6 +486,7 @@
     </div>
   </main>
 
+  <script src="assets/image-inventory.js"></script>
   <script>
     const productsItem = document.getElementById("productsItem");
     const productsBtn = document.getElementById("productsBtn");

@@ -11,6 +11,12 @@ Páginas disponíveis:
 - `arquiteto-pedido.html` (seleção de produtos para arquitetos)
 - `curioni-header-megamenu-moderno.html` (estudo de header/megamenu)
 
+## Inventário de imagens locais
+
+- As imagens dos blocos visuais principais agora são carregadas localmente da pasta `assets/`.
+- O mapeamento centralizado fica em `assets/image-inventory.js`, usando chaves `data-image-key` nas páginas HTML.
+- Em caso de imagem ausente, o front aplica fallback visual com cor neutra e texto alternativo.
+
 ## Build para `/dist`
 
 Este repositório agora gera uma pasta `dist/` pronta para deploy:
