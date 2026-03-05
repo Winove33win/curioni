@@ -5,6 +5,7 @@
         <a class="site-header__logo" href="curioni-preview.html" aria-label="Curioni">curioni</a>
         <nav class="site-header__nav" aria-label="Principal">
           <a href="produtos.html">Produtos</a>
+          <a href="pronta-entrega.html">Pronta entrega</a>
           <a href="novidades.html">Novidades</a>
           <a href="orcamento.html">Orçamento</a>
           <a href="sobre.html">Sobre</a>
@@ -19,6 +20,7 @@
       <nav class="site-header__panel" id="site-mobile-menu" data-header-panel aria-label="Menu mobile">
         <a href="curioni-preview.html">Home</a>
         <a href="produtos.html">Produtos</a>
+        <a href="pronta-entrega.html">Pronta entrega</a>
         <a href="novidades.html">Novidades</a>
         <a href="orcamento.html">Orçamento</a>
         <a href="sobre.html">Sobre</a>
