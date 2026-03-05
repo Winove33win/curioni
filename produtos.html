@@ -12,15 +12,37 @@
 <body>
 <header class="site-header" data-site-header><div class="site-header__container"><div class="site-header__inner"><a class="site-header__logo" href="curioni-preview.html">curioni</a><nav class="site-header__nav"><a href="curioni-preview.html">Home</a><a href="produtos.html" aria-current="page">Produtos</a><a href="novidades.html">Novidades</a><a href="orcamento.html">Orçamento</a><a href="sobre.html">Sobre</a></nav><div class="site-header__actions"><a class="site-header__cta" href="orcamento.html">Solicitar orçamento</a><button class="site-header__toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="site-mobile-menu" data-header-toggle>☰</button></div></div><nav class="site-header__panel" id="site-mobile-menu" data-header-panel><a href="curioni-preview.html">Home</a><a href="produtos.html">Produtos</a><a href="novidades.html">Novidades</a><a href="orcamento.html">Orçamento</a><a href="sobre.html">Sobre</a></nav></div></header>
 <main class="container">
-<section class="section"><div class="section-head"><h1 style="margin:0;font:600 clamp(34px,6vw,72px)/.98 var(--title)">Catálogo por tipologia</h1></div><p style="max-width:72ch;color:var(--muted)">Estrutura macro para descoberta rápida, com foco em filtros técnicos por material, acabamento, cor, dimensões e uso interno/externo.</p></section>
-<section class="section grid-2">
-<article class="card" id="assentos"><div class="card-body"><h3>Assentos</h3><ul class="list"><li>Cadeiras</li><li>Banquetas</li><li>Poltronas</li><li>Sofás</li><li>Bancos</li><li>Balanços</li></ul></div></article>
-<article class="card" id="mesas"><div class="card-body"><h3>Mesas</h3><ul class="list"><li>Mesas de centro</li><li>Mesas de jantar</li><li>Mesas laterais</li></ul></div></article>
-<article class="card" id="complementos"><div class="card-body"><h3>Complementos</h3><ul class="list"><li>Bar</li><li>Buffets</li><li>Carrinhos</li><li>Cabideiros</li><li>Objetos</li><li>Tapetes</li><li>Vasos</li></ul></div></article>
-<article class="card" id="iluminacao"><div class="card-body"><h3>Iluminação</h3><ul class="list"><li>Abajures</li><li>Colunas</li><li>Pendentes</li><li>Arandelas</li></ul></div></article>
-<article class="card" id="externa"><div class="card-body"><h3>Área externa</h3><ul class="list"><li>Cadeiras</li><li>Poltronas</li><li>Bancos</li><li>Mesas</li></ul></div></article>
-<article class="card"><div class="card-body"><h3>Ações rápidas</h3><p>Salvar favoritos, comparar peças e acionar orçamento sem sair da listagem.</p><a class="btn inverse" href="orcamento.html">Solicitar orçamento</a></div></article>
+<section class="section">
+  <div class="section-head"><h1 style="margin:0;font:600 clamp(34px,6vw,72px)/.98 var(--title)">Catálogo por tipologia</h1></div>
+  <p style="max-width:72ch;color:var(--muted)">Uma vitrine direta e minimalista para navegar por categoria. Todas as seleções mostram imagem de produto desde o primeiro contato visual.</p>
+  <div class="category-strip products-strip" aria-label="Filtros rápidos">
+    <a class="category-chip" href="#assentos">Assentos</a>
+    <a class="category-chip" href="#mesas">Mesas</a>
+    <a class="category-chip" href="#complementos">Complementos</a>
+    <a class="category-chip" href="#iluminacao">Iluminação</a>
+    <a class="category-chip" href="#externa">Área externa</a>
+  </div>
+</section>
+
+<section class="section grid-3 products-categories-grid">
+  <article class="card product-category-card" id="assentos"><div class="thumb" data-image-key="catAssentos"></div><div class="card-body"><h3>Assentos</h3><p>Cadeiras, banquetes, poltronas, sofás e bancos autorais.</p><a class="btn" href="orcamento.html">Selecionar peças</a></div></article>
+  <article class="card product-category-card" id="mesas"><div class="thumb" data-image-key="catMesas"></div><div class="card-body"><h3>Mesas</h3><p>Centro, jantar e apoio com variações de acabamento.</p><a class="btn" href="orcamento.html">Selecionar peças</a></div></article>
+  <article class="card product-category-card" id="complementos"><div class="thumb" data-image-key="catComplementos"></div><div class="card-body"><h3>Complementos</h3><p>Buffets, carrinhos, objetos e peças para composição.</p><a class="btn" href="orcamento.html">Selecionar peças</a></div></article>
+  <article class="card product-category-card" id="iluminacao"><div class="thumb" data-image-key="catIluminacao"></div><div class="card-body"><h3>Iluminação</h3><p>Abajures, pendentes e colunas com presença escultural.</p><a class="btn" href="orcamento.html">Selecionar peças</a></div></article>
+  <article class="card product-category-card" id="externa"><div class="thumb" data-image-key="catExterna"></div><div class="card-body"><h3>Área externa</h3><p>Mobiliário resistente com linguagem Curioni para outdoor.</p><a class="btn" href="orcamento.html">Selecionar peças</a></div></article>
+  <article class="card product-category-card"><div class="thumb" data-image-key="launchSofaCurva"></div><div class="card-body"><h3>Curadoria Curioni</h3><p>Veja as combinações prontas para projetos residenciais e corporativos.</p><a class="btn inverse" href="novidades.html">Ver destaques</a></div></article>
+</section>
+
+<section class="section">
+  <div class="section-head"><h2>Peças em destaque</h2><a class="btn" href="produtos-detalhes.html">Abrir ficha técnica</a></div>
+  <div class="grid-4">
+    <article class="card"><div class="thumb" data-image-key="launchMesaVelo"></div><div class="card-body"><h3>Mesa Vélo</h3></div></article>
+    <article class="card"><div class="thumb" data-image-key="launchAbajurLia"></div><div class="card-body"><h3>Abajur Lía</h3></div></article>
+    <article class="card"><div class="thumb" data-image-key="launchBuffetModulo"></div><div class="card-body"><h3>Buffet Módulo</h3></div></article>
+    <article class="card"><div class="thumb" data-image-key="launchBancoTenda"></div><div class="card-body"><h3>Banco Tenda</h3></div></article>
+  </div>
 </section>
 </main>
+<script src="assets/image-inventory.js"></script>
 <script src="assets/header.js"></script>
 </body></html>
