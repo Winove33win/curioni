@@ -7,6 +7,8 @@ Páginas disponíveis:
 - `profissionais.html` (jornadas B2B)
 - `biblioteca-tecnica.html` (downloads técnicos)
 - `orcamento.html` (fluxo unificado de orçamento)
+- `pronta-entrega.html` (e-commerce com compra direta)
+- `arquiteto-pedido.html` (seleção de produtos para arquitetos)
 - `curioni-header-megamenu-moderno.html` (estudo de header/megamenu)
 
 ## Build para `/dist`

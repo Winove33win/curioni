@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Pronta Entrega | Curioni</title>
+  <style>
+    body{margin:0;font-family:Inter,system-ui;background:#f3f1ed;color:#161616}
+    .container{width:min(1200px,92%);margin:auto}
+    .top{display:flex;justify-content:space-between;align-items:center;padding:20px 0}
+    .home{font-weight:700}
+    .filters{display:grid;grid-template-columns:220px 1fr;gap:12px;align-items:end;margin-bottom:18px}
+    select,input{padding:12px;border:1px solid #cfc8bc;border-radius:10px;background:#fff}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;padding-bottom:28px}
+    .card{background:#fff;border-radius:16px;border:1px solid #ddd;overflow:hidden;display:flex;flex-direction:column}
+    .thumb{height:170px;background-size:cover;background-position:center}
+    .body{padding:12px}
+    .cat{font-size:12px;color:#656565}
+    .price{font-weight:700;font-size:20px;margin:8px 0 10px}
+    button{background:#101114;color:#fff;border:0;border-radius:10px;padding:11px 12px;cursor:pointer;width:100%}
+    .secondary{background:#fff;color:#161616;border:1px solid #ccc}
+  </style>
+</head>
+<body>
+  <main class="container">
+    <div class="top">
+      <a class="home" href="curioni-preview.html">← Home</a>
+      <a href="arquiteto-pedido.html">Pedido de arquiteto</a>
+    </div>
+    <h1>Pronta Entrega</h1>
+    <p>E-commerce com produtos com preço e compra imediata.</p>
+
+    <div class="filters">
+      <label>Categoria
+        <select id="categoryFilter">
+          <option value="all">Todas as categorias</option>
+          <option value="assentos">Assentos</option>
+          <option value="mesas">Mesas</option>
+          <option value="iluminacao">Iluminação</option>
+          <option value="complementos">Complementos</option>
+        </select>
+      </label>
+      <label>Buscar produto
+        <input id="searchFilter" placeholder="Nome do produto">
+      </label>
+    </div>
+
+    <section class="grid" id="productsGrid">
+      <article class="card" data-category="assentos" data-name="Poltrona Alma">
+        <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1493666438817-866a91353ca9?auto=format&fit=crop&w=800&q=80')"></div>
+        <div class="body"><div class="cat">Assentos</div><strong>Poltrona Alma</strong><div class="price">R$ 4.890</div><button>Comprar</button></div>
+      </article>
+      <article class="card" data-category="mesas" data-name="Mesa Vélo">
+        <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=800&q=80')"></div>
+        <div class="body"><div class="cat">Mesas</div><strong>Mesa Vélo</strong><div class="price">R$ 8.950</div><button>Comprar</button></div>
+      </article>
+      <article class="card" data-category="iluminacao" data-name="Abajur Lía">
+        <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=800&q=80')"></div>
+        <div class="body"><div class="cat">Iluminação</div><strong>Abajur Lía</strong><div class="price">R$ 1.740</div><button>Comprar</button></div>
+      </article>
+      <article class="card" data-category="complementos" data-name="Buffet Módulo">
+        <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1616486886892-7d17c6ff1c24?auto=format&fit=crop&w=800&q=80')"></div>
+        <div class="body"><div class="cat">Complementos</div><strong>Buffet Módulo</strong><div class="price">R$ 10.980</div><button>Comprar</button></div>
+      </article>
+    </section>
+
+    <button class="secondary">Ver mais produtos</button>
+  </main>
+
+  <script>
+    const categoryFilter = document.getElementById('categoryFilter');
+    const searchFilter = document.getElementById('searchFilter');
+    const cards = Array.from(document.querySelectorAll('.card'));
+
+    function applyFilters() {
+      const selectedCategory = categoryFilter.value;
+      const term = searchFilter.value.trim().toLowerCase();
+
+      cards.forEach((card) => {
+        const category = card.dataset.category;
+        const name = card.dataset.name.toLowerCase();
+        const categoryMatch = selectedCategory === 'all' || category === selectedCategory;
+        const nameMatch = !term || name.includes(term);
+        card.style.display = categoryMatch && nameMatch ? 'flex' : 'none';
+      });
+    }
+
+    categoryFilter.addEventListener('change', applyFilters);
+    searchFilter.addEventListener('input', applyFilters);
+  </script>
+</body>
+</html>
