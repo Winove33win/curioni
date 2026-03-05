@@ -1,7 +1,37 @@
 (() => {
+  const HEADER_TEMPLATE = `
+    <div class="site-header__container">
+      <div class="site-header__inner">
+        <a class="site-header__logo" href="curioni-preview.html" aria-label="Curioni">curioni</a>
+        <nav class="site-header__nav" aria-label="Principal">
+          <a href="produtos.html">Produtos</a>
+          <a href="novidades.html">Novidades</a>
+          <a href="orcamento.html">Orçamento</a>
+          <a href="sobre.html">Sobre</a>
+        </nav>
+        <div class="site-header__actions">
+          <a class="site-header__link" href="profissionais.html">Profissionais</a>
+          <a class="site-header__link" href="biblioteca-tecnica.html">3D</a>
+          <a class="site-header__cta" href="orcamento.html">Solicitar orçamento</a>
+          <button class="site-header__toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="site-mobile-menu" data-header-toggle>☰</button>
+        </div>
+      </div>
+      <nav class="site-header__panel" id="site-mobile-menu" data-header-panel aria-label="Menu mobile">
+        <a href="curioni-preview.html">Home</a>
+        <a href="produtos.html">Produtos</a>
+        <a href="novidades.html">Novidades</a>
+        <a href="orcamento.html">Orçamento</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="profissionais.html">Profissionais</a>
+        <a href="biblioteca-tecnica.html">3D</a>
+      </nav>
+    </div>`;
+
   const headers = document.querySelectorAll('[data-site-header]');
 
   headers.forEach((header) => {
+    header.innerHTML = HEADER_TEMPLATE;
+
     const toggle = header.querySelector('[data-header-toggle]');
     const panel = header.querySelector('[data-header-panel]');
     if (!toggle || !panel) return;
