@@ -1,4 +1,193 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Pronta Entrega Curioni</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/header.css" /><link rel="stylesheet" href="assets/site.css" /></head><body>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Pronta Entrega | Curioni</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/header.css" />
+  <link rel="stylesheet" href="assets/site.css" />
+</head>
+<body>
 <header class="site-header" data-site-header><div class="site-header__container"><div class="site-header__inner"><a class="site-header__logo" href="curioni-preview.html">curioni</a><nav class="site-header__nav"><a href="curioni-preview.html">Início</a><a href="ambientes.html">Ambientes</a><a href="pronta-entrega.html" aria-current="page">Pronta entrega</a><a href="novidades.html">Novidades</a><a href="arquiteto-pedido.html">Pedidos</a></nav><div class="site-header__actions"><a class="site-header__cta" href="orcamento.html">Solicitar proposta</a><button class="site-header__toggle" type="button" data-header-toggle aria-controls="site-mobile-menu">☰</button></div></div><nav class="site-header__panel" id="site-mobile-menu" data-header-panel><a href="curioni-preview.html">Início</a><a href="ambientes.html">Ambientes</a><a href="pronta-entrega.html">Pronta entrega</a><a href="novidades.html">Novidades</a><a href="arquiteto-pedido.html">Pedidos</a></nav></div></header>
-<main class="container"><section class="section"><div class="section-head"><h2>Disponível agora</h2><p>Seleção de peças com despacho rápido e leitura objetiva.</p></div><div class="grid-4"><article class="card"><div class="thumb" data-image-key="prontaPoltronaAlma"></div><div class="card-body"><h3>Poltrona Alma</h3><p>3 unidades • envio em 48h.</p><a class="btn" href="produtos-detalhes.html">Detalhes</a></div></article><article class="card"><div class="thumb" data-image-key="prontaMesaVelo"></div><div class="card-body"><h3>Mesa Vélo</h3><p>5 unidades • envio em 72h.</p><a class="btn" href="produtos-detalhes.html">Detalhes</a></div></article><article class="card"><div class="thumb" data-image-key="prontaAbajurLia"></div><div class="card-body"><h3>Abajur Lía</h3><p>8 unidades • envio imediato.</p><a class="btn" href="produtos-detalhes.html">Detalhes</a></div></article><article class="card"><div class="thumb" data-image-key="prontaBuffetModulo"></div><div class="card-body"><h3>Buffet Módulo</h3><p>2 unidades • envio em 5 dias.</p><a class="btn" href="produtos-detalhes.html">Detalhes</a></div></article></div></section></main>
-<script src="assets/image-inventory.js"></script><script src="assets/header.js"></script></body></html>
+
+<main class="container">
+  <section class="section">
+    <div class="section-head">
+      <h1 style="margin:0;font:600 clamp(34px,6vw,72px)/.98 var(--title)">Loja pronta entrega</h1>
+      <p>Todos os produtos com envio rápido, filtros por categoria e preço, classificação dinâmica e compra direta sem checkout.</p>
+    </div>
+
+    <article class="card pronta-toolbar">
+      <div class="card-body pronta-toolbar__grid">
+        <label>Busca por nome
+          <input class="input" id="filtro-busca" type="search" placeholder="Ex.: Poltrona, mesa, abajur">
+        </label>
+        <label>Categoria
+          <select id="filtro-categoria"></select>
+        </label>
+        <label>Faixa de preço
+          <select id="filtro-preco">
+            <option value="todos">Todos os valores</option>
+            <option value="ate-5000">Até R$ 5.000</option>
+            <option value="5000-10000">R$ 5.000 até R$ 10.000</option>
+            <option value="acima-10000">Acima de R$ 10.000</option>
+          </select>
+        </label>
+        <label>Classificação
+          <select id="ordenacao">
+            <option value="relevancia">Mais relevantes</option>
+            <option value="menor-preco">Menor preço</option>
+            <option value="maior-preco">Maior preço</option>
+            <option value="mais-rapido">Entrega mais rápida</option>
+            <option value="estoque">Maior estoque</option>
+          </select>
+        </label>
+      </div>
+    </article>
+
+    <div class="pronta-results-head">
+      <strong id="resultado-contagem">0 produtos</strong>
+      <span id="resultado-resumo">Atualize os filtros para refinar sua seleção.</span>
+    </div>
+
+    <div class="grid-4 ecommerce-grid" id="produtos-grid" aria-live="polite"></div>
+  </section>
+</main>
+
+<script src="assets/image-inventory.js"></script>
+<script src="assets/header.js"></script>
+<script>
+  (function () {
+    const produtos = [
+      { slug: 'cadeira-fly', nome: 'Cadeira Fly', categoria: 'Assentos', tipo: 'Cadeira', preco: 4290, estoque: 12, prazoDias: 2, imageKey: 'pdpMain1', descricao: 'Estrutura em madeira maciça com encosto ergonômico.' },
+      { slug: 'poltrona-alma', nome: 'Poltrona Alma', categoria: 'Assentos', tipo: 'Poltrona', preco: 6890, estoque: 5, prazoDias: 2, imageKey: 'launchPoltronaAlma', descricao: 'Concha anatômica com base metálica e giro opcional.' },
+      { slug: 'sofa-curva', nome: 'Sofá Curva', categoria: 'Assentos', tipo: 'Sofá', preco: 13200, estoque: 3, prazoDias: 5, imageKey: 'launchSofaCurva', descricao: 'Módulo orgânico para lounges e recepções premium.' },
+      { slug: 'banco-tenda', nome: 'Banco Tenda', categoria: 'Assentos', tipo: 'Banco', preco: 3560, estoque: 7, prazoDias: 3, imageKey: 'launchBancoTenda', descricao: 'Leve e resistente para áreas internas ou externas.' },
+      { slug: 'mesa-velo', nome: 'Mesa Vélo', categoria: 'Mesas', tipo: 'Mesa de jantar', preco: 15990, estoque: 4, prazoDias: 4, imageKey: 'launchMesaVelo', descricao: 'Tampo mineral com base escultural em lâmina natural.' },
+      { slug: 'mesa-ciano', nome: 'Mesa Ciano', categoria: 'Mesas', tipo: 'Mesa lateral', preco: 2890, estoque: 11, prazoDias: 1, imageKey: 'vitrineMesaCiano', descricao: 'Mesa lateral compacta para composição de living.' },
+      { slug: 'buffet-modulo', nome: 'Buffet Módulo', categoria: 'Complementos', tipo: 'Buffet', preco: 10900, estoque: 2, prazoDias: 6, imageKey: 'launchBuffetModulo', descricao: 'Portas usinadas e múltiplos módulos de configuração.' },
+      { slug: 'carrinho-atlas', nome: 'Carrinho Atlas', categoria: 'Complementos', tipo: 'Carrinho', preco: 4740, estoque: 8, prazoDias: 2, imageKey: 'catComplementos', descricao: 'Estrutura tubular com bandejas removíveis em lâmina.' },
+      { slug: 'abajur-lia', nome: 'Abajur Lía', categoria: 'Iluminação', tipo: 'Abajur', preco: 1690, estoque: 15, prazoDias: 1, imageKey: 'launchAbajurLia', descricao: 'Cúpula têxtil com base torneada em madeira natural.' },
+      { slug: 'pendente-arco', nome: 'Pendente Arco', categoria: 'Iluminação', tipo: 'Pendente', preco: 5290, estoque: 9, prazoDias: 2, imageKey: 'launchPendenteArco', descricao: 'Latão escovado com difusor em vidro soprado fosco.' },
+      { slug: 'balanco-oca', nome: 'Balanço Oca', categoria: 'Área externa', tipo: 'Balanço', preco: 7850, estoque: 6, prazoDias: 3, imageKey: 'vitrineBalancoOca', descricao: 'Estrutura em alumínio com trama náutica de alta durabilidade.' },
+      { slug: 'banco-tenda-outdoor', nome: 'Banco Tenda Outdoor', categoria: 'Área externa', tipo: 'Banco outdoor', preco: 3980, estoque: 10, prazoDias: 2, imageKey: 'launchBancoTenda', descricao: 'Versão com pintura eletrostática para uso externo.' }
+    ];
+
+    const state = { busca: '', categoria: 'todos', preco: 'todos', ordenacao: 'relevancia' };
+
+    const grid = document.getElementById('produtos-grid');
+    const resultadoContagem = document.getElementById('resultado-contagem');
+    const resultadoResumo = document.getElementById('resultado-resumo');
+
+    const filtroBusca = document.getElementById('filtro-busca');
+    const filtroCategoria = document.getElementById('filtro-categoria');
+    const filtroPreco = document.getElementById('filtro-preco');
+    const ordenacao = document.getElementById('ordenacao');
+
+    const formatarMoeda = (valor) => valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+    function popularCategorias() {
+      const categorias = ['todos', ...new Set(produtos.map((produto) => produto.categoria))];
+      filtroCategoria.innerHTML = categorias.map((categoria) => {
+        const label = categoria === 'todos' ? 'Todas as categorias' : categoria;
+        return `<option value="${categoria}">${label}</option>`;
+      }).join('');
+    }
+
+    function filtrarProdutos() {
+      const buscaNormalizada = state.busca.trim().toLowerCase();
+
+      return produtos.filter((produto) => {
+        const matchBusca = !buscaNormalizada
+          || produto.nome.toLowerCase().includes(buscaNormalizada)
+          || produto.tipo.toLowerCase().includes(buscaNormalizada);
+
+        const matchCategoria = state.categoria === 'todos' || produto.categoria === state.categoria;
+
+        const matchPreco = state.preco === 'todos'
+          || (state.preco === 'ate-5000' && produto.preco <= 5000)
+          || (state.preco === '5000-10000' && produto.preco > 5000 && produto.preco <= 10000)
+          || (state.preco === 'acima-10000' && produto.preco > 10000);
+
+        return matchBusca && matchCategoria && matchPreco;
+      }).sort((a, b) => {
+        if (state.ordenacao === 'menor-preco') return a.preco - b.preco;
+        if (state.ordenacao === 'maior-preco') return b.preco - a.preco;
+        if (state.ordenacao === 'mais-rapido') return a.prazoDias - b.prazoDias;
+        if (state.ordenacao === 'estoque') return b.estoque - a.estoque;
+        return a.prazoDias - b.prazoDias;
+      });
+    }
+
+    function renderizarProdutos() {
+      const produtosFiltrados = filtrarProdutos();
+
+      resultadoContagem.textContent = `${produtosFiltrados.length} produto${produtosFiltrados.length !== 1 ? 's' : ''}`;
+      resultadoResumo.textContent = state.categoria === 'todos'
+        ? 'Exibindo pronta entrega em todas as categorias.'
+        : `Exibindo pronta entrega para ${state.categoria}.`;
+
+      grid.innerHTML = produtosFiltrados.map((produto) => `
+        <article class="card ecommerce-card">
+          <div class="thumb" data-image-key="${produto.imageKey}"></div>
+          <div class="card-body">
+            <span class="tag">${produto.tipo}</span>
+            <h3>${produto.nome}</h3>
+            <p>${produto.descricao}</p>
+            <p><strong>${formatarMoeda(produto.preco)}</strong> · ${produto.estoque} em estoque · envio em ${produto.prazoDias} dia(s)</p>
+            <div class="ecommerce-meta">
+              <a class="btn" href="produtos-detalhes.html?produto=${produto.slug}&origem=pronta-entrega">Ver detalhes</a>
+              <button class="btn inverse" data-compra="${produto.slug}" type="button">Comprar agora</button>
+            </div>
+          </div>
+        </article>
+      `).join('');
+
+      if (!produtosFiltrados.length) {
+        grid.innerHTML = '<article class="card"><div class="card-body"><h3>Nenhum produto encontrado</h3><p>Tente remover um filtro para ampliar sua busca.</p></div></article>';
+      }
+
+      if (window.applyCurioniImageInventory) {
+        window.applyCurioniImageInventory();
+      }
+    }
+
+    document.addEventListener('click', function (event) {
+      const botaoCompra = event.target.closest('[data-compra]');
+      if (!botaoCompra) return;
+      const slug = botaoCompra.getAttribute('data-compra');
+      const produto = produtos.find((item) => item.slug === slug);
+      if (!produto) return;
+      const mensagem = `Pedido rápido iniciado para ${produto.nome} (${formatarMoeda(produto.preco)}). Você pode finalizar via atendimento comercial.`;
+      alert(mensagem);
+    });
+
+    filtroBusca.addEventListener('input', function (event) {
+      state.busca = event.target.value;
+      renderizarProdutos();
+    });
+
+    filtroCategoria.addEventListener('change', function (event) {
+      state.categoria = event.target.value;
+      renderizarProdutos();
+    });
+
+    filtroPreco.addEventListener('change', function (event) {
+      state.preco = event.target.value;
+      renderizarProdutos();
+    });
+
+    ordenacao.addEventListener('change', function (event) {
+      state.ordenacao = event.target.value;
+      renderizarProdutos();
+    });
+
+    popularCategorias();
+    renderizarProdutos();
+  })();
+</script>
+</body>
+</html>
