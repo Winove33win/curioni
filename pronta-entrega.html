@@ -4,24 +4,53 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Pronta Entrega | Curioni</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/header.css" />
   <style>
     body{margin:0;font-family:Inter,system-ui;background:#f3f1ed;color:#161616}
-    .container{width:min(1200px,92%);margin:auto}
-    .top{display:flex;justify-content:space-between;align-items:center;padding:20px 0}
-    .home{font-weight:700}
-    .filters{display:grid;grid-template-columns:220px 1fr;gap:12px;align-items:end;margin-bottom:18px}
-    select,input{padding:12px;border:1px solid #cfc8bc;border-radius:10px;background:#fff}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;padding-bottom:28px}
-    .card{background:#fff;border-radius:16px;border:1px solid #ddd;overflow:hidden;display:flex;flex-direction:column}
-    .thumb{height:170px;background-size:cover;background-position:center}
-    .image-fallback{background:#d8d4cc !important;color:#4b4944;display:grid;place-items:center;text-align:center;padding:12px;font-size:13px}
-    .body{padding:12px}
+    .container{width:min(1240px,92%);margin:auto;padding:24px 0 34px}
+    h1{font-family:"Playfair Display",serif;font-size:clamp(34px,4vw,52px);margin:0 0 8px}
+    .intro{margin:0 0 20px;color:#555}
+    .layout{display:grid;grid-template-columns:1.8fr .95fr;gap:16px;align-items:start}
+    .panel{background:#fff;border:1px solid #ddd;border-radius:16px;padding:14px}
+    .filters{display:grid;grid-template-columns:220px 1fr;gap:10px;margin-bottom:14px}
+    select,input{padding:11px;border:1px solid #cfc8bc;border-radius:10px;background:#fff;width:100%}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+    .card{background:#fff;border-radius:14px;border:1px solid #ddd;overflow:hidden;display:flex;flex-direction:column}
+    .thumb{height:160px;background-size:cover;background-position:center}
+    .body{padding:12px;display:grid;gap:8px}
     .cat{font-size:12px;color:#656565}
-    .price{font-weight:700;font-size:20px;margin:8px 0 10px}
-    button{background:#101114;color:#fff;border:0;border-radius:10px;padding:11px 12px;cursor:pointer;width:100%}
-    .secondary{background:#fff;color:#161616;border:1px solid #ccc}
+    .price{font-weight:700;font-size:19px}
+    .actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    button{border:0;border-radius:10px;padding:10px 12px;cursor:pointer;font-weight:600}
+    .btn-primary{background:#101114;color:#fff}
+    .btn-ghost{background:#fff;color:#161616;border:1px solid #cfc8bc}
+
+    .cart h2{margin:0 0 8px;font-size:22px}
+    .cart-list{display:grid;gap:8px;max-height:320px;overflow:auto;padding-right:4px}
+    .cart-item{display:grid;grid-template-columns:1fr auto;gap:8px;padding:10px;border:1px solid #e5e5e5;border-radius:10px}
+    .qty{display:flex;align-items:center;gap:6px}
+    .qty button{width:28px;height:28px;padding:0;border-radius:8px;background:#f2f2f2}
+    .summary{margin-top:10px;border-top:1px solid #eee;padding-top:10px;display:grid;gap:6px}
+    .summary p{margin:0;display:flex;justify-content:space-between}
+    .checkout{margin-top:12px;display:grid;gap:8px}
+    .checkout input{padding:10px;border-radius:10px;border:1px solid #cfc8bc}
+    .empty{color:#777;font-size:14px}
+
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,.48);display:none;place-items:center;padding:18px;z-index:250}
+    .modal.open{display:grid}
+    .modal-card{width:min(820px,100%);background:#fff;border-radius:16px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr}
+    .modal-image{min-height:320px;background-size:cover;background-position:center}
+    .modal-content{padding:18px;display:grid;gap:10px}
+    .modal-content h3{margin:0;font-size:30px;font-family:"Playfair Display",serif}
+    .modal-content p{margin:0;color:#555}
+    .close{justify-self:end;background:#f3f3f3}
+    .image-fallback{background:#d8d4cc !important;color:#4b4944;display:grid;place-items:center;text-align:center;padding:12px;font-size:13px}
+    @media (max-width:1040px){.layout{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media (max-width:720px){.filters,.grid,.modal-card{grid-template-columns:1fr}}
   </style>
-  <link rel="stylesheet" href="assets/header.css" />
 </head>
 <body>
   <header class="site-header" data-site-header>
@@ -30,7 +59,7 @@
         <a class="site-header__logo" href="curioni-preview.html" aria-label="Curioni">curioni</a>
         <nav class="site-header__nav" aria-label="Menu principal">
           <a href="curioni-preview.html#sec-categorias">Categorias</a>
-          <a href="curioni-preview.html#sec-hero">Ambientes</a>
+          <a href="ambientes.html">Ambientes</a>
           <a href="pronta-entrega.html" aria-current="page">Pronta Entrega</a>
           <a href="novidades.html">Novidades</a>
           <a href="arquiteto-pedido.html">Pedidos</a>
@@ -42,7 +71,7 @@
       </div>
       <nav class="site-header__panel" id="site-mobile-menu" aria-label="Menu mobile" data-header-panel>
         <a href="curioni-preview.html#sec-categorias">Categorias</a>
-        <a href="curioni-preview.html#sec-hero">Ambientes</a>
+        <a href="ambientes.html">Ambientes</a>
         <a href="pronta-entrega.html" aria-current="page">Pronta Entrega</a>
         <a href="novidades.html">Novidades</a>
         <a href="arquiteto-pedido.html">Pedidos</a>
@@ -53,67 +82,185 @@
 
   <main class="container">
     <h1>Pronta Entrega</h1>
-    <p>E-commerce com produtos com preço e compra imediata.</p>
+    <p class="intro">Produtos disponíveis para checkout rápido com detalhes do item e carrinho completo.</p>
 
-    <div class="filters">
-      <label>Categoria
-        <select id="categoryFilter">
-          <option value="all">Todas as categorias</option>
-          <option value="assentos">Assentos</option>
-          <option value="mesas">Mesas</option>
-          <option value="iluminacao">Iluminação</option>
-          <option value="complementos">Complementos</option>
-        </select>
-      </label>
-      <label>Buscar produto
-        <input id="searchFilter" placeholder="Nome do produto">
-      </label>
+    <div class="layout">
+      <section class="panel">
+        <div class="filters">
+          <label>Categoria
+            <select id="categoryFilter">
+              <option value="all">Todas as categorias</option><option value="assentos">Assentos</option><option value="mesas">Mesas</option><option value="iluminacao">Iluminação</option><option value="complementos">Complementos</option>
+            </select>
+          </label>
+          <label>Buscar produto
+            <input id="searchFilter" placeholder="Nome do produto">
+          </label>
+        </div>
+
+        <section class="grid" id="productsGrid">
+          <article class="card" data-category="assentos" data-name="Poltrona Alma Prime" data-price="4890" data-image-key="prontaPoltronaAlma" data-description="Poltrona com acabamento premium e conforto para living.">
+            <div class="thumb" data-image-key="prontaPoltronaAlma"></div><div class="body"><div class="cat">Assentos</div><strong>Poltrona Alma Prime</strong><div class="price">R$ 4.890</div><div class="actions"><button class="btn-ghost" data-detail>Detalhes</button><button class="btn-primary" data-add>Adicionar</button></div></div>
+          </article>
+          <article class="card" data-category="mesas" data-name="Mesa Vélo Stone" data-price="8950" data-image-key="prontaMesaVelo" data-description="Mesa de jantar com tampo em pedra e base robusta.">
+            <div class="thumb" data-image-key="prontaMesaVelo"></div><div class="body"><div class="cat">Mesas</div><strong>Mesa Vélo Stone</strong><div class="price">R$ 8.950</div><div class="actions"><button class="btn-ghost" data-detail>Detalhes</button><button class="btn-primary" data-add>Adicionar</button></div></div>
+          </article>
+          <article class="card" data-category="iluminacao" data-name="Abajur Lía Soft" data-price="1740" data-image-key="prontaAbajurLia" data-description="Abajur de apoio com luz quente e visual minimalista.">
+            <div class="thumb" data-image-key="prontaAbajurLia"></div><div class="body"><div class="cat">Iluminação</div><strong>Abajur Lía Soft</strong><div class="price">R$ 1.740</div><div class="actions"><button class="btn-ghost" data-detail>Detalhes</button><button class="btn-primary" data-add>Adicionar</button></div></div>
+          </article>
+          <article class="card" data-category="complementos" data-name="Buffet Módulo Pro" data-price="10980" data-image-key="prontaBuffetModulo" data-description="Buffet com portas deslizantes e capacidade ampliada.">
+            <div class="thumb" data-image-key="prontaBuffetModulo"></div><div class="body"><div class="cat">Complementos</div><strong>Buffet Módulo Pro</strong><div class="price">R$ 10.980</div><div class="actions"><button class="btn-ghost" data-detail>Detalhes</button><button class="btn-primary" data-add>Adicionar</button></div></div>
+          </article>
+          <article class="card" data-category="assentos" data-name="Cadeira Canto Wood" data-price="2190" data-image-key="launchCadeiraPierre" data-description="Cadeira para jantar com estrutura em madeira e assento estofado.">
+            <div class="thumb" data-image-key="launchCadeiraPierre"></div><div class="body"><div class="cat">Assentos</div><strong>Cadeira Canto Wood</strong><div class="price">R$ 2.190</div><div class="actions"><button class="btn-ghost" data-detail>Detalhes</button><button class="btn-primary" data-add>Adicionar</button></div></div>
+          </article>
+          <article class="card" data-category="iluminacao" data-name="Pendente Arco Lux" data-price="3290" data-image-key="launchPendenteArco" data-description="Pendente de destaque para mesa de jantar e sala.">
+            <div class="thumb" data-image-key="launchPendenteArco"></div><div class="body"><div class="cat">Iluminação</div><strong>Pendente Arco Lux</strong><div class="price">R$ 3.290</div><div class="actions"><button class="btn-ghost" data-detail>Detalhes</button><button class="btn-primary" data-add>Adicionar</button></div></div>
+          </article>
+        </section>
+      </section>
+
+      <aside class="panel cart">
+        <h2>Carrinho</h2>
+        <div id="cartList" class="cart-list"><p class="empty">Seu carrinho está vazio.</p></div>
+        <div class="summary">
+          <p><span>Subtotal</span><strong id="subtotal">R$ 0,00</strong></p>
+          <p><span>Frete estimado</span><strong id="shipping">R$ 0,00</strong></p>
+          <p><span>Total</span><strong id="total">R$ 0,00</strong></p>
+        </div>
+        <form class="checkout" id="checkoutForm">
+          <input required placeholder="Nome completo">
+          <input required type="email" placeholder="E-mail">
+          <input required placeholder="Telefone">
+          <button class="btn-primary" type="submit">Finalizar checkout</button>
+        </form>
+      </aside>
     </div>
-
-    <section class="grid" id="productsGrid">
-      <article class="card" data-category="assentos" data-name="Poltrona Alma">
-        <div class="thumb" data-image-key="prontaPoltronaAlma"></div>
-        <div class="body"><div class="cat">Assentos</div><strong>Poltrona Alma</strong><div class="price">R$ 4.890</div><button>Comprar</button></div>
-      </article>
-      <article class="card" data-category="mesas" data-name="Mesa Vélo">
-        <div class="thumb" data-image-key="prontaMesaVelo"></div>
-        <div class="body"><div class="cat">Mesas</div><strong>Mesa Vélo</strong><div class="price">R$ 8.950</div><button>Comprar</button></div>
-      </article>
-      <article class="card" data-category="iluminacao" data-name="Abajur Lía">
-        <div class="thumb" data-image-key="prontaAbajurLia"></div>
-        <div class="body"><div class="cat">Iluminação</div><strong>Abajur Lía</strong><div class="price">R$ 1.740</div><button>Comprar</button></div>
-      </article>
-      <article class="card" data-category="complementos" data-name="Buffet Módulo">
-        <div class="thumb" data-image-key="prontaBuffetModulo"></div>
-        <div class="body"><div class="cat">Complementos</div><strong>Buffet Módulo</strong><div class="price">R$ 10.980</div><button>Comprar</button></div>
-      </article>
-    </section>
-
-    <button class="secondary">Ver mais produtos</button>
   </main>
 
+  <div class="modal" id="detailModal" aria-hidden="true">
+    <article class="modal-card">
+      <div class="modal-image" id="modalImage"></div>
+      <div class="modal-content">
+        <button class="close" id="closeModal">Fechar</button>
+        <h3 id="modalName"></h3>
+        <p id="modalDescription"></p>
+        <strong id="modalPrice"></strong>
+        <button class="btn-primary" id="modalAdd">Adicionar ao carrinho</button>
+      </div>
+    </article>
+  </div>
+
   <script src="assets/image-inventory.js"></script>
+  <script src="assets/header.js"></script>
   <script>
     const categoryFilter = document.getElementById('categoryFilter');
     const searchFilter = document.getElementById('searchFilter');
     const cards = Array.from(document.querySelectorAll('.card'));
+    const cart = [];
+    const cartList = document.getElementById('cartList');
+    const subtotalEl = document.getElementById('subtotal');
+    const shippingEl = document.getElementById('shipping');
+    const totalEl = document.getElementById('total');
+    const detailModal = document.getElementById('detailModal');
+    const modalName = document.getElementById('modalName');
+    const modalDescription = document.getElementById('modalDescription');
+    const modalPrice = document.getElementById('modalPrice');
+    const modalImage = document.getElementById('modalImage');
+    const closeModal = document.getElementById('closeModal');
+    const modalAdd = document.getElementById('modalAdd');
+    let modalCard = null;
+
+    const brl = (value) => value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
     function applyFilters() {
       const selectedCategory = categoryFilter.value;
       const term = searchFilter.value.trim().toLowerCase();
-
       cards.forEach((card) => {
-        const category = card.dataset.category;
-        const name = card.dataset.name.toLowerCase();
-        const categoryMatch = selectedCategory === 'all' || category === selectedCategory;
-        const nameMatch = !term || name.includes(term);
+        const categoryMatch = selectedCategory === 'all' || card.dataset.category === selectedCategory;
+        const nameMatch = card.dataset.name.toLowerCase().includes(term);
         card.style.display = categoryMatch && nameMatch ? 'flex' : 'none';
       });
     }
 
+    function addToCart(card) {
+      const name = card.dataset.name;
+      const price = Number(card.dataset.price);
+      const key = card.dataset.imageKey;
+      const existing = cart.find((item) => item.name === name);
+      if (existing) existing.qty += 1;
+      else cart.push({ name, price, qty: 1, key });
+      renderCart();
+    }
+
+    function renderCart() {
+      if (!cart.length) {
+        cartList.innerHTML = '<p class="empty">Seu carrinho está vazio.</p>';
+        subtotalEl.textContent = shippingEl.textContent = totalEl.textContent = 'R$ 0,00';
+        return;
+      }
+
+      cartList.innerHTML = cart.map((item) => `
+        <div class="cart-item">
+          <div><strong>${item.name}</strong><br><small>${brl(item.price)} cada</small></div>
+          <div class="qty">
+            <button type="button" data-dec="${item.name}">-</button>
+            <span>${item.qty}</span>
+            <button type="button" data-inc="${item.name}">+</button>
+          </div>
+        </div>`).join('');
+
+      const subtotal = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+      const shipping = subtotal > 0 ? 220 : 0;
+      subtotalEl.textContent = brl(subtotal);
+      shippingEl.textContent = brl(shipping);
+      totalEl.textContent = brl(subtotal + shipping);
+
+      cartList.querySelectorAll('[data-inc]').forEach((btn) => btn.addEventListener('click', () => updateQty(btn.dataset.inc, 1)));
+      cartList.querySelectorAll('[data-dec]').forEach((btn) => btn.addEventListener('click', () => updateQty(btn.dataset.dec, -1)));
+    }
+
+    function updateQty(name, change) {
+      const item = cart.find((entry) => entry.name === name);
+      if (!item) return;
+      item.qty += change;
+      if (item.qty <= 0) cart.splice(cart.indexOf(item), 1);
+      renderCart();
+    }
+
+    function openModal(card) {
+      modalCard = card;
+      modalName.textContent = card.dataset.name;
+      modalDescription.textContent = card.dataset.description;
+      modalPrice.textContent = brl(Number(card.dataset.price));
+      const key = card.dataset.imageKey;
+      const src = window.CURIONI_IMAGE_INVENTORY?.[key]?.src;
+      modalImage.style.backgroundImage = src ? `url('${src}')` : 'none';
+      detailModal.classList.add('open');
+      detailModal.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeDetailModal() {
+      detailModal.classList.remove('open');
+      detailModal.setAttribute('aria-hidden', 'true');
+      modalCard = null;
+    }
+
+    cards.forEach((card) => {
+      card.querySelector('[data-add]').addEventListener('click', () => addToCart(card));
+      card.querySelector('[data-detail]').addEventListener('click', () => openModal(card));
+    });
+
+    modalAdd.addEventListener('click', () => { if (modalCard) addToCart(modalCard); closeDetailModal(); });
+    closeModal.addEventListener('click', closeDetailModal);
+    detailModal.addEventListener('click', (event) => { if (event.target === detailModal) closeDetailModal(); });
     categoryFilter.addEventListener('change', applyFilters);
     searchFilter.addEventListener('input', applyFilters);
+    document.getElementById('checkoutForm').addEventListener('submit', (event) => {
+      event.preventDefault();
+      if (!cart.length) return alert('Adicione itens no carrinho antes de finalizar.');
+      alert('Checkout simulado enviado com sucesso.');
+    });
+    renderCart();
   </script>
-  <script src="assets/header.js"></script>
 </body>
 </html>
