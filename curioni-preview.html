@@ -24,6 +24,11 @@
     html, body { margin: 0; }
     body { font-family: var(--body); color: var(--ink); background: var(--bg); line-height: 1.5; }
     a { color: inherit; text-decoration: none; }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid #1d4ed8;
+      outline-offset: 3px;
+    }
     .container { width: min(100% - 40px, var(--container)); margin: 0 auto; }
 
     .header {
@@ -139,6 +144,11 @@
     .catCard h3 { margin: 0 0 8px; font-size: 19px; }
     .catCard p { margin: 0; color: var(--muted); font-size: 14px; }
 
+    .deptGrid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+    .deptCard { padding: 18px; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; }
+    .deptCard h3 { margin: 0 0 6px; font-size: 19px; }
+    .deptCard p { margin: 0 0 12px; color: var(--muted); font-size: 14px; }
+
     .carousel { position: relative; }
     .carouselViewport { overflow: hidden; }
     .carouselTrack { display: flex; transition: transform .45s ease; }
@@ -158,11 +168,11 @@
     .foot a, .foot p { margin: 0 0 6px; display: block; color: var(--muted); }
 
     @media (max-width: 1080px) {
-      .catList, .categoriesGrid, .slide, .foot { grid-template-columns: 1fr 1fr; }
+      .catList, .categoriesGrid, .deptGrid, .slide, .foot { grid-template-columns: 1fr 1fr; }
       .heroBox { min-height: 420px; }
     }
     @media (max-width: 720px) {
-      .catList, .categoriesGrid, .slide, .foot { grid-template-columns: 1fr; }
+      .catList, .categoriesGrid, .deptGrid, .slide, .foot { grid-template-columns: 1fr; }
       .headerActions .btn:first-child { display: none; }
       .brand { font-size: 34px; }
       .utility nav { display: none; }
@@ -240,6 +250,46 @@
       </div>
     </section>
 
+    <section id="sec-assentos">
+      <div class="container">
+        <div class="sectionHead">
+          <h2>Assentos</h2>
+          <p>Cadeiras, poltronas, bancos e sofás para ambientes residenciais e corporativos.</p>
+        </div>
+        <div class="deptGrid">
+          <article class="deptCard"><h3>Cadeiras</h3><p>Modelos em madeira, metal e estofados para mesa de jantar e apoio.</p><a class="btn" href="produtos-detalhes.html">Ver assentos</a></article>
+          <article class="deptCard"><h3>Poltronas</h3><p>Peças de destaque com conforto ergonômico e acabamento autoral.</p><a class="btn" href="produtos-detalhes.html">Explorar poltronas</a></article>
+          <article class="deptCard"><h3>Bancos</h3><p>Soluções compactas para halls, quartos e circulação.</p><a class="btn" href="produtos-detalhes.html">Ver bancos</a></article>
+          <article class="deptCard"><h3>Sofás</h3><p>Opções modulares e lineares para salas e áreas de convivência.</p><a class="btn" href="produtos-detalhes.html">Ver sofás</a></article>
+          <article class="deptCard"><h3>Banquetas</h3><p>Alturas e materiais pensados para cozinhas e áreas gourmet.</p><a class="btn" href="produtos-detalhes.html">Ver banquetas</a></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="sec-mesas">
+      <div class="container">
+        <div class="sectionHead"><h2>Mesas</h2><p>Mesas de jantar, centro e laterais com diferentes dimensões, materiais e acabamentos.</p></div>
+      </div>
+    </section>
+
+    <section id="sec-complementos">
+      <div class="container">
+        <div class="sectionHead"><h2>Complementos</h2><p>Buffets, aparadores e acessórios para completar os ambientes com função e estética.</p></div>
+      </div>
+    </section>
+
+    <section id="sec-iluminacao">
+      <div class="container">
+        <div class="sectionHead"><h2>Iluminação</h2><p>Pendentes e luminárias para criar atmosfera com leitura técnica e decorativa.</p></div>
+      </div>
+    </section>
+
+    <section id="sec-externa">
+      <div class="container">
+        <div class="sectionHead"><h2>Área externa</h2><p>Linha para varandas e jardins com materiais resistentes ao uso ao ar livre.</p></div>
+      </div>
+    </section>
+
     <section id="sec-lancamentos">
       <div class="container">
         <div class="sectionHead">
@@ -270,7 +320,7 @@
   <footer>
     <div class="container foot">
       <div>
-        <a class="brand" style="font-size:32px" href="#">curioni</a>
+        <a class="brand" style="font-size:32px" href="curioni-preview.html">curioni</a>
         <p>fale@curioni.com.br</p>
         <p>Curitiba • PR</p>
       </div>
