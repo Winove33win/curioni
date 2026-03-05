@@ -2,6 +2,10 @@
 
 Páginas disponíveis:
 - `curioni-preview.html` (home)
+- `produtos.html` (arquitetura de categorias macro e subcategorias)
+- `sobre.html` (narrativa institucional da marca)
+- `suporte-arquitetos.html`, `suporte-construtoras.html`, `suporte-lojistas.html` (trilhas segmentadas de suporte)
+- `trabalhe-conosco.html` (cultura, vagas e banco de talentos)
 - `produtos-detalhes.html` (PDP)
 - `novidades.html` (conteúdo)
 - `profissionais.html` (jornadas B2B)
