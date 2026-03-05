@@ -3,74 +3,148 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Curioni | Mobiliário autoral de alto luxo</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <title>Curioni | Mobiliário autoral</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/header.css" />
   <link rel="stylesheet" href="assets/site.css" />
 </head>
 <body>
-<header class="site-header" data-site-header><div class="site-header__container"><div class="site-header__inner"><a class="site-header__logo" href="curioni-preview.html">curioni</a><nav class="site-header__nav"><a href="curioni-preview.html" aria-current="page">Home</a><a href="produtos.html">Produtos</a><a href="novidades.html">Novidades</a><a href="orcamento.html">Orçamento</a><a href="sobre.html">Sobre</a><a href="suporte-arquitetos.html">Suporte</a><a href="trabalhe-conosco.html">Trabalhe Conosco</a></nav><div class="site-header__actions"><a class="site-header__link" href="produtos.html">Busca</a><a class="site-header__link" href="arquiteto-pedido.html">Favoritos</a><a class="site-header__cta" href="orcamento.html">Solicitar orçamento</a><button class="site-header__toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="site-mobile-menu" data-header-toggle>☰</button></div></div><nav class="site-header__panel" id="site-mobile-menu" data-header-panel><a href="curioni-preview.html">Home</a><a href="produtos.html">Produtos</a><a href="novidades.html">Novidades</a><a href="orcamento.html">Orçamento</a><a href="sobre.html">Sobre</a><a href="suporte-arquitetos.html">Para Arquitetos</a><a href="suporte-construtoras.html">Para Construtoras</a><a href="suporte-lojistas.html">Para Lojistas</a><a href="trabalhe-conosco.html">Trabalhe Conosco</a></nav></div></header>
+<header class="site-header" data-site-header></header>
 
-<main class="container home-main home-v3">
-  <section class="section home-v3-top">
-    <div class="home-v3-headline">
-      <span class="tag">Curioni Collection</span>
-      <h1>Design autoral com descoberta rápida, clara e visual.</h1>
-      <p>Inspirada em fluxos de navegação do Airbnb: busca em destaque, filtros por intenção e cards objetivos com imagem sempre presente.</p>
+<main class="container home-v4">
+  <section class="section home-v4-hero">
+    <div>
+      <span class="tag">Coleção Curioni 2026</span>
+      <h1>Minimalismo brasileiro com presença escultural.</h1>
+      <p>Um novo layout de navegação para descobrir peças por categoria com leitura rápida e estética sofisticada.</p>
+      <div class="home-cta-row">
+        <a class="btn inverse" href="produtos.html">Ver catálogo completo</a>
+        <a class="btn" href="orcamento.html">Solicitar consultoria</a>
+      </div>
     </div>
-    <form class="home-v3-search card" action="produtos.html" method="get">
-      <label>
-        <span>Categoria</span>
-        <select name="categoria">
-          <option>Assentos</option><option>Mesas</option><option>Iluminação</option><option>Complementos</option><option>Área externa</option>
-        </select>
-      </label>
-      <label>
-        <span>Ambiente</span>
-        <select name="ambiente">
-          <option>Sala</option><option>Jantar</option><option>Varanda</option><option>Corporativo</option>
-        </select>
-      </label>
-      <button class="btn inverse" type="submit">Buscar produtos</button>
-    </form>
+    <article class="card home-v4-hero-media">
+      <div class="thumb" data-image-key="homeHero"></div>
+      <div class="card-body">
+        <h3>Design que valoriza o espaço</h3>
+        <p>Linhas limpas, materiais nobres e proporções pensadas para ambientes residenciais e corporativos.</p>
+      </div>
+    </article>
   </section>
 
-  <section class="section home-v3-hero card">
-    <div class="thumb" data-image-key="homeHero"></div>
-    <div class="home-v3-hero-overlay">
-      <h2>Ambientes completos com peças que conversam entre si</h2>
-      <a class="btn inverse" href="ambientes.html">Ver ambientes</a>
+  <section class="section card home-v4-dynamic" id="categorias">
+    <div class="section-head">
+      <h2>Categorias em destaque</h2>
+      <p>Selecione a categoria para trocar o produto de referência abaixo.</p>
     </div>
+    <div class="home-v4-tabs" role="tablist" aria-label="Categorias de produtos">
+      <button class="home-v4-tab is-active" type="button" role="tab" aria-selected="true" data-category-tab="assentos">Assentos</button>
+      <button class="home-v4-tab" type="button" role="tab" aria-selected="false" data-category-tab="mesas">Mesas</button>
+      <button class="home-v4-tab" type="button" role="tab" aria-selected="false" data-category-tab="complementos">Complementos</button>
+      <button class="home-v4-tab" type="button" role="tab" aria-selected="false" data-category-tab="iluminacao">Iluminação</button>
+      <button class="home-v4-tab" type="button" role="tab" aria-selected="false" data-category-tab="externa">Área externa</button>
+    </div>
+
+    <a class="home-v4-product card" data-category-link href="categoria-assentos.html">
+      <div class="thumb" data-category-image data-image-key="launchPoltronaAlma"></div>
+      <div class="card-body">
+        <p class="home-v4-kicker" data-category-label>Assentos</p>
+        <h3 data-category-title>Poltrona Alma</h3>
+        <p data-category-reference>Referência CUR-ASS-014 · Couro natural e base em madeira maciça.</p>
+        <span class="btn">Ir para página da categoria</span>
+      </div>
+    </a>
   </section>
 
-  <section class="section">
-    <div class="category-strip home-v3-chips">
-      <a class="category-chip" href="produtos.html#assentos">Assentos</a>
-      <a class="category-chip" href="produtos.html#mesas">Mesas</a>
-      <a class="category-chip" href="produtos.html#complementos">Complementos</a>
-      <a class="category-chip" href="produtos.html#iluminacao">Iluminação</a>
-      <a class="category-chip" href="produtos.html#externa">Externo</a>
-      <a class="category-chip" href="novidades.html">Novidades</a>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="section-head"><h2>Mais buscados</h2><a class="btn" href="produtos.html">Ver catálogo completo</a></div>
-    <div class="grid-4 home-v3-product-grid">
-      <article class="card"><div class="thumb" data-image-key="launchSofaCurva"></div><div class="card-body"><h3>Sofá Curva</h3><p>Conforto escultural para sala principal.</p></div></article>
-      <article class="card"><div class="thumb" data-image-key="launchMesaVelo"></div><div class="card-body"><h3>Mesa Vélo</h3><p>Centro orgânico com acabamento premium.</p></div></article>
-      <article class="card"><div class="thumb" data-image-key="launchAbajurLia"></div><div class="card-body"><h3>Abajur Lía</h3><p>Luz suave para composições sofisticadas.</p></div></article>
-      <article class="card"><div class="thumb" data-image-key="launchBuffetModulo"></div><div class="card-body"><h3>Buffet Módulo</h3><p>Versatilidade para residencial e corporativo.</p></div></article>
-    </div>
-  </section>
-
-  <section class="section home-v3-split">
-    <article class="card home-v3-story"><div class="thumb" data-image-key="ambSalaPrincipal"></div><div class="card-body"><h3>Para projetos residenciais</h3><p>Curadoria por ambiente para acelerar decisões de projeto.</p><a class="btn" href="orcamento.html">Montar proposta</a></div></article>
-    <article class="card home-v3-story"><div class="thumb" data-image-key="ambExterno"></div><div class="card-body"><h3>Para áreas externas</h3><p>Seleção resistente com mesma linguagem estética da coleção interna.</p><a class="btn" href="produtos.html#externa">Explorar externo</a></div></article>
+  <section class="section home-v4-categories">
+    <a class="card product-category-card" href="categoria-assentos.html"><div class="thumb" data-image-key="catAssentos"></div><div class="card-body"><h3>Assentos</h3><p>Cadeiras, poltronas, sofás e bancos autorais.</p></div></a>
+    <a class="card product-category-card" href="categoria-mesas.html"><div class="thumb" data-image-key="catMesas"></div><div class="card-body"><h3>Mesas</h3><p>Centro, jantar e laterais com acabamento premium.</p></div></a>
+    <a class="card product-category-card" href="categoria-complementos.html"><div class="thumb" data-image-key="catComplementos"></div><div class="card-body"><h3>Complementos</h3><p>Buffets, carrinhos, objetos e tapeçaria refinada.</p></div></a>
+    <a class="card product-category-card" href="categoria-iluminacao.html"><div class="thumb" data-image-key="catIluminacao"></div><div class="card-body"><h3>Iluminação</h3><p>Abajures, pendentes, colunas e arandelas.</p></div></a>
+    <a class="card product-category-card" href="categoria-area-externa.html"><div class="thumb" data-image-key="catExterna"></div><div class="card-body"><h3>Área externa</h3><p>Peças resistentes para varandas e espaços abertos.</p></div></a>
   </section>
 </main>
 
-<footer class="footer"><div class="container footer-grid"><div><a class="site-header__logo" href="curioni-preview.html" style="font-size:32px">curioni</a><p>fale@curioni.com.br</p></div><div><h4>Produtos</h4><a href="produtos.html">Categorias</a><a href="novidades.html">Novidades</a><a href="produtos-detalhes.html">PDP exemplo</a></div><div><h4>Suporte</h4><a href="suporte-arquitetos.html">Para Arquitetos</a><a href="suporte-construtoras.html">Para Construtoras</a><a href="suporte-lojistas.html">Para Lojistas</a></div></div></footer>
-<script src="assets/image-inventory.js"></script><script src="assets/header.js"></script>
-</body></html>
+<footer class="footer">
+  <div class="container footer-grid">
+    <div><a class="site-header__logo" href="curioni-preview.html" style="font-size:32px">curioni</a><p>fale@curioni.com.br</p></div>
+    <div><h4>Navegação</h4><a href="produtos.html">Produtos</a><a href="novidades.html">Novidades</a><a href="sobre.html">Sobre</a></div>
+    <div><h4>Atendimento</h4><a href="orcamento.html">Solicitar orçamento</a><a href="profissionais.html">Profissionais</a><a href="biblioteca-tecnica.html">Biblioteca 3D</a></div>
+  </div>
+</footer>
+
+<script src="assets/image-inventory.js"></script>
+<script src="assets/header.js"></script>
+<script>
+  (() => {
+    const CATEGORIES = {
+      assentos: {
+        label: 'Assentos',
+        title: 'Poltrona Alma',
+        reference: 'Referência CUR-ASS-014 · Couro natural e base em madeira maciça.',
+        imageKey: 'launchPoltronaAlma',
+        href: 'categoria-assentos.html'
+      },
+      mesas: {
+        label: 'Mesas',
+        title: 'Mesa Vélo',
+        reference: 'Referência CUR-MES-021 · Tampo mineral com estrutura em freijó.',
+        imageKey: 'launchMesaVelo',
+        href: 'categoria-mesas.html'
+      },
+      complementos: {
+        label: 'Complementos',
+        title: 'Buffet Módulo',
+        reference: 'Referência CUR-COM-009 · Compartimentos modulares e acabamento em lâmina natural.',
+        imageKey: 'launchBuffetModulo',
+        href: 'categoria-complementos.html'
+      },
+      iluminacao: {
+        label: 'Iluminação',
+        title: 'Abajur Lía',
+        reference: 'Referência CUR-ILU-004 · Cúpula em linho e haste em latão escovado.',
+        imageKey: 'launchAbajurLia',
+        href: 'categoria-iluminacao.html'
+      },
+      externa: {
+        label: 'Área externa',
+        title: 'Banco Tenda',
+        reference: 'Referência CUR-EXT-017 · Estrutura resistente para ambientes externos.',
+        imageKey: 'launchBancoTenda',
+        href: 'categoria-area-externa.html'
+      }
+    };
+
+    const tabs = document.querySelectorAll('[data-category-tab]');
+    const link = document.querySelector('[data-category-link]');
+    const image = document.querySelector('[data-category-image]');
+    const label = document.querySelector('[data-category-label]');
+    const title = document.querySelector('[data-category-title]');
+    const reference = document.querySelector('[data-category-reference]');
+
+    if (!tabs.length || !link || !image || !label || !title || !reference) return;
+
+    const renderCategory = (key) => {
+      const category = CATEGORIES[key];
+      if (!category) return;
+      tabs.forEach((tab) => {
+        const selected = tab.dataset.categoryTab === key;
+        tab.classList.toggle('is-active', selected);
+        tab.setAttribute('aria-selected', String(selected));
+      });
+      link.href = category.href;
+      label.textContent = category.label;
+      title.textContent = category.title;
+      reference.textContent = category.reference;
+      image.dataset.imageKey = category.imageKey;
+      if (window.applyCurioniImageInventory) window.applyCurioniImageInventory();
+    };
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => renderCategory(tab.dataset.categoryTab));
+    });
+  })();
+</script>
+</body>
+</html>
