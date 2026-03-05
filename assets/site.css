@@ -163,3 +163,20 @@ textarea{min-height:130px;resize:vertical}
   .home-v4-product .thumb{height:220px}
   .home-v4-product h3{font-size:32px}
 }
+
+.ecommerce-grid .thumb{height:230px}
+.ecommerce-card .card-body{display:grid;gap:10px}
+.ecommerce-card h3{margin:0}
+.ecommerce-card p{margin:0;color:var(--muted)}
+.ecommerce-meta{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.ecommerce-meta strong{font-size:14px;letter-spacing:.06em;text-transform:uppercase}
+.products-listing{border-top:1px solid var(--line)}
+
+.product-detail-layout{align-items:start}
+.product-detail-copy{display:grid;gap:14px}
+.product-conversion h3{margin:0 0 6px}
+.product-conversion p{margin:0 0 10px;color:var(--muted)}
+
+@media (max-width:700px){
+  .ecommerce-meta{flex-direction:column;align-items:flex-start}
+}

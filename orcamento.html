@@ -1,4 +1,31 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Orçamento Curioni</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/header.css" /><link rel="stylesheet" href="assets/site.css" /></head><body>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Orçamento Curioni</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/header.css" />
+  <link rel="stylesheet" href="assets/site.css" />
+</head>
+<body>
 <header class="site-header" data-site-header><div class="site-header__container"><div class="site-header__inner"><a class="site-header__logo" href="curioni-preview.html">curioni</a><nav class="site-header__nav"><a href="curioni-preview.html">Início</a><a href="ambientes.html">Ambientes</a><a href="pronta-entrega.html">Pronta entrega</a><a href="novidades.html">Novidades</a><a href="arquiteto-pedido.html">Pedidos</a></nav></div></div></header>
-<main class="container"><section class="section"><div class="section-head"><h2>Solicitar orçamento</h2><p>Fluxo limpo para contato comercial e aprovação.</p></div><form class="form card card-body"><label>Nome completo<input class="input" /></label><label>Empresa / escritório<input class="input" /></label><label>E-mail<input class="input" type="email" /></label><label>Escopo<textarea></textarea></label><button class="btn inverse" type="button">Enviar solicitação</button></form></section></main>
-<script src="assets/header.js"></script></body></html>
+<main class="container"><section class="section"><div class="section-head"><h2>Solicitar orçamento</h2><p>Fluxo limpo para contato comercial e aprovação.</p></div><form class="form card card-body"><label>Nome completo<input class="input" /></label><label>Empresa / escritório<input class="input" /></label><label>E-mail<input class="input" type="email" /></label><label>Produto selecionado<input class="input" id="produto-selecionado" /></label><label>Escopo<textarea id="campo-escopo"></textarea></label><button class="btn inverse" type="button">Enviar solicitação</button></form></section></main>
+<script src="assets/header.js"></script>
+<script>
+  (function () {
+    const params = new URLSearchParams(window.location.search);
+    const produto = params.get('produto');
+    const escopo = params.get('escopo');
+
+    if (produto) {
+      document.getElementById('produto-selecionado').value = produto;
+    }
+
+    if (escopo) {
+      document.getElementById('campo-escopo').value = escopo;
+    }
+  })();
+</script>
+</body></html>

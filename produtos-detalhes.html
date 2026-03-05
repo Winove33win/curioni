@@ -1,1 +1,171 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Produto Curioni</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/header.css" /><link rel="stylesheet" href="assets/site.css" /></head><body><header class="site-header" data-site-header><div class="site-header__container"><div class="site-header__inner"><a class="site-header__logo" href="curioni-preview.html">curioni</a><nav class="site-header__nav"><a href="curioni-preview.html">Início</a><a href="produtos-detalhes.html" aria-current="page">Produto</a></nav></div></div></header><main class="container"><section class="section"><div class="grid-2"><article class="card"><div class="thumb" style="height:460px" data-image-key="pdpMain1"></div></article><article class="card card-body"><span class="tag">Linha Curioni</span><h2 style="margin:8px 0 6px">Cadeira Fly</h2><p>Peça com estrutura robusta e desenho leve, feita para composições contemporâneas.</p><ul class="list"><li>Dimensões: 56 x 58 x 82 cm</li><li>Acabamentos: preto fosco, ébano, couro preto</li><li>Prazo: 30 a 45 dias</li></ul><p><a class="btn inverse" href="orcamento.html">Solicitar proposta</a></p></article></div></section></main><script src="assets/image-inventory.js"></script><script src="assets/header.js"></script></body></html>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Produto Curioni</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/header.css" />
+  <link rel="stylesheet" href="assets/site.css" />
+</head>
+<body>
+<header class="site-header" data-site-header><div class="site-header__container"><div class="site-header__inner"><a class="site-header__logo" href="curioni-preview.html">curioni</a><nav class="site-header__nav"><a href="curioni-preview.html">Início</a><a href="produtos.html">Produtos</a><a href="produtos-detalhes.html" aria-current="page">Detalhes</a></nav></div></div></header>
+<main class="container">
+  <section class="section">
+    <div class="grid-2 product-detail-layout">
+      <article class="card product-gallery">
+        <div class="thumb" style="height:460px" data-image-key="pdpMain1" id="produto-imagem"></div>
+      </article>
+      <article class="card card-body product-detail-copy">
+        <span class="tag" id="produto-categoria">Linha Curioni</span>
+        <h1 id="produto-nome" style="margin:8px 0 6px">Cadeira Fly</h1>
+        <p id="produto-descricao">Peça com estrutura robusta e desenho leve, feita para composições contemporâneas.</p>
+        <ul class="list" id="produto-especificacoes">
+          <li>Dimensões: 56 x 58 x 82 cm</li>
+          <li>Acabamentos: preto fosco, ébano, couro preto</li>
+          <li>Prazo: 30 a 45 dias</li>
+        </ul>
+
+        <div class="product-conversion card">
+          <div class="card-body">
+            <h3>Converter em pedido</h3>
+            <p>Selecione a configuração para seguir direto para orçamento com os dados do produto.</p>
+            <form id="pedido-form" class="form">
+              <label>Quantidade
+                <input class="input" type="number" min="1" value="1" id="pedido-quantidade" />
+              </label>
+              <label>Acabamento desejado
+                <select id="pedido-acabamento">
+                  <option value="freijo-natural">Freijó natural</option>
+                  <option value="nogueira">Nogueira</option>
+                  <option value="laca-preta">Laca preta</option>
+                </select>
+              </label>
+              <button class="btn inverse" type="submit">Ir para orçamento</button>
+            </form>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+</main>
+<script src="assets/image-inventory.js"></script>
+<script src="assets/header.js"></script>
+<script>
+  (function () {
+    const produtos = {
+      'cadeira-fly': {
+        nome: 'Cadeira Fly',
+        categoria: 'Assentos',
+        descricao: 'Peça com estrutura robusta e desenho leve, feita para composições contemporâneas.',
+        especificacoes: ['Dimensões: 56 x 58 x 82 cm', 'Acabamentos: preto fosco, ébano, couro preto', 'Prazo: 30 a 45 dias'],
+        imageKey: 'pdpMain1'
+      },
+      'poltrona-alma': {
+        nome: 'Poltrona Alma',
+        categoria: 'Assentos',
+        descricao: 'Conforto profundo com desenho orgânico para salas e lounges corporativos.',
+        especificacoes: ['Dimensões: 78 x 74 x 76 cm', 'Acabamentos: linho areia, boucle, couro natural', 'Prazo: 35 a 50 dias'],
+        imageKey: 'launchPoltronaAlma'
+      },
+      'sofa-curva': {
+        nome: 'Sofá Curva',
+        categoria: 'Assentos',
+        descricao: 'Sistema modular para composições fluidas em ambientes de alto padrão.',
+        especificacoes: ['Dimensões: módulos de 110 cm', 'Acabamentos: tecido premium e veludo técnico', 'Prazo: 40 a 60 dias'],
+        imageKey: 'launchSofaCurva'
+      },
+      'banco-tenda': {
+        nome: 'Banco Tenda',
+        categoria: 'Assentos',
+        descricao: 'Banco versátil para áreas de convívio com visual leve e acabamento premium.',
+        especificacoes: ['Dimensões: 140 x 48 x 46 cm', 'Acabamentos: madeira e tecido impermeável', 'Prazo: 25 a 40 dias'],
+        imageKey: 'launchBancoTenda'
+      },
+      'mesa-velo': {
+        nome: 'Mesa Vélo',
+        categoria: 'Mesas',
+        descricao: 'Mesa de jantar com tampo mineral e presença escultural no ambiente.',
+        especificacoes: ['Dimensões: 240 x 110 x 76 cm', 'Acabamentos: travertino, mármore e lâmina natural', 'Prazo: 40 a 55 dias'],
+        imageKey: 'launchMesaVelo'
+      },
+      'mesa-ciano': {
+        nome: 'Mesa Ciano',
+        categoria: 'Mesas',
+        descricao: 'Mesa lateral com proporção compacta para apoiar poltronas e sofás.',
+        especificacoes: ['Dimensões: 52 x 52 x 56 cm', 'Acabamentos: freijó, nogueira e vidro fumê', 'Prazo: 20 a 35 dias'],
+        imageKey: 'vitrineMesaCiano'
+      },
+      'buffet-modulo': {
+        nome: 'Buffet Módulo',
+        categoria: 'Complementos',
+        descricao: 'Armazenamento sofisticado com portas usinadas e composição personalizável.',
+        especificacoes: ['Dimensões: 220 x 48 x 82 cm', 'Acabamentos: laca, lâmina natural e pedra', 'Prazo: 35 a 50 dias'],
+        imageKey: 'launchBuffetModulo'
+      },
+      'carrinho-atlas': {
+        nome: 'Carrinho Atlas',
+        categoria: 'Complementos',
+        descricao: 'Carrinho bar com rodas invisíveis e bandejas removíveis.',
+        especificacoes: ['Dimensões: 98 x 46 x 84 cm', 'Acabamentos: metal preto e lâmina de carvalho', 'Prazo: 30 a 45 dias'],
+        imageKey: 'catComplementos'
+      },
+      'abajur-lia': {
+        nome: 'Abajur Lía',
+        categoria: 'Iluminação',
+        descricao: 'Iluminação de apoio com luz difusa para salas, quartos e recepções.',
+        especificacoes: ['Dimensões: 42 x 42 x 68 cm', 'Acabamentos: madeira, linho e latão', 'Prazo: 15 a 30 dias'],
+        imageKey: 'launchAbajurLia'
+      },
+      'pendente-arco': {
+        nome: 'Pendente Arco',
+        categoria: 'Iluminação',
+        descricao: 'Pendente com assinatura escultural para mesas e áreas de estar.',
+        especificacoes: ['Dimensões: 120 x 120 x 38 cm', 'Acabamentos: latão escovado e vidro opalino', 'Prazo: 25 a 40 dias'],
+        imageKey: 'launchPendenteArco'
+      },
+      'balanco-oca': {
+        nome: 'Balanço Oca',
+        categoria: 'Área externa',
+        descricao: 'Peça outdoor com estrutura em alumínio e trama náutica resistente.',
+        especificacoes: ['Dimensões: 88 x 96 x 124 cm', 'Acabamentos: corda náutica e pintura eletrostática', 'Prazo: 30 a 45 dias'],
+        imageKey: 'vitrineBalancoOca'
+      },
+      'banco-tenda-outdoor': {
+        nome: 'Banco Tenda Outdoor',
+        categoria: 'Área externa',
+        descricao: 'Versão externa com tecidos técnicos e proteção UV de longa duração.',
+        especificacoes: ['Dimensões: 140 x 48 x 46 cm', 'Acabamentos: alumínio, corda e tecido náutico', 'Prazo: 25 a 40 dias'],
+        imageKey: 'launchBancoTenda'
+      }
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const slug = params.get('produto') || 'cadeira-fly';
+    const produto = produtos[slug] || produtos['cadeira-fly'];
+
+    document.title = `${produto.nome} | Curioni`;
+    document.getElementById('produto-categoria').textContent = produto.categoria;
+    document.getElementById('produto-nome').textContent = produto.nome;
+    document.getElementById('produto-descricao').textContent = produto.descricao;
+    document.getElementById('produto-imagem').dataset.imageKey = produto.imageKey;
+
+    const lista = document.getElementById('produto-especificacoes');
+    lista.innerHTML = produto.especificacoes.map((item) => `<li>${item}</li>`).join('');
+
+    if (window.applyCurioniImageInventory) {
+      window.applyCurioniImageInventory();
+    }
+
+    document.getElementById('pedido-form').addEventListener('submit', function (event) {
+      event.preventDefault();
+      const quantidade = document.getElementById('pedido-quantidade').value || '1';
+      const acabamento = document.getElementById('pedido-acabamento').value;
+      const escopo = `Produto: ${produto.nome}\nCategoria: ${produto.categoria}\nQuantidade: ${quantidade}\nAcabamento: ${acabamento}`;
+      const url = `orcamento.html?produto=${encodeURIComponent(produto.nome)}&escopo=${encodeURIComponent(escopo)}`;
+      window.location.href = url;
+    });
+  })();
+</script>
+</body></html>
