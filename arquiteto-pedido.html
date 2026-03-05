@@ -24,13 +24,37 @@
     .send{margin-top:12px;background:#0f1114;color:#fff;border:0;border-radius:10px;padding:12px;width:100%}
     @media (max-width: 980px){.layout{grid-template-columns:1fr}.side{position:static}}
   </style>
+  <link rel="stylesheet" href="assets/header.css" />
 </head>
 <body>
-  <main class="container">
-    <div class="top">
-      <a href="curioni-preview.html">← Home</a>
-      <a href="pronta-entrega.html">Ver Pronta Entrega</a>
+  <header class="site-header" data-site-header>
+    <div class="site-header__container">
+      <div class="site-header__inner">
+        <a class="site-header__logo" href="curioni-preview.html" aria-label="Curioni">curioni</a>
+        <nav class="site-header__nav" aria-label="Menu principal">
+          <a href="curioni-preview.html#sec-categorias">Categorias</a>
+          <a href="curioni-preview.html#sec-hero">Ambientes</a>
+          <a href="pronta-entrega.html">Pronta Entrega</a>
+          <a href="novidades.html">Novidades</a>
+          <a href="arquiteto-pedido.html" aria-current="page">Pedidos</a>
+        </nav>
+        <div class="site-header__actions">
+          <a class="site-header__cta" href="orcamento.html">Orçamento/Pedido</a>
+          <button class="site-header__toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="site-mobile-menu" data-header-toggle>☰</button>
+        </div>
+      </div>
+      <nav class="site-header__panel" id="site-mobile-menu" aria-label="Menu mobile" data-header-panel>
+        <a href="curioni-preview.html#sec-categorias">Categorias</a>
+        <a href="curioni-preview.html#sec-hero">Ambientes</a>
+        <a href="pronta-entrega.html">Pronta Entrega</a>
+        <a href="novidades.html">Novidades</a>
+        <a href="arquiteto-pedido.html" aria-current="page">Pedidos</a>
+        <a href="orcamento.html">Orçamento/Pedido</a>
+      </nav>
     </div>
+  </header>
+
+  <main class="container">
     <h1>Pedido para Arquiteto</h1>
     <p>Selecione os produtos, revise sua lista e envie a solicitação de compra.</p>
 
@@ -106,5 +130,6 @@
     search.addEventListener('input', filterItems);
     cat.addEventListener('change', filterItems);
   </script>
+  <script src="assets/header.js"></script>
 </body>
 </html>
