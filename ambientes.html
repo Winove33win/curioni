@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Ambientes | Curioni</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/header.css" />
+  <style>
+    body{margin:0;font-family:Inter,system-ui;background:#f4f1eb;color:#151515}
+    .container{width:min(1240px,92%);margin:auto}
+    section{padding:36px 0}
+    .hero{min-height:540px;border-radius:24px;padding:36px;display:flex;align-items:end;background:linear-gradient(to top,rgba(0,0,0,.5),rgba(0,0,0,.15)),var(--image-url,none) center/cover;color:#fff}
+    .hero h1{margin:0 0 10px;font:600 clamp(36px,5vw,62px)/1.02 "Playfair Display",serif}
+    .hero p{margin:0;max-width:60ch;color:rgba(255,255,255,.9)}
+    .head{display:flex;justify-content:space-between;align-items:end;gap:14px;margin-bottom:14px}
+    .head h2{margin:0;font:600 clamp(28px,3.5vw,42px)/1.1 "Playfair Display",serif}
+    .head p{margin:0;color:#666;max-width:58ch}
+    .amb-grid{display:grid;grid-template-columns:2fr 1fr;gap:14px}
+    .stack{display:grid;gap:14px}
+    .card{background:#fff;border:1px solid #ddd;border-radius:16px;overflow:hidden}
+    .card .thumb{height:290px;background-size:cover;background-position:center}
+    .mini .thumb{height:138px}
+    .body{padding:14px}
+    .body h3{margin:0 0 6px;font-size:24px}
+    .mini .body h3{font-size:20px}
+    .body p{margin:0 0 10px;color:#636363}
+    .chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+    .chip{border:1px solid #d8d8d8;border-radius:999px;padding:6px 10px;font-size:12px;background:#f7f7f7}
+    .btn{display:inline-block;padding:9px 12px;border-radius:10px;border:1px solid #c9c9c9;background:#fff;text-decoration:none;color:inherit;font-weight:600}
+    .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .gallery .item{background:#fff;border:1px solid #ddd;border-radius:14px;overflow:hidden}
+    .gallery .thumb{height:170px;background-size:cover;background-position:center}
+    .gallery .item .body{padding:10px}
+    .image-fallback{background:#d8d4cc !important;color:#4b4944;display:grid;place-items:center;text-align:center;padding:12px;font-size:13px}
+    @media (max-width:1000px){.amb-grid{grid-template-columns:1fr}.gallery{grid-template-columns:1fr 1fr}}
+    @media (max-width:680px){.gallery{grid-template-columns:1fr}.hero{min-height:430px;padding:24px}}
+  </style>
+</head>
+<body>
+  <header class="site-header" data-site-header>
+    <div class="site-header__container">
+      <div class="site-header__inner">
+        <a class="site-header__logo" href="curioni-preview.html" aria-label="Curioni">curioni</a>
+        <nav class="site-header__nav" aria-label="Menu principal">
+          <a href="curioni-preview.html#sec-categorias">Categorias</a>
+          <a href="ambientes.html" aria-current="page">Ambientes</a>
+          <a href="pronta-entrega.html">Pronta Entrega</a>
+          <a href="novidades.html">Novidades</a>
+          <a href="arquiteto-pedido.html">Pedidos</a>
+        </nav>
+        <div class="site-header__actions">
+          <a class="site-header__cta" href="orcamento.html">Orçamento/Pedido</a>
+          <button class="site-header__toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="site-mobile-menu" data-header-toggle>☰</button>
+        </div>
+      </div>
+      <nav class="site-header__panel" id="site-mobile-menu" aria-label="Menu mobile" data-header-panel>
+        <a href="curioni-preview.html#sec-categorias">Categorias</a>
+        <a href="ambientes.html" aria-current="page">Ambientes</a>
+        <a href="pronta-entrega.html">Pronta Entrega</a>
+        <a href="novidades.html">Novidades</a>
+        <a href="arquiteto-pedido.html">Pedidos</a>
+        <a href="orcamento.html">Orçamento/Pedido</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section>
+      <article class="hero" data-image-key="ambHeroSala">
+        <div>
+          <h1>Ambientes pensados como editorial.</h1>
+          <p>Uma página dedicada para valorizar composição, materialidade e circulação dos espaços com sugestões completas de peças.</p>
+        </div>
+      </article>
+    </section>
+
+    <section>
+      <div class="head"><h2>Composições principais</h2><p>Seleções completas para inspirar e acelerar aprovação de projeto.</p></div>
+      <div class="amb-grid">
+        <article class="card">
+          <div class="thumb" data-image-key="ambSalaPrincipal"></div>
+          <div class="body"><h3>Sala integrada</h3><div class="chips"><span class="chip">Sofá Nexo</span><span class="chip">Mesa Centro Sfera</span><span class="chip">Luminária Arco</span></div><p>Composição focada em conforto e profundidade visual para áreas de convivência.</p><a class="btn" href="produtos-detalhes.html">Ver itens do ambiente</a></div>
+        </article>
+        <div class="stack">
+          <article class="card mini"><div class="thumb" data-image-key="ambJantar"></div><div class="body"><h3>Jantar contemporâneo</h3><p>Mesa e cadeiras para 8 lugares com paleta neutra.</p><a class="btn" href="produtos-detalhes.html">Abrir composição</a></div></article>
+          <article class="card mini"><div class="thumb" data-image-key="ambSuite"></div><div class="body"><h3>Suíte acolhedora</h3><p>Apoios e iluminação para quarto com linguagem suave.</p><a class="btn" href="produtos-detalhes.html">Abrir composição</a></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="head"><h2>Mais ambientes</h2><p>Mesmas imagens podem compor diferentes propostas comerciais para simular o catálogo completo.</p></div>
+      <div class="gallery">
+        <article class="item"><div class="thumb" data-image-key="ambVaranda"></div><div class="body"><strong>Varanda social</strong></div></article>
+        <article class="item"><div class="thumb" data-image-key="ambHomeOffice"></div><div class="body"><strong>Home office elegante</strong></div></article>
+        <article class="item"><div class="thumb" data-image-key="ambLounge"></div><div class="body"><strong>Lounge de recepção</strong></div></article>
+        <article class="item"><div class="thumb" data-image-key="ambExterno"></div><div class="body"><strong>Deck externo</strong></div></article>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/image-inventory.js"></script>
+  <script src="assets/header.js"></script>
+</body>
+</html>
