@@ -16,18 +16,37 @@
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;padding:18px 0 40px}
     .card{background:#fff;border:1px solid #ddd;border-radius:16px;padding:18px} .card a{color:#1f4d3a;font-weight:600}
   </style>
+  <link rel="stylesheet" href="assets/header.css" />
 </head>
 <body>
-  <div class="topbar"><div class="container nav">
-    <a href="curioni-preview.html"><strong>CURIONI</strong></a>
-    <nav class="links" aria-label="Menu principal">
-      <a href="curioni-preview.html#colecoes">Produtos</a>
-      <a href="profissionais.html">Profissionais</a>
-      <a href="biblioteca-tecnica.html">Biblioteca técnica</a>
-      <a href="novidades.html" aria-current="page">Conteúdo</a>
-      <a class="btn" href="orcamento.html">Orçar projeto</a>
-    </nav>
-  </div></div>
+  <header class="site-header" data-site-header>
+    <div class="site-header__container">
+      <div class="site-header__inner">
+        <a class="site-header__logo" href="curioni-preview.html" aria-label="Curioni">curioni</a>
+        <nav class="site-header__nav" aria-label="Menu principal">
+          <a href="curioni-preview.html#sec-categorias">Categorias</a>
+          <a href="curioni-preview.html#sec-hero">Ambientes</a>
+          <a href="pronta-entrega.html">Pronta Entrega</a>
+          <a href="novidades.html" aria-current="page">Novidades</a>
+          <a href="arquiteto-pedido.html">Pedidos</a>
+        </nav>
+        <div class="site-header__actions">
+          <a class="site-header__cta" href="orcamento.html">Orçamento/Pedido</a>
+          <button class="site-header__toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="site-mobile-menu" data-header-toggle>☰</button>
+        </div>
+      </div>
+      <nav class="site-header__panel" id="site-mobile-menu" aria-label="Menu mobile" data-header-panel>
+        <a href="curioni-preview.html#sec-categorias">Categorias</a>
+        <a href="curioni-preview.html#sec-hero">Ambientes</a>
+        <a href="pronta-entrega.html">Pronta Entrega</a>
+        <a href="novidades.html" aria-current="page">Novidades</a>
+        <a href="arquiteto-pedido.html">Pedidos</a>
+        <a href="orcamento.html">Orçamento/Pedido</a>
+      </nav>
+    </div>
+  </header>
+
+  
 
   <main class="container">
     <section class="hero">
@@ -41,5 +60,6 @@
       <article class="card"><h2>Para arquitetos</h2><p>Condições e fluxo padronizado para especificação e envio de propostas.</p><a href="profissionais.html">Conhecer jornada profissional</a></article>
     </section>
   </main>
+  <script src="assets/header.js"></script>
 </body>
 </html>

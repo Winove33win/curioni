@@ -536,34 +536,36 @@
       .mobileBar{ display:block; }
     }
   </style>
+  <link rel="stylesheet" href="assets/header.css" />
 </head>
 
 <body>
-  <div class="topbar">
-    <div class="container">
-      <div class="nav">
-        <a class="brand" href="#">
-          <div class="mark" aria-hidden="true"></div>
-          <div>
-            <div class="name">CURIONI</div>
-            <small class="tag">Design brasileiro</small>
-          </div>
-        </a>
-
-        <nav class="navlinks" aria-label="Menu">
-          <a href="curioni-preview.html#colecoes">Produtos</a>
-          <a href="profissionais.html">Profissionais</a>
-          <a href="biblioteca-tecnica.html">Biblioteca técnica</a>
-          <a href="novidades.html">Conteúdo</a>
+  <header class="site-header" data-site-header>
+    <div class="site-header__container">
+      <div class="site-header__inner">
+        <a class="site-header__logo" href="curioni-preview.html" aria-label="Curioni">curioni</a>
+        <nav class="site-header__nav" aria-label="Menu principal">
+          <a href="curioni-preview.html#sec-categorias" aria-current="page">Categorias</a>
+          <a href="curioni-preview.html#sec-hero">Ambientes</a>
+          <a href="pronta-entrega.html">Pronta Entrega</a>
+          <a href="novidades.html">Novidades</a>
+          <a href="arquiteto-pedido.html">Pedidos</a>
         </nav>
-
-        <div style="display:flex; gap:10px; align-items:center;">
-          <a class="btn" href="curioni-preview.html#colecoes">Explorar produtos</a>
-          <a class="btn primary" href="orcamento.html">Fazer orçamento</a>
+        <div class="site-header__actions">
+          <a class="site-header__cta" href="orcamento.html">Orçamento/Pedido</a>
+          <button class="site-header__toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="site-mobile-menu" data-header-toggle>☰</button>
         </div>
       </div>
+      <nav class="site-header__panel" id="site-mobile-menu" aria-label="Menu mobile" data-header-panel>
+        <a href="curioni-preview.html#sec-categorias" aria-current="page">Categorias</a>
+        <a href="curioni-preview.html#sec-hero">Ambientes</a>
+        <a href="pronta-entrega.html">Pronta Entrega</a>
+        <a href="novidades.html">Novidades</a>
+        <a href="arquiteto-pedido.html">Pedidos</a>
+        <a href="orcamento.html">Orçamento/Pedido</a>
+      </nav>
     </div>
-  </div>
+  </header>
 
   <main class="container">
     <div class="crumbs" aria-label="Breadcrumb">
@@ -740,5 +742,6 @@
     document.getElementById("ctaFicha").addEventListener("click", () => alert("Conectar PDF real aqui."));
     document.getElementById("ctaArq").addEventListener("click", () => alert("Conectar fluxo/área do arquiteto aqui."));
   </script>
+  <script src="assets/header.js"></script>
 </body>
 </html>

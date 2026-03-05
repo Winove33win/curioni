@@ -21,13 +21,37 @@
     button{background:#101114;color:#fff;border:0;border-radius:10px;padding:11px 12px;cursor:pointer;width:100%}
     .secondary{background:#fff;color:#161616;border:1px solid #ccc}
   </style>
+  <link rel="stylesheet" href="assets/header.css" />
 </head>
 <body>
-  <main class="container">
-    <div class="top">
-      <a class="home" href="curioni-preview.html">← Home</a>
-      <a href="arquiteto-pedido.html">Pedido de arquiteto</a>
+  <header class="site-header" data-site-header>
+    <div class="site-header__container">
+      <div class="site-header__inner">
+        <a class="site-header__logo" href="curioni-preview.html" aria-label="Curioni">curioni</a>
+        <nav class="site-header__nav" aria-label="Menu principal">
+          <a href="curioni-preview.html#sec-categorias">Categorias</a>
+          <a href="curioni-preview.html#sec-hero">Ambientes</a>
+          <a href="pronta-entrega.html" aria-current="page">Pronta Entrega</a>
+          <a href="novidades.html">Novidades</a>
+          <a href="arquiteto-pedido.html">Pedidos</a>
+        </nav>
+        <div class="site-header__actions">
+          <a class="site-header__cta" href="orcamento.html">Orçamento/Pedido</a>
+          <button class="site-header__toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="site-mobile-menu" data-header-toggle>☰</button>
+        </div>
+      </div>
+      <nav class="site-header__panel" id="site-mobile-menu" aria-label="Menu mobile" data-header-panel>
+        <a href="curioni-preview.html#sec-categorias">Categorias</a>
+        <a href="curioni-preview.html#sec-hero">Ambientes</a>
+        <a href="pronta-entrega.html" aria-current="page">Pronta Entrega</a>
+        <a href="novidades.html">Novidades</a>
+        <a href="arquiteto-pedido.html">Pedidos</a>
+        <a href="orcamento.html">Orçamento/Pedido</a>
+      </nav>
     </div>
+  </header>
+
+  <main class="container">
     <h1>Pronta Entrega</h1>
     <p>E-commerce com produtos com preço e compra imediata.</p>
 
@@ -90,5 +114,6 @@
     categoryFilter.addEventListener('change', applyFilters);
     searchFilter.addEventListener('input', applyFilters);
   </script>
+  <script src="assets/header.js"></script>
 </body>
 </html>

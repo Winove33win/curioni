@@ -180,48 +180,37 @@
       .controls { top: -50px; }
     }
   </style>
+  <link rel="stylesheet" href="assets/header.css" />
 </head>
 <body>
-  <header class="header">
-    <div class="utility">
-      <div class="container utilityWrap">
-        <span>Design brasileiro autoral • Entrega nacional</span>
-        <nav aria-label="Links rápidos">
-          <a href="biblioteca-tecnica.html">Materiais técnicos</a>
-          <a href="profissionais.html">Área do arquiteto</a>
-          <a href="orcamento.html">Atendimento</a>
+  <header class="site-header" data-site-header>
+    <div class="site-header__container">
+      <div class="site-header__inner">
+        <a class="site-header__logo" href="curioni-preview.html" aria-label="Curioni">curioni</a>
+        <nav class="site-header__nav" aria-label="Menu principal">
+          <a href="curioni-preview.html#sec-categorias" aria-current="page">Categorias</a>
+          <a href="curioni-preview.html#sec-hero">Ambientes</a>
+          <a href="pronta-entrega.html">Pronta Entrega</a>
+          <a href="novidades.html">Novidades</a>
+          <a href="arquiteto-pedido.html">Pedidos</a>
         </nav>
+        <div class="site-header__actions">
+          <a class="site-header__cta" href="orcamento.html">Orçamento/Pedido</a>
+          <button class="site-header__toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="site-mobile-menu" data-header-toggle>☰</button>
+        </div>
       </div>
-    </div>
-
-    <div class="container mainNav">
-      <a class="brand" href="curioni-preview.html">curioni</a>
-      <div class="headerActions">
-        <a class="btn" href="produtos-detalhes.html">Catálogo</a>
-        <a class="btn dark" href="orcamento.html">Solicitar orçamento</a>
-        <button class="menuToggle" type="button" aria-expanded="false" aria-controls="menu-panel">☰</button>
-      </div>
-      <nav class="menuPanel" id="menu-panel" aria-label="Menu principal">
-        <a class="active" href="curioni-preview.html">Home</a>
-        <a href="#sec-categorias">Produtos</a>
+      <nav class="site-header__panel" id="site-mobile-menu" aria-label="Menu mobile" data-header-panel>
+        <a href="curioni-preview.html#sec-categorias" aria-current="page">Categorias</a>
+        <a href="curioni-preview.html#sec-hero">Ambientes</a>
         <a href="pronta-entrega.html">Pronta Entrega</a>
         <a href="novidades.html">Novidades</a>
-        <a href="orcamento.html">Orçamento</a>
-        <a href="arquiteto-pedido.html">Pedido de Arquiteto</a>
-        <a href="profissionais.html">Sobre</a>
+        <a href="arquiteto-pedido.html">Pedidos</a>
+        <a href="orcamento.html">Orçamento/Pedido</a>
       </nav>
     </div>
-
-    <div class="catStrip">
-      <div class="container catList">
-        <a href="#sec-assentos">Assentos</a>
-        <a href="#sec-mesas">Mesas</a>
-        <a href="#sec-complementos">Complementos</a>
-        <a href="#sec-iluminacao">Iluminação</a>
-        <a href="#sec-externa">Área externa</a>
-      </div>
-    </div>
   </header>
+
+  
 
   <main>
     <section id="sec-hero">
@@ -394,5 +383,6 @@
       }
     });
   </script>
+  <script src="assets/header.js"></script>
 </body>
 </html>
