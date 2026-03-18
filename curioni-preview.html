@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Curioni | Mobiliário autoral</title>
+  <title>Curioni | Design autoral para interiores sofisticados</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
@@ -13,131 +13,106 @@
 <body>
 <header class="site-header" data-site-header></header>
 
-<main class="container home-v4">
-  <section class="section home-v4-hero">
-    <div>
-      <span class="tag">Coleção Curioni 2026</span>
-      <h1>Minimalismo brasileiro com presença escultural.</h1>
-      <p>Um novo layout de navegação para descobrir peças por categoria com leitura rápida e estética sofisticada.</p>
-      <div class="home-cta-row">
-        <a class="btn inverse" href="produtos.html">Ver catálogo completo</a>
-        <a class="btn" href="orcamento.html">Solicitar consultoria</a>
+<main class="container page-shell">
+  <section class="section hero-card card">
+    <div class="thumb" data-image-key="homeHero"></div>
+    <div class="hero-card__overlay">
+      <span class="eyebrow">Nova arquitetura digital Curioni</span>
+      <h1>Um site mais claro para vender, inspirar e especificar.</h1>
+      <p>Reestruturamos a navegação para separar catálogo, pronta entrega, ambientes e conteúdo institucional com uma linguagem premium e objetiva.</p>
+      <div class="page-hero__actions">
+        <a class="btn inverse" href="produtos.html">Explorar produtos</a>
+        <a class="btn ghost" href="pronta-entrega.html">Entrar na loja pronta entrega</a>
       </div>
     </div>
-    <article class="card home-v4-hero-media">
-      <div class="thumb" data-image-key="homeHero"></div>
-      <div class="card-body">
-        <h3>Design que valoriza o espaço</h3>
-        <p>Linhas limpas, materiais nobres e proporções pensadas para ambientes residenciais e corporativos.</p>
+  </section>
+
+  <section class="section home-curation">
+    <article class="card editorial-panel">
+      <span class="eyebrow">Curadoria de jornada</span>
+      <h2>Uma experiência pensada para conduzir a decisão.</h2>
+      <p class="lead">A home agora organiza a experiência em blocos claros: descoberta, categorias, compra rápida, inspiração e relacionamento com profissionais.</p>
+      <div class="editorial-list">
+        <div class="editorial-item"><span class="editorial-index">01</span><div><strong>Descoberta imediata</strong><p>Header objetivo, CTA central e categorias estratégicas na primeira dobra.</p></div></div>
+        <div class="editorial-item"><span class="editorial-index">02</span><div><strong>Navegação setorizada</strong><p>Produtos e Pronta entrega ganham páginas próprias com propósitos e conversões diferentes.</p></div></div>
+        <div class="editorial-item"><span class="editorial-index">03</span><div><strong>Estética editorial</strong><p>Tipografia refinada, contraste suave e hierarquia visual inspirada em marcas premium.</p></div></div>
       </div>
+    </article>
+    <article class="card">
+      <div class="thumb" data-image-key="ambSalaPrincipal" style="height:100%;min-height:520px"></div>
     </article>
   </section>
 
-  <section class="section card home-v4-dynamic" id="categorias">
-    <div class="section-head">
-      <h2>Categorias em destaque</h2>
-      <p>Selecione a categoria para trocar o produto de referência abaixo.</p>
-    </div>
-    <div class="home-v4-tabs" role="tablist" aria-label="Categorias de produtos">
-      <button class="home-v4-tab is-active" type="button" role="tab" aria-selected="true" data-category-tab="assentos">Assentos</button>
-      <button class="home-v4-tab" type="button" role="tab" aria-selected="false" data-category-tab="mesas">Mesas</button>
-      <button class="home-v4-tab" type="button" role="tab" aria-selected="false" data-category-tab="complementos">Complementos</button>
-      <button class="home-v4-tab" type="button" role="tab" aria-selected="false" data-category-tab="iluminacao">Iluminação</button>
-      <button class="home-v4-tab" type="button" role="tab" aria-selected="false" data-category-tab="externa">Área externa</button>
-    </div>
-
-    <a class="home-v4-product card" data-category-link href="categoria-assentos.html">
+  <section class="section category-feature-grid">
+    <article class="card category-panel">
+      <div class="section-head" style="margin-bottom:0;display:block;">
+        <span class="eyebrow">Catálogo por categoria</span>
+        <h2>Explore as famílias de produto com leitura rápida.</h2>
+        <p>Selecionar uma categoria atualiza o destaque com produto âncora, descrição comercial e link para a área correspondente.</p>
+      </div>
+      <div class="category-tabs" role="tablist" aria-label="Categorias Curioni">
+        <button class="category-tab is-active" type="button" role="tab" aria-selected="true" data-category-tab="assentos">Assentos</button>
+        <button class="category-tab" type="button" role="tab" aria-selected="false" data-category-tab="mesas">Mesas</button>
+        <button class="category-tab" type="button" role="tab" aria-selected="false" data-category-tab="complementos">Complementos</button>
+        <button class="category-tab" type="button" role="tab" aria-selected="false" data-category-tab="iluminacao">Iluminação</button>
+        <button class="category-tab" type="button" role="tab" aria-selected="false" data-category-tab="externa">Outdoor</button>
+      </div>
+    </article>
+    <a class="card category-display" data-category-link href="categoria-assentos.html">
       <div class="thumb" data-category-image data-image-key="launchPoltronaAlma"></div>
       <div class="card-body">
-        <p class="home-v4-kicker" data-category-label>Assentos</p>
+        <span class="eyebrow" data-category-label>Assentos</span>
         <h3 data-category-title>Poltrona Alma</h3>
-        <p data-category-reference>Referência CUR-ASS-014 · Couro natural e base em madeira maciça.</p>
-        <span class="btn">Ir para página da categoria</span>
+        <p data-category-reference>Assinatura escultural com conforto profundo, tecidos premium e configuração para living ou lobby.</p>
+        <span class="btn">Abrir categoria</span>
       </div>
     </a>
   </section>
 
-
-
-  <section class="section card" style="padding:24px;">
-    <div class="section-head">
-      <h2>Bem-vindo a CURIONI</h2>
-    </div>
-    <p style="margin:0;color:var(--muted);max-width:95ch;">
-      Curioni é a marca de produtos desenhados por Tiago Curioni segundo 3 pilares essenciais da marca: Atemporalidade, Racionalismo e
-      Funcionalidade. Esta é a tríade que garante um produto de excelência de ponta a ponta, desde o momento da concepção até sua entrega.
-      Nascemos digitais e crescemos nossa capilaridade em diferentes canais de venda.
-    </p>
-    <p style="margin:12px 0 0;color:var(--muted);max-width:95ch;">
-      Hoje, a Curioni contribui com diversas marcas parceiras, permitindo que nossos produtos estejam presentes em centenas de lares no
-      Brasil e no mundo afora.
-    </p>
+  <section class="section grid-4 category-grid">
+    <a class="card product-category-card" href="categoria-assentos.html"><div class="thumb" data-image-key="catAssentos"></div><div class="card-body"><span class="eyebrow">Assentos</span><h3>Conforto com desenho leve</h3><p>Cadeiras, poltronas, bancos e sofás com linguagem autoral.</p></div></a>
+    <a class="card product-category-card" href="categoria-mesas.html"><div class="thumb" data-image-key="catMesas"></div><div class="card-body"><span class="eyebrow">Mesas</span><h3>Superfícies esculturais</h3><p>Peças de jantar, apoio e centro para composições elegantes.</p></div></a>
+    <a class="card product-category-card" href="categoria-complementos.html"><div class="thumb" data-image-key="catComplementos"></div><div class="card-body"><span class="eyebrow">Complementos</span><h3>Volumes que organizam</h3><p>Buffets, carrinhos e objetos para ampliar a experiência do espaço.</p></div></a>
+    <a class="card product-category-card" href="categoria-iluminacao.html"><div class="thumb" data-image-key="catIluminacao"></div><div class="card-body"><span class="eyebrow">Iluminação</span><h3>Luz como atmosfera</h3><p>Luminárias de apoio e pendentes com presença cênica.</p></div></a>
   </section>
 
-  <section class="section grid-2">
-    <article class="card home-v4-hero-media">
-      <div class="thumb" data-image-key="catAssentos"></div>
+  <section class="section split-highlight">
+    <article class="card" style="overflow:hidden;">
+      <div class="thumb" data-image-key="launchSofaCurva" style="height:100%;min-height:480px"></div>
     </article>
-    <article class="card">
-      <div class="card-body" style="padding:24px;display:grid;gap:10px;align-content:center;">
-        <span class="tag">Descubra Velvet</span>
-        <h3 style="margin:0;font:600 clamp(28px,4vw,46px)/1.02 var(--title)">Um clássico contemporâneo</h3>
-        <p style="margin:0;color:var(--muted);">
-          Talvez nossa peça mais consagrada, um clássico já, por assim dizer, Velvet é uma cadeira ultra-minimalista, com linhas retas e
-          bem definidas, para ambientes sofisticados e que exigem conforto.
-        </p>
-        <p style="margin:0;color:var(--muted);">Dona de uma ergonomia perfeita, Velvet é a cadeira definitiva.</p>
-        <a class="btn" href="https://www.curioni.com.br/moveis/cadeira-velvet" target="_blank" rel="noopener">Ver cadeira Velvet</a>
+    <article class="section-soft info-stack">
+      <span class="eyebrow">Pronta entrega com visual de loja</span>
+      <h2 style="margin:0;font:600 clamp(30px,4vw,54px)/.98 var(--title)">Uma vitrine pronta para conversão imediata.</h2>
+      <p class="lead">A página de pronta entrega agora simula uma loja digital completa, com filtros, preço em destaque, estoque e chamadas diretas para compra.</p>
+      <div class="metric-grid">
+        <div class="kpi"><strong>12</strong><span>produtos com entrega rápida</span></div>
+        <div class="kpi"><strong>48h</strong><span>para itens selecionados</span></div>
+        <div class="kpi"><strong>100%</strong><span>foco em clareza comercial</span></div>
+      </div>
+      <div class="page-hero__actions">
+        <a class="btn inverse" href="pronta-entrega.html">Abrir loja</a>
+        <a class="btn" href="produtos-detalhes.html?produto=poltrona-alma&origem=pronta-entrega">Ver produto exemplo</a>
       </div>
     </article>
   </section>
 
-  <section class="section">
-    <div class="section-head">
-      <h2>Prêmios e reconhecimento</h2>
-      <p>Peças icônicas premiadas no iF Design Award.</p>
+  <section class="section story-grid">
+    <article class="story-quote">
+      <p>“O novo ecossistema digital traduz a mesma precisão do mobiliário: menos ruído, mais intenção, mais desejo.”</p>
+      <span>Manifesto de experiência Curioni</span>
+    </article>
+    <div class="media-stack">
+      <article class="card collection-card"><div class="thumb" data-image-key="launchMesaVelo"></div><div class="card-body"><span class="eyebrow">Ambientes</span><h3>Espaços completos para inspirar especificações.</h3><p>Página editorial que ajuda arquitetos e clientes a visualizar aplicação, materialidade e mood.</p><a class="btn" href="ambientes.html">Ver ambientes</a></div></article>
+      <article class="card collection-card"><div class="thumb" data-image-key="launchPendenteArco"></div><div class="card-body"><span class="eyebrow">Profissionais</span><h3>Fluxos dedicados para arquitetos, lojistas e contratos.</h3><p>Landing com benefícios, recursos técnicos e acesso rápido aos canais comerciais.</p><a class="btn" href="profissionais.html">Acessar área profissional</a></div></article>
     </div>
-    <div class="grid-3">
-      <article class="card">
-        <div class="thumb" style="background-image:url('https://image.thum.io/get/width/1200/https://www.curioni.com.br/moveis/cadeira-fly');" data-fallback-text="Imagem da cadeira Fly"></div>
-        <div class="card-body">
-          <h3>Cadeira Fly é premiada no iF Award</h3>
-          <p>A icônica cadeira Fly recebeu o consagrado prêmio Alemão iF Design Award em 2024. Considerado o Oscar do Design, a Fly ganha notoriedade no cenário mundial.</p>
-          <a class="btn" href="https://www.curioni.com.br/moveis/cadeira-fly" target="_blank" rel="noopener">Conhecer Fly</a>
-        </div>
-      </article>
-      <article class="card">
-        <div class="thumb" style="background-image:url('https://image.thum.io/get/width/1200/https://www.curioni.com.br/moveis/poltrona-orbital');" data-fallback-text="Imagem da Poltrona Orbital"></div>
-        <div class="card-body">
-          <h3>Poltrona Orbital é iF Award em 2025</h3>
-          <p>A peça escultórica de Tiago Curioni recebe o iF Design Award em 2025, por sua versatilidade e conforto aferido em uma peça de desenho intrigante e inovador.</p>
-          <a class="btn" href="https://www.curioni.com.br/moveis/poltrona-orbital" target="_blank" rel="noopener">Conhecer Orbital</a>
-        </div>
-      </article>
-      <article class="card">
-        <div class="thumb" style="background-image:url('https://static.wixstatic.com/media/0c10a6_3b26f73fc33347fbb6e0aaadbf373974~mv2.png/v1/fill/w_477,h_465,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/2.png');" data-fallback-text="Imagem da cadeira Tenda"></div>
-        <div class="card-body">
-          <h3>Cadeira Tenda, o 2° iF Award da noite</h3>
-          <p>Também premiada na noite icônica do design mundial, a cadeira Tenda foi enaltecida por seu desenho puro e descomplicado, condição inerente para as criações de Tiago Curioni.</p>
-          <a class="btn" href="https://www.curioni.com.br/moveis/cadeira-tenda" target="_blank" rel="noopener">Conhecer Tenda</a>
-        </div>
-      </article>
-    </div>
-  </section>
-  <section class="section home-v4-categories">
-    <a class="card product-category-card" href="categoria-assentos.html"><div class="thumb" data-image-key="catAssentos"></div><div class="card-body"><h3>Assentos</h3><p>Cadeiras, poltronas, sofás e bancos autorais.</p></div></a>
-    <a class="card product-category-card" href="categoria-mesas.html"><div class="thumb" data-image-key="catMesas"></div><div class="card-body"><h3>Mesas</h3><p>Centro, jantar e laterais com acabamento premium.</p></div></a>
-    <a class="card product-category-card" href="categoria-complementos.html"><div class="thumb" data-image-key="catComplementos"></div><div class="card-body"><h3>Complementos</h3><p>Buffets, carrinhos, objetos e tapeçaria refinada.</p></div></a>
-    <a class="card product-category-card" href="categoria-iluminacao.html"><div class="thumb" data-image-key="catIluminacao"></div><div class="card-body"><h3>Iluminação</h3><p>Abajures, pendentes, colunas e arandelas.</p></div></a>
-    <a class="card product-category-card" href="categoria-area-externa.html"><div class="thumb" data-image-key="catExterna"></div><div class="card-body"><h3>Área externa</h3><p>Peças resistentes para varandas e espaços abertos.</p></div></a>
   </section>
 </main>
 
 <footer class="footer">
   <div class="container footer-grid">
-    <div><a class="site-header__logo" href="curioni-preview.html" style="font-size:32px">curioni</a><p>fale@curioni.com.br</p></div>
-    <div><h4>Navegação</h4><a href="produtos.html">Produtos</a><a href="novidades.html">Novidades</a><a href="sobre.html">Sobre</a></div>
-    <div><h4>Atendimento</h4><a href="orcamento.html">Solicitar orçamento</a><a href="profissionais.html">Profissionais</a><a href="biblioteca-tecnica.html">Biblioteca 3D</a></div>
+    <div><a class="site-header__logo" href="curioni-preview.html" style="font-size:32px">curioni</a><p>Experiência digital redesenhada para descoberta, venda e especificação.</p><p>fale@curioni.com.br</p></div>
+    <div><h4>Navegação</h4><a href="produtos.html">Produtos</a><a href="pronta-entrega.html">Pronta entrega</a><a href="ambientes.html">Ambientes</a><a href="sobre.html">Marca</a></div>
+    <div><h4>Atendimento</h4><a href="orcamento.html">Solicitar orçamento</a><a href="profissionais.html">Área profissional</a><a href="biblioteca-tecnica.html">Biblioteca 3D</a></div>
   </div>
 </footer>
 
@@ -145,42 +120,12 @@
 <script src="assets/header.js"></script>
 <script>
   (() => {
-    const CATEGORIES = {
-      assentos: {
-        label: 'Assentos',
-        title: 'Poltrona Alma',
-        reference: 'Referência CUR-ASS-014 · Couro natural e base em madeira maciça.',
-        imageKey: 'launchPoltronaAlma',
-        href: 'categoria-assentos.html'
-      },
-      mesas: {
-        label: 'Mesas',
-        title: 'Mesa Vélo',
-        reference: 'Referência CUR-MES-021 · Tampo mineral com estrutura em freijó.',
-        imageKey: 'launchMesaVelo',
-        href: 'categoria-mesas.html'
-      },
-      complementos: {
-        label: 'Complementos',
-        title: 'Buffet Módulo',
-        reference: 'Referência CUR-COM-009 · Compartimentos modulares e acabamento em lâmina natural.',
-        imageKey: 'launchBuffetModulo',
-        href: 'categoria-complementos.html'
-      },
-      iluminacao: {
-        label: 'Iluminação',
-        title: 'Abajur Lía',
-        reference: 'Referência CUR-ILU-004 · Cúpula em linho e haste em latão escovado.',
-        imageKey: 'launchAbajurLia',
-        href: 'categoria-iluminacao.html'
-      },
-      externa: {
-        label: 'Área externa',
-        title: 'Banco Tenda',
-        reference: 'Referência CUR-EXT-017 · Estrutura resistente para ambientes externos.',
-        imageKey: 'launchBancoTenda',
-        href: 'categoria-area-externa.html'
-      }
+    const categories = {
+      assentos: { label: 'Assentos', title: 'Poltrona Alma', reference: 'Assinatura escultural com conforto profundo, tecidos premium e configuração para living ou lobby.', imageKey: 'launchPoltronaAlma', href: 'categoria-assentos.html' },
+      mesas: { label: 'Mesas', title: 'Mesa Vélo', reference: 'Mesa de jantar com tampo mineral, base volumétrica e presença de galeria.', imageKey: 'launchMesaVelo', href: 'categoria-mesas.html' },
+      complementos: { label: 'Complementos', title: 'Buffet Módulo', reference: 'Armazenamento sofisticado com modulação inteligente para composições residenciais e corporativas.', imageKey: 'launchBuffetModulo', href: 'categoria-complementos.html' },
+      iluminacao: { label: 'Iluminação', title: 'Pendente Arco', reference: 'Luz difusa e gesto arquitetônico para mesas de jantar, halls e lounges.', imageKey: 'launchPendenteArco', href: 'categoria-iluminacao.html' },
+      externa: { label: 'Outdoor', title: 'Banco Tenda', reference: 'Estrutura leve e resistente para varandas, rooftops e projetos de hospitalidade.', imageKey: 'launchBancoTenda', href: 'categoria-area-externa.html' }
     };
 
     const tabs = document.querySelectorAll('[data-category-tab]');
@@ -190,15 +135,13 @@
     const title = document.querySelector('[data-category-title]');
     const reference = document.querySelector('[data-category-reference]');
 
-    if (!tabs.length || !link || !image || !label || !title || !reference) return;
-
-    const renderCategory = (key) => {
-      const category = CATEGORIES[key];
+    function renderCategory(key) {
+      const category = categories[key];
       if (!category) return;
       tabs.forEach((tab) => {
-        const selected = tab.dataset.categoryTab === key;
-        tab.classList.toggle('is-active', selected);
-        tab.setAttribute('aria-selected', String(selected));
+        const isSelected = tab.dataset.categoryTab === key;
+        tab.classList.toggle('is-active', isSelected);
+        tab.setAttribute('aria-selected', String(isSelected));
       });
       link.href = category.href;
       label.textContent = category.label;
@@ -206,11 +149,9 @@
       reference.textContent = category.reference;
       image.dataset.imageKey = category.imageKey;
       if (window.applyCurioniImageInventory) window.applyCurioniImageInventory();
-    };
+    }
 
-    tabs.forEach((tab) => {
-      tab.addEventListener('click', () => renderCategory(tab.dataset.categoryTab));
-    });
+    tabs.forEach((tab) => tab.addEventListener('click', () => renderCategory(tab.dataset.categoryTab)));
   })();
 </script>
 </body>

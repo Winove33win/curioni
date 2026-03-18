@@ -10,125 +10,103 @@
   <link rel="stylesheet" href="assets/site.css" />
 </head>
 <body>
-<header class="site-header" data-site-header><div class="site-header__container"><div class="site-header__inner"><a class="site-header__logo" href="curioni-preview.html">curioni</a><nav class="site-header__nav"><a href="curioni-preview.html">Início</a><a href="produtos.html">Produtos</a><a href="pronta-entrega.html">Pronta entrega</a><a href="produtos-detalhes.html" aria-current="page">Detalhes</a></nav></div></div></header>
-<main class="container">
-  <section class="section">
-    <div class="grid-2 product-detail-layout">
-      <article class="card product-gallery">
-        <div class="thumb" style="height:460px" data-image-key="pdpMain1" id="produto-imagem"></div>
-      </article>
-      <article class="card card-body product-detail-copy">
-        <span class="tag" id="produto-categoria">Linha Curioni</span>
-        <h1 id="produto-nome" style="margin:8px 0 6px">Cadeira Fly</h1>
-        <p id="produto-descricao">Peça com estrutura robusta e desenho leve, feita para composições contemporâneas.</p>
-        <p><strong id="produto-preco">R$ 0,00</strong> · <span id="produto-disponibilidade">0 em estoque</span></p>
-        <ul class="list" id="produto-especificacoes">
-          <li>Dimensões: 56 x 58 x 82 cm</li>
-          <li>Acabamentos: preto fosco, ébano, couro preto</li>
-          <li>Prazo: 30 a 45 dias</li>
-        </ul>
+<header class="site-header" data-site-header></header>
 
-        <div class="product-conversion card" id="compra-rapida">
-          <div class="card-body">
-            <h3>Compra rápida</h3>
-            <p>Escolha a quantidade e inicie a compra diretamente com nosso time comercial.</p>
-            <form id="compra-form" class="form">
-              <label>Quantidade
-                <input class="input" type="number" min="1" value="1" id="compra-quantidade" />
-              </label>
-              <button class="btn inverse" type="submit">Comprar sem checkout</button>
-            </form>
-          </div>
-        </div>
+<main class="container product-detail-shell">
+  <section class="section product-detail-hero">
+    <article class="product-gallery">
+      <div class="card thumb product-gallery__main" data-image-key="pdpMain1" id="produto-imagem"></div>
+      <div class="product-gallery__thumbs">
+        <div class="card thumb" data-image-key="pdpMain1" data-gallery-target="produto-imagem"></div>
+        <div class="card thumb" data-image-key="pdpThumb2" data-gallery-target="produto-imagem"></div>
+        <div class="card thumb" data-image-key="pdpThumb3" data-gallery-target="produto-imagem"></div>
+      </div>
+    </article>
+    <article class="card product-detail-copy">
+      <span class="eyebrow" id="produto-categoria">Linha Curioni</span>
+      <h1 id="produto-nome" class="display-title" style="font-size:clamp(36px,4.6vw,64px);margin:0;">Cadeira Fly</h1>
+      <p id="produto-descricao" class="lead">Peça com estrutura robusta e desenho leve, feita para composições contemporâneas.</p>
 
-        <div class="product-conversion card">
-          <div class="card-body">
-            <h3>Converter em pedido técnico</h3>
-            <p>Se preferir, envie para orçamento com as configurações do produto.</p>
-            <form id="pedido-form" class="form">
-              <label>Quantidade
-                <input class="input" type="number" min="1" value="1" id="pedido-quantidade" />
-              </label>
-              <label>Acabamento desejado
-                <select id="pedido-acabamento">
-                  <option value="freijo-natural">Freijó natural</option>
-                  <option value="nogueira">Nogueira</option>
-                  <option value="laca-preta">Laca preta</option>
-                </select>
-              </label>
-              <button class="btn" type="submit">Ir para orçamento</button>
-            </form>
-          </div>
+      <div class="product-price-row">
+        <div>
+          <strong id="produto-preco">R$ 0,00</strong>
+          <span id="produto-disponibilidade" class="muted">0 em estoque</span>
         </div>
-      </article>
-    </div>
+        <div class="page-hero__actions" style="margin:0;">
+          <a class="btn" href="produtos.html">Voltar ao catálogo</a>
+          <a class="btn inverse" href="#compra-rapida">Comprar rápido</a>
+        </div>
+      </div>
+
+      <div class="product-spec-grid" id="produto-destaques"></div>
+
+      <ul class="list" id="produto-especificacoes">
+        <li>Dimensões: 56 x 58 x 82 cm</li>
+        <li>Acabamentos: preto fosco, ébano, couro preto</li>
+        <li>Prazo: 30 a 45 dias</li>
+      </ul>
+
+      <div class="product-conversion card" id="compra-rapida">
+        <div class="card-body">
+          <h3>Compra rápida</h3>
+          <p>Escolha a quantidade e inicie a compra diretamente com nosso time comercial.</p>
+          <form id="compra-form" class="form">
+            <label>Quantidade
+              <input class="input" type="number" min="1" value="1" id="compra-quantidade" />
+            </label>
+            <button class="btn inverse" type="submit">Comprar sem checkout</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="product-conversion card">
+        <div class="card-body">
+          <h3>Converter em pedido técnico</h3>
+          <p>Se preferir, envie o produto para orçamento com acabamento e quantidade definidos.</p>
+          <form id="pedido-form" class="form">
+            <label>Quantidade
+              <input class="input" type="number" min="1" value="1" id="pedido-quantidade" />
+            </label>
+            <label>Acabamento desejado
+              <select id="pedido-acabamento">
+                <option value="freijo-natural">Freijó natural</option>
+                <option value="nogueira">Nogueira</option>
+                <option value="laca-preta">Laca preta</option>
+              </select>
+            </label>
+            <button class="btn" type="submit">Ir para orçamento</button>
+          </form>
+        </div>
+      </div>
+    </article>
   </section>
 </main>
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div><a class="site-header__logo" href="curioni-preview.html" style="font-size:32px">curioni</a><p>Página de produto com visual premium, compra rápida e conversão para orçamento.</p></div>
+    <div><h4>Explorar</h4><a href="produtos.html">Catálogo</a><a href="pronta-entrega.html">Pronta entrega</a></div>
+    <div><h4>Atendimento</h4><a href="orcamento.html">Solicitar orçamento</a><a href="profissionais.html">Área profissional</a></div>
+  </div>
+</footer>
+
 <script src="assets/image-inventory.js"></script>
 <script src="assets/header.js"></script>
 <script>
   (function () {
     const produtos = {
-      'cadeira-fly': {
-        nome: 'Cadeira Fly', categoria: 'Assentos', preco: 4290, estoque: 12,
-        descricao: 'Peça com estrutura robusta e desenho leve, feita para composições contemporâneas.',
-        especificacoes: ['Dimensões: 56 x 58 x 82 cm', 'Acabamentos: preto fosco, ébano, couro preto', 'Pronta entrega: envio em 48h'], imageKey: 'pdpMain1'
-      },
-      'poltrona-alma': {
-        nome: 'Poltrona Alma', categoria: 'Assentos', preco: 6890, estoque: 5,
-        descricao: 'Conforto profundo com desenho orgânico para salas e lounges corporativos.',
-        especificacoes: ['Dimensões: 78 x 74 x 76 cm', 'Acabamentos: linho areia, boucle, couro natural', 'Pronta entrega: envio em 48h'], imageKey: 'launchPoltronaAlma'
-      },
-      'sofa-curva': {
-        nome: 'Sofá Curva', categoria: 'Assentos', preco: 13200, estoque: 3,
-        descricao: 'Sistema modular para composições fluidas em ambientes de alto padrão.',
-        especificacoes: ['Dimensões: módulos de 110 cm', 'Acabamentos: tecido premium e veludo técnico', 'Pronta entrega: envio em até 5 dias'], imageKey: 'launchSofaCurva'
-      },
-      'banco-tenda': {
-        nome: 'Banco Tenda', categoria: 'Assentos', preco: 3560, estoque: 7,
-        descricao: 'Banco versátil para áreas de convívio com visual leve e acabamento premium.',
-        especificacoes: ['Dimensões: 140 x 48 x 46 cm', 'Acabamentos: madeira e tecido impermeável', 'Pronta entrega: envio em até 72h'], imageKey: 'launchBancoTenda'
-      },
-      'mesa-velo': {
-        nome: 'Mesa Vélo', categoria: 'Mesas', preco: 15990, estoque: 4,
-        descricao: 'Mesa de jantar com tampo mineral e presença escultural no ambiente.',
-        especificacoes: ['Dimensões: 240 x 110 x 76 cm', 'Acabamentos: travertino, mármore e lâmina natural', 'Pronta entrega: envio em até 4 dias'], imageKey: 'launchMesaVelo'
-      },
-      'mesa-ciano': {
-        nome: 'Mesa Ciano', categoria: 'Mesas', preco: 2890, estoque: 11,
-        descricao: 'Mesa lateral com proporção compacta para apoiar poltronas e sofás.',
-        especificacoes: ['Dimensões: 52 x 52 x 56 cm', 'Acabamentos: freijó, nogueira e vidro fumê', 'Pronta entrega: envio imediato'], imageKey: 'vitrineMesaCiano'
-      },
-      'buffet-modulo': {
-        nome: 'Buffet Módulo', categoria: 'Complementos', preco: 10900, estoque: 2,
-        descricao: 'Armazenamento sofisticado com portas usinadas e composição personalizável.',
-        especificacoes: ['Dimensões: 220 x 48 x 82 cm', 'Acabamentos: laca, lâmina natural e pedra', 'Pronta entrega: envio em até 6 dias'], imageKey: 'launchBuffetModulo'
-      },
-      'carrinho-atlas': {
-        nome: 'Carrinho Atlas', categoria: 'Complementos', preco: 4740, estoque: 8,
-        descricao: 'Carrinho bar com rodas invisíveis e bandejas removíveis.',
-        especificacoes: ['Dimensões: 98 x 46 x 84 cm', 'Acabamentos: metal preto e lâmina de carvalho', 'Pronta entrega: envio em 48h'], imageKey: 'catComplementos'
-      },
-      'abajur-lia': {
-        nome: 'Abajur Lía', categoria: 'Iluminação', preco: 1690, estoque: 15,
-        descricao: 'Iluminação de apoio com luz difusa para salas, quartos e recepções.',
-        especificacoes: ['Dimensões: 42 x 42 x 68 cm', 'Acabamentos: madeira, linho e latão', 'Pronta entrega: envio imediato'], imageKey: 'launchAbajurLia'
-      },
-      'pendente-arco': {
-        nome: 'Pendente Arco', categoria: 'Iluminação', preco: 5290, estoque: 9,
-        descricao: 'Pendente com assinatura escultural para mesas e áreas de estar.',
-        especificacoes: ['Dimensões: 120 x 120 x 38 cm', 'Acabamentos: latão escovado e vidro opalino', 'Pronta entrega: envio em 48h'], imageKey: 'launchPendenteArco'
-      },
-      'balanco-oca': {
-        nome: 'Balanço Oca', categoria: 'Área externa', preco: 7850, estoque: 6,
-        descricao: 'Peça outdoor com estrutura em alumínio e trama náutica resistente.',
-        especificacoes: ['Dimensões: 88 x 96 x 124 cm', 'Acabamentos: corda náutica e pintura eletrostática', 'Pronta entrega: envio em até 72h'], imageKey: 'vitrineBalancoOca'
-      },
-      'banco-tenda-outdoor': {
-        nome: 'Banco Tenda Outdoor', categoria: 'Área externa', preco: 3980, estoque: 10,
-        descricao: 'Versão externa com tecidos técnicos e proteção UV de longa duração.',
-        especificacoes: ['Dimensões: 140 x 48 x 46 cm', 'Acabamentos: alumínio, corda e tecido náutico', 'Pronta entrega: envio em 48h'], imageKey: 'launchBancoTenda'
-      }
+      'cadeira-fly': { nome: 'Cadeira Fly', categoria: 'Assentos', preco: 4290, estoque: 12, descricao: 'Peça com estrutura robusta e desenho leve, feita para composições contemporâneas.', especificacoes: ['Dimensões: 56 x 58 x 82 cm', 'Acabamentos: preto fosco, ébano, couro preto', 'Pronta entrega: envio em 48h'], destaques: [{ titulo: 'Tipologia', valor: 'Cadeira' }, { titulo: 'Entrega', valor: '48h' }, { titulo: 'Uso', valor: 'Residencial + contract' }, { titulo: 'Material', valor: 'Madeira maciça' }], imageKey: 'pdpMain1' },
+      'poltrona-alma': { nome: 'Poltrona Alma', categoria: 'Assentos', preco: 6890, estoque: 5, descricao: 'Conforto profundo com desenho orgânico para salas e lounges corporativos.', especificacoes: ['Dimensões: 78 x 74 x 76 cm', 'Acabamentos: linho areia, boucle, couro natural', 'Pronta entrega: envio em 48h'], destaques: [{ titulo: 'Tipologia', valor: 'Poltrona' }, { titulo: 'Entrega', valor: '48h' }, { titulo: 'Uso', valor: 'Living + lounge' }, { titulo: 'Material', valor: 'Base metálica' }], imageKey: 'launchPoltronaAlma' },
+      'sofa-curva': { nome: 'Sofá Curva', categoria: 'Assentos', preco: 13200, estoque: 3, descricao: 'Sistema modular para composições fluidas em ambientes de alto padrão.', especificacoes: ['Dimensões: módulos de 110 cm', 'Acabamentos: tecido premium e veludo técnico', 'Pronta entrega: envio em até 5 dias'], destaques: [{ titulo: 'Tipologia', valor: 'Sofá modular' }, { titulo: 'Entrega', valor: '5 dias' }, { titulo: 'Uso', valor: 'Living premium' }, { titulo: 'Material', valor: 'Tecidos premium' }], imageKey: 'launchSofaCurva' },
+      'banco-tenda': { nome: 'Banco Tenda', categoria: 'Assentos', preco: 3560, estoque: 7, descricao: 'Banco versátil para áreas de convívio com visual leve e acabamento premium.', especificacoes: ['Dimensões: 140 x 48 x 46 cm', 'Acabamentos: madeira e tecido impermeável', 'Pronta entrega: envio em até 72h'], destaques: [{ titulo: 'Tipologia', valor: 'Banco' }, { titulo: 'Entrega', valor: '72h' }, { titulo: 'Uso', valor: 'Hall + quarto' }, { titulo: 'Material', valor: 'Madeira e tecido' }], imageKey: 'launchBancoTenda' },
+      'mesa-velo': { nome: 'Mesa Vélo', categoria: 'Mesas', preco: 15990, estoque: 4, descricao: 'Mesa de jantar com tampo mineral e presença escultural no ambiente.', especificacoes: ['Dimensões: 240 x 110 x 76 cm', 'Acabamentos: travertino, mármore e lâmina natural', 'Pronta entrega: envio em até 4 dias'], destaques: [{ titulo: 'Tipologia', valor: 'Mesa de jantar' }, { titulo: 'Entrega', valor: '4 dias' }, { titulo: 'Uso', valor: 'Residencial premium' }, { titulo: 'Material', valor: 'Mineral + madeira' }], imageKey: 'launchMesaVelo' },
+      'mesa-ciano': { nome: 'Mesa Ciano', categoria: 'Mesas', preco: 2890, estoque: 11, descricao: 'Mesa lateral com proporção compacta para apoiar poltronas e sofás.', especificacoes: ['Dimensões: 52 x 52 x 56 cm', 'Acabamentos: freijó, nogueira e vidro fumê', 'Pronta entrega: envio imediato'], destaques: [{ titulo: 'Tipologia', valor: 'Mesa lateral' }, { titulo: 'Entrega', valor: 'Imediata' }, { titulo: 'Uso', valor: 'Living' }, { titulo: 'Material', valor: 'Madeira + vidro' }], imageKey: 'vitrineMesaCiano' },
+      'buffet-modulo': { nome: 'Buffet Módulo', categoria: 'Complementos', preco: 10900, estoque: 2, descricao: 'Armazenamento sofisticado com portas usinadas e composição personalizável.', especificacoes: ['Dimensões: 220 x 48 x 82 cm', 'Acabamentos: laca, lâmina natural e pedra', 'Pronta entrega: envio em até 6 dias'], destaques: [{ titulo: 'Tipologia', valor: 'Buffet' }, { titulo: 'Entrega', valor: '6 dias' }, { titulo: 'Uso', valor: 'Sala + gourmet' }, { titulo: 'Material', valor: 'Lâmina natural' }], imageKey: 'launchBuffetModulo' },
+      'carrinho-atlas': { nome: 'Carrinho Atlas', categoria: 'Complementos', preco: 4740, estoque: 8, descricao: 'Carrinho bar com rodas invisíveis e bandejas removíveis.', especificacoes: ['Dimensões: 98 x 46 x 84 cm', 'Acabamentos: metal preto e lâmina de carvalho', 'Pronta entrega: envio em 48h'], destaques: [{ titulo: 'Tipologia', valor: 'Carrinho' }, { titulo: 'Entrega', valor: '48h' }, { titulo: 'Uso', valor: 'Hospitalidade' }, { titulo: 'Material', valor: 'Metal + madeira' }], imageKey: 'catComplementos' },
+      'abajur-lia': { nome: 'Abajur Lía', categoria: 'Iluminação', preco: 1690, estoque: 15, descricao: 'Iluminação de apoio com luz difusa para salas, quartos e recepções.', especificacoes: ['Dimensões: 42 x 42 x 68 cm', 'Acabamentos: madeira, linho e latão', 'Pronta entrega: envio imediato'], destaques: [{ titulo: 'Tipologia', valor: 'Abajur' }, { titulo: 'Entrega', valor: 'Imediata' }, { titulo: 'Uso', valor: 'Apoio' }, { titulo: 'Material', valor: 'Madeira + linho' }], imageKey: 'launchAbajurLia' },
+      'pendente-arco': { nome: 'Pendente Arco', categoria: 'Iluminação', preco: 5290, estoque: 9, descricao: 'Pendente com assinatura escultural para mesas e áreas de estar.', especificacoes: ['Dimensões: 120 x 120 x 38 cm', 'Acabamentos: latão escovado e vidro opalino', 'Pronta entrega: envio em 48h'], destaques: [{ titulo: 'Tipologia', valor: 'Pendente' }, { titulo: 'Entrega', valor: '48h' }, { titulo: 'Uso', valor: 'Jantar + lobby' }, { titulo: 'Material', valor: 'Latão + vidro' }], imageKey: 'launchPendenteArco' },
+      'balanco-oca': { nome: 'Balanço Oca', categoria: 'Outdoor', preco: 7850, estoque: 6, descricao: 'Peça outdoor com estrutura em alumínio e trama náutica resistente.', especificacoes: ['Dimensões: 88 x 96 x 124 cm', 'Acabamentos: corda náutica e pintura eletrostática', 'Pronta entrega: envio em até 72h'], destaques: [{ titulo: 'Tipologia', valor: 'Balanço' }, { titulo: 'Entrega', valor: '72h' }, { titulo: 'Uso', valor: 'Deck + varanda' }, { titulo: 'Material', valor: 'Alumínio + corda' }], imageKey: 'vitrineBalancoOca' },
+      'banco-tenda-outdoor': { nome: 'Banco Tenda Outdoor', categoria: 'Outdoor', preco: 3980, estoque: 10, descricao: 'Versão externa com tecidos técnicos e proteção UV de longa duração.', especificacoes: ['Dimensões: 140 x 48 x 46 cm', 'Acabamentos: alumínio, corda e tecido náutico', 'Pronta entrega: envio em 48h'], destaques: [{ titulo: 'Tipologia', valor: 'Banco outdoor' }, { titulo: 'Entrega', valor: '48h' }, { titulo: 'Uso', valor: 'Outdoor' }, { titulo: 'Material', valor: 'Tecido técnico' }], imageKey: 'launchBancoTenda' }
     };
 
     const params = new URLSearchParams(window.location.search);
@@ -143,23 +121,26 @@
     document.getElementById('produto-descricao').textContent = produto.descricao;
     document.getElementById('produto-imagem').dataset.imageKey = produto.imageKey;
     document.getElementById('produto-preco').textContent = formatarMoeda(produto.preco);
-    document.getElementById('produto-disponibilidade').textContent = `${produto.estoque} em estoque`;
+    document.getElementById('produto-disponibilidade').textContent = `${produto.estoque} unidades disponíveis`;
+    document.querySelectorAll('[data-gallery-target="produto-imagem"]').forEach((thumb) => { thumb.dataset.imageKey = produto.imageKey; });
 
     const lista = document.getElementById('produto-especificacoes');
     lista.innerHTML = produto.especificacoes.map((item) => `<li>${item}</li>`).join('');
 
-    if (window.applyCurioniImageInventory) {
-      window.applyCurioniImageInventory();
-    }
+    document.getElementById('produto-destaques').innerHTML = produto.destaques.map((item) => `
+      <div class="kpi"><strong>${item.titulo}</strong><span>${item.valor}</span></div>
+    `).join('');
+
+    if (window.applyCurioniImageInventory) window.applyCurioniImageInventory();
 
     if (origem !== 'pronta-entrega') {
-      document.getElementById('compra-rapida').querySelector('p').textContent = 'Compra também disponível para pronta entrega e pronta retirada.';
+      document.getElementById('compra-rapida').querySelector('p').textContent = 'Compra também disponível para pronta entrega e pronta retirada, quando houver estoque.';
     }
 
     document.getElementById('compra-form').addEventListener('submit', function (event) {
       event.preventDefault();
       const quantidade = Math.max(1, Number(document.getElementById('compra-quantidade').value || 1));
-      alert(`Compra iniciada: ${quantidade}x ${produto.nome}. Nosso time comercial vai concluir o pagamento direto com você.`);
+      alert(`Compra iniciada: ${quantidade}x ${produto.nome}. Nosso time comercial vai concluir o pagamento com você.`);
     });
 
     document.getElementById('pedido-form').addEventListener('submit', function (event) {
@@ -167,9 +148,9 @@
       const quantidade = document.getElementById('pedido-quantidade').value || '1';
       const acabamento = document.getElementById('pedido-acabamento').value;
       const escopo = `Produto: ${produto.nome}\nCategoria: ${produto.categoria}\nQuantidade: ${quantidade}\nAcabamento: ${acabamento}`;
-      const url = `orcamento.html?produto=${encodeURIComponent(produto.nome)}&escopo=${encodeURIComponent(escopo)}`;
-      window.location.href = url;
+      window.location.href = `orcamento.html?produto=${encodeURIComponent(produto.nome)}&escopo=${encodeURIComponent(escopo)}`;
     });
   })();
 </script>
-</body></html>
+</body>
+</html>
