@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Sobre | Curioni</title>
+  <title>Marca | Curioni</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
@@ -13,39 +13,51 @@
 <body>
 <header class="site-header" data-site-header></header>
 
-<main class="container">
-  <section class="section grid-2" style="align-items:center;">
-    <div>
-      <span class="tag">Sobre a marca</span>
-      <h1 style="margin:12px 0 14px;font:600 clamp(34px,6vw,72px)/.98 var(--title)">CURIONI</h1>
-      <p>
-        é a marca de produtos desenhados pelo arquiteto e urbanista Tiago Curioni, criados a partir de 3 pilares essenciais da marca:
-        Atemporalidade, Racionalismo e Funcionalidade, como forma de permear o bom design através do tempo de forma responsiva e
-        surpreendente ao usuário. Essa tríade procura garantir um produto de excelência de ponta a ponta, desde o momento da concepção
-        até sua entrega.
-      </p>
-    </div>
-    <article class="card">
-      <div class="thumb" style="height:520px;background-image:url('https://static.wixstatic.com/media/0c10a6_fcc63ca83632480ba5eeec6608f00d7a~mv2.jpg/v1/fill/w_678,h_663,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Tiago%20Curioni_edited.jpg');"></div>
+<main class="container page-shell">
+  <section class="section page-hero">
+    <article class="card page-hero__copy">
+      <span class="eyebrow">A marca</span>
+      <h1 class="display-title" style="margin:0;">Design autoral guiado por atemporalidade, racionalismo e funcionalidade.</h1>
+      <p class="lead">A nova página institucional reforça narrativa, diferenciação e credibilidade com um layout mais editorial e sofisticado.</p>
+      <div class="page-hero__meta">
+        <div class="kpi"><strong>3 pilares</strong><span>base conceitual da marca</span></div>
+        <div class="kpi"><strong>Global</strong><span>design brasileiro com alcance internacional</span></div>
+        <div class="kpi"><strong>Essencial</strong><span>menos ruído, mais substância</span></div>
+      </div>
+    </article>
+    <article class="card page-hero__media">
+      <div class="thumb" style="background-image:url('https://static.wixstatic.com/media/0c10a6_fcc63ca83632480ba5eeec6608f00d7a~mv2.jpg/v1/fill/w_678,h_663,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Tiago%20Curioni_edited.jpg');"></div>
     </article>
   </section>
 
-  <section class="section">
-    <article class="kpi">
-      Sob a máxima de que “O simples não aceita erros”, os produtos CURIONI são pensados para o serem descomplicados, livres de
-      barreiras estéticas e modismos, focados no uso extenso e cotidiano da família e da casa.
+  <section class="section story-grid">
+    <article class="story-quote">
+      <p>“O simples não aceita erros.”</p>
+      <span>Princípio de projeto Curioni</span>
+    </article>
+    <article class="card editorial-panel">
+      <span class="eyebrow">Essência</span>
+      <h2>Produtos descomplicados, precisos e duráveis.</h2>
+      <p>Os produtos Curioni nascem de um processo que busca eliminar excessos e modismos, promovendo uso extenso, leitura clara e uma elegância que atravessa o tempo.</p>
+      <p>A reformulação desta página coloca essa mensagem em primeiro plano com tipografia mais forte, melhor espaçamento e blocos de leitura mais consistentes.</p>
     </article>
   </section>
 
-  <section class="section">
-    <article class="card">
-      <div class="card-body" style="padding:24px;">
-        <h2 style="margin:0 0 10px;font:600 clamp(28px,4vw,48px)/1.04 var(--title)">Reconhecimento internacional</h2>
-        <p style="margin:0;">
-          Ganhador de importantes prêmios internacionais, como o Alemão iF Design Award, o italiano A´design Award e o IDA International
-          Design Awards (USA), o Estúdio Tiago Curioni promove um design livre de limitações geográficas, trazendo internacionalização a
-          seus produtos, e promovendo o design brasileiro em diferentes partes do mundo.
-        </p>
+  <section class="section grid-3">
+    <article class="card timeline-card"><strong>Atemporalidade</strong><h3>Estética que permanece.</h3><p>Formas essenciais e proporções equilibradas para atravessar diferentes contextos e ciclos de tendência.</p></article>
+    <article class="card timeline-card"><strong>Racionalismo</strong><h3>Clareza de construção.</h3><p>Cada encontro, detalhe e material tem função estrutural e narrativa no resultado final.</p></article>
+    <article class="card timeline-card"><strong>Funcionalidade</strong><h3>Conforto aplicado.</h3><p>A beleza do objeto é inseparável do seu desempenho cotidiano e da experiência de uso.</p></article>
+  </section>
+
+  <section class="section split-highlight">
+    <article class="card"><div class="thumb" data-image-key="launchSofaCurva" style="height:100%;min-height:460px"></div></article>
+    <article class="section-soft info-stack">
+      <span class="eyebrow">Reconhecimento</span>
+      <h2 style="margin:0;font:600 clamp(30px,4vw,54px)/1 var(--title)">Premiações que ampliam a presença internacional da marca.</h2>
+      <p class="lead">O estúdio coleciona prêmios como iF Design Award, A’Design Award e IDA, reforçando a relevância do design brasileiro em circuitos globais.</p>
+      <div class="page-hero__actions">
+        <a class="btn inverse" href="novidades.html">Ver lançamentos</a>
+        <a class="btn" href="profissionais.html">Falar com o time</a>
       </div>
     </article>
   </section>
@@ -53,12 +65,13 @@
 
 <footer class="footer">
   <div class="container footer-grid">
-    <div><a class="site-header__logo" href="curioni-preview.html" style="font-size:32px">curioni</a><p>fale@curioni.com.br</p></div>
-    <div><h4>Navegação</h4><a href="produtos.html">Produtos</a><a href="novidades.html">Novidades</a><a href="sobre.html">Sobre</a></div>
-    <div><h4>Atendimento</h4><a href="orcamento.html">Solicitar orçamento</a><a href="profissionais.html">Profissionais</a><a href="biblioteca-tecnica.html">Biblioteca 3D</a></div>
+    <div><a class="site-header__logo" href="curioni-preview.html" style="font-size:32px">curioni</a><p>Página institucional redesenhada para reforçar posicionamento e credibilidade.</p></div>
+    <div><h4>Explorar</h4><a href="produtos.html">Produtos</a><a href="ambientes.html">Ambientes</a><a href="novidades.html">Novidades</a></div>
+    <div><h4>Relacionamento</h4><a href="orcamento.html">Solicitar orçamento</a><a href="profissionais.html">Área profissional</a></div>
   </div>
 </footer>
 
+<script src="assets/image-inventory.js"></script>
 <script src="assets/header.js"></script>
 </body>
 </html>

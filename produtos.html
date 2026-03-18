@@ -10,62 +10,95 @@
   <link rel="stylesheet" href="assets/site.css" />
 </head>
 <body>
-<header class="site-header" data-site-header><div class="site-header__container"><div class="site-header__inner"><a class="site-header__logo" href="curioni-preview.html">curioni</a><nav class="site-header__nav"><a href="curioni-preview.html">Home</a><a href="produtos.html" aria-current="page">Produtos</a><a href="novidades.html">Novidades</a><a href="orcamento.html">Orçamento</a><a href="sobre.html">Sobre</a></nav><div class="site-header__actions"><a class="site-header__cta" href="orcamento.html">Solicitar orçamento</a><button class="site-header__toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="site-mobile-menu" data-header-toggle>☰</button></div></div><nav class="site-header__panel" id="site-mobile-menu" data-header-panel><a href="curioni-preview.html">Home</a><a href="produtos.html">Produtos</a><a href="novidades.html">Novidades</a><a href="orcamento.html">Orçamento</a><a href="sobre.html">Sobre</a></nav></div></header>
-<main class="container">
-<section class="section">
-  <div class="section-head"><h1 style="margin:0;font:600 clamp(34px,6vw,72px)/.98 var(--title)">Catálogo estilo e-commerce</h1></div>
-  <p style="max-width:72ch;color:var(--muted)">Navegue por categoria, compare peças com informações resumidas e abra a página de produto para ver especificações completas e converter em pedido.</p>
-  <div class="category-strip products-strip" aria-label="Filtros rápidos">
-    <a class="category-chip" href="#assentos">Assentos</a>
-    <a class="category-chip" href="#mesas">Mesas</a>
-    <a class="category-chip" href="#complementos">Complementos</a>
-    <a class="category-chip" href="#iluminacao">Iluminação</a>
-    <a class="category-chip" href="#externa">Área externa</a>
-  </div>
-</section>
+<header class="site-header" data-site-header></header>
 
-<section class="section products-listing" id="assentos">
-  <div class="section-head"><h2>Assentos</h2><a class="btn" href="produtos-detalhes.html?produto=cadeira-fly">Ver mais vendidos</a></div>
-  <div class="grid-4 ecommerce-grid">
-    <article class="card ecommerce-card"><div class="thumb" data-image-key="pdpMain1"></div><div class="card-body"><span class="tag">Cadeira</span><h3>Cadeira Fly</h3><p>Estrutura em madeira maciça com encosto ergonômico.</p><div class="ecommerce-meta"><strong>sob consulta</strong><a class="btn" href="produtos-detalhes.html?produto=cadeira-fly">Detalhes</a></div></div></article>
-    <article class="card ecommerce-card"><div class="thumb" data-image-key="launchPoltronaAlma"></div><div class="card-body"><span class="tag">Poltrona</span><h3>Poltrona Alma</h3><p>Concha anatômica com base metálica e giro opcional.</p><div class="ecommerce-meta"><strong>sob consulta</strong><a class="btn" href="produtos-detalhes.html?produto=poltrona-alma">Detalhes</a></div></div></article>
-    <article class="card ecommerce-card"><div class="thumb" data-image-key="launchSofaCurva"></div><div class="card-body"><span class="tag">Sofá</span><h3>Sofá Curva</h3><p>Módulo orgânico para lounges e recepções premium.</p><div class="ecommerce-meta"><strong>sob consulta</strong><a class="btn" href="produtos-detalhes.html?produto=sofa-curva">Detalhes</a></div></div></article>
-    <article class="card ecommerce-card"><div class="thumb" data-image-key="launchBancoTenda"></div><div class="card-body"><span class="tag">Banco</span><h3>Banco Tenda</h3><p>Leve e resistente para áreas internas ou externas.</p><div class="ecommerce-meta"><strong>sob consulta</strong><a class="btn" href="produtos-detalhes.html?produto=banco-tenda">Detalhes</a></div></div></article>
-  </div>
-</section>
+<main class="container products-layout">
+  <section class="section products-hero">
+    <article class="card page-hero__copy">
+      <span class="eyebrow">Catálogo completo</span>
+      <h1 class="display-title" style="margin:0;">Produtos organizados para descoberta e especificação.</h1>
+      <p class="lead">Separamos o catálogo em uma estrutura de navegação rápida, com coleções, argumentos comerciais e links diretos para a página de detalhe.</p>
+      <div class="chip-row" aria-label="Atalhos do catálogo">
+        <a class="category-chip" href="#assentos">Assentos</a>
+        <a class="category-chip" href="#mesas">Mesas</a>
+        <a class="category-chip" href="#complementos">Complementos</a>
+        <a class="category-chip" href="#iluminacao">Iluminação</a>
+        <a class="category-chip" href="#externa">Outdoor</a>
+      </div>
+      <div class="page-hero__meta">
+        <div class="kpi"><strong>5</strong><span>famílias principais</span></div>
+        <div class="kpi"><strong>UX</strong><span>arquitetura de navegação simplificada</span></div>
+        <div class="kpi"><strong>B2B + B2C</strong><span>conteúdo útil para venda e especificação</span></div>
+      </div>
+    </article>
+    <article class="card"><div class="thumb" data-image-key="catAssentos"></div></article>
+  </section>
 
-<section class="section products-listing" id="mesas">
-  <div class="section-head"><h2>Mesas</h2><a class="btn" href="produtos-detalhes.html?produto=mesa-velo">Abrir ficha técnica</a></div>
-  <div class="grid-4 ecommerce-grid">
-    <article class="card ecommerce-card"><div class="thumb" data-image-key="launchMesaVelo"></div><div class="card-body"><span class="tag">Jantar</span><h3>Mesa Vélo</h3><p>Tampo mineral com base escultural em lâmina natural.</p><div class="ecommerce-meta"><strong>sob consulta</strong><a class="btn" href="produtos-detalhes.html?produto=mesa-velo">Detalhes</a></div></div></article>
-    <article class="card ecommerce-card"><div class="thumb" data-image-key="vitrineMesaCiano"></div><div class="card-body"><span class="tag">Apoio</span><h3>Mesa Ciano</h3><p>Mesa lateral compacta para composição de living.</p><div class="ecommerce-meta"><strong>sob consulta</strong><a class="btn" href="produtos-detalhes.html?produto=mesa-ciano">Detalhes</a></div></div></article>
-  </div>
-</section>
+  <section class="section card products-filter-shell">
+    <div>
+      <span class="eyebrow">Como navegar</span>
+      <h2 style="margin:10px 0 8px;font:600 clamp(28px,4vw,48px)/1 var(--title)">Visual de showroom com leitura de e-commerce.</h2>
+      <p class="muted">Cada card prioriza imagem, categoria, narrativa curta e caminho rápido para ficha do produto.</p>
+    </div>
+    <form class="form" onsubmit="return false;" aria-label="Filtros demonstrativos do catálogo">
+      <label>Ambiente de uso<select><option>Todos</option><option>Residencial</option><option>Corporativo</option><option>Outdoor</option></select></label>
+      <label>Tipologia<select><option>Todas</option><option>Cadeiras</option><option>Mesas</option><option>Iluminação</option></select></label>
+      <label>Disponibilidade<select><option>Sob consulta</option><option>Pronta entrega</option></select></label>
+    </form>
+  </section>
 
-<section class="section products-listing" id="complementos">
-  <div class="section-head"><h2>Complementos</h2><a class="btn" href="produtos-detalhes.html?produto=buffet-modulo">Ver coleção</a></div>
-  <div class="grid-4 ecommerce-grid">
-    <article class="card ecommerce-card"><div class="thumb" data-image-key="launchBuffetModulo"></div><div class="card-body"><span class="tag">Buffet</span><h3>Buffet Módulo</h3><p>Portas usinadas e múltiplos módulos de configuração.</p><div class="ecommerce-meta"><strong>sob consulta</strong><a class="btn" href="produtos-detalhes.html?produto=buffet-modulo">Detalhes</a></div></div></article>
-    <article class="card ecommerce-card"><div class="thumb" data-image-key="catComplementos"></div><div class="card-body"><span class="tag">Carrinho</span><h3>Carrinho Atlas</h3><p>Estrutura tubular com bandejas removíveis em lâmina.</p><div class="ecommerce-meta"><strong>sob consulta</strong><a class="btn" href="produtos-detalhes.html?produto=carrinho-atlas">Detalhes</a></div></div></article>
-  </div>
-</section>
+  <section class="section products-listing" id="assentos">
+    <div class="section-head"><h2>Assentos</h2><p>Coleção com foco em conforto visual, ergonomia e presença escultural.</p></div>
+    <div class="grid-4 ecommerce-grid">
+      <article class="card ecommerce-card"><div class="thumb" data-image-key="pdpMain1"></div><div class="card-body"><span class="eyebrow">Cadeira</span><h3>Cadeira Fly</h3><p>Estrutura em madeira maciça com desenho leve e assinatura contemporânea.</p><div class="ecommerce-card__swatch"><span style="background:#221d1a"></span><span style="background:#8b6e4c"></span><span style="background:#dbd2ca"></span></div><div class="ecommerce-meta"><div class="ecommerce-price"><strong>Sob consulta</strong><span>Ficha técnica e acabamentos</span></div><a class="btn" href="produtos-detalhes.html?produto=cadeira-fly">Ver detalhes</a></div></div></article>
+      <article class="card ecommerce-card"><div class="thumb" data-image-key="launchPoltronaAlma"></div><div class="card-body"><span class="eyebrow">Poltrona</span><h3>Poltrona Alma</h3><p>Conforto profundo com base refinada para salas, lounges e recepções.</p><div class="ecommerce-card__swatch"><span style="background:#d3c7bb"></span><span style="background:#9e8f7e"></span><span style="background:#2c2a29"></span></div><div class="ecommerce-meta"><div class="ecommerce-price"><strong>Sob consulta</strong><span>Personalização sob projeto</span></div><a class="btn" href="produtos-detalhes.html?produto=poltrona-alma">Ver detalhes</a></div></div></article>
+      <article class="card ecommerce-card"><div class="thumb" data-image-key="launchSofaCurva"></div><div class="card-body"><span class="eyebrow">Sofá</span><h3>Sofá Curva</h3><p>Módulos orgânicos para composições amplas com leitura arquitetônica.</p><div class="ecommerce-card__swatch"><span style="background:#cbc0b1"></span><span style="background:#8f7d6e"></span><span style="background:#f1eee8"></span></div><div class="ecommerce-meta"><div class="ecommerce-price"><strong>Sob consulta</strong><span>Layouts modulares disponíveis</span></div><a class="btn" href="produtos-detalhes.html?produto=sofa-curva">Ver detalhes</a></div></div></article>
+      <article class="card ecommerce-card"><div class="thumb" data-image-key="launchBancoTenda"></div><div class="card-body"><span class="eyebrow">Banco</span><h3>Banco Tenda</h3><p>Peça versátil para halls, dormitórios e áreas externas cobertas.</p><div class="ecommerce-card__swatch"><span style="background:#1d1d1d"></span><span style="background:#91806d"></span><span style="background:#d8d0c6"></span></div><div class="ecommerce-meta"><div class="ecommerce-price"><strong>Sob consulta</strong><span>Versões indoor e outdoor</span></div><a class="btn" href="produtos-detalhes.html?produto=banco-tenda">Ver detalhes</a></div></div></article>
+    </div>
+  </section>
 
-<section class="section products-listing" id="iluminacao">
-  <div class="section-head"><h2>Iluminação</h2><a class="btn" href="produtos-detalhes.html?produto=abajur-lia">Selecionar modelos</a></div>
-  <div class="grid-4 ecommerce-grid">
-    <article class="card ecommerce-card"><div class="thumb" data-image-key="launchAbajurLia"></div><div class="card-body"><span class="tag">Abajur</span><h3>Abajur Lía</h3><p>Cúpula têxtil com base torneada em madeira natural.</p><div class="ecommerce-meta"><strong>sob consulta</strong><a class="btn" href="produtos-detalhes.html?produto=abajur-lia">Detalhes</a></div></div></article>
-    <article class="card ecommerce-card"><div class="thumb" data-image-key="launchPendenteArco"></div><div class="card-body"><span class="tag">Pendente</span><h3>Pendente Arco</h3><p>Latão escovado com difusor em vidro soprado fosco.</p><div class="ecommerce-meta"><strong>sob consulta</strong><a class="btn" href="produtos-detalhes.html?produto=pendente-arco">Detalhes</a></div></div></article>
-  </div>
-</section>
+  <section class="section products-listing" id="mesas">
+    <div class="section-head"><h2>Mesas</h2><p>Superfícies de jantar, apoio e centro com materiais nobres.</p></div>
+    <div class="grid-4 ecommerce-grid">
+      <article class="card ecommerce-card"><div class="thumb" data-image-key="launchMesaVelo"></div><div class="card-body"><span class="eyebrow">Jantar</span><h3>Mesa Vélo</h3><p>Tampo mineral e base escultórica para projetos de alto padrão.</p><div class="ecommerce-meta"><div class="ecommerce-price"><strong>Sob consulta</strong><span>Disponível em múltiplas dimensões</span></div><a class="btn" href="produtos-detalhes.html?produto=mesa-velo">Ver detalhes</a></div></div></article>
+      <article class="card ecommerce-card"><div class="thumb" data-image-key="vitrineMesaCiano"></div><div class="card-body"><span class="eyebrow">Lateral</span><h3>Mesa Ciano</h3><p>Proporção compacta para composição com poltronas e sofás.</p><div class="ecommerce-meta"><div class="ecommerce-price"><strong>Sob consulta</strong><span>Acabamentos amadeirados e vidro</span></div><a class="btn" href="produtos-detalhes.html?produto=mesa-ciano">Ver detalhes</a></div></div></article>
+    </div>
+  </section>
 
-<section class="section products-listing" id="externa">
-  <div class="section-head"><h2>Área externa</h2><a class="btn" href="produtos-detalhes.html?produto=balanco-oca">Acessar linha outdoor</a></div>
-  <div class="grid-4 ecommerce-grid">
-    <article class="card ecommerce-card"><div class="thumb" data-image-key="vitrineBalancoOca"></div><div class="card-body"><span class="tag">Balanço</span><h3>Balanço Oca</h3><p>Estrutura em alumínio com trama náutica de alta durabilidade.</p><div class="ecommerce-meta"><strong>sob consulta</strong><a class="btn" href="produtos-detalhes.html?produto=balanco-oca">Detalhes</a></div></div></article>
-    <article class="card ecommerce-card"><div class="thumb" data-image-key="launchBancoTenda"></div><div class="card-body"><span class="tag">Banco</span><h3>Banco Tenda Outdoor</h3><p>Versão com pintura eletrostática para uso externo.</p><div class="ecommerce-meta"><strong>sob consulta</strong><a class="btn" href="produtos-detalhes.html?produto=banco-tenda-outdoor">Detalhes</a></div></div></article>
-  </div>
-</section>
+  <section class="section products-listing" id="complementos">
+    <div class="section-head"><h2>Complementos</h2><p>Peças de apoio que organizam o espaço sem perder presença visual.</p></div>
+    <div class="grid-4 ecommerce-grid">
+      <article class="card ecommerce-card"><div class="thumb" data-image-key="launchBuffetModulo"></div><div class="card-body"><span class="eyebrow">Buffet</span><h3>Buffet Módulo</h3><p>Portas usinadas e módulos configuráveis para salas e áreas gourmet.</p><div class="ecommerce-meta"><div class="ecommerce-price"><strong>Sob consulta</strong><span>Configuração sob demanda</span></div><a class="btn" href="produtos-detalhes.html?produto=buffet-modulo">Ver detalhes</a></div></div></article>
+      <article class="card ecommerce-card"><div class="thumb" data-image-key="catComplementos"></div><div class="card-body"><span class="eyebrow">Carrinho</span><h3>Carrinho Atlas</h3><p>Estrutura tubular com bandejas removíveis para apoio flexível.</p><div class="ecommerce-meta"><div class="ecommerce-price"><strong>Sob consulta</strong><span>Uso residencial ou hospitalidade</span></div><a class="btn" href="produtos-detalhes.html?produto=carrinho-atlas">Ver detalhes</a></div></div></article>
+    </div>
+  </section>
+
+  <section class="section products-listing" id="iluminacao">
+    <div class="section-head"><h2>Iluminação</h2><p>Luz difusa, materiais táteis e desenho limpo para compor atmosfera.</p></div>
+    <div class="grid-4 ecommerce-grid">
+      <article class="card ecommerce-card"><div class="thumb" data-image-key="launchAbajurLia"></div><div class="card-body"><span class="eyebrow">Abajur</span><h3>Abajur Lía</h3><p>Luminária de apoio com presença leve para quartos e salas.</p><div class="ecommerce-meta"><div class="ecommerce-price"><strong>Sob consulta</strong><span>Ideal para ambientação e retail</span></div><a class="btn" href="produtos-detalhes.html?produto=abajur-lia">Ver detalhes</a></div></div></article>
+      <article class="card ecommerce-card"><div class="thumb" data-image-key="launchPendenteArco"></div><div class="card-body"><span class="eyebrow">Pendente</span><h3>Pendente Arco</h3><p>Latão escovado e vidro opalino para composições mais sofisticadas.</p><div class="ecommerce-meta"><div class="ecommerce-price"><strong>Sob consulta</strong><span>Aplicação residencial e contract</span></div><a class="btn" href="produtos-detalhes.html?produto=pendente-arco">Ver detalhes</a></div></div></article>
+    </div>
+  </section>
+
+  <section class="section products-listing" id="externa">
+    <div class="section-head"><h2>Outdoor</h2><p>Peças resistentes para varandas, rooftops, hotéis e áreas abertas.</p></div>
+    <div class="grid-4 ecommerce-grid">
+      <article class="card ecommerce-card"><div class="thumb" data-image-key="vitrineBalancoOca"></div><div class="card-body"><span class="eyebrow">Balanço</span><h3>Balanço Oca</h3><p>Trama náutica e estrutura leve com leitura contemporânea.</p><div class="ecommerce-meta"><div class="ecommerce-price"><strong>Sob consulta</strong><span>Especificação outdoor premium</span></div><a class="btn" href="produtos-detalhes.html?produto=balanco-oca">Ver detalhes</a></div></div></article>
+      <article class="card ecommerce-card"><div class="thumb" data-image-key="launchBancoTenda"></div><div class="card-body"><span class="eyebrow">Banco</span><h3>Banco Tenda Outdoor</h3><p>Versão externa com pintura eletrostática e tecidos técnicos.</p><div class="ecommerce-meta"><div class="ecommerce-price"><strong>Sob consulta</strong><span>Estoque mediante configuração</span></div><a class="btn" href="produtos-detalhes.html?produto=banco-tenda-outdoor">Ver detalhes</a></div></div></article>
+    </div>
+  </section>
 </main>
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div><a class="site-header__logo" href="curioni-preview.html" style="font-size:32px">curioni</a><p>Catálogo com hierarquia visual mais clara para descoberta e especificação.</p></div>
+    <div><h4>Coleções</h4><a href="#assentos">Assentos</a><a href="#mesas">Mesas</a><a href="#externa">Outdoor</a></div>
+    <div><h4>Próximos passos</h4><a href="pronta-entrega.html">Ver loja</a><a href="orcamento.html">Solicitar orçamento</a><a href="profissionais.html">Atendimento para profissionais</a></div>
+  </div>
+</footer>
+
 <script src="assets/image-inventory.js"></script>
 <script src="assets/header.js"></script>
-</body></html>
+</body>
+</html>

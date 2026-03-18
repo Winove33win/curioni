@@ -11,15 +11,34 @@
   <link rel="stylesheet" href="assets/site.css" />
 </head>
 <body>
-<header class="site-header" data-site-header><div class="site-header__container"><div class="site-header__inner"><a class="site-header__logo" href="curioni-preview.html">curioni</a><nav class="site-header__nav"><a href="curioni-preview.html">Início</a><a href="ambientes.html">Ambientes</a><a href="pronta-entrega.html" aria-current="page">Pronta entrega</a><a href="novidades.html">Novidades</a><a href="arquiteto-pedido.html">Pedidos</a></nav><div class="site-header__actions"><a class="site-header__cta" href="orcamento.html">Solicitar proposta</a><button class="site-header__toggle" type="button" data-header-toggle aria-controls="site-mobile-menu">☰</button></div></div><nav class="site-header__panel" id="site-mobile-menu" data-header-panel><a href="curioni-preview.html">Início</a><a href="ambientes.html">Ambientes</a><a href="pronta-entrega.html">Pronta entrega</a><a href="novidades.html">Novidades</a><a href="arquiteto-pedido.html">Pedidos</a></nav></div></header>
+<header class="site-header" data-site-header></header>
 
-<main class="container">
+<main class="container page-shell">
+  <section class="section pronta-hero">
+    <article class="card pronta-hero__store">
+      <span class="eyebrow">Loja pronta entrega</span>
+      <h1 class="display-title" style="margin:0;">Vitrine com preço, estoque e entrega rápida.</h1>
+      <p class="lead">A estrutura desta página foi desenhada para funcionar como uma loja: filtros claros, cards de compra, informação comercial em destaque e CTA direto.</p>
+      <div class="page-hero__actions">
+        <a class="btn inverse" href="#produtos-grid">Comprar agora</a>
+        <a class="btn" href="produtos.html">Ver catálogo completo</a>
+      </div>
+      <div class="metric-grid">
+        <div class="kpi"><strong>48h</strong><span>envio para itens selecionados</span></div>
+        <div class="kpi"><strong>12</strong><span>produtos no estoque imediato</span></div>
+        <div class="kpi"><strong>UX</strong><span>layout inspirado em loja premium</span></div>
+      </div>
+    </article>
+    <article class="card"><div class="thumb" data-image-key="launchPoltronaAlma" style="height:100%;min-height:560px"></div></article>
+  </section>
+
+  <section class="section grid-3">
+    <article class="card pronta-feature"><span class="eyebrow">Entrega</span><h3>Disponibilidade clara</h3><p>Prazo em dias e volume em estoque aparecem antes do clique.</p></article>
+    <article class="card pronta-feature"><span class="eyebrow">Conversão</span><h3>Preço em destaque</h3><p>Cards com informação comercial priorizada, em linha com uma operação D2C.</p></article>
+    <article class="card pronta-feature"><span class="eyebrow">Confiança</span><h3>Compra assistida</h3><p>O cliente inicia a compra online e conclui com o time comercial.</p></article>
+  </section>
+
   <section class="section">
-    <div class="section-head">
-      <h1 style="margin:0;font:600 clamp(34px,6vw,72px)/.98 var(--title)">Loja pronta entrega</h1>
-      <p>Todos os produtos com envio rápido, filtros por categoria e preço, classificação dinâmica e compra direta sem checkout.</p>
-    </div>
-
     <article class="card pronta-toolbar">
       <div class="card-body pronta-toolbar__grid">
         <label>Busca por nome
@@ -57,61 +76,61 @@
   </section>
 </main>
 
+<footer class="footer">
+  <div class="container footer-grid">
+    <div><a class="site-header__logo" href="curioni-preview.html" style="font-size:32px">curioni</a><p>Loja pronta entrega com linguagem comercial clara e premium.</p></div>
+    <div><h4>Compras</h4><a href="#produtos-grid">Produtos em estoque</a><a href="produtos.html">Catálogo completo</a></div>
+    <div><h4>Suporte</h4><a href="orcamento.html">Atendimento comercial</a><a href="profissionais.html">Projetos e especificação</a></div>
+  </div>
+</footer>
+
 <script src="assets/image-inventory.js"></script>
 <script src="assets/header.js"></script>
 <script>
   (function () {
     const produtos = [
-      { slug: 'cadeira-fly', nome: 'Cadeira Fly', categoria: 'Assentos', tipo: 'Cadeira', preco: 4290, estoque: 12, prazoDias: 2, imageKey: 'pdpMain1', descricao: 'Estrutura em madeira maciça com encosto ergonômico.' },
-      { slug: 'poltrona-alma', nome: 'Poltrona Alma', categoria: 'Assentos', tipo: 'Poltrona', preco: 6890, estoque: 5, prazoDias: 2, imageKey: 'launchPoltronaAlma', descricao: 'Concha anatômica com base metálica e giro opcional.' },
-      { slug: 'sofa-curva', nome: 'Sofá Curva', categoria: 'Assentos', tipo: 'Sofá', preco: 13200, estoque: 3, prazoDias: 5, imageKey: 'launchSofaCurva', descricao: 'Módulo orgânico para lounges e recepções premium.' },
-      { slug: 'banco-tenda', nome: 'Banco Tenda', categoria: 'Assentos', tipo: 'Banco', preco: 3560, estoque: 7, prazoDias: 3, imageKey: 'launchBancoTenda', descricao: 'Leve e resistente para áreas internas ou externas.' },
-      { slug: 'mesa-velo', nome: 'Mesa Vélo', categoria: 'Mesas', tipo: 'Mesa de jantar', preco: 15990, estoque: 4, prazoDias: 4, imageKey: 'launchMesaVelo', descricao: 'Tampo mineral com base escultural em lâmina natural.' },
-      { slug: 'mesa-ciano', nome: 'Mesa Ciano', categoria: 'Mesas', tipo: 'Mesa lateral', preco: 2890, estoque: 11, prazoDias: 1, imageKey: 'vitrineMesaCiano', descricao: 'Mesa lateral compacta para composição de living.' },
-      { slug: 'buffet-modulo', nome: 'Buffet Módulo', categoria: 'Complementos', tipo: 'Buffet', preco: 10900, estoque: 2, prazoDias: 6, imageKey: 'launchBuffetModulo', descricao: 'Portas usinadas e múltiplos módulos de configuração.' },
-      { slug: 'carrinho-atlas', nome: 'Carrinho Atlas', categoria: 'Complementos', tipo: 'Carrinho', preco: 4740, estoque: 8, prazoDias: 2, imageKey: 'catComplementos', descricao: 'Estrutura tubular com bandejas removíveis em lâmina.' },
-      { slug: 'abajur-lia', nome: 'Abajur Lía', categoria: 'Iluminação', tipo: 'Abajur', preco: 1690, estoque: 15, prazoDias: 1, imageKey: 'launchAbajurLia', descricao: 'Cúpula têxtil com base torneada em madeira natural.' },
-      { slug: 'pendente-arco', nome: 'Pendente Arco', categoria: 'Iluminação', tipo: 'Pendente', preco: 5290, estoque: 9, prazoDias: 2, imageKey: 'launchPendenteArco', descricao: 'Latão escovado com difusor em vidro soprado fosco.' },
-      { slug: 'balanco-oca', nome: 'Balanço Oca', categoria: 'Área externa', tipo: 'Balanço', preco: 7850, estoque: 6, prazoDias: 3, imageKey: 'vitrineBalancoOca', descricao: 'Estrutura em alumínio com trama náutica de alta durabilidade.' },
-      { slug: 'banco-tenda-outdoor', nome: 'Banco Tenda Outdoor', categoria: 'Área externa', tipo: 'Banco outdoor', preco: 3980, estoque: 10, prazoDias: 2, imageKey: 'launchBancoTenda', descricao: 'Versão com pintura eletrostática para uso externo.' }
+      { slug: 'cadeira-fly', nome: 'Cadeira Fly', categoria: 'Assentos', tipo: 'Cadeira', preco: 4290, estoque: 12, prazoDias: 2, imageKey: 'pdpMain1', descricao: 'Estrutura em madeira maciça com desenho leve e conforto ergonômico.' },
+      { slug: 'poltrona-alma', nome: 'Poltrona Alma', categoria: 'Assentos', tipo: 'Poltrona', preco: 6890, estoque: 5, prazoDias: 2, imageKey: 'launchPoltronaAlma', descricao: 'Assento profundo com presença escultórica para living e lounge.' },
+      { slug: 'sofa-curva', nome: 'Sofá Curva', categoria: 'Assentos', tipo: 'Sofá', preco: 13200, estoque: 3, prazoDias: 5, imageKey: 'launchSofaCurva', descricao: 'Sistema modular com desenho orgânico para ambientes premium.' },
+      { slug: 'banco-tenda', nome: 'Banco Tenda', categoria: 'Assentos', tipo: 'Banco', preco: 3560, estoque: 7, prazoDias: 3, imageKey: 'launchBancoTenda', descricao: 'Peça de apoio versátil para halls, quartos e áreas cobertas.' },
+      { slug: 'mesa-velo', nome: 'Mesa Vélo', categoria: 'Mesas', tipo: 'Mesa', preco: 15990, estoque: 4, prazoDias: 4, imageKey: 'launchMesaVelo', descricao: 'Mesa de jantar com tampo mineral e base escultural.' },
+      { slug: 'mesa-ciano', nome: 'Mesa Ciano', categoria: 'Mesas', tipo: 'Mesa lateral', preco: 2890, estoque: 11, prazoDias: 1, imageKey: 'vitrineMesaCiano', descricao: 'Apoio compacto para composições de living e leitura.' },
+      { slug: 'buffet-modulo', nome: 'Buffet Módulo', categoria: 'Complementos', tipo: 'Buffet', preco: 10900, estoque: 2, prazoDias: 6, imageKey: 'launchBuffetModulo', descricao: 'Armazenamento sofisticado com modulação personalizável.' },
+      { slug: 'carrinho-atlas', nome: 'Carrinho Atlas', categoria: 'Complementos', tipo: 'Carrinho', preco: 4740, estoque: 8, prazoDias: 2, imageKey: 'catComplementos', descricao: 'Estrutura tubular com bandejas removíveis e rodízios discretos.' },
+      { slug: 'abajur-lia', nome: 'Abajur Lía', categoria: 'Iluminação', tipo: 'Abajur', preco: 1690, estoque: 15, prazoDias: 1, imageKey: 'launchAbajurLia', descricao: 'Luz difusa com presença tátil para salas, quartos e recepções.' },
+      { slug: 'pendente-arco', nome: 'Pendente Arco', categoria: 'Iluminação', tipo: 'Pendente', preco: 5290, estoque: 9, prazoDias: 2, imageKey: 'launchPendenteArco', descricao: 'Pendente com gesto arquitetônico e materialidade refinada.' },
+      { slug: 'balanco-oca', nome: 'Balanço Oca', categoria: 'Outdoor', tipo: 'Balanço', preco: 7850, estoque: 6, prazoDias: 3, imageKey: 'vitrineBalancoOca', descricao: 'Trama náutica de alta durabilidade para varandas e decks.' },
+      { slug: 'banco-tenda-outdoor', nome: 'Banco Tenda Outdoor', categoria: 'Outdoor', tipo: 'Banco', preco: 3980, estoque: 10, prazoDias: 2, imageKey: 'launchBancoTenda', descricao: 'Versão externa com proteção UV e acabamento técnico.' }
     ];
 
     const state = { busca: '', categoria: 'todos', preco: 'todos', ordenacao: 'relevancia' };
-
-    const grid = document.getElementById('produtos-grid');
-    const resultadoContagem = document.getElementById('resultado-contagem');
-    const resultadoResumo = document.getElementById('resultado-resumo');
-
     const filtroBusca = document.getElementById('filtro-busca');
     const filtroCategoria = document.getElementById('filtro-categoria');
     const filtroPreco = document.getElementById('filtro-preco');
     const ordenacao = document.getElementById('ordenacao');
-
+    const resultadoContagem = document.getElementById('resultado-contagem');
+    const resultadoResumo = document.getElementById('resultado-resumo');
+    const grid = document.getElementById('produtos-grid');
     const formatarMoeda = (valor) => valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
     function popularCategorias() {
       const categorias = ['todos', ...new Set(produtos.map((produto) => produto.categoria))];
-      filtroCategoria.innerHTML = categorias.map((categoria) => {
-        const label = categoria === 'todos' ? 'Todas as categorias' : categoria;
-        return `<option value="${categoria}">${label}</option>`;
-      }).join('');
+      filtroCategoria.innerHTML = categorias.map((categoria) => `<option value="${categoria}">${categoria === 'todos' ? 'Todas as categorias' : categoria}</option>`).join('');
+    }
+
+    function dentroDaFaixa(produto) {
+      if (state.preco === 'ate-5000') return produto.preco <= 5000;
+      if (state.preco === '5000-10000') return produto.preco > 5000 && produto.preco <= 10000;
+      if (state.preco === 'acima-10000') return produto.preco > 10000;
+      return true;
     }
 
     function filtrarProdutos() {
-      const buscaNormalizada = state.busca.trim().toLowerCase();
-
       return produtos.filter((produto) => {
-        const matchBusca = !buscaNormalizada
-          || produto.nome.toLowerCase().includes(buscaNormalizada)
-          || produto.tipo.toLowerCase().includes(buscaNormalizada);
-
+        const termo = state.busca.trim().toLowerCase();
+        const matchBusca = !termo || produto.nome.toLowerCase().includes(termo) || produto.tipo.toLowerCase().includes(termo);
         const matchCategoria = state.categoria === 'todos' || produto.categoria === state.categoria;
-
-        const matchPreco = state.preco === 'todos'
-          || (state.preco === 'ate-5000' && produto.preco <= 5000)
-          || (state.preco === '5000-10000' && produto.preco > 5000 && produto.preco <= 10000)
-          || (state.preco === 'acima-10000' && produto.preco > 10000);
-
+        const matchPreco = dentroDaFaixa(produto);
         return matchBusca && matchCategoria && matchPreco;
       }).sort((a, b) => {
         if (state.ordenacao === 'menor-preco') return a.preco - b.preco;
@@ -124,23 +143,27 @@
 
     function renderizarProdutos() {
       const produtosFiltrados = filtrarProdutos();
-
       resultadoContagem.textContent = `${produtosFiltrados.length} produto${produtosFiltrados.length !== 1 ? 's' : ''}`;
       resultadoResumo.textContent = state.categoria === 'todos'
-        ? 'Exibindo pronta entrega em todas as categorias.'
-        : `Exibindo pronta entrega para ${state.categoria}.`;
+        ? 'Mostrando toda a curadoria de pronta entrega com foco em resposta rápida.'
+        : `Mostrando a seleção de pronta entrega para ${state.categoria}.`;
 
       grid.innerHTML = produtosFiltrados.map((produto) => `
         <article class="card ecommerce-card">
           <div class="thumb" data-image-key="${produto.imageKey}"></div>
           <div class="card-body">
-            <span class="tag">${produto.tipo}</span>
+            <span class="eyebrow">${produto.tipo}</span>
             <h3>${produto.nome}</h3>
             <p>${produto.descricao}</p>
-            <p><strong>${formatarMoeda(produto.preco)}</strong> · ${produto.estoque} em estoque · envio em ${produto.prazoDias} dia(s)</p>
             <div class="ecommerce-meta">
-              <a class="btn" href="produtos-detalhes.html?produto=${produto.slug}&origem=pronta-entrega">Ver detalhes</a>
-              <button class="btn inverse" data-compra="${produto.slug}" type="button">Comprar agora</button>
+              <div class="ecommerce-price">
+                <strong>${formatarMoeda(produto.preco)}</strong>
+                <span>${produto.estoque} em estoque · envio em ${produto.prazoDias} dia(s)</span>
+              </div>
+              <div class="page-hero__actions" style="margin-left:auto;">
+                <a class="btn" href="produtos-detalhes.html?produto=${produto.slug}&origem=pronta-entrega">Ver detalhes</a>
+                <button class="btn inverse" data-compra="${produto.slug}" type="button">Comprar</button>
+              </div>
             </div>
           </div>
         </article>
@@ -150,9 +173,7 @@
         grid.innerHTML = '<article class="card"><div class="card-body"><h3>Nenhum produto encontrado</h3><p>Tente remover um filtro para ampliar sua busca.</p></div></article>';
       }
 
-      if (window.applyCurioniImageInventory) {
-        window.applyCurioniImageInventory();
-      }
+      if (window.applyCurioniImageInventory) window.applyCurioniImageInventory();
     }
 
     document.addEventListener('click', function (event) {
@@ -161,29 +182,13 @@
       const slug = botaoCompra.getAttribute('data-compra');
       const produto = produtos.find((item) => item.slug === slug);
       if (!produto) return;
-      const mensagem = `Pedido rápido iniciado para ${produto.nome} (${formatarMoeda(produto.preco)}). Você pode finalizar via atendimento comercial.`;
-      alert(mensagem);
+      alert(`Compra rápida iniciada para ${produto.nome} (${formatarMoeda(produto.preco)}). Nosso time comercial vai concluir com você.`);
     });
 
-    filtroBusca.addEventListener('input', function (event) {
-      state.busca = event.target.value;
-      renderizarProdutos();
-    });
-
-    filtroCategoria.addEventListener('change', function (event) {
-      state.categoria = event.target.value;
-      renderizarProdutos();
-    });
-
-    filtroPreco.addEventListener('change', function (event) {
-      state.preco = event.target.value;
-      renderizarProdutos();
-    });
-
-    ordenacao.addEventListener('change', function (event) {
-      state.ordenacao = event.target.value;
-      renderizarProdutos();
-    });
+    filtroBusca.addEventListener('input', (event) => { state.busca = event.target.value; renderizarProdutos(); });
+    filtroCategoria.addEventListener('change', (event) => { state.categoria = event.target.value; renderizarProdutos(); });
+    filtroPreco.addEventListener('change', (event) => { state.preco = event.target.value; renderizarProdutos(); });
+    ordenacao.addEventListener('change', (event) => { state.ordenacao = event.target.value; renderizarProdutos(); });
 
     popularCategorias();
     renderizarProdutos();
