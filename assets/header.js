@@ -1,31 +1,72 @@
 (() => {
+  const currentPath = window.location.pathname.split('/').pop() || 'curioni-preview.html';
+
+  const primaryLinks = [
+    { href: 'curioni-preview.html', label: 'Home' },
+    { href: 'produtos.html', label: 'Produtos' },
+    { href: 'pronta-entrega.html', label: 'Pronta entrega' },
+    { href: 'ambientes.html', label: 'Ambientes' },
+    { href: 'profissionais.html', label: 'Profissionais' },
+    { href: 'sobre.html', label: 'Marca' }
+  ];
+
+  const utilityLinks = [
+    { href: 'novidades.html', label: 'Novidades' },
+    { href: 'biblioteca-tecnica.html', label: 'Biblioteca 3D' }
+  ];
+
+  const isCurrent = (href) => {
+    if (currentPath === 'index.html' && href === 'curioni-preview.html') return true;
+    return currentPath === href;
+  };
+
+  const navMarkup = primaryLinks.map(({ href, label }) => `
+    <a href="${href}"${isCurrent(href) ? ' aria-current="page"' : ''}>${label}</a>
+  `).join('');
+
+  const utilityMarkup = utilityLinks.map(({ href, label }) => `
+    <a class="site-header__mini-link" href="${href}"${isCurrent(href) ? ' aria-current="page"' : ''}>${label}</a>
+  `).join('');
+
+  const mobilePrimaryMarkup = primaryLinks.map(({ href, label }) => `
+    <a href="${href}"${isCurrent(href) ? ' aria-current="page"' : ''}>${label}</a>
+  `).join('');
+
+  const mobileUtilityMarkup = utilityLinks.concat([
+    { href: 'orcamento.html', label: 'Solicitar orçamento' }
+  ]).map(({ href, label }) => `
+    <a href="${href}"${isCurrent(href) ? ' aria-current="page"' : ''}>${label}</a>
+  `).join('');
+
   const HEADER_TEMPLATE = `
     <div class="site-header__container">
       <div class="site-header__inner">
-        <a class="site-header__logo" href="curioni-preview.html" aria-label="Curioni">curioni</a>
+        <a class="site-header__brand" href="curioni-preview.html" aria-label="Curioni">
+          <span class="site-header__logo">curioni</span>
+          <span class="site-header__caption">mobiliário autoral brasileiro</span>
+        </a>
         <nav class="site-header__nav" aria-label="Principal">
-          <a href="produtos.html">Produtos</a>
-          <a href="pronta-entrega.html">Pronta entrega</a>
-          <a href="novidades.html">Novidades</a>
-          <a href="orcamento.html">Orçamento</a>
-          <a href="sobre.html">Sobre</a>
+          ${navMarkup}
         </nav>
         <div class="site-header__actions">
-          <a class="site-header__link" href="profissionais.html">Profissionais</a>
-          <a class="site-header__link" href="biblioteca-tecnica.html">3D</a>
+          ${utilityMarkup}
+          <div class="site-header__support" aria-label="Atendimento">
+            <strong>Atendimento</strong>
+            <span>Projetos, especificação e vendas</span>
+          </div>
           <a class="site-header__cta" href="orcamento.html">Solicitar orçamento</a>
           <button class="site-header__toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="site-mobile-menu" data-header-toggle>☰</button>
         </div>
       </div>
       <nav class="site-header__panel" id="site-mobile-menu" data-header-panel aria-label="Menu mobile">
-        <a href="curioni-preview.html">Home</a>
-        <a href="produtos.html">Produtos</a>
-        <a href="pronta-entrega.html">Pronta entrega</a>
-        <a href="novidades.html">Novidades</a>
-        <a href="orcamento.html">Orçamento</a>
-        <a href="sobre.html">Sobre</a>
-        <a href="profissionais.html">Profissionais</a>
-        <a href="biblioteca-tecnica.html">3D</a>
+        <div class="site-header__panel-section">
+          <span class="site-header__panel-label">Navegação</span>
+          ${mobilePrimaryMarkup}
+        </div>
+        <div class="site-header__panel-section">
+          <span class="site-header__panel-label">Recursos</span>
+          ${mobileUtilityMarkup}
+        </div>
       </nav>
     </div>`;
 
@@ -53,17 +94,12 @@
     };
 
     toggle.addEventListener('click', () => {
-      const isOpen = panel.classList.contains('is-open');
-      if (isOpen) {
-        closeMenu();
-      } else {
-        openMenu();
-      }
+      if (panel.classList.contains('is-open')) closeMenu();
+      else openMenu();
     });
 
     document.addEventListener('click', (event) => {
-      if (!panel.classList.contains('is-open')) return;
-      if (!header.contains(event.target)) closeMenu();
+      if (panel.classList.contains('is-open') && !header.contains(event.target)) closeMenu();
     });
 
     document.addEventListener('keydown', (event) => {
@@ -89,8 +125,6 @@
       }
     });
 
-    panel.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', closeMenu);
-    });
+    panel.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
   });
 })();
