@@ -68,22 +68,59 @@
 <main class="prod-section">
   <div class="prod-container">
 
-    <!-- Filtro rápido -->
-    <div class="filter-bar">
-      <span class="filter-bar__label">Filtrar:</span>
-      <select class="filter-select" id="filtro-ambiente">
-        <option value="todos">Todos os ambientes</option>
-        <option value="residencial">Residencial</option>
-        <option value="corporativo">Corporativo</option>
-        <option value="outdoor">Outdoor</option>
-      </select>
-      <select class="filter-select" id="filtro-disponibilidade">
-        <option value="todos">Todos</option>
-        <option value="pronta">Pronta entrega</option>
-        <option value="consulta">Sob consulta</option>
-      </select>
-      <input type="search" class="filter-search" id="filtro-busca" placeholder="Buscar produto..." />
-      <span class="filter-count" id="filter-count">14 produtos</span>
+    <!-- Filtro premium -->
+    <div class="filter-panel" id="filter-panel">
+
+      <!-- Linha 1: busca + contagem -->
+      <div class="filter-panel__top">
+        <div class="filter-search-wrap">
+          <span class="filter-search-wrap__icon">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          </span>
+          <input type="search" class="filter-search-new" id="filtro-busca" placeholder="Buscar produto por nome ou categoria..." autocomplete="off" />
+          <button class="filter-search-clear" id="search-clear" aria-label="Limpar busca" style="display:none;">✕</button>
+        </div>
+        <div class="filter-panel__meta">
+          <span class="filter-count" id="filter-count">14 produtos</span>
+          <button class="filter-reset-btn" id="filter-reset" style="display:none;">Limpar filtros</button>
+        </div>
+      </div>
+
+      <!-- Linha 2: chips de filtro -->
+      <div class="filter-panel__body">
+        <div class="filter-group">
+          <span class="filter-group__label">Ambiente</span>
+          <div class="filter-chips" role="group" aria-label="Filtrar por ambiente">
+            <button class="filter-chip is-active" data-filter="ambiente" data-val="todos">Todos</button>
+            <button class="filter-chip" data-filter="ambiente" data-val="residencial">Residencial</button>
+            <button class="filter-chip" data-filter="ambiente" data-val="corporativo">Corporativo</button>
+            <button class="filter-chip" data-filter="ambiente" data-val="outdoor">Outdoor</button>
+          </div>
+        </div>
+
+        <div class="filter-divider"></div>
+
+        <div class="filter-group">
+          <span class="filter-group__label">Disponibilidade</span>
+          <div class="filter-chips" role="group" aria-label="Filtrar por disponibilidade">
+            <button class="filter-chip is-active" data-filter="disp" data-val="todos">Todos</button>
+            <button class="filter-chip filter-chip--live" data-filter="disp" data-val="pronta">
+              <span class="filter-chip__dot"></span>
+              Pronta entrega
+            </button>
+            <button class="filter-chip" data-filter="disp" data-val="consulta">Sob consulta</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tags de filtros ativos -->
+      <div class="filter-active-row" id="filter-active-row"></div>
+
+    </div>
+
+    <!-- Estado vazio -->
+    <div class="filter-empty" id="filter-empty">
+      Nenhum produto encontrado para essa combinação de filtros.
     </div>
 
     <!-- ASSENTOS -->
@@ -539,41 +576,136 @@
 <script src="assets/image-inventory.js"></script>
 <script src="assets/header.js"></script>
 <script>
-  // Filtro funcional
+  // ── Filtro premium — chips ────────────────────────────────
   (() => {
-    const busca = document.getElementById('filtro-busca');
-    const ambiente = document.getElementById('filtro-ambiente');
-    const disponibilidade = document.getElementById('filtro-disponibilidade');
-    const count = document.getElementById('filter-count');
-    const cards = document.querySelectorAll('[data-prod]');
+    const busca      = document.getElementById('filtro-busca');
+    const clearBtn   = document.getElementById('search-clear');
+    const resetBtn   = document.getElementById('filter-reset');
+    const countEl    = document.getElementById('filter-count');
+    const activeRow  = document.getElementById('filter-active-row');
+    const emptyState = document.getElementById('filter-empty');
+    const cards      = document.querySelectorAll('[data-prod]');
+
+    let state = { ambiente: 'todos', disp: 'todos', q: '' };
+
+    // Rótulos legíveis para as tags de filtro ativo
+    const labels = {
+      ambiente: { residencial: 'Residencial', corporativo: 'Corporativo', outdoor: 'Outdoor' },
+      disp:     { pronta: 'Pronta entrega', consulta: 'Sob consulta' }
+    };
 
     function filtrar() {
-      const q = busca.value.toLowerCase();
-      const amb = ambiente.value;
-      const disp = disponibilidade.value;
+      const { ambiente, disp, q } = state;
       let visible = 0;
+
       cards.forEach(card => {
-        const nome = card.querySelector('h3').textContent.toLowerCase();
-        const cat = card.dataset.cat || '';
-        const cardAmb = card.dataset.amb || '';
+        const nome     = card.querySelector('h3').textContent.toLowerCase();
+        const cardAmb  = card.dataset.amb || '';
         const cardDisp = card.dataset.disp || '';
-        const matchQ = !q || nome.includes(q);
-        const matchAmb = amb === 'todos' || cardAmb.includes(amb);
-        const matchDisp = disp === 'todos' || cardDisp === disp;
-        const show = matchQ && matchAmb && matchDisp;
+        const show =
+          (!q || nome.includes(q)) &&
+          (ambiente === 'todos' || cardAmb.includes(ambiente)) &&
+          (disp     === 'todos' || cardDisp === disp);
+
         card.style.display = show ? '' : 'none';
         if (show) visible++;
       });
-      count.textContent = `${visible} produto${visible !== 1 ? 's' : ''}`;
+
+      // Atualiza contagem
+      countEl.textContent = `${visible} produto${visible !== 1 ? 's' : ''}`;
+
+      // Vazio
+      emptyState.classList.toggle('is-visible', visible === 0);
+
+      // Botão reset
+      const hasFilter = ambiente !== 'todos' || disp !== 'todos' || q !== '';
+      resetBtn.style.display = hasFilter ? '' : 'none';
+
+      // Tags ativas
+      renderActiveTags();
     }
 
-    busca.addEventListener('input', filtrar);
-    ambiente.addEventListener('change', filtrar);
-    disponibilidade.addEventListener('change', filtrar);
+    function renderActiveTags() {
+      activeRow.innerHTML = '';
+      const { ambiente, disp, q } = state;
+
+      if (q) {
+        activeRow.appendChild(makeTag(`"${q}"`, () => {
+          state.q = '';
+          busca.value = '';
+          clearBtn.style.display = 'none';
+          filtrar();
+        }));
+      }
+      if (ambiente !== 'todos') {
+        activeRow.appendChild(makeTag(labels.ambiente[ambiente], () => {
+          state.ambiente = 'todos';
+          setChipActive('ambiente', 'todos');
+          filtrar();
+        }));
+      }
+      if (disp !== 'todos') {
+        activeRow.appendChild(makeTag(labels.disp[disp], () => {
+          state.disp = 'todos';
+          setChipActive('disp', 'todos');
+          filtrar();
+        }));
+      }
+    }
+
+    function makeTag(text, onRemove) {
+      const tag = document.createElement('span');
+      tag.className = 'filter-tag';
+      tag.innerHTML = `${text}<button class="filter-tag__remove" aria-label="Remover filtro">✕</button>`;
+      tag.querySelector('button').addEventListener('click', onRemove);
+      return tag;
+    }
+
+    function setChipActive(group, val) {
+      document.querySelectorAll(`[data-filter="${group}"]`).forEach(btn => {
+        btn.classList.toggle('is-active', btn.dataset.val === val);
+      });
+    }
+
+    // Chips click
+    document.querySelectorAll('.filter-chip').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const group = btn.dataset.filter;
+        const val   = btn.dataset.val;
+        state[group] = val;
+        setChipActive(group, val);
+        filtrar();
+      });
+    });
+
+    // Busca
+    busca.addEventListener('input', () => {
+      state.q = busca.value.toLowerCase().trim();
+      clearBtn.style.display = state.q ? '' : 'none';
+      filtrar();
+    });
+
+    clearBtn.addEventListener('click', () => {
+      state.q = '';
+      busca.value = '';
+      clearBtn.style.display = 'none';
+      busca.focus();
+      filtrar();
+    });
+
+    // Reset total
+    resetBtn.addEventListener('click', () => {
+      state = { ambiente: 'todos', disp: 'todos', q: '' };
+      busca.value = '';
+      clearBtn.style.display = 'none';
+      setChipActive('ambiente', 'todos');
+      setChipActive('disp', 'todos');
+      filtrar();
+    });
 
     // Active nav tab on scroll
     const sections = document.querySelectorAll('.cat-section');
-    const tabs = document.querySelectorAll('.catalog-nav__tab[data-nav-tab]');
+    const tabs     = document.querySelectorAll('.catalog-nav__tab[data-nav-tab]');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -583,6 +715,8 @@
       });
     }, { rootMargin: '-40% 0px -50% 0px' });
     sections.forEach(s => observer.observe(s));
+
+    filtrar(); // inicializa contagem
   })();
 </script>
 </body>

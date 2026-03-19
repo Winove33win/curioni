@@ -248,66 +248,278 @@
 }
 
 /* ── CATALOG FILTER BAR ─────────────────────────────────────── */
-.filter-bar {
-  background: rgba(255,255,255,0.85);
-  border: 1px solid rgba(17,17,17,0.07);
-  border-radius: 16px;
-  padding: 16px 20px;
+/* ── FILTER PANEL — Premium chip UI ─────────────────────── */
+.filter-panel {
+  background: #fff;
+  border: 1px solid rgba(17,17,17,0.08);
+  border-radius: 20px;
+  margin-bottom: 40px;
+  overflow: hidden;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+}
+
+/* Top: search + count */
+.filter-panel__top {
   display: flex;
-  gap: 14px;
   align-items: center;
-  flex-wrap: wrap;
-  margin-bottom: 36px;
-  backdrop-filter: blur(10px);
+  gap: 16px;
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(17,17,17,0.06);
 }
 
-.filter-bar__label {
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted);
-  white-space: nowrap;
-}
-
-.filter-select {
-  padding: 9px 14px;
-  border-radius: 12px;
-  border: 1px solid rgba(17,17,17,0.1);
-  background: #fff;
-  font: 14px/1 var(--body);
-  color: #111;
-  cursor: pointer;
-  outline: none;
-  transition: border-color 0.2s;
-}
-
-.filter-select:focus {
-  border-color: var(--accent);
-}
-
-.filter-search {
+.filter-search-wrap {
   flex: 1;
-  min-width: 180px;
-  padding: 9px 16px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.filter-search-wrap__icon {
+  position: absolute;
+  left: 14px;
+  color: #9a9189;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+
+.filter-search-new {
+  width: 100%;
+  padding: 10px 40px 10px 40px;
   border-radius: 12px;
-  border: 1px solid rgba(17,17,17,0.1);
-  background: #fff;
+  border: 1.5px solid rgba(17,17,17,0.1);
+  background: #faf8f4;
   font: 14px/1 var(--body);
   color: #111;
   outline: none;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, background 0.2s;
 }
 
-.filter-search:focus {
-  border-color: var(--accent);
+.filter-search-new:focus {
+  border-color: #111;
+  background: #fff;
+}
+
+.filter-search-new::placeholder {
+  color: #b5aea8;
+}
+
+.filter-search-clear {
+  position: absolute;
+  right: 12px;
+  background: rgba(17,17,17,0.08);
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 10px;
+  color: #5a5550;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  line-height: 1;
+}
+
+.filter-search-clear:hover {
+  background: rgba(17,17,17,0.14);
+}
+
+.filter-panel__meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
 }
 
 .filter-count {
-  margin-left: auto;
   font-size: 13px;
-  color: var(--muted);
+  font-weight: 500;
+  color: #9a9189;
   white-space: nowrap;
+}
+
+.filter-reset-btn {
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(17,17,17,0.14);
+  background: transparent;
+  font: 12px/1 var(--body);
+  font-weight: 600;
+  color: #2a2622;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+
+.filter-reset-btn:hover {
+  background: #111;
+  border-color: #111;
+  color: #fff;
+}
+
+/* Body: chip groups */
+.filter-panel__body {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 14px 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filter-group__label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #c5bdb6;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.filter-divider {
+  width: 1px;
+  height: 28px;
+  background: rgba(17,17,17,0.08);
+  flex-shrink: 0;
+  align-self: center;
+}
+
+/* Chips */
+.filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(17,17,17,0.1);
+  background: transparent;
+  font: 13px/1 var(--body);
+  font-weight: 500;
+  color: #4a4540;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+}
+
+.filter-chip:hover {
+  border-color: #111;
+  color: #111;
+  background: rgba(17,17,17,0.04);
+}
+
+.filter-chip.is-active {
+  background: #111;
+  border-color: #111;
+  color: #fff;
+}
+
+/* Pronta entrega chip variant */
+.filter-chip--live {
+  border-color: rgba(37,211,102,0.3);
+  color: #1c8a43;
+}
+
+.filter-chip--live:hover {
+  border-color: #25d366;
+  background: rgba(37,211,102,0.06);
+  color: #158038;
+}
+
+.filter-chip--live.is-active {
+  background: #25d366;
+  border-color: #25d366;
+  color: #fff;
+}
+
+.filter-chip__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
+  animation: tbPulse 2s ease-in-out infinite;
+}
+
+/* Active filter tags row */
+.filter-active-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 0 20px 14px;
+}
+
+.filter-active-row:empty {
+  display: none;
+}
+
+.filter-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px 5px 12px;
+  background: #f0ede8;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #2a2622;
+}
+
+.filter-tag__remove {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: rgba(17,17,17,0.12);
+  border: none;
+  cursor: pointer;
+  font-size: 9px;
+  color: #2a2622;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+
+.filter-tag__remove:hover {
+  background: rgba(17,17,17,0.22);
+}
+
+/* Empty state */
+.filter-empty {
+  display: none;
+  padding: 60px 20px;
+  text-align: center;
+  color: #9a9189;
+  font-size: 15px;
+}
+
+.filter-empty.is-visible {
+  display: block;
+}
+
+/* Legacy compat - keep old names working */
+.filter-bar {
+  display: none; /* replaced by .filter-panel */
 }
 
 /* ── CATEGORY SECTION ───────────────────────────────────────── */
