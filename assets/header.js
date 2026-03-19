@@ -1,18 +1,24 @@
 (() => {
   const currentPath = window.location.pathname.split('/').pop() || 'curioni-preview.html';
 
+  const WA_NUM  = '5511999999999';
+  const WA_MSG  = encodeURIComponent('Olá! Gostaria de mais informações sobre os produtos Curioni.');
+  const WA_URL  = `https://wa.me/${WA_NUM}?text=${WA_MSG}`;
+
+  const WA_SVG = `<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>`;
+
   const primaryLinks = [
     { href: 'curioni-preview.html', label: 'Home' },
-    { href: 'produtos.html', label: 'Produtos' },
-    { href: 'pronta-entrega.html', label: 'Pronta entrega' },
-    { href: 'ambientes.html', label: 'Ambientes' },
-    { href: 'profissionais.html', label: 'Profissionais' },
-    { href: 'sobre.html', label: 'Marca' }
+    { href: 'produtos.html',        label: 'Produtos' },
+    { href: 'pronta-entrega.html',  label: 'Pronta Entrega', live: true },
+    { href: 'ambientes.html',       label: 'Ambientes' },
+    { href: 'profissionais.html',   label: 'Profissionais' },
+    { href: 'sobre.html',           label: 'Marca' },
   ];
 
   const utilityLinks = [
-    { href: 'novidades.html', label: 'Novidades' },
-    { href: 'biblioteca-tecnica.html', label: 'Biblioteca 3D' }
+    { href: 'novidades.html',       label: 'Novidades' },
+    { href: 'biblioteca-tecnica.html', label: 'Biblioteca 3D' },
   ];
 
   const isCurrent = (href) => {
@@ -20,111 +26,138 @@
     return currentPath === href;
   };
 
-  const navMarkup = primaryLinks.map(({ href, label }) => `
-    <a href="${href}"${isCurrent(href) ? ' aria-current="page"' : ''}>${label}</a>
-  `).join('');
+  const navMarkup = primaryLinks.map(({ href, label, live }) => {
+    const cur = isCurrent(href) ? ' aria-current="page"' : '';
+    const liveClass = live ? ' class="nav-live"' : '';
+    const liveDot = live ? `<span class="nav-live-dot" aria-hidden="true"></span>` : '';
+    return `<a href="${href}"${cur}${liveClass}>${liveDot}${label}</a>`;
+  }).join('');
 
-  const utilityMarkup = utilityLinks.map(({ href, label }) => `
-    <a class="site-header__mini-link" href="${href}"${isCurrent(href) ? ' aria-current="page"' : ''}>${label}</a>
-  `).join('');
+  const utilMarkup = utilityLinks.map(({ href, label }) => {
+    const cur = isCurrent(href) ? ' aria-current="page"' : '';
+    return `<a class="site-header__mini-link" href="${href}"${cur}>${label}</a>`;
+  }).join('');
 
-  const mobilePrimaryMarkup = primaryLinks.map(({ href, label }) => `
-    <a href="${href}"${isCurrent(href) ? ' aria-current="page"' : ''}>${label}</a>
-  `).join('');
+  const mobilePrimary = primaryLinks.map(({ href, label, live }) => {
+    const cur = isCurrent(href) ? ' aria-current="page"' : '';
+    const dot = live ? `<span class="nav-live-dot" style="margin-left:auto;" aria-hidden="true"></span>` : '';
+    return `<a href="${href}"${cur}>${label}${dot}</a>`;
+  }).join('');
 
-  const mobileUtilityMarkup = utilityLinks.concat([
-    { href: 'orcamento.html', label: 'Solicitar orçamento' }
-  ]).map(({ href, label }) => `
-    <a href="${href}"${isCurrent(href) ? ' aria-current="page"' : ''}>${label}</a>
-  `).join('');
+  const mobileUtility = [...utilityLinks, { href: 'orcamento.html', label: 'Solicitar orçamento' }]
+    .map(({ href, label }) => {
+      const cur = isCurrent(href) ? ' aria-current="page"' : '';
+      return `<a href="${href}"${cur}>${label}</a>`;
+    }).join('');
+
+  const TOPBAR = `
+    <div class="site-topbar">
+      <div class="site-topbar__inner">
+        <span class="site-topbar__msg">
+          <span class="site-topbar__dot" aria-hidden="true"></span>
+          <span>Pronta Entrega disponível &mdash; envio em até 48h para todo o Brasil</span>
+        </span>
+        <div class="site-topbar__links">
+          <a href="pronta-entrega.html" class="site-topbar__link">Ver produtos →</a>
+          <a href="novidades.html" class="site-topbar__link">Novidades</a>
+        </div>
+      </div>
+    </div>`;
 
   const HEADER_TEMPLATE = `
+    ${TOPBAR}
     <div class="site-header__container">
       <div class="site-header__inner">
-        <a class="site-header__brand" href="curioni-preview.html" aria-label="Curioni">
+
+        <a class="site-header__brand" href="curioni-preview.html" aria-label="Curioni — voltar para home">
           <span class="site-header__logo">curioni</span>
           <span class="site-header__caption">mobiliário autoral brasileiro</span>
         </a>
-        <nav class="site-header__nav" aria-label="Principal">
+
+        <nav class="site-header__nav" aria-label="Navegação principal">
           ${navMarkup}
         </nav>
+
         <div class="site-header__actions">
-          ${utilityMarkup}
-          <div class="site-header__support" aria-label="Atendimento">
-            <strong>Atendimento</strong>
-            <span>Projetos, especificação e vendas</span>
-          </div>
-          <a class="site-header__cta" href="orcamento.html">Solicitar orçamento</a>
-          <button class="site-header__toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="site-mobile-menu" data-header-toggle>☰</button>
+          ${utilMarkup}
+          <div class="site-header__sep" aria-hidden="true"></div>
+          <a class="site-header__wa" href="${WA_URL}" target="_blank" rel="noopener" aria-label="Falar pelo WhatsApp">
+            ${WA_SVG}
+            WhatsApp
+          </a>
+          <a class="site-header__cta" href="orcamento.html">Orçamento</a>
+          <button class="site-header__toggle" type="button" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="site-mobile-menu" data-header-toggle>
+            <span aria-hidden="true">☰</span>
+          </button>
         </div>
+
       </div>
-      <nav class="site-header__panel" id="site-mobile-menu" data-header-panel aria-label="Menu mobile">
+
+      <nav class="site-header__panel" id="site-mobile-menu" data-header-panel aria-label="Menu de navegação mobile">
         <div class="site-header__panel-section">
           <span class="site-header__panel-label">Navegação</span>
-          ${mobilePrimaryMarkup}
+          ${mobilePrimary}
         </div>
         <div class="site-header__panel-section">
           <span class="site-header__panel-label">Recursos</span>
-          ${mobileUtilityMarkup}
+          ${mobileUtility}
+        </div>
+        <div class="site-header__panel-section">
+          <a href="${WA_URL}" target="_blank" rel="noopener" class="panel-wa-btn">
+            ${WA_SVG}
+            Falar no WhatsApp
+          </a>
         </div>
       </nav>
     </div>`;
 
-  const headers = document.querySelectorAll('[data-site-header]');
-
-  headers.forEach((header) => {
+  document.querySelectorAll('[data-site-header]').forEach((header) => {
     header.innerHTML = HEADER_TEMPLATE;
 
     const toggle = header.querySelector('[data-header-toggle]');
-    const panel = header.querySelector('[data-header-panel]');
+    const panel  = header.querySelector('[data-header-panel]');
     if (!toggle || !panel) return;
 
-    const focusableSelector = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+    const focusable = () => panel.querySelectorAll('a[href], button:not([disabled])');
 
-    const closeMenu = () => {
+    const close = () => {
       panel.classList.remove('is-open');
       toggle.setAttribute('aria-expanded', 'false');
+      toggle.querySelector('span').textContent = '☰';
     };
 
-    const openMenu = () => {
+    const open = () => {
       panel.classList.add('is-open');
       toggle.setAttribute('aria-expanded', 'true');
-      const focusables = panel.querySelectorAll(focusableSelector);
-      if (focusables.length) focusables[0].focus();
+      toggle.querySelector('span').textContent = '✕';
+      const items = focusable();
+      if (items.length) items[0].focus();
     };
 
-    toggle.addEventListener('click', () => {
-      if (panel.classList.contains('is-open')) closeMenu();
-      else openMenu();
+    toggle.addEventListener('click', () =>
+      panel.classList.contains('is-open') ? close() : open()
+    );
+
+    document.addEventListener('click', (e) => {
+      if (panel.classList.contains('is-open') && !header.contains(e.target)) close();
     });
 
-    document.addEventListener('click', (event) => {
-      if (panel.classList.contains('is-open') && !header.contains(event.target)) closeMenu();
-    });
-
-    document.addEventListener('keydown', (event) => {
+    document.addEventListener('keydown', (e) => {
       if (!panel.classList.contains('is-open')) return;
-      if (event.key === 'Escape') {
-        closeMenu();
-        toggle.focus();
-        return;
-      }
-      if (event.key !== 'Tab') return;
-
-      const focusables = [toggle, ...panel.querySelectorAll(focusableSelector)];
-      if (!focusables.length) return;
-      const first = focusables[0];
-      const last = focusables[focusables.length - 1];
-
-      if (event.shiftKey && document.activeElement === first) {
-        event.preventDefault();
-        last.focus();
-      } else if (!event.shiftKey && document.activeElement === last) {
-        event.preventDefault();
-        first.focus();
-      }
+      if (e.key === 'Escape') { close(); toggle.focus(); return; }
+      if (e.key !== 'Tab') return;
+      const items = [toggle, ...focusable()];
+      const first = items[0], last = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     });
 
-    panel.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+    panel.querySelectorAll('a').forEach(l => l.addEventListener('click', close));
+
+    // Scroll shadow
+    const addScrollClass = () =>
+      header.classList.toggle('is-scrolled', window.scrollY > 10);
+    window.addEventListener('scroll', addScrollClass, { passive: true });
+    addScrollClass();
   });
 })();
