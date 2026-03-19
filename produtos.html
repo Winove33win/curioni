@@ -3,102 +3,587 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Produtos | Curioni</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <title>Produtos | Curioni — Mobiliário de Alto Padrão</title>
+  <meta name="description" content="Catálogo completo Curioni: assentos, mesas, complementos, iluminação e outdoor. Design autoral brasileiro para interiores sofisticados." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/header.css" />
   <link rel="stylesheet" href="assets/site.css" />
+  <link rel="stylesheet" href="assets/products.css" />
 </head>
-<body>
+<body class="prod-page">
 <header class="site-header" data-site-header></header>
 
-<main class="container products-layout">
-  <section class="section products-hero">
-    <article class="card page-hero__copy">
-      <span class="eyebrow">Catálogo completo</span>
-      <h1 class="display-title" style="margin:0;">Produtos organizados para descoberta e especificação.</h1>
-      <p class="lead">Separamos o catálogo em uma estrutura de navegação rápida, com coleções, argumentos comerciais e links diretos para a página de detalhe.</p>
-      <div class="chip-row" aria-label="Atalhos do catálogo">
-        <a class="category-chip" href="#assentos">Assentos</a>
-        <a class="category-chip" href="#mesas">Mesas</a>
-        <a class="category-chip" href="#complementos">Complementos</a>
-        <a class="category-chip" href="#iluminacao">Iluminação</a>
-        <a class="category-chip" href="#externa">Outdoor</a>
+<!-- ── HERO ──────────────────────────────────────────────────── -->
+<div class="catalog-hero">
+  <div class="prod-container">
+    <nav class="breadcrumb">
+      <a href="curioni-preview.html">Home</a>
+      <span class="breadcrumb__sep">›</span>
+      <span class="breadcrumb__current">Produtos</span>
+    </nav>
+    <div class="catalog-hero__inner">
+      <div>
+        <span style="font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);">Catálogo completo</span>
+        <h1 class="catalog-hero__title">Todo o nosso<br>universo de design.</h1>
+        <p class="catalog-hero__desc">5 famílias de produto. Cada peça uma assinatura. Navegue pelo catálogo e converse com nosso time pelo WhatsApp para personalizar ou adquirir.</p>
       </div>
-      <div class="page-hero__meta">
-        <div class="kpi"><strong>5</strong><span>famílias principais</span></div>
-        <div class="kpi"><strong>UX</strong><span>arquitetura de navegação simplificada</span></div>
-        <div class="kpi"><strong>B2B + B2C</strong><span>conteúdo útil para venda e especificação</span></div>
+      <div class="catalog-hero__meta">
+        <div class="catalog-hero__stat">
+          <strong>14+</strong>
+          <span>Produtos</span>
+        </div>
+        <div class="catalog-hero__stat">
+          <strong>5</strong>
+          <span>Categorias</span>
+        </div>
+        <div class="catalog-hero__stat">
+          <strong>48h</strong>
+          <span>Entrega express</span>
+        </div>
       </div>
-    </article>
-    <article class="card"><div class="thumb" data-image-key="catAssentos"></div></article>
-  </section>
-
-  <section class="section card products-filter-shell">
-    <div>
-      <span class="eyebrow">Como navegar</span>
-      <h2 style="margin:10px 0 8px;font:600 clamp(28px,4vw,48px)/1 var(--title)">Visual de showroom com leitura de e-commerce.</h2>
-      <p class="muted">Cada card prioriza imagem, categoria, narrativa curta e caminho rápido para ficha do produto.</p>
     </div>
-    <form class="form" onsubmit="return false;" aria-label="Filtros demonstrativos do catálogo">
-      <label>Ambiente de uso<select><option>Todos</option><option>Residencial</option><option>Corporativo</option><option>Outdoor</option></select></label>
-      <label>Tipologia<select><option>Todas</option><option>Cadeiras</option><option>Mesas</option><option>Iluminação</option></select></label>
-      <label>Disponibilidade<select><option>Sob consulta</option><option>Pronta entrega</option></select></label>
-    </form>
-  </section>
+  </div>
+</div>
 
-  <section class="section products-listing" id="assentos">
-    <div class="section-head"><h2>Assentos</h2><p>Coleção com foco em conforto visual, ergonomia e presença escultural.</p></div>
-    <div class="grid-4 ecommerce-grid">
-      <article class="card ecommerce-card"><div class="thumb" data-image-key="pdpMain1"></div><div class="card-body"><span class="eyebrow">Cadeira</span><h3>Cadeira Fly</h3><p>Estrutura em madeira maciça com desenho leve e assinatura contemporânea.</p><div class="ecommerce-card__swatch"><span style="background:#221d1a"></span><span style="background:#8b6e4c"></span><span style="background:#dbd2ca"></span></div><div class="ecommerce-meta"><div class="ecommerce-price"><strong>Sob consulta</strong><span>Ficha técnica e acabamentos</span></div><a class="btn" href="produtos-detalhes.html?produto=cadeira-fly">Ver detalhes</a></div></div></article>
-      <article class="card ecommerce-card"><div class="thumb" data-image-key="launchPoltronaAlma"></div><div class="card-body"><span class="eyebrow">Poltrona</span><h3>Poltrona Alma</h3><p>Conforto profundo com base refinada para salas, lounges e recepções.</p><div class="ecommerce-card__swatch"><span style="background:#d3c7bb"></span><span style="background:#9e8f7e"></span><span style="background:#2c2a29"></span></div><div class="ecommerce-meta"><div class="ecommerce-price"><strong>Sob consulta</strong><span>Personalização sob projeto</span></div><a class="btn" href="produtos-detalhes.html?produto=poltrona-alma">Ver detalhes</a></div></div></article>
-      <article class="card ecommerce-card"><div class="thumb" data-image-key="launchSofaCurva"></div><div class="card-body"><span class="eyebrow">Sofá</span><h3>Sofá Curva</h3><p>Módulos orgânicos para composições amplas com leitura arquitetônica.</p><div class="ecommerce-card__swatch"><span style="background:#cbc0b1"></span><span style="background:#8f7d6e"></span><span style="background:#f1eee8"></span></div><div class="ecommerce-meta"><div class="ecommerce-price"><strong>Sob consulta</strong><span>Layouts modulares disponíveis</span></div><a class="btn" href="produtos-detalhes.html?produto=sofa-curva">Ver detalhes</a></div></div></article>
-      <article class="card ecommerce-card"><div class="thumb" data-image-key="launchBancoTenda"></div><div class="card-body"><span class="eyebrow">Banco</span><h3>Banco Tenda</h3><p>Peça versátil para halls, dormitórios e áreas externas cobertas.</p><div class="ecommerce-card__swatch"><span style="background:#1d1d1d"></span><span style="background:#91806d"></span><span style="background:#d8d0c6"></span></div><div class="ecommerce-meta"><div class="ecommerce-price"><strong>Sob consulta</strong><span>Versões indoor e outdoor</span></div><a class="btn" href="produtos-detalhes.html?produto=banco-tenda">Ver detalhes</a></div></div></article>
+<!-- ── NAVEGAÇÃO POR CATEGORIA ────────────────────────────────── -->
+<nav class="catalog-nav" aria-label="Categorias">
+  <div class="prod-container">
+    <div class="catalog-nav__inner">
+      <a href="#assentos" class="catalog-nav__tab active" data-nav-tab="assentos">Assentos <span class="catalog-nav__count">(4)</span></a>
+      <a href="#mesas" class="catalog-nav__tab" data-nav-tab="mesas">Mesas <span class="catalog-nav__count">(2)</span></a>
+      <a href="#complementos" class="catalog-nav__tab" data-nav-tab="complementos">Complementos <span class="catalog-nav__count">(2)</span></a>
+      <a href="#iluminacao" class="catalog-nav__tab" data-nav-tab="iluminacao">Iluminação <span class="catalog-nav__count">(2)</span></a>
+      <a href="#externa" class="catalog-nav__tab" data-nav-tab="externa">Outdoor <span class="catalog-nav__count">(2)</span></a>
+      <a href="pronta-entrega.html" class="catalog-nav__tab" style="margin-left:auto;color:#25d366;border-color:rgba(37,211,102,0.3);background:rgba(37,211,102,0.06);">
+        <span style="width:7px;height:7px;border-radius:50%;background:#25d366;display:inline-block;box-shadow:0 0 0 3px rgba(37,211,102,0.2);"></span>
+        Pronta Entrega
+      </a>
     </div>
-  </section>
+  </div>
+</nav>
 
-  <section class="section products-listing" id="mesas">
-    <div class="section-head"><h2>Mesas</h2><p>Superfícies de jantar, apoio e centro com materiais nobres.</p></div>
-    <div class="grid-4 ecommerce-grid">
-      <article class="card ecommerce-card"><div class="thumb" data-image-key="launchMesaVelo"></div><div class="card-body"><span class="eyebrow">Jantar</span><h3>Mesa Vélo</h3><p>Tampo mineral e base escultórica para projetos de alto padrão.</p><div class="ecommerce-meta"><div class="ecommerce-price"><strong>Sob consulta</strong><span>Disponível em múltiplas dimensões</span></div><a class="btn" href="produtos-detalhes.html?produto=mesa-velo">Ver detalhes</a></div></div></article>
-      <article class="card ecommerce-card"><div class="thumb" data-image-key="vitrineMesaCiano"></div><div class="card-body"><span class="eyebrow">Lateral</span><h3>Mesa Ciano</h3><p>Proporção compacta para composição com poltronas e sofás.</p><div class="ecommerce-meta"><div class="ecommerce-price"><strong>Sob consulta</strong><span>Acabamentos amadeirados e vidro</span></div><a class="btn" href="produtos-detalhes.html?produto=mesa-ciano">Ver detalhes</a></div></div></article>
-    </div>
-  </section>
+<!-- ── CORPO DO CATÁLOGO ──────────────────────────────────────── -->
+<main class="prod-section">
+  <div class="prod-container">
 
-  <section class="section products-listing" id="complementos">
-    <div class="section-head"><h2>Complementos</h2><p>Peças de apoio que organizam o espaço sem perder presença visual.</p></div>
-    <div class="grid-4 ecommerce-grid">
-      <article class="card ecommerce-card"><div class="thumb" data-image-key="launchBuffetModulo"></div><div class="card-body"><span class="eyebrow">Buffet</span><h3>Buffet Módulo</h3><p>Portas usinadas e módulos configuráveis para salas e áreas gourmet.</p><div class="ecommerce-meta"><div class="ecommerce-price"><strong>Sob consulta</strong><span>Configuração sob demanda</span></div><a class="btn" href="produtos-detalhes.html?produto=buffet-modulo">Ver detalhes</a></div></div></article>
-      <article class="card ecommerce-card"><div class="thumb" data-image-key="catComplementos"></div><div class="card-body"><span class="eyebrow">Carrinho</span><h3>Carrinho Atlas</h3><p>Estrutura tubular com bandejas removíveis para apoio flexível.</p><div class="ecommerce-meta"><div class="ecommerce-price"><strong>Sob consulta</strong><span>Uso residencial ou hospitalidade</span></div><a class="btn" href="produtos-detalhes.html?produto=carrinho-atlas">Ver detalhes</a></div></div></article>
+    <!-- Filtro rápido -->
+    <div class="filter-bar">
+      <span class="filter-bar__label">Filtrar:</span>
+      <select class="filter-select" id="filtro-ambiente">
+        <option value="todos">Todos os ambientes</option>
+        <option value="residencial">Residencial</option>
+        <option value="corporativo">Corporativo</option>
+        <option value="outdoor">Outdoor</option>
+      </select>
+      <select class="filter-select" id="filtro-disponibilidade">
+        <option value="todos">Todos</option>
+        <option value="pronta">Pronta entrega</option>
+        <option value="consulta">Sob consulta</option>
+      </select>
+      <input type="search" class="filter-search" id="filtro-busca" placeholder="Buscar produto..." />
+      <span class="filter-count" id="filter-count">14 produtos</span>
     </div>
-  </section>
 
-  <section class="section products-listing" id="iluminacao">
-    <div class="section-head"><h2>Iluminação</h2><p>Luz difusa, materiais táteis e desenho limpo para compor atmosfera.</p></div>
-    <div class="grid-4 ecommerce-grid">
-      <article class="card ecommerce-card"><div class="thumb" data-image-key="launchAbajurLia"></div><div class="card-body"><span class="eyebrow">Abajur</span><h3>Abajur Lía</h3><p>Luminária de apoio com presença leve para quartos e salas.</p><div class="ecommerce-meta"><div class="ecommerce-price"><strong>Sob consulta</strong><span>Ideal para ambientação e retail</span></div><a class="btn" href="produtos-detalhes.html?produto=abajur-lia">Ver detalhes</a></div></div></article>
-      <article class="card ecommerce-card"><div class="thumb" data-image-key="launchPendenteArco"></div><div class="card-body"><span class="eyebrow">Pendente</span><h3>Pendente Arco</h3><p>Latão escovado e vidro opalino para composições mais sofisticadas.</p><div class="ecommerce-meta"><div class="ecommerce-price"><strong>Sob consulta</strong><span>Aplicação residencial e contract</span></div><a class="btn" href="produtos-detalhes.html?produto=pendente-arco">Ver detalhes</a></div></div></article>
-    </div>
-  </section>
+    <!-- ASSENTOS -->
+    <section class="cat-section" id="assentos">
+      <div class="cat-section__head">
+        <div>
+          <span style="font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);">Categoria</span>
+          <h2>Assentos</h2>
+          <p>Conforto com desenho leve — cadeiras, poltronas, sofás e bancos com linguagem autoral.</p>
+        </div>
+        <a href="categoria-assentos.html" class="btn-sec sm">Ver categoria completa</a>
+      </div>
+      <div class="prod-grid" id="grid-assentos">
 
-  <section class="section products-listing" id="externa">
-    <div class="section-head"><h2>Outdoor</h2><p>Peças resistentes para varandas, rooftops, hotéis e áreas abertas.</p></div>
-    <div class="grid-4 ecommerce-grid">
-      <article class="card ecommerce-card"><div class="thumb" data-image-key="vitrineBalancoOca"></div><div class="card-body"><span class="eyebrow">Balanço</span><h3>Balanço Oca</h3><p>Trama náutica e estrutura leve com leitura contemporânea.</p><div class="ecommerce-meta"><div class="ecommerce-price"><strong>Sob consulta</strong><span>Especificação outdoor premium</span></div><a class="btn" href="produtos-detalhes.html?produto=balanco-oca">Ver detalhes</a></div></div></article>
-      <article class="card ecommerce-card"><div class="thumb" data-image-key="launchBancoTenda"></div><div class="card-body"><span class="eyebrow">Banco</span><h3>Banco Tenda Outdoor</h3><p>Versão externa com pintura eletrostática e tecidos técnicos.</p><div class="ecommerce-meta"><div class="ecommerce-price"><strong>Sob consulta</strong><span>Estoque mediante configuração</span></div><a class="btn" href="produtos-detalhes.html?produto=banco-tenda-outdoor">Ver detalhes</a></div></div></article>
+        <div class="prod-card" data-prod data-cat="assentos" data-amb="residencial,corporativo" data-disp="pronta">
+          <div class="prod-card__media">
+            <div class="thumb" data-image-key="pdpMain1"></div>
+            <span class="prod-card__badge green">Pronta entrega</span>
+          </div>
+          <div class="prod-card__body">
+            <span class="prod-card__cat">Cadeira</span>
+            <h3>Cadeira Fly</h3>
+            <p>Estrutura em madeira maciça com desenho leve e assinatura contemporânea. Ergonomia refinada para uso prolongado.</p>
+            <div class="prod-swatches">
+              <span class="p-sw" style="background:#221d1a" title="Nogueira Escura"></span>
+              <span class="p-sw" style="background:#8b6e4c" title="Carvalho Natural"></span>
+              <span class="p-sw" style="background:#dbd2ca" title="Freijó Claro"></span>
+            </div>
+          </div>
+          <div class="prod-card__footer">
+            <div class="prod-card__price">
+              <strong>Sob consulta</strong>
+              <span>Envio em 48h</span>
+            </div>
+            <div style="display:flex;gap:6px;">
+              <a href="produtos-detalhes.html?produto=cadeira-fly" class="btn-sec sm">Detalhes</a>
+              <a href="https://wa.me/5511999999999?text=Olá! Tenho interesse na Cadeira Fly da Curioni. Podem me ajudar?" target="_blank" rel="noopener" class="btn-wa sm">
+                <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="prod-card" data-prod data-cat="assentos" data-amb="residencial,corporativo" data-disp="pronta">
+          <div class="prod-card__media">
+            <div class="thumb" data-image-key="launchPoltronaAlma"></div>
+            <span class="prod-card__badge green">Pronta entrega</span>
+          </div>
+          <div class="prod-card__body">
+            <span class="prod-card__cat">Poltrona</span>
+            <h3>Poltrona Alma</h3>
+            <p>Conforto profundo com presença escultural. Ideal para salas de estar, lounges e recepções de alto padrão.</p>
+            <div class="prod-swatches">
+              <span class="p-sw" style="background:#d3c7bb" title="Linho Areia"></span>
+              <span class="p-sw" style="background:#9e8f7e" title="Boucle Natural"></span>
+              <span class="p-sw" style="background:#2c2a29" title="Couro Negro"></span>
+            </div>
+          </div>
+          <div class="prod-card__footer">
+            <div class="prod-card__price">
+              <strong>Sob consulta</strong>
+              <span>Envio em 48h</span>
+            </div>
+            <div style="display:flex;gap:6px;">
+              <a href="produtos-detalhes.html?produto=poltrona-alma" class="btn-sec sm">Detalhes</a>
+              <a href="https://wa.me/5511999999999?text=Olá! Tenho interesse na Poltrona Alma da Curioni. Podem me ajudar?" target="_blank" rel="noopener" class="btn-wa sm">
+                <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="prod-card" data-prod data-cat="assentos" data-amb="residencial" data-disp="consulta">
+          <div class="prod-card__media">
+            <div class="thumb" data-image-key="launchSofaCurva"></div>
+          </div>
+          <div class="prod-card__body">
+            <span class="prod-card__cat">Sofá</span>
+            <h3>Sofá Curva</h3>
+            <p>Módulos orgânicos para composições amplas com leitura arquitetônica. Sistema modular configurável.</p>
+            <div class="prod-swatches">
+              <span class="p-sw" style="background:#cbc0b1" title="Tecido Premium"></span>
+              <span class="p-sw" style="background:#8f7d6e" title="Boucle"></span>
+              <span class="p-sw" style="background:#f1eee8" title="Linho Natural"></span>
+            </div>
+          </div>
+          <div class="prod-card__footer">
+            <div class="prod-card__price">
+              <strong>Sob consulta</strong>
+              <span>Produção sob demanda</span>
+            </div>
+            <div style="display:flex;gap:6px;">
+              <a href="produtos-detalhes.html?produto=sofa-curva" class="btn-sec sm">Detalhes</a>
+              <a href="https://wa.me/5511999999999?text=Olá! Tenho interesse no Sofá Curva da Curioni. Podem me ajudar?" target="_blank" rel="noopener" class="btn-wa sm">
+                <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="prod-card" data-prod data-cat="assentos" data-amb="residencial,outdoor" data-disp="pronta">
+          <div class="prod-card__media">
+            <div class="thumb" data-image-key="launchBancoTenda"></div>
+            <span class="prod-card__badge green">Pronta entrega</span>
+          </div>
+          <div class="prod-card__body">
+            <span class="prod-card__cat">Banco</span>
+            <h3>Banco Tenda</h3>
+            <p>Peça versátil para halls, dormitórios e áreas externas cobertas. Versões indoor e outdoor disponíveis.</p>
+            <div class="prod-swatches">
+              <span class="p-sw" style="background:#1d1d1d" title="Ebano"></span>
+              <span class="p-sw" style="background:#91806d" title="Carvalho"></span>
+              <span class="p-sw" style="background:#d8d0c6" title="Natural"></span>
+            </div>
+          </div>
+          <div class="prod-card__footer">
+            <div class="prod-card__price">
+              <strong>Sob consulta</strong>
+              <span>Envio em 72h</span>
+            </div>
+            <div style="display:flex;gap:6px;">
+              <a href="produtos-detalhes.html?produto=banco-tenda" class="btn-sec sm">Detalhes</a>
+              <a href="https://wa.me/5511999999999?text=Olá! Tenho interesse no Banco Tenda da Curioni. Podem me ajudar?" target="_blank" rel="noopener" class="btn-wa sm">
+                <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- MESAS -->
+    <section class="cat-section" id="mesas">
+      <div class="cat-section__head">
+        <div>
+          <span style="font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);">Categoria</span>
+          <h2>Mesas</h2>
+          <p>Superfícies esculturais — tampos minerais, madeiras nobres e bases que são obras de arte.</p>
+        </div>
+        <a href="categoria-mesas.html" class="btn-sec sm">Ver categoria completa</a>
+      </div>
+      <div class="prod-grid">
+
+        <div class="prod-card" data-prod data-cat="mesas" data-amb="residencial" data-disp="pronta">
+          <div class="prod-card__media">
+            <div class="thumb" data-image-key="launchMesaVelo"></div>
+            <span class="prod-card__badge green">Pronta entrega</span>
+          </div>
+          <div class="prod-card__body">
+            <span class="prod-card__cat">Mesa de Jantar</span>
+            <h3>Mesa Vélo</h3>
+            <p>Tampo mineral e base escultórica para projetos de alto padrão. Disponível em travertino, mármore e pedra natural.</p>
+          </div>
+          <div class="prod-card__footer">
+            <div class="prod-card__price">
+              <strong>Sob consulta</strong>
+              <span>Envio em 4 dias</span>
+            </div>
+            <div style="display:flex;gap:6px;">
+              <a href="produtos-detalhes.html?produto=mesa-velo" class="btn-sec sm">Detalhes</a>
+              <a href="https://wa.me/5511999999999?text=Olá! Tenho interesse na Mesa Vélo da Curioni. Podem me ajudar?" target="_blank" rel="noopener" class="btn-wa sm">
+                <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="prod-card" data-prod data-cat="mesas" data-amb="residencial" data-disp="pronta">
+          <div class="prod-card__media">
+            <div class="thumb" data-image-key="vitrineMesaCiano"></div>
+            <span class="prod-card__badge green">Pronta entrega</span>
+          </div>
+          <div class="prod-card__body">
+            <span class="prod-card__cat">Mesa Lateral</span>
+            <h3>Mesa Ciano</h3>
+            <p>Proporção compacta para composição com poltronas e sofás. Acabamentos amadeirados e vidro fumê.</p>
+          </div>
+          <div class="prod-card__footer">
+            <div class="prod-card__price">
+              <strong>Sob consulta</strong>
+              <span>Envio imediato</span>
+            </div>
+            <div style="display:flex;gap:6px;">
+              <a href="produtos-detalhes.html?produto=mesa-ciano" class="btn-sec sm">Detalhes</a>
+              <a href="https://wa.me/5511999999999?text=Olá! Tenho interesse na Mesa Ciano da Curioni. Podem me ajudar?" target="_blank" rel="noopener" class="btn-wa sm">
+                <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- COMPLEMENTOS -->
+    <section class="cat-section" id="complementos">
+      <div class="cat-section__head">
+        <div>
+          <span style="font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);">Categoria</span>
+          <h2>Complementos</h2>
+          <p>Volumes que organizam — buffets, carrinhos e objetos que ampliam a experiência do espaço.</p>
+        </div>
+        <a href="categoria-complementos.html" class="btn-sec sm">Ver categoria completa</a>
+      </div>
+      <div class="prod-grid">
+
+        <div class="prod-card" data-prod data-cat="complementos" data-amb="residencial" data-disp="pronta">
+          <div class="prod-card__media">
+            <div class="thumb" data-image-key="launchBuffetModulo"></div>
+            <span class="prod-card__badge green">Pronta entrega</span>
+          </div>
+          <div class="prod-card__body">
+            <span class="prod-card__cat">Buffet</span>
+            <h3>Buffet Módulo</h3>
+            <p>Portas usinadas e módulos configuráveis para salas e áreas gourmet. Acabamentos em lâmina natural e pedra.</p>
+          </div>
+          <div class="prod-card__footer">
+            <div class="prod-card__price">
+              <strong>Sob consulta</strong>
+              <span>Envio em 6 dias</span>
+            </div>
+            <div style="display:flex;gap:6px;">
+              <a href="produtos-detalhes.html?produto=buffet-modulo" class="btn-sec sm">Detalhes</a>
+              <a href="https://wa.me/5511999999999?text=Olá! Tenho interesse no Buffet Módulo da Curioni. Podem me ajudar?" target="_blank" rel="noopener" class="btn-wa sm">
+                <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="prod-card" data-prod data-cat="complementos" data-amb="residencial,corporativo" data-disp="pronta">
+          <div class="prod-card__media">
+            <div class="thumb" data-image-key="catComplementos"></div>
+            <span class="prod-card__badge green">Pronta entrega</span>
+          </div>
+          <div class="prod-card__body">
+            <span class="prod-card__cat">Carrinho Bar</span>
+            <h3>Carrinho Atlas</h3>
+            <p>Estrutura tubular com bandejas removíveis para apoio flexível. Metal preto e lâmina de carvalho.</p>
+          </div>
+          <div class="prod-card__footer">
+            <div class="prod-card__price">
+              <strong>Sob consulta</strong>
+              <span>Envio em 48h</span>
+            </div>
+            <div style="display:flex;gap:6px;">
+              <a href="produtos-detalhes.html?produto=carrinho-atlas" class="btn-sec sm">Detalhes</a>
+              <a href="https://wa.me/5511999999999?text=Olá! Tenho interesse no Carrinho Atlas da Curioni. Podem me ajudar?" target="_blank" rel="noopener" class="btn-wa sm">
+                <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ILUMINAÇÃO -->
+    <section class="cat-section" id="iluminacao">
+      <div class="cat-section__head">
+        <div>
+          <span style="font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);">Categoria</span>
+          <h2>Iluminação</h2>
+          <p>Luz como atmosfera — luminárias com presença cênica e materialidade refinada.</p>
+        </div>
+        <a href="categoria-iluminacao.html" class="btn-sec sm">Ver categoria completa</a>
+      </div>
+      <div class="prod-grid">
+
+        <div class="prod-card" data-prod data-cat="iluminacao" data-amb="residencial" data-disp="pronta">
+          <div class="prod-card__media">
+            <div class="thumb" data-image-key="launchAbajurLia"></div>
+            <span class="prod-card__badge green">Pronta entrega</span>
+          </div>
+          <div class="prod-card__body">
+            <span class="prod-card__cat">Abajur</span>
+            <h3>Abajur Lía</h3>
+            <p>Luminária de apoio com presença leve para quartos e salas. Base em madeira com cúpula em linho.</p>
+          </div>
+          <div class="prod-card__footer">
+            <div class="prod-card__price">
+              <strong>Sob consulta</strong>
+              <span>Envio imediato</span>
+            </div>
+            <div style="display:flex;gap:6px;">
+              <a href="produtos-detalhes.html?produto=abajur-lia" class="btn-sec sm">Detalhes</a>
+              <a href="https://wa.me/5511999999999?text=Olá! Tenho interesse no Abajur Lía da Curioni. Podem me ajudar?" target="_blank" rel="noopener" class="btn-wa sm">
+                <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="prod-card" data-prod data-cat="iluminacao" data-amb="residencial,corporativo" data-disp="pronta">
+          <div class="prod-card__media">
+            <div class="thumb" data-image-key="launchPendenteArco"></div>
+            <span class="prod-card__badge green">Pronta entrega</span>
+          </div>
+          <div class="prod-card__body">
+            <span class="prod-card__cat">Pendente</span>
+            <h3>Pendente Arco</h3>
+            <p>Latão escovado e vidro opalino para composições sofisticadas. Ideal para mesa de jantar e lobby.</p>
+          </div>
+          <div class="prod-card__footer">
+            <div class="prod-card__price">
+              <strong>Sob consulta</strong>
+              <span>Envio em 48h</span>
+            </div>
+            <div style="display:flex;gap:6px;">
+              <a href="produtos-detalhes.html?produto=pendente-arco" class="btn-sec sm">Detalhes</a>
+              <a href="https://wa.me/5511999999999?text=Olá! Tenho interesse no Pendente Arco da Curioni. Podem me ajudar?" target="_blank" rel="noopener" class="btn-wa sm">
+                <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- OUTDOOR -->
+    <section class="cat-section" id="externa">
+      <div class="cat-section__head">
+        <div>
+          <span style="font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);">Categoria</span>
+          <h2>Outdoor</h2>
+          <p>Peças resistentes para varandas, rooftops, jardins e projetos de hospitalidade.</p>
+        </div>
+        <a href="categoria-area-externa.html" class="btn-sec sm">Ver categoria completa</a>
+      </div>
+      <div class="prod-grid">
+
+        <div class="prod-card" data-prod data-cat="outdoor" data-amb="outdoor" data-disp="pronta">
+          <div class="prod-card__media">
+            <div class="thumb" data-image-key="vitrineBalancoOca"></div>
+            <span class="prod-card__badge green">Pronta entrega</span>
+          </div>
+          <div class="prod-card__body">
+            <span class="prod-card__cat">Balanço</span>
+            <h3>Balanço Oca</h3>
+            <p>Trama náutica e estrutura em alumínio com leitura contemporânea. Alta durabilidade para uso externo.</p>
+          </div>
+          <div class="prod-card__footer">
+            <div class="prod-card__price">
+              <strong>Sob consulta</strong>
+              <span>Envio em 72h</span>
+            </div>
+            <div style="display:flex;gap:6px;">
+              <a href="produtos-detalhes.html?produto=balanco-oca" class="btn-sec sm">Detalhes</a>
+              <a href="https://wa.me/5511999999999?text=Olá! Tenho interesse no Balanço Oca da Curioni. Podem me ajudar?" target="_blank" rel="noopener" class="btn-wa sm">
+                <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="prod-card" data-prod data-cat="outdoor" data-amb="outdoor" data-disp="pronta">
+          <div class="prod-card__media">
+            <div class="thumb" data-image-key="launchBancoTenda"></div>
+            <span class="prod-card__badge green">Pronta entrega</span>
+          </div>
+          <div class="prod-card__body">
+            <span class="prod-card__cat">Banco Outdoor</span>
+            <h3>Banco Tenda Outdoor</h3>
+            <p>Versão externa com pintura eletrostática, tecidos técnicos e proteção UV de longa duração.</p>
+          </div>
+          <div class="prod-card__footer">
+            <div class="prod-card__price">
+              <strong>Sob consulta</strong>
+              <span>Envio em 48h</span>
+            </div>
+            <div style="display:flex;gap:6px;">
+              <a href="produtos-detalhes.html?produto=banco-tenda-outdoor" class="btn-sec sm">Detalhes</a>
+              <a href="https://wa.me/5511999999999?text=Olá! Tenho interesse no Banco Tenda Outdoor da Curioni. Podem me ajudar?" target="_blank" rel="noopener" class="btn-wa sm">
+                <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CTA PRONTA ENTREGA -->
+    <div style="margin-top: 24px; padding: 40px; background: #111; border-radius: 20px; display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center;">
+      <div>
+        <span style="display:block;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:10px;">Pronta Entrega</span>
+        <h3 style="margin:0 0 8px;font:600 clamp(24px,3vw,36px)/1 var(--title);color:#fff;letter-spacing:-.04em;">12 produtos disponíveis agora. Entrega em até 48h.</h3>
+        <p style="margin:0;color:rgba(255,255,255,0.55);font-size:15px;">Seleção curada com qualidade Curioni e entrega rápida para todo o Brasil.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;flex-shrink:0;">
+        <a href="pronta-entrega.html" class="btn-wa lg">
+          <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Ver loja de pronta entrega
+        </a>
+      </div>
     </div>
-  </section>
+
+  </div>
 </main>
 
-<footer class="footer">
-  <div class="container footer-grid">
-    <div><a class="site-header__logo" href="curioni-preview.html" style="font-size:32px">curioni</a><p>Catálogo com hierarquia visual mais clara para descoberta e especificação.</p></div>
-    <div><h4>Coleções</h4><a href="#assentos">Assentos</a><a href="#mesas">Mesas</a><a href="#externa">Outdoor</a></div>
-    <div><h4>Próximos passos</h4><a href="pronta-entrega.html">Ver loja</a><a href="orcamento.html">Solicitar orçamento</a><a href="profissionais.html">Atendimento para profissionais</a></div>
+<footer class="prod-footer">
+  <div class="prod-container">
+    <div class="prod-footer__grid">
+      <div class="prod-footer__brand">
+        <a class="prod-footer__logo" href="curioni-preview.html">curioni</a>
+        <p>Design autoral brasileiro para interiores sofisticados.</p>
+        <a href="mailto:fale@curioni.com.br">fale@curioni.com.br</a>
+        <a href="https://wa.me/5511999999999?text=Olá, gostaria de mais informações sobre os produtos Curioni." target="_blank" rel="noopener">(11) 9 9999-9999 via WhatsApp</a>
+      </div>
+      <div class="prod-footer__col">
+        <h4>Produtos</h4>
+        <a href="#assentos">Assentos</a>
+        <a href="#mesas">Mesas</a>
+        <a href="#complementos">Complementos</a>
+        <a href="#iluminacao">Iluminação</a>
+        <a href="#externa">Outdoor</a>
+      </div>
+      <div class="prod-footer__col">
+        <h4>Comprar</h4>
+        <a href="pronta-entrega.html">Pronta Entrega</a>
+        <a href="orcamento.html">Solicitar Orçamento</a>
+        <a href="profissionais.html">Área Profissional</a>
+      </div>
+      <div class="prod-footer__col">
+        <h4>Marca</h4>
+        <a href="curioni-preview.html">Home</a>
+        <a href="sobre.html">Nossa História</a>
+        <a href="ambientes.html">Ambientes</a>
+        <a href="biblioteca-tecnica.html">Biblioteca 3D</a>
+      </div>
+    </div>
+    <div class="prod-footer__bottom">
+      <span>© 2025 Curioni Design. Todos os direitos reservados.</span>
+      <span>Design autoral brasileiro</span>
+    </div>
   </div>
 </footer>
 
 <script src="assets/image-inventory.js"></script>
 <script src="assets/header.js"></script>
+<script>
+  // Filtro funcional
+  (() => {
+    const busca = document.getElementById('filtro-busca');
+    const ambiente = document.getElementById('filtro-ambiente');
+    const disponibilidade = document.getElementById('filtro-disponibilidade');
+    const count = document.getElementById('filter-count');
+    const cards = document.querySelectorAll('[data-prod]');
+
+    function filtrar() {
+      const q = busca.value.toLowerCase();
+      const amb = ambiente.value;
+      const disp = disponibilidade.value;
+      let visible = 0;
+      cards.forEach(card => {
+        const nome = card.querySelector('h3').textContent.toLowerCase();
+        const cat = card.dataset.cat || '';
+        const cardAmb = card.dataset.amb || '';
+        const cardDisp = card.dataset.disp || '';
+        const matchQ = !q || nome.includes(q);
+        const matchAmb = amb === 'todos' || cardAmb.includes(amb);
+        const matchDisp = disp === 'todos' || cardDisp === disp;
+        const show = matchQ && matchAmb && matchDisp;
+        card.style.display = show ? '' : 'none';
+        if (show) visible++;
+      });
+      count.textContent = `${visible} produto${visible !== 1 ? 's' : ''}`;
+    }
+
+    busca.addEventListener('input', filtrar);
+    ambiente.addEventListener('change', filtrar);
+    disponibilidade.addEventListener('change', filtrar);
+
+    // Active nav tab on scroll
+    const sections = document.querySelectorAll('.cat-section');
+    const tabs = document.querySelectorAll('.catalog-nav__tab[data-nav-tab]');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          tabs.forEach(t => t.classList.toggle('active', t.dataset.navTab === id));
+        }
+      });
+    }, { rootMargin: '-40% 0px -50% 0px' });
+    sections.forEach(s => observer.observe(s));
+  })();
+</script>
 </body>
 </html>

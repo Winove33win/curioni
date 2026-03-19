@@ -3,154 +3,564 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Produto Curioni</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <title id="page-title">Produto | Curioni</title>
+  <meta name="description" content="Detalhe do produto Curioni. Design autoral brasileiro de alto padrão." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/header.css" />
   <link rel="stylesheet" href="assets/site.css" />
+  <link rel="stylesheet" href="assets/products.css" />
 </head>
-<body>
+<body class="prod-page">
 <header class="site-header" data-site-header></header>
 
-<main class="container product-detail-shell">
-  <section class="section product-detail-hero">
-    <article class="product-gallery">
-      <div class="card thumb product-gallery__main" data-image-key="pdpMain1" id="produto-imagem"></div>
-      <div class="product-gallery__thumbs">
-        <div class="card thumb" data-image-key="pdpMain1" data-gallery-target="produto-imagem"></div>
-        <div class="card thumb" data-image-key="pdpThumb2" data-gallery-target="produto-imagem"></div>
-        <div class="card thumb" data-image-key="pdpThumb3" data-gallery-target="produto-imagem"></div>
-      </div>
-    </article>
-    <article class="card product-detail-copy">
-      <span class="eyebrow" id="produto-categoria">Linha Curioni</span>
-      <h1 id="produto-nome" class="display-title" style="font-size:clamp(36px,4.6vw,64px);margin:0;">Cadeira Fly</h1>
-      <p id="produto-descricao" class="lead">Peça com estrutura robusta e desenho leve, feita para composições contemporâneas.</p>
+<!-- ── DETALHE DO PRODUTO ─────────────────────────────────── -->
+<main class="pdp-shell">
+  <div class="prod-container">
 
-      <div class="product-price-row">
+    <nav class="breadcrumb">
+      <a href="curioni-preview.html">Home</a>
+      <span class="breadcrumb__sep">›</span>
+      <a href="produtos.html">Produtos</a>
+      <span class="breadcrumb__sep">›</span>
+      <span class="breadcrumb__current" id="bc-cat">Produto</span>
+      <span class="breadcrumb__sep">›</span>
+      <span class="breadcrumb__current" id="bc-nome">—</span>
+    </nav>
+
+    <div class="pdp-layout">
+
+      <!-- GALERIA -->
+      <div class="pdp-gallery">
+        <div class="pdp-gallery__main" id="gallery-main">
+          <div class="thumb" data-image-key="pdpMain1" id="gallery-main-img"></div>
+        </div>
+        <div class="pdp-gallery__thumbs">
+          <div class="pdp-gallery__thumb active" data-thumb="0">
+            <div class="thumb" data-image-key="pdpMain1" id="thumb-0"></div>
+          </div>
+          <div class="pdp-gallery__thumb" data-thumb="1">
+            <div class="thumb" data-image-key="pdpThumb2" id="thumb-1"></div>
+          </div>
+          <div class="pdp-gallery__thumb" data-thumb="2">
+            <div class="thumb" data-image-key="pdpThumb3" id="thumb-2"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- INFO E CONVERSÃO -->
+      <div class="pdp-copy">
+
         <div>
-          <strong id="produto-preco">R$ 0,00</strong>
-          <span id="produto-disponibilidade" class="muted">0 em estoque</span>
+          <span class="pdp-copy__cat" id="prod-cat">Categoria</span>
+          <h1 id="prod-nome">Carregando...</h1>
         </div>
-        <div class="page-hero__actions" style="margin:0;">
-          <a class="btn" href="produtos.html">Voltar ao catálogo</a>
-          <a class="btn inverse" href="#compra-rapida">Comprar rápido</a>
+
+        <p class="pdp-copy__desc" id="prod-desc">—</p>
+
+        <!-- Specs -->
+        <div class="pdp-specs" id="prod-specs"></div>
+
+        <!-- Acabamentos -->
+        <div class="pdp-finishes" id="prod-finishes-wrap">
+          <span class="pdp-finishes__label">Escolha o acabamento</span>
+          <div class="pdp-finish-opts" id="prod-finishes"></div>
         </div>
+
+        <!-- Quantidade -->
+        <div class="pdp-qty-row">
+          <span class="pdp-qty-label">Quantidade</span>
+          <div class="pdp-qty-ctrl">
+            <button class="pdp-qty-btn" id="qty-dec" type="button" aria-label="Diminuir">−</button>
+            <input class="pdp-qty-val" id="qty-val" type="number" value="1" min="1" max="99" readonly />
+            <button class="pdp-qty-btn" id="qty-inc" type="button" aria-label="Aumentar">+</button>
+          </div>
+        </div>
+
+        <!-- Trust rápido -->
+        <div class="pdp-trust" id="prod-trust">
+          <div class="pdp-trust-item">
+            <strong id="trust-entrega">48h</strong>
+            <span>Prazo de entrega</span>
+          </div>
+          <div class="pdp-trust-item">
+            <strong id="trust-estoque">✓</strong>
+            <span id="trust-estoque-txt">Em estoque</span>
+          </div>
+          <div class="pdp-trust-item">
+            <strong>🇧🇷</strong>
+            <span>Entrega nacional</span>
+          </div>
+        </div>
+
+        <!-- BLOCO PRINCIPAL DE CONVERSÃO -->
+        <div class="pdp-cta-block">
+          <p class="pdp-cta-block__title">Atendimento direto pelo WhatsApp</p>
+          <p class="pdp-cta-block__text" id="cta-text">Fale com nosso time comercial e receba orçamento personalizado com acabamento, prazo e condições de pagamento.</p>
+          <div class="pdp-cta-actions">
+            <a id="btn-wa-comprar" href="#" target="_blank" rel="noopener" class="btn-wa lg">
+              <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Falar no WhatsApp
+            </a>
+            <a id="btn-orcamento" href="orcamento.html" class="btn-sec" style="justify-content:center;">
+              Solicitar orçamento detalhado
+            </a>
+          </div>
+        </div>
+
+        <!-- Especificações lista -->
+        <div>
+          <h3 style="font:600 16px/1 var(--title);letter-spacing:-.01em;margin:0 0 14px;">Especificações técnicas</h3>
+          <ul id="prod-espec" style="list-style:none;margin:0;padding:0;display:grid;gap:8px;"></ul>
+        </div>
+
+        <!-- Voltar -->
+        <a href="produtos.html" style="font-size:13px;color:var(--muted);display:inline-flex;align-items:center;gap:6px;">
+          ← Voltar ao catálogo
+        </a>
+
       </div>
+    </div>
 
-      <div class="product-spec-grid" id="produto-destaques"></div>
-
-      <ul class="list" id="produto-especificacoes">
-        <li>Dimensões: 56 x 58 x 82 cm</li>
-        <li>Acabamentos: preto fosco, ébano, couro preto</li>
-        <li>Prazo: 30 a 45 dias</li>
-      </ul>
-
-      <div class="product-conversion card" id="compra-rapida">
-        <div class="card-body">
-          <h3>Compra rápida</h3>
-          <p>Escolha a quantidade e inicie a compra diretamente com nosso time comercial.</p>
-          <form id="compra-form" class="form">
-            <label>Quantidade
-              <input class="input" type="number" min="1" value="1" id="compra-quantidade" />
-            </label>
-            <button class="btn inverse" type="submit">Comprar sem checkout</button>
-          </form>
+    <!-- PRODUTOS RELACIONADOS -->
+    <div class="related-section">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:32px;">
+        <div>
+          <span style="font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);">Relacionados</span>
+          <h2 style="margin:6px 0 0;font:600 clamp(26px,3.5vw,40px)/1 var(--title);letter-spacing:-.04em;">Você também pode gostar</h2>
         </div>
+        <a href="produtos.html" class="btn-sec sm">Ver catálogo completo</a>
       </div>
+      <div class="prod-grid" id="related-grid"></div>
+    </div>
 
-      <div class="product-conversion card">
-        <div class="card-body">
-          <h3>Converter em pedido técnico</h3>
-          <p>Se preferir, envie o produto para orçamento com acabamento e quantidade definidos.</p>
-          <form id="pedido-form" class="form">
-            <label>Quantidade
-              <input class="input" type="number" min="1" value="1" id="pedido-quantidade" />
-            </label>
-            <label>Acabamento desejado
-              <select id="pedido-acabamento">
-                <option value="freijo-natural">Freijó natural</option>
-                <option value="nogueira">Nogueira</option>
-                <option value="laca-preta">Laca preta</option>
-              </select>
-            </label>
-            <button class="btn" type="submit">Ir para orçamento</button>
-          </form>
-        </div>
-      </div>
-    </article>
-  </section>
+  </div>
 </main>
 
-<footer class="footer">
-  <div class="container footer-grid">
-    <div><a class="site-header__logo" href="curioni-preview.html" style="font-size:32px">curioni</a><p>Página de produto com visual premium, compra rápida e conversão para orçamento.</p></div>
-    <div><h4>Explorar</h4><a href="produtos.html">Catálogo</a><a href="pronta-entrega.html">Pronta entrega</a></div>
-    <div><h4>Atendimento</h4><a href="orcamento.html">Solicitar orçamento</a><a href="profissionais.html">Área profissional</a></div>
+<!-- STICKY BAR MOBILE -->
+<div class="sticky-wa-bar" id="sticky-bar">
+  <div class="sticky-wa-bar__inner">
+    <div style="flex:1;min-width:0;">
+      <strong style="font-size:14px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" id="sticky-nome">Produto</strong>
+      <span style="font-size:12px;color:var(--muted);">Fale diretamente pelo WhatsApp</span>
+    </div>
+    <a id="sticky-wa-btn" href="#" target="_blank" rel="noopener" class="btn-wa">
+      <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
+  </div>
+</div>
+
+<footer class="prod-footer">
+  <div class="prod-container">
+    <div class="prod-footer__grid">
+      <div class="prod-footer__brand">
+        <a class="prod-footer__logo" href="curioni-preview.html">curioni</a>
+        <p>Design autoral brasileiro para interiores sofisticados.</p>
+        <a href="mailto:fale@curioni.com.br">fale@curioni.com.br</a>
+        <a href="https://wa.me/5511999999999" target="_blank" rel="noopener">(11) 9 9999-9999 · WhatsApp</a>
+      </div>
+      <div class="prod-footer__col">
+        <h4>Produtos</h4>
+        <a href="produtos.html#assentos">Assentos</a>
+        <a href="produtos.html#mesas">Mesas</a>
+        <a href="produtos.html#iluminacao">Iluminação</a>
+        <a href="produtos.html#externa">Outdoor</a>
+      </div>
+      <div class="prod-footer__col">
+        <h4>Comprar</h4>
+        <a href="pronta-entrega.html">Pronta Entrega</a>
+        <a href="orcamento.html">Solicitar Orçamento</a>
+        <a href="profissionais.html">Área Profissional</a>
+      </div>
+      <div class="prod-footer__col">
+        <h4>Marca</h4>
+        <a href="sobre.html">Nossa História</a>
+        <a href="ambientes.html">Ambientes</a>
+        <a href="novidades.html">Novidades</a>
+      </div>
+    </div>
+    <div class="prod-footer__bottom">
+      <span>© 2025 Curioni Design. Todos os direitos reservados.</span>
+      <span>Design autoral brasileiro</span>
+    </div>
   </div>
 </footer>
 
 <script src="assets/image-inventory.js"></script>
 <script src="assets/header.js"></script>
 <script>
-  (function () {
-    const produtos = {
-      'cadeira-fly': { nome: 'Cadeira Fly', categoria: 'Assentos', preco: 4290, estoque: 12, descricao: 'Peça com estrutura robusta e desenho leve, feita para composições contemporâneas.', especificacoes: ['Dimensões: 56 x 58 x 82 cm', 'Acabamentos: preto fosco, ébano, couro preto', 'Pronta entrega: envio em 48h'], destaques: [{ titulo: 'Tipologia', valor: 'Cadeira' }, { titulo: 'Entrega', valor: '48h' }, { titulo: 'Uso', valor: 'Residencial + contract' }, { titulo: 'Material', valor: 'Madeira maciça' }], imageKey: 'pdpMain1' },
-      'poltrona-alma': { nome: 'Poltrona Alma', categoria: 'Assentos', preco: 6890, estoque: 5, descricao: 'Conforto profundo com desenho orgânico para salas e lounges corporativos.', especificacoes: ['Dimensões: 78 x 74 x 76 cm', 'Acabamentos: linho areia, boucle, couro natural', 'Pronta entrega: envio em 48h'], destaques: [{ titulo: 'Tipologia', valor: 'Poltrona' }, { titulo: 'Entrega', valor: '48h' }, { titulo: 'Uso', valor: 'Living + lounge' }, { titulo: 'Material', valor: 'Base metálica' }], imageKey: 'launchPoltronaAlma' },
-      'sofa-curva': { nome: 'Sofá Curva', categoria: 'Assentos', preco: 13200, estoque: 3, descricao: 'Sistema modular para composições fluidas em ambientes de alto padrão.', especificacoes: ['Dimensões: módulos de 110 cm', 'Acabamentos: tecido premium e veludo técnico', 'Pronta entrega: envio em até 5 dias'], destaques: [{ titulo: 'Tipologia', valor: 'Sofá modular' }, { titulo: 'Entrega', valor: '5 dias' }, { titulo: 'Uso', valor: 'Living premium' }, { titulo: 'Material', valor: 'Tecidos premium' }], imageKey: 'launchSofaCurva' },
-      'banco-tenda': { nome: 'Banco Tenda', categoria: 'Assentos', preco: 3560, estoque: 7, descricao: 'Banco versátil para áreas de convívio com visual leve e acabamento premium.', especificacoes: ['Dimensões: 140 x 48 x 46 cm', 'Acabamentos: madeira e tecido impermeável', 'Pronta entrega: envio em até 72h'], destaques: [{ titulo: 'Tipologia', valor: 'Banco' }, { titulo: 'Entrega', valor: '72h' }, { titulo: 'Uso', valor: 'Hall + quarto' }, { titulo: 'Material', valor: 'Madeira e tecido' }], imageKey: 'launchBancoTenda' },
-      'mesa-velo': { nome: 'Mesa Vélo', categoria: 'Mesas', preco: 15990, estoque: 4, descricao: 'Mesa de jantar com tampo mineral e presença escultural no ambiente.', especificacoes: ['Dimensões: 240 x 110 x 76 cm', 'Acabamentos: travertino, mármore e lâmina natural', 'Pronta entrega: envio em até 4 dias'], destaques: [{ titulo: 'Tipologia', valor: 'Mesa de jantar' }, { titulo: 'Entrega', valor: '4 dias' }, { titulo: 'Uso', valor: 'Residencial premium' }, { titulo: 'Material', valor: 'Mineral + madeira' }], imageKey: 'launchMesaVelo' },
-      'mesa-ciano': { nome: 'Mesa Ciano', categoria: 'Mesas', preco: 2890, estoque: 11, descricao: 'Mesa lateral com proporção compacta para apoiar poltronas e sofás.', especificacoes: ['Dimensões: 52 x 52 x 56 cm', 'Acabamentos: freijó, nogueira e vidro fumê', 'Pronta entrega: envio imediato'], destaques: [{ titulo: 'Tipologia', valor: 'Mesa lateral' }, { titulo: 'Entrega', valor: 'Imediata' }, { titulo: 'Uso', valor: 'Living' }, { titulo: 'Material', valor: 'Madeira + vidro' }], imageKey: 'vitrineMesaCiano' },
-      'buffet-modulo': { nome: 'Buffet Módulo', categoria: 'Complementos', preco: 10900, estoque: 2, descricao: 'Armazenamento sofisticado com portas usinadas e composição personalizável.', especificacoes: ['Dimensões: 220 x 48 x 82 cm', 'Acabamentos: laca, lâmina natural e pedra', 'Pronta entrega: envio em até 6 dias'], destaques: [{ titulo: 'Tipologia', valor: 'Buffet' }, { titulo: 'Entrega', valor: '6 dias' }, { titulo: 'Uso', valor: 'Sala + gourmet' }, { titulo: 'Material', valor: 'Lâmina natural' }], imageKey: 'launchBuffetModulo' },
-      'carrinho-atlas': { nome: 'Carrinho Atlas', categoria: 'Complementos', preco: 4740, estoque: 8, descricao: 'Carrinho bar com rodas invisíveis e bandejas removíveis.', especificacoes: ['Dimensões: 98 x 46 x 84 cm', 'Acabamentos: metal preto e lâmina de carvalho', 'Pronta entrega: envio em 48h'], destaques: [{ titulo: 'Tipologia', valor: 'Carrinho' }, { titulo: 'Entrega', valor: '48h' }, { titulo: 'Uso', valor: 'Hospitalidade' }, { titulo: 'Material', valor: 'Metal + madeira' }], imageKey: 'catComplementos' },
-      'abajur-lia': { nome: 'Abajur Lía', categoria: 'Iluminação', preco: 1690, estoque: 15, descricao: 'Iluminação de apoio com luz difusa para salas, quartos e recepções.', especificacoes: ['Dimensões: 42 x 42 x 68 cm', 'Acabamentos: madeira, linho e latão', 'Pronta entrega: envio imediato'], destaques: [{ titulo: 'Tipologia', valor: 'Abajur' }, { titulo: 'Entrega', valor: 'Imediata' }, { titulo: 'Uso', valor: 'Apoio' }, { titulo: 'Material', valor: 'Madeira + linho' }], imageKey: 'launchAbajurLia' },
-      'pendente-arco': { nome: 'Pendente Arco', categoria: 'Iluminação', preco: 5290, estoque: 9, descricao: 'Pendente com assinatura escultural para mesas e áreas de estar.', especificacoes: ['Dimensões: 120 x 120 x 38 cm', 'Acabamentos: latão escovado e vidro opalino', 'Pronta entrega: envio em 48h'], destaques: [{ titulo: 'Tipologia', valor: 'Pendente' }, { titulo: 'Entrega', valor: '48h' }, { titulo: 'Uso', valor: 'Jantar + lobby' }, { titulo: 'Material', valor: 'Latão + vidro' }], imageKey: 'launchPendenteArco' },
-      'balanco-oca': { nome: 'Balanço Oca', categoria: 'Outdoor', preco: 7850, estoque: 6, descricao: 'Peça outdoor com estrutura em alumínio e trama náutica resistente.', especificacoes: ['Dimensões: 88 x 96 x 124 cm', 'Acabamentos: corda náutica e pintura eletrostática', 'Pronta entrega: envio em até 72h'], destaques: [{ titulo: 'Tipologia', valor: 'Balanço' }, { titulo: 'Entrega', valor: '72h' }, { titulo: 'Uso', valor: 'Deck + varanda' }, { titulo: 'Material', valor: 'Alumínio + corda' }], imageKey: 'vitrineBalancoOca' },
-      'banco-tenda-outdoor': { nome: 'Banco Tenda Outdoor', categoria: 'Outdoor', preco: 3980, estoque: 10, descricao: 'Versão externa com tecidos técnicos e proteção UV de longa duração.', especificacoes: ['Dimensões: 140 x 48 x 46 cm', 'Acabamentos: alumínio, corda e tecido náutico', 'Pronta entrega: envio em 48h'], destaques: [{ titulo: 'Tipologia', valor: 'Banco outdoor' }, { titulo: 'Entrega', valor: '48h' }, { titulo: 'Uso', valor: 'Outdoor' }, { titulo: 'Material', valor: 'Tecido técnico' }], imageKey: 'launchBancoTenda' }
-    };
+(function () {
+  const WA_NUM = '5511999999999';
 
-    const params = new URLSearchParams(window.location.search);
-    const slug = params.get('produto') || 'cadeira-fly';
-    const origem = params.get('origem');
-    const produto = produtos[slug] || produtos['cadeira-fly'];
-    const formatarMoeda = (valor) => valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-
-    document.title = `${produto.nome} | Curioni`;
-    document.getElementById('produto-categoria').textContent = produto.categoria;
-    document.getElementById('produto-nome').textContent = produto.nome;
-    document.getElementById('produto-descricao').textContent = produto.descricao;
-    document.getElementById('produto-imagem').dataset.imageKey = produto.imageKey;
-    document.getElementById('produto-preco').textContent = formatarMoeda(produto.preco);
-    document.getElementById('produto-disponibilidade').textContent = `${produto.estoque} unidades disponíveis`;
-    document.querySelectorAll('[data-gallery-target="produto-imagem"]').forEach((thumb) => { thumb.dataset.imageKey = produto.imageKey; });
-
-    const lista = document.getElementById('produto-especificacoes');
-    lista.innerHTML = produto.especificacoes.map((item) => `<li>${item}</li>`).join('');
-
-    document.getElementById('produto-destaques').innerHTML = produto.destaques.map((item) => `
-      <div class="kpi"><strong>${item.titulo}</strong><span>${item.valor}</span></div>
-    `).join('');
-
-    if (window.applyCurioniImageInventory) window.applyCurioniImageInventory();
-
-    if (origem !== 'pronta-entrega') {
-      document.getElementById('compra-rapida').querySelector('p').textContent = 'Compra também disponível para pronta entrega e pronta retirada, quando houver estoque.';
+  const PRODUTOS = {
+    'cadeira-fly': {
+      nome: 'Cadeira Fly', categoria: 'Assentos', estoque: 12, prazoDias: 2,
+      desc: 'Peça com estrutura em madeira maciça e desenho leve — feita para composições contemporâneas residenciais e corporativas. Ergonomia refinada para conforto prolongado.',
+      specs: [
+        { label: 'Dimensões', value: '56 × 58 × 82 cm' },
+        { label: 'Material', value: 'Madeira maciça' },
+        { label: 'Uso', value: 'Residencial + contract' },
+        { label: 'Entrega', value: '48 horas' }
+      ],
+      acabamentos: [
+        { nome: 'Nogueira Escura', cor: '#221d1a' },
+        { nome: 'Carvalho Natural', cor: '#8b6e4c' },
+        { nome: 'Freijó Claro', cor: '#dbd2ca' }
+      ],
+      espec: ['Dimensões: 56 × 58 × 82 cm', 'Acabamentos: preto fosco, ébano, couro preto', 'Peso: 7 kg', 'Garantia: 2 anos', 'Produção: artesanal'],
+      imageKeys: ['pdpMain1','pdpThumb2','pdpThumb3'],
+      relacionados: ['poltrona-alma','banco-tenda','sofa-curva']
+    },
+    'poltrona-alma': {
+      nome: 'Poltrona Alma', categoria: 'Assentos', estoque: 5, prazoDias: 2,
+      desc: 'Assinatura escultural com conforto profundo. Base refinada e estofamento generoso para salas de estar, lounges corporativos e quartos de alto padrão.',
+      specs: [
+        { label: 'Dimensões', value: '78 × 74 × 76 cm' },
+        { label: 'Material', value: 'Base metálica + espuma D33' },
+        { label: 'Uso', value: 'Living + lounge' },
+        { label: 'Entrega', value: '48 horas' }
+      ],
+      acabamentos: [
+        { nome: 'Linho Areia', cor: '#d3c7bb' },
+        { nome: 'Boucle Natural', cor: '#9e8f7e' },
+        { nome: 'Couro Negro', cor: '#2c2a29' },
+        { nome: 'Veludo Sage', cor: '#7a8c7a' }
+      ],
+      espec: ['Dimensões: 78 × 74 × 76 cm', 'Acabamentos: linho, boucle, couro, veludo', 'Base: aço carbono com acabamento epóxi', 'Espuma: D33 anti-alérgica', 'Garantia: 2 anos'],
+      imageKeys: ['launchPoltronaAlma','pdpThumb2','pdpThumb3'],
+      relacionados: ['cadeira-fly','sofa-curva','buffet-modulo']
+    },
+    'sofa-curva': {
+      nome: 'Sofá Curva', categoria: 'Assentos', estoque: 3, prazoDias: 5,
+      desc: 'Sistema modular com linhas orgânicas para composições amplas. Leitura arquitetônica para living rooms e lounges de alto padrão. Configurável por módulos.',
+      specs: [
+        { label: 'Módulos', value: '110 cm cada' },
+        { label: 'Material', value: 'Tecido premium + pena' },
+        { label: 'Uso', value: 'Living premium' },
+        { label: 'Entrega', value: '5 dias' }
+      ],
+      acabamentos: [
+        { nome: 'Tecido Creme', cor: '#f1eee8' },
+        { nome: 'Boucle Bege', cor: '#cbc0b1' },
+        { nome: 'Veludo Terracota', cor: '#b5654a' }
+      ],
+      espec: ['Módulos de 110 cm (configuráveis)', 'Acabamentos: tecido premium, veludo técnico', 'Estrutura interna: pinheiro + compensado naval', 'Penas + espuma D28 no assento', 'Garantia: 2 anos'],
+      imageKeys: ['launchSofaCurva','pdpThumb2','pdpThumb3'],
+      relacionados: ['poltrona-alma','mesa-velo','pendente-arco']
+    },
+    'banco-tenda': {
+      nome: 'Banco Tenda', categoria: 'Assentos', estoque: 7, prazoDias: 3,
+      desc: 'Peça versátil para halls, dormitórios e áreas externas cobertas. Estrutura robusta com acabamento refinado. Disponível em versões indoor e outdoor.',
+      specs: [
+        { label: 'Dimensões', value: '140 × 48 × 46 cm' },
+        { label: 'Material', value: 'Madeira + tecido imp.' },
+        { label: 'Uso', value: 'Hall + quarto' },
+        { label: 'Entrega', value: '72 horas' }
+      ],
+      acabamentos: [
+        { nome: 'Ébano', cor: '#1d1d1d' },
+        { nome: 'Carvalho', cor: '#91806d' },
+        { nome: 'Natural', cor: '#d8d0c6' }
+      ],
+      espec: ['Dimensões: 140 × 48 × 46 cm', 'Madeira: freijó ou carvalho americano', 'Tecido: impermeável grau A', 'Disponível em versão outdoor', 'Garantia: 2 anos'],
+      imageKeys: ['launchBancoTenda','pdpThumb2','pdpThumb3'],
+      relacionados: ['cadeira-fly','poltrona-alma','abajur-lia']
+    },
+    'mesa-velo': {
+      nome: 'Mesa Vélo', categoria: 'Mesas', estoque: 4, prazoDias: 4,
+      desc: 'Mesa de jantar com tampo em pedra natural e base escultórica. Presença de galeria para salas de jantar residenciais e espaços corporativos premium.',
+      specs: [
+        { label: 'Dimensões', value: '240 × 110 × 76 cm' },
+        { label: 'Tampo', value: 'Mineral / pedra natural' },
+        { label: 'Uso', value: 'Residencial premium' },
+        { label: 'Entrega', value: '4 dias' }
+      ],
+      acabamentos: [
+        { nome: 'Travertino', cor: '#d8c9b0' },
+        { nome: 'Mármore Branco', cor: '#f0ece6' },
+        { nome: 'Granito Negro', cor: '#2a2520' }
+      ],
+      espec: ['Dimensões: 240 × 110 × 76 cm', 'Tampo: pedra natural 3 cm de espessura', 'Base: madeira freijó maciço', 'Dimensões customizáveis sob consulta', 'Garantia: 5 anos na estrutura'],
+      imageKeys: ['launchMesaVelo','pdpThumb2','pdpThumb3'],
+      relacionados: ['poltrona-alma','pendente-arco','cadeira-fly']
+    },
+    'mesa-ciano': {
+      nome: 'Mesa Ciano', categoria: 'Mesas', estoque: 11, prazoDias: 1,
+      desc: 'Mesa lateral com proporção compacta para apoiar poltronas e sofás. Perfeita para composições de living e leitura. Acabamentos amadeirados e vidro fumê.',
+      specs: [
+        { label: 'Dimensões', value: '52 × 52 × 56 cm' },
+        { label: 'Material', value: 'Madeira + vidro' },
+        { label: 'Uso', value: 'Living' },
+        { label: 'Entrega', value: 'Imediata' }
+      ],
+      acabamentos: [
+        { nome: 'Freijó Natural', cor: '#b8956a' },
+        { nome: 'Nogueira', cor: '#6b4c2a' },
+        { nome: 'Vidro Fumê', cor: '#606060' }
+      ],
+      espec: ['Dimensões: 52 × 52 × 56 cm', 'Estrutura: freijó ou nogueira', 'Tampo: vidro temperado 8mm', 'Peso: 12 kg', 'Garantia: 2 anos'],
+      imageKeys: ['vitrineMesaCiano','pdpThumb2','pdpThumb3'],
+      relacionados: ['poltrona-alma','abajur-lia','pendente-arco']
+    },
+    'buffet-modulo': {
+      nome: 'Buffet Módulo', categoria: 'Complementos', estoque: 2, prazoDias: 6,
+      desc: 'Armazenamento sofisticado com portas usinadas e composição personalizável. Ideal para salas de jantar, ambientes gourmet e projetos corporativos.',
+      specs: [
+        { label: 'Dimensões', value: '220 × 48 × 82 cm' },
+        { label: 'Material', value: 'Lâmina natural + pedra' },
+        { label: 'Uso', value: 'Sala + gourmet' },
+        { label: 'Entrega', value: '6 dias' }
+      ],
+      acabamentos: [
+        { nome: 'Lâmina Freijó', cor: '#b8956a' },
+        { nome: 'Lâmina Nogueira', cor: '#6b4c2a' },
+        { nome: 'Laca Branca', cor: '#f5f5f0' }
+      ],
+      espec: ['Dimensões: 220 × 48 × 82 cm', 'Portas com amortecedor soft-close', 'Tampo: pedra natural ou laca', 'Configuração modular disponível', 'Garantia: 3 anos'],
+      imageKeys: ['launchBuffetModulo','pdpThumb2','pdpThumb3'],
+      relacionados: ['mesa-velo','pendente-arco','carrinho-atlas']
+    },
+    'carrinho-atlas': {
+      nome: 'Carrinho Atlas', categoria: 'Complementos', estoque: 8, prazoDias: 2,
+      desc: 'Carrinho bar com estrutura tubular, bandejas removíveis e rodízios discretos. Versátil para hospitalidade residencial e corporativa de alto padrão.',
+      specs: [
+        { label: 'Dimensões', value: '98 × 46 × 84 cm' },
+        { label: 'Material', value: 'Metal preto + carvalho' },
+        { label: 'Uso', value: 'Hospitalidade' },
+        { label: 'Entrega', value: '48 horas' }
+      ],
+      acabamentos: [
+        { nome: 'Metal Preto + Carvalho', cor: '#1a1a1a' },
+        { nome: 'Metal Dourado + Freijó', cor: '#c0a060' }
+      ],
+      espec: ['Dimensões: 98 × 46 × 84 cm', 'Estrutura: aço com pintura epóxi', 'Bandejas: lâmina de carvalho', 'Rodízios com trava', 'Garantia: 2 anos'],
+      imageKeys: ['catComplementos','pdpThumb2','pdpThumb3'],
+      relacionados: ['buffet-modulo','mesa-velo','abajur-lia']
+    },
+    'abajur-lia': {
+      nome: 'Abajur Lía', categoria: 'Iluminação', estoque: 15, prazoDias: 1,
+      desc: 'Luminária de apoio com presença tátil e luz difusa para salas, quartos e recepções. Base em madeira torneada com cúpula em linho artesanal.',
+      specs: [
+        { label: 'Dimensões', value: '42 × 42 × 68 cm' },
+        { label: 'Material', value: 'Madeira + linho' },
+        { label: 'Uso', value: 'Apoio' },
+        { label: 'Entrega', value: 'Imediata' }
+      ],
+      acabamentos: [
+        { nome: 'Madeira Natural + Linho Cru', cor: '#d4b896' },
+        { nome: 'Latão + Linho Bege', cor: '#c8a060' },
+        { nome: 'Preto + Linho Ivory', cor: '#1a1a1a' }
+      ],
+      espec: ['Dimensões: 42 × 42 × 68 cm', 'Base: madeira freijó torneada', 'Cúpula: linho artesanal', 'Soquete: E27 bivolt', 'Garantia: 1 ano'],
+      imageKeys: ['launchAbajurLia','pdpThumb2','pdpThumb3'],
+      relacionados: ['pendente-arco','poltrona-alma','banco-tenda']
+    },
+    'pendente-arco': {
+      nome: 'Pendente Arco', categoria: 'Iluminação', estoque: 9, prazoDias: 2,
+      desc: 'Pendente com assinatura escultural e materialidade refinada. Latão escovado e vidro opalino para mesas de jantar, halls e lounges sofisticados.',
+      specs: [
+        { label: 'Dimensões', value: '120 × 120 × 38 cm' },
+        { label: 'Material', value: 'Latão + vidro opalino' },
+        { label: 'Uso', value: 'Jantar + lobby' },
+        { label: 'Entrega', value: '48 horas' }
+      ],
+      acabamentos: [
+        { nome: 'Latão Escovado', cor: '#c8a060' },
+        { nome: 'Preto Fosco', cor: '#1a1a1a' },
+        { nome: 'Níquel Polido', cor: '#c0bdb8' }
+      ],
+      espec: ['Dimensões: ø120 × 38 cm', 'Estrutura: latão com acabamento escovado', 'Difusor: vidro opalino soprado', 'Cabo de suspensão: 1,5 m (ajustável)', 'Soquete: E27 bivolt · Garantia: 2 anos'],
+      imageKeys: ['launchPendenteArco','pdpThumb2','pdpThumb3'],
+      relacionados: ['abajur-lia','mesa-velo','cadeira-fly']
+    },
+    'balanco-oca': {
+      nome: 'Balanço Oca', categoria: 'Outdoor', estoque: 6, prazoDias: 3,
+      desc: 'Peça outdoor com estrutura em alumínio e trama náutica resistente. Leitura contemporânea para varandas, decks e espaços de hospitalidade.',
+      specs: [
+        { label: 'Dimensões', value: '88 × 96 × 124 cm' },
+        { label: 'Material', value: 'Alumínio + corda náut.' },
+        { label: 'Uso', value: 'Deck + varanda' },
+        { label: 'Entrega', value: '72 horas' }
+      ],
+      acabamentos: [
+        { nome: 'Alumínio + Corda Branca', cor: '#e0dbd4' },
+        { nome: 'Alumínio + Corda Grafite', cor: '#4a4a4a' },
+        { nome: 'Alumínio Preto + Corda Cru', cor: '#1a1a1a' }
+      ],
+      espec: ['Dimensões: 88 × 96 × 124 cm', 'Estrutura: alumínio extrudado', 'Corda: náutica UV-resistente 6mm', 'Peso suportado: 150 kg', 'Garantia: 3 anos para uso outdoor'],
+      imageKeys: ['vitrineBalancoOca','pdpThumb2','pdpThumb3'],
+      relacionados: ['banco-tenda-outdoor','banco-tenda','abajur-lia']
+    },
+    'banco-tenda-outdoor': {
+      nome: 'Banco Tenda Outdoor', categoria: 'Outdoor', estoque: 10, prazoDias: 2,
+      desc: 'Versão externa com tecidos técnicos e proteção UV de longa duração. Pintura eletrostática resistente à corrosão e umidade.',
+      specs: [
+        { label: 'Dimensões', value: '140 × 48 × 46 cm' },
+        { label: 'Material', value: 'Alumínio + tecido técnico' },
+        { label: 'Uso', value: 'Outdoor' },
+        { label: 'Entrega', value: '48 horas' }
+      ],
+      acabamentos: [
+        { nome: 'Alumínio Branco + Tecido Cru', cor: '#e8e4de' },
+        { nome: 'Alumínio Grafite + Corda Cinza', cor: '#6a6a6a' },
+        { nome: 'Alumínio Preto + Tecido Terracota', cor: '#1a1a1a' }
+      ],
+      espec: ['Dimensões: 140 × 48 × 46 cm', 'Estrutura: alumínio com pintura eletrostática', 'Tecido: impermeável Sunbrella®', 'Resistente a UV, sal e umidade', 'Garantia: 3 anos outdoor'],
+      imageKeys: ['launchBancoTenda','pdpThumb2','pdpThumb3'],
+      relacionados: ['balanco-oca','banco-tenda','catExterna']
     }
+  };
 
-    document.getElementById('compra-form').addEventListener('submit', function (event) {
-      event.preventDefault();
-      const quantidade = Math.max(1, Number(document.getElementById('compra-quantidade').value || 1));
-      alert(`Compra iniciada: ${quantidade}x ${produto.nome}. Nosso time comercial vai concluir o pagamento com você.`);
-    });
+  // Resolve produto via URL
+  const params = new URLSearchParams(location.search);
+  const slug = params.get('produto') || 'cadeira-fly';
+  const origem = params.get('origem');
+  const p = PRODUTOS[slug] || PRODUTOS['cadeira-fly'];
 
-    document.getElementById('pedido-form').addEventListener('submit', function (event) {
-      event.preventDefault();
-      const quantidade = document.getElementById('pedido-quantidade').value || '1';
-      const acabamento = document.getElementById('pedido-acabamento').value;
-      const escopo = `Produto: ${produto.nome}\nCategoria: ${produto.categoria}\nQuantidade: ${quantidade}\nAcabamento: ${acabamento}`;
-      window.location.href = `orcamento.html?produto=${encodeURIComponent(produto.nome)}&escopo=${encodeURIComponent(escopo)}`;
+  // Acabamento selecionado
+  let acabamentoSel = p.acabamentos[0]?.nome || '';
+  let qty = 1;
+
+  function buildWaLink() {
+    const msg = origem === 'pronta-entrega'
+      ? `Olá! Quero comprar *${qty}x ${p.nome}* (acabamento: ${acabamentoSel}) via Pronta Entrega. Podem confirmar disponibilidade e condições?`
+      : `Olá! Tenho interesse em ${qty}x *${p.nome}* com acabamento ${acabamentoSel}. Podem me enviar orçamento?`;
+    return `https://wa.me/5511999999999?text=${encodeURIComponent(msg)}`;
+  }
+
+  function updateWaLinks() {
+    const url = buildWaLink();
+    document.getElementById('btn-wa-comprar').href = url;
+    document.getElementById('sticky-wa-btn').href = url;
+  }
+
+  // Preenche página
+  document.title = `${p.nome} | Curioni`;
+  document.getElementById('page-title').textContent = `${p.nome} | Curioni`;
+  document.getElementById('bc-cat').textContent = p.categoria;
+  document.getElementById('bc-nome').textContent = p.nome;
+  document.getElementById('prod-cat').textContent = p.categoria;
+  document.getElementById('prod-nome').textContent = p.nome;
+  document.getElementById('prod-desc').textContent = p.desc;
+  document.getElementById('sticky-nome').textContent = p.nome;
+
+  // Trust
+  document.getElementById('trust-entrega').textContent = p.prazoDias <= 1 ? 'Hoje' : `${p.prazoDias * 24}h`;
+  document.getElementById('trust-estoque').textContent = p.estoque;
+  document.getElementById('trust-estoque-txt').textContent = `${p.estoque > 1 ? 'unidades' : 'unidade'} em estoque`;
+
+  // CTA text para pronta entrega
+  if (origem === 'pronta-entrega') {
+    document.getElementById('cta-text').textContent = `Este produto está em pronta entrega. Clique para confirmar a disponibilidade e iniciar a compra direto no WhatsApp.`;
+    document.getElementById('btn-wa-comprar').textContent = '';
+    document.getElementById('btn-wa-comprar').innerHTML = `<svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Comprar agora pelo WhatsApp`;
+  }
+
+  // Specs grid
+  document.getElementById('prod-specs').innerHTML = p.specs.map(s => `
+    <div class="pdp-spec">
+      <span class="pdp-spec__label">${s.label}</span>
+      <span class="pdp-spec__value">${s.value}</span>
+    </div>
+  `).join('');
+
+  // Acabamentos
+  const finWrap = document.getElementById('prod-finishes');
+  if (p.acabamentos && p.acabamentos.length) {
+    finWrap.innerHTML = p.acabamentos.map((a, i) => `
+      <button class="pdp-finish-opt${i === 0 ? ' selected' : ''}" data-acabamento="${a.nome}" type="button">
+        <span class="pdp-finish-swatch" style="background:${a.cor}"></span>
+        ${a.nome}
+      </button>
+    `).join('');
+    finWrap.addEventListener('click', e => {
+      const btn = e.target.closest('.pdp-finish-opt');
+      if (!btn) return;
+      finWrap.querySelectorAll('.pdp-finish-opt').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      acabamentoSel = btn.dataset.acabamento;
+      updateWaLinks();
     });
-  })();
+  } else {
+    document.getElementById('prod-finishes-wrap').style.display = 'none';
+  }
+
+  // Especificações
+  document.getElementById('prod-espec').innerHTML = p.espec.map(e =>
+    `<li style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--muted);padding:8px 0;border-bottom:1px solid rgba(17,17,17,.06)">
+      <span style="color:var(--accent);font-size:12px;">✓</span>${e}</li>`
+  ).join('');
+
+  // Imagens galeria
+  const imgKeys = p.imageKeys || ['pdpMain1','pdpThumb2','pdpThumb3'];
+  const mainImg = document.getElementById('gallery-main-img');
+  if (mainImg) mainImg.dataset.imageKey = imgKeys[0];
+  imgKeys.forEach((key, i) => {
+    const t = document.getElementById(`thumb-${i}`);
+    if (t) t.dataset.imageKey = key;
+  });
+
+  // Gallery click
+  document.querySelectorAll('.pdp-gallery__thumb').forEach(thumb => {
+    thumb.addEventListener('click', () => {
+      const idx = parseInt(thumb.dataset.thumb);
+      const key = imgKeys[idx];
+      if (!key || !mainImg) return;
+      mainImg.dataset.imageKey = key;
+      document.querySelectorAll('.pdp-gallery__thumb').forEach(t => t.classList.remove('active'));
+      thumb.classList.add('active');
+      if (window.applyCurioniImageInventory) window.applyCurioniImageInventory();
+    });
+  });
+
+  // Qty
+  document.getElementById('qty-inc').addEventListener('click', () => {
+    qty = Math.min(99, qty + 1);
+    document.getElementById('qty-val').value = qty;
+    updateWaLinks();
+  });
+  document.getElementById('qty-dec').addEventListener('click', () => {
+    qty = Math.max(1, qty - 1);
+    document.getElementById('qty-val').value = qty;
+    updateWaLinks();
+  });
+
+  // Relacionados
+  const relGrid = document.getElementById('related-grid');
+  if (relGrid && p.relacionados) {
+    const waIcon = `<svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>`;
+    relGrid.innerHTML = p.relacionados.filter(r => PRODUTOS[r]).map(r => {
+      const rel = PRODUTOS[r];
+      const waMsg = encodeURIComponent(`Olá! Tenho interesse no ${rel.nome} da Curioni. Podem me ajudar?`);
+      return `
+        <div class="prod-card">
+          <div class="prod-card__media">
+            <div class="thumb" data-image-key="${rel.imageKeys[0]}"></div>
+          </div>
+          <div class="prod-card__body">
+            <span class="prod-card__cat">${rel.categoria}</span>
+            <h3>${rel.nome}</h3>
+            <p>${rel.desc.slice(0, 90)}...</p>
+          </div>
+          <div class="prod-card__footer">
+            <div class="prod-card__price">
+              <strong>Sob consulta</strong>
+            </div>
+            <div style="display:flex;gap:6px;">
+              <a href="produtos-detalhes.html?produto=${r}" class="btn-sec sm">Detalhes</a>
+              <a href="https://wa.me/${WA_NUM}?text=${waMsg}" target="_blank" rel="noopener" class="btn-wa sm">${waIcon} WhatsApp</a>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  updateWaLinks();
+  if (window.applyCurioniImageInventory) window.applyCurioniImageInventory();
+})();
 </script>
 </body>
 </html>
