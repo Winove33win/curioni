@@ -6,47 +6,692 @@
   <title>Ambientes | Curioni</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/header.css" />
   <link rel="stylesheet" href="assets/site.css" />
+  <style>
+    /* ── AMBIENTES PAGE ─── */
+    .amb-hero {
+      background: #fff;
+      padding: 56px 0 40px;
+      border-bottom: 1px solid rgba(17,17,17,.06);
+    }
+    .amb-hero__inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 32px;
+    }
+    .amb-hero__eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+    .amb-hero__title {
+      margin: 0 0 16px;
+      font: 600 clamp(38px,5vw,68px)/.92 var(--title);
+      letter-spacing: -.04em;
+      color: #0d0b09;
+    }
+    .amb-hero__desc {
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(15px,1.6vw,18px);
+      max-width: 58ch;
+      line-height: 1.6;
+    }
+    .amb-hero__tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+    .amb-tab {
+      padding: 9px 18px;
+      border: 1px solid rgba(17,17,17,.1);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 500;
+      background: #fff;
+      cursor: pointer;
+      transition: .18s;
+      color: #5a5550;
+    }
+    .amb-tab.is-active, .amb-tab:hover {
+      background: #111;
+      border-color: #111;
+      color: #fff;
+    }
+
+    /* ── GALLERY GRID ─── */
+    .amb-section {
+      padding: 64px 0;
+      background: #fff;
+    }
+    .amb-section + .amb-section {
+      border-top: 1px solid rgba(17,17,17,.06);
+      padding-top: 56px;
+    }
+    .amb-section__head {
+      margin-bottom: 36px;
+    }
+    .amb-section__label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .amb-section__title {
+      margin: 0 0 10px;
+      font: 600 clamp(26px,3vw,40px)/1 var(--title);
+      letter-spacing: -.03em;
+    }
+    .amb-section__desc {
+      margin: 0;
+      color: var(--muted);
+      max-width: 60ch;
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    /* ── MASONRY-STYLE GRID ─── */
+    .amb-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .amb-grid--2col {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .amb-card {
+      position: relative;
+      cursor: zoom-in;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #f0ece5;
+    }
+    .amb-card--tall .amb-img { height: 540px; }
+    .amb-card--med  .amb-img { height: 380px; }
+    .amb-card--wide {
+      grid-column: span 2;
+    }
+    .amb-card--wide .amb-img { height: 420px; }
+    .amb-img {
+      width: 100%;
+      height: 320px;
+      background-size: cover;
+      background-position: center;
+      transition: transform .5s ease;
+    }
+    .amb-card:hover .amb-img {
+      transform: scale(1.04);
+    }
+    /* overlay ao hover */
+    .amb-card__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,9,8,.72) 0%, transparent 55%);
+      opacity: 0;
+      transition: opacity .3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 24px;
+    }
+    .amb-card:hover .amb-card__overlay {
+      opacity: 1;
+    }
+    .amb-card__label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.65);
+      margin-bottom: 6px;
+    }
+    .amb-card__title {
+      font: 600 18px/1.1 var(--title);
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .amb-card__zoom {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: rgba(255,255,255,.75);
+    }
+    /* notas do autor (abaixo do card) */
+    .amb-card__notes {
+      padding: 14px 4px 4px;
+      display: none;
+    }
+    .amb-card-wrap {
+      display: grid;
+    }
+    .amb-card-wrap.show-notes .amb-card__notes {
+      display: block;
+    }
+    .amb-note-title {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .amb-note-text {
+      font-size: 13px;
+      color: #5a5550;
+      line-height: 1.7;
+      font-style: italic;
+    }
+    .amb-note-tag {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(44,90,86,.08);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    /* ── LIGHTBOX ─── */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 9000;
+      background: rgba(8,7,6,.95);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(8px);
+    }
+    .lightbox.is-open {
+      display: flex;
+    }
+    .lightbox__close {
+      position: fixed;
+      top: 20px;
+      right: 24px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.15);
+      color: #fff;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background .2s;
+      z-index: 9010;
+    }
+    .lightbox__close:hover { background: rgba(255,255,255,.22); }
+    .lightbox__prev,
+    .lightbox__next {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.12);
+      color: #fff;
+      font-size: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background .2s;
+      z-index: 9010;
+    }
+    .lightbox__prev { left: 20px; }
+    .lightbox__next { right: 20px; }
+    .lightbox__prev:hover,
+    .lightbox__next:hover { background: rgba(255,255,255,.2); }
+    .lightbox__body {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 0;
+      max-width: min(1200px, 96vw);
+      max-height: 90vh;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #0e0d0c;
+    }
+    .lightbox__img-wrap {
+      position: relative;
+      background: #161412;
+    }
+    .lightbox__img {
+      width: 100%;
+      height: 90vh;
+      object-fit: contain;
+      display: block;
+    }
+    .lightbox__img-bg {
+      width: 100%;
+      height: 90vh;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    .lightbox__info {
+      background: #fff;
+      padding: 36px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      overflow-y: auto;
+    }
+    .lightbox__info-cat {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .lightbox__info-title {
+      margin: 0;
+      font: 600 22px/1.1 var(--title);
+      color: #0d0b09;
+    }
+    .lightbox__info-desc {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+    .lightbox__info-divider {
+      height: 1px;
+      background: rgba(17,17,17,.08);
+    }
+    .lightbox__info-note-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: #9a9189;
+      margin-bottom: 8px;
+    }
+    .lightbox__info-note {
+      font-size: 13px;
+      color: #5a5550;
+      line-height: 1.75;
+      font-style: italic;
+    }
+    .lightbox__info-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .lightbox__info-tag {
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: rgba(44,90,86,.08);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .lightbox__info-cta {
+      margin-top: auto;
+    }
+    .lightbox__info-cta a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 20px;
+      background: #111;
+      color: #fff;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      transition: background .2s;
+    }
+    .lightbox__info-cta a:hover { background: #000; }
+    .lightbox__counter {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,.5);
+      font-size: 13px;
+      letter-spacing: .06em;
+      z-index: 9010;
+    }
+
+    /* ── RESPONSIVE ─── */
+    @media (max-width: 960px) {
+      .lightbox__body {
+        grid-template-columns: 1fr;
+        max-height: 95vh;
+      }
+      .lightbox__img-bg { height: 55vw; min-height: 220px; }
+      .lightbox__info { padding: 22px 18px; }
+    }
+    @media (max-width: 768px) {
+      .amb-grid { grid-template-columns: repeat(2, 1fr); }
+      .amb-card--wide { grid-column: span 2; }
+      .amb-hero__inner { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 540px) {
+      .amb-grid { grid-template-columns: 1fr; }
+      .amb-card--wide { grid-column: span 1; }
+    }
+  </style>
 </head>
 <body>
 <header class="site-header" data-site-header></header>
 
-<main class="container page-shell">
-  <section class="section hero-card card">
-    <div class="thumb" data-image-key="ambHeroSala"></div>
-    <div class="hero-card__overlay">
-      <span class="eyebrow">Ambientes Curioni</span>
-      <h1>Espaços completos para inspirar composição e especificação.</h1>
-      <p>Esta seção ganhou um layout mais editorial, com narrativas visuais e setorização por cenários de uso.</p>
-    </div>
-  </section>
-
-  <section class="section environment-story">
-    <article class="card editorial-panel">
-      <span class="eyebrow">Leitura espacial</span>
-      <h2>A experiência do produto dentro da arquitetura.</h2>
-      <p>Mais do que mostrar peças isoladas, a nova estrutura evidencia como materialidade, volumetria e iluminação se combinam no ambiente final.</p>
-      <div class="page-hero__actions">
-        <a class="btn inverse" href="produtos.html">Ver peças do ambiente</a>
-        <a class="btn" href="profissionais.html">Solicitar apoio ao projeto</a>
+<!-- HERO -->
+<div class="amb-hero">
+  <div class="container">
+    <div class="amb-hero__inner">
+      <div>
+        <p class="amb-hero__eyebrow">Galeria de Ambientes</p>
+        <h1 class="amb-hero__title">Espaços que<br><em style="font-style:italic;color:#9a9189;">inspiram</em> composição.</h1>
+        <p class="amb-hero__desc">Cada imagem documenta uma cenografia real ou conceitual criada com mobiliário Curioni. Clique para ver os detalhes, a nota de inspiração e os produtos presentes no ambiente.</p>
+        <div class="amb-hero__tabs">
+          <button class="amb-tab is-active" data-filter="todos">Todos</button>
+          <button class="amb-tab" data-filter="sala">Sala</button>
+          <button class="amb-tab" data-filter="jantar">Jantar</button>
+          <button class="amb-tab" data-filter="suite">Suíte</button>
+          <button class="amb-tab" data-filter="outdoor">Outdoor</button>
+          <button class="amb-tab" data-filter="homeoffice">Home Office</button>
+        </div>
       </div>
-    </article>
-    <article class="card"><div class="thumb" data-image-key="ambSalaPrincipal" style="height:100%;min-height:420px"></div></article>
-  </section>
+    </div>
+  </div>
+</div>
 
-  <section class="section environment-grid">
-    <article class="card environment-card"><div class="thumb" data-image-key="ambSalaPrincipal"></div><div class="card-body"><span class="eyebrow">Sala central</span><h3>Convivência sofisticada</h3><p>Camadas de assentos, apoio e iluminação para uma experiência acolhedora.</p></div></article>
-    <article class="card environment-card"><div class="thumb" data-image-key="ambJantar"></div><div class="card-body"><span class="eyebrow">Jantar</span><h3>Materialidade protagonista</h3><p>Mesas e cadeiras com leitura limpa para refeições e encontros.</p></div></article>
-    <article class="card environment-card"><div class="thumb" data-image-key="ambSuite"></div><div class="card-body"><span class="eyebrow">Suíte</span><h3>Conforto silencioso</h3><p>Peças de apoio e iluminação para uma atmosfera calma.</p></div></article>
-    <article class="card environment-card"><div class="thumb" data-image-key="ambVaranda"></div><div class="card-body"><span class="eyebrow">Varanda</span><h3>Outdoor refinado</h3><p>Mobiliário resistente sem perder leveza e sofisticação.</p></div></article>
-  </section>
-</main>
+<!-- ── SALA ─────────────────────────────────────────────────── -->
+<section class="amb-section" data-section="sala">
+  <div class="container">
+    <div class="amb-section__head">
+      <span class="amb-section__label">Indoor · Sala</span>
+      <h2 class="amb-section__title">Convivência & Estar</h2>
+      <p class="amb-section__desc">Composições de salas com poltronas, sofás e complementos Curioni. Paleta clara, materiais nobres e presença escultural.</p>
+    </div>
+
+    <div class="amb-grid">
+
+      <!-- Card 1 -->
+      <div class="amb-card-wrap" data-cat="sala">
+        <div class="amb-card amb-card--tall"
+             data-lb-src="assets/asset-462448481431453704.jpg"
+             data-lb-cat="Sala · Indoor"
+             data-lb-title="Sala Central com Poltrona Alma"
+             data-lb-desc="Composição central com Poltrona Alma em boucle natural, mesa lateral Ciano e abajur Lía. Presença escultural equilibrada com leveza dos materiais."
+             data-lb-note="Referência: interiores escandinavos contemporâneos. Paleta neutra com toque de madeira. Prompt: 'sala minimalista, luz natural lateral, poltrona ampla com tecido texturizado, madeira freijó, atmosfera serena e acolhedora.'"
+             data-lb-tags="Poltrona Alma,Mesa Ciano,Abajur Lía">
+          <div class="amb-img" data-image-key="ambHeroSala"></div>
+          <div class="amb-card__overlay">
+            <span class="amb-card__label">Sala Central</span>
+            <span class="amb-card__title">Poltrona Alma + Ciano</span>
+            <span class="amb-card__zoom">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/></svg>
+              Ver em tela cheia
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="amb-card-wrap" data-cat="sala">
+        <div class="amb-card amb-card--tall"
+             data-lb-src="assets/asset-462449680457158665.jpg"
+             data-lb-cat="Sala · Indoor"
+             data-lb-title="Sala Integrada — luz difusa"
+             data-lb-desc="Ambiente amplo com sofá Curva em composição modular e Banco Tenda como apoio. Iluminação rasante que realça a textura dos materiais."
+             data-lb-note="Inspiração: casas de campo paulistanas, anos 1970 reinterpretados. Prompt: 'living room open plan, warm afternoon light, curved sofa in neutral fabric, travertine floor, minimalist architecture.'"
+             data-lb-tags="Sofá Curva,Banco Tenda,Pendente Arco">
+          <div class="amb-img" data-image-key="ambSalaPrincipal"></div>
+          <div class="amb-card__overlay">
+            <span class="amb-card__label">Sala Integrada</span>
+            <span class="amb-card__title">Sofá Curva + Banco Tenda</span>
+            <span class="amb-card__zoom">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/></svg>
+              Ver em tela cheia
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 — wide -->
+      <div class="amb-card-wrap" data-cat="sala" style="grid-column:span 1">
+        <div class="amb-card amb-card--med"
+             data-lb-src="assets/asset-462425873725923334.jpg"
+             data-lb-cat="Sala · Lounge"
+             data-lb-title="Lounge — Recepção Corporativa"
+             data-lb-desc="Composição de lounge com Sofá Curva e Poltrona Alma para ambientes de recepção de alto padrão corporativo."
+             data-lb-note="Referência: lobbies de boutique hotels europeus. Prompt: 'luxury hotel lobby seating area, white walls, curved sofa light fabric, architectural lighting, editorial photography.'"
+             data-lb-tags="Sofá Curva,Poltrona Alma,Pendente Arco">
+          <div class="amb-img" data-image-key="ambLounge"></div>
+          <div class="amb-card__overlay">
+            <span class="amb-card__label">Lounge</span>
+            <span class="amb-card__title">Recepção corporativa</span>
+            <span class="amb-card__zoom">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/></svg>
+              Ver em tela cheia
+            </span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── JANTAR ─────────────────────────────────────────────────── -->
+<section class="amb-section" data-section="jantar">
+  <div class="container">
+    <div class="amb-section__head">
+      <span class="amb-section__label">Indoor · Jantar</span>
+      <h2 class="amb-section__title">Mesa & Refeições</h2>
+      <p class="amb-section__desc">Ambientes de jantar com materialidade protagonista — pedra natural, madeira maciça e iluminação de presença cênica.</p>
+    </div>
+    <div class="amb-grid amb-grid--2col">
+      <div class="amb-card-wrap" data-cat="jantar">
+        <div class="amb-card amb-card--med"
+             data-lb-src="assets/asset-462142869560242180.jpg"
+             data-lb-cat="Jantar · Indoor"
+             data-lb-title="Mesa Vélo — Tampo Travertino"
+             data-lb-desc="Mesa Vélo com tampo em travertino romano e base escultórica. Cadeira Pierre em freijó natural ao redor. Pendente Arco em latão escovado."
+             data-lb-note="Inspiração: jantares italianos contemporâneos. Materiais minerais contrastando com madeira aquecida. Prompt: 'dining room, travertine table, wooden chairs, brass pendant light, white walls, natural light, editorial.'"
+             data-lb-tags="Mesa Vélo,Cadeira Pierre,Pendente Arco">
+          <div class="amb-img" data-image-key="ambJantar"></div>
+          <div class="amb-card__overlay">
+            <span class="amb-card__label">Jantar</span>
+            <span class="amb-card__title">Mesa Vélo + Pendente Arco</span>
+            <span class="amb-card__zoom">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/></svg>
+              Ver em tela cheia
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="amb-card-wrap" data-cat="jantar">
+        <div class="amb-card amb-card--med"
+             data-lb-src="assets/asset-461111335750721541.jpg"
+             data-lb-cat="Jantar · Indoor"
+             data-lb-title="Cadeira Pierre em ambiente de jantar íntimo"
+             data-lb-desc="Cadeira Pierre com encosto laminado curvado em composição de jantar para 4 pessoas. Leitura limpa e contemporânea."
+             data-lb-note="Referência: arquitetura japonesa e seus princípios de leveza visual. A cadeira Pierre nasce desse diálogo. Prompt: 'intimate dining room, Japanese minimalism, wooden chair sculptural backrest, warm light, white space.'"
+             data-lb-tags="Cadeira Pierre,Mesa Vélo">
+          <div class="amb-img" data-image-key="launchCadeiraPierre"></div>
+          <div class="amb-card__overlay">
+            <span class="amb-card__label">Jantar Íntimo</span>
+            <span class="amb-card__title">Cadeira Pierre</span>
+            <span class="amb-card__zoom">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/></svg>
+              Ver em tela cheia
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SUÍTE ─────────────────────────────────────────────────── -->
+<section class="amb-section" data-section="suite">
+  <div class="container">
+    <div class="amb-section__head">
+      <span class="amb-section__label">Indoor · Suíte & Descanso</span>
+      <h2 class="amb-section__title">Repouso com Intenção</h2>
+      <p class="amb-section__desc">Ambientes de descanso com peças de apoio, iluminação suave e materialidade que convida ao silêncio.</p>
+    </div>
+    <div class="amb-grid">
+      <div class="amb-card-wrap" data-cat="suite" style="grid-column:span 2">
+        <div class="amb-card amb-card--wide"
+             data-lb-src="assets/asset-462177549890211848.jpg"
+             data-lb-cat="Suíte · Indoor"
+             data-lb-title="Suíte Master — Iluminação Suave"
+             data-lb-desc="Composição de suíte com Abajur Lía e Banco Tenda. Paleta monocromática em off-white com toque de madeira aquecida."
+             data-lb-note="Referência: quartos de spas de luxo asiáticos. A intenção era criar atmosfera contemplativa sem excessos. Prompt: 'luxury suite bedroom, warm ambient light, linen bedding, wood side table, reading lamp linen shade, white walls, calm.'"
+             data-lb-tags="Abajur Lía,Banco Tenda">
+          <div class="amb-img" data-image-key="ambSuite"></div>
+          <div class="amb-card__overlay">
+            <span class="amb-card__label">Suíte Master</span>
+            <span class="amb-card__title">Abajur Lía + Banco Tenda</span>
+            <span class="amb-card__zoom">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/></svg>
+              Ver em tela cheia
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="amb-card-wrap" data-cat="homeoffice">
+        <div class="amb-card amb-card--med"
+             data-lb-src="assets/asset-461402256836988932.jpg"
+             data-lb-cat="Home Office"
+             data-lb-title="Home Office — Funcional e Elegante"
+             data-lb-desc="Ambiente de trabalho em casa com mesa de apoio e poltrona em acabamento sóbrio. Funcionalidade sem abrir mão da estética."
+             data-lb-note="Referência: estúdios de arquitetos europeus. Minimalismo funcional. Prompt: 'home office minimal, wooden desk, lounge chair, bookshelves, white room, afternoon light, architect studio.'"
+             data-lb-tags="Poltrona Alma,Buffet Módulo">
+          <div class="amb-img" data-image-key="ambHomeOffice"></div>
+          <div class="amb-card__overlay">
+            <span class="amb-card__label">Home Office</span>
+            <span class="amb-card__title">Funcional e elegante</span>
+            <span class="amb-card__zoom">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/></svg>
+              Ver em tela cheia
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── OUTDOOR ─────────────────────────────────────────────────── -->
+<section class="amb-section" data-section="outdoor">
+  <div class="container">
+    <div class="amb-section__head">
+      <span class="amb-section__label">Outdoor · Varanda & Jardim</span>
+      <h2 class="amb-section__title">Refinamento ao Ar Livre</h2>
+      <p class="amb-section__desc">Mobiliário resistente para varandas, jardins e rooftops — sem perder leveza e sofisticação visual.</p>
+    </div>
+    <div class="amb-grid amb-grid--2col">
+      <div class="amb-card-wrap" data-cat="outdoor">
+        <div class="amb-card amb-card--tall"
+             data-lb-src="assets/asset-461714159790497796.jpg"
+             data-lb-cat="Outdoor · Varanda"
+             data-lb-title="Varanda com Banco Tenda Outdoor"
+             data-lb-desc="Varanda aberta com Banco Tenda em versão outdoor: pintura eletrostática e tecido técnico UV. Composição leve para ambientes de transição."
+             data-lb-note="Referência: terraços de apartamentos paulistanos voltados para o verde. Prompt: 'outdoor terrace, minimalist furniture aluminum, technical fabric, green view, afternoon light São Paulo.'"
+             data-lb-tags="Banco Tenda Outdoor,Balanço Oca">
+          <div class="amb-img" data-image-key="ambVaranda"></div>
+          <div class="amb-card__overlay">
+            <span class="amb-card__label">Varanda</span>
+            <span class="amb-card__title">Banco Tenda Outdoor</span>
+            <span class="amb-card__zoom">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/></svg>
+              Ver em tela cheia
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="amb-card-wrap" data-cat="outdoor">
+        <div class="amb-card amb-card--tall"
+             data-lb-src="assets/asset-461698222936862725.jpg"
+             data-lb-cat="Outdoor · Deck"
+             data-lb-title="Deck Externo — Balanço Oca"
+             data-lb-desc="Deck com Balanço Oca em trama náutica e estrutura em alumínio pintado. Alta durabilidade para uso externo continuado."
+             data-lb-note="Referência: casas de campo no interior paulista, arquitetura orgânica. Prompt: 'outdoor deck, swing chair nautical rope, aluminum frame, lush garden, natural wood floor, tropical minimalism.'"
+             data-lb-tags="Balanço Oca">
+          <div class="amb-img" data-image-key="ambExterno"></div>
+          <div class="amb-card__overlay">
+            <span class="amb-card__label">Deck Externo</span>
+            <span class="amb-card__title">Balanço Oca</span>
+            <span class="amb-card__zoom">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/></svg>
+              Ver em tela cheia
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="padding:64px 0;background:#fff;border-top:1px solid rgba(17,17,17,.06);">
+  <div class="container" style="display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;">
+    <div>
+      <span style="display:block;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;">Projetos personalizados</span>
+      <h2 style="margin:0 0 12px;font:600 clamp(28px,3.5vw,44px)/1 var(--title);letter-spacing:-.04em;">Quer esses ambientes<br>no seu projeto?</h2>
+      <p style="margin:0;color:var(--muted);font-size:16px;max-width:52ch;">Nossa equipe apoia arquitetos com especificações técnicas, amostras de materiais e orçamentos personalizados para projetos contract e residenciais.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;flex-shrink:0;">
+      <a href="profissionais.html" style="display:inline-flex;align-items:center;justify-content:center;padding:14px 28px;background:#111;color:#fff;border-radius:999px;font-weight:600;font-size:14px;text-decoration:none;">Área do Arquiteto</a>
+      <a href="produtos.html" style="display:inline-flex;align-items:center;justify-content:center;padding:13px 28px;border:1.5px solid rgba(17,17,17,.18);border-radius:999px;font-weight:500;font-size:14px;text-decoration:none;color:#111;">Ver catálogo completo</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── LIGHTBOX ───────────────────────────────────────────────── -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visualizar imagem">
+  <button class="lightbox__close" id="lb-close" aria-label="Fechar">✕</button>
+  <button class="lightbox__prev" id="lb-prev" aria-label="Anterior">‹</button>
+  <button class="lightbox__next" id="lb-next" aria-label="Próximo">›</button>
+  <div class="lightbox__body">
+    <div class="lightbox__img-wrap">
+      <div class="lightbox__img-bg" id="lb-img"></div>
+    </div>
+    <div class="lightbox__info">
+      <span class="lightbox__info-cat" id="lb-cat">—</span>
+      <h2 class="lightbox__info-title" id="lb-title">—</h2>
+      <p class="lightbox__info-desc" id="lb-desc">—</p>
+      <div class="lightbox__info-divider"></div>
+      <div>
+        <p class="lightbox__info-note-label">Nota do autor · Inspiração</p>
+        <p class="lightbox__info-note" id="lb-note">—</p>
+      </div>
+      <div class="lightbox__info-tags" id="lb-tags"></div>
+      <div class="lightbox__info-cta">
+        <a href="produtos.html" id="lb-cta">Ver produtos do ambiente →</a>
+      </div>
+    </div>
+  </div>
+  <span class="lightbox__counter" id="lb-counter">1 / 8</span>
+</div>
 
 <footer class="footer">
   <div class="container footer-grid">
-    <div><a class="site-header__logo" href="curioni-preview.html" style="font-size:32px">curioni</a><p>Página de ambientes pensada para inspirar arquitetura e decisão.</p></div>
+    <div><a class="site-header__logo" href="curioni-preview.html" style="font-size:32px">curioni</a><p>Mobiliário autoral brasileiro para ambientes de alto padrão.</p></div>
     <div><h4>Explorar</h4><a href="produtos.html">Produtos</a><a href="pronta-entrega.html">Pronta entrega</a></div>
     <div><h4>Projetos</h4><a href="profissionais.html">Área profissional</a><a href="orcamento.html">Solicitar orçamento</a></div>
   </div>
@@ -54,5 +699,77 @@
 
 <script src="assets/image-inventory.js"></script>
 <script src="assets/header.js"></script>
+<script>
+(function () {
+  // ── Collect all gallery cards
+  const cards = Array.from(document.querySelectorAll('[data-lb-src]'));
+  let currentIdx = 0;
+
+  const lb       = document.getElementById('lightbox');
+  const lbImg    = document.getElementById('lb-img');
+  const lbCat    = document.getElementById('lb-cat');
+  const lbTitle  = document.getElementById('lb-title');
+  const lbDesc   = document.getElementById('lb-desc');
+  const lbNote   = document.getElementById('lb-note');
+  const lbTags   = document.getElementById('lb-tags');
+  const lbCounter= document.getElementById('lb-counter');
+  const lbClose  = document.getElementById('lb-close');
+  const lbPrev   = document.getElementById('lb-prev');
+  const lbNext   = document.getElementById('lb-next');
+
+  function openAt(idx) {
+    currentIdx = (idx + cards.length) % cards.length;
+    const c = cards[currentIdx];
+    lbImg.style.backgroundImage   = `url('${c.dataset.lbSrc}')`;
+    lbCat.textContent   = c.dataset.lbCat   || '';
+    lbTitle.textContent = c.dataset.lbTitle || '';
+    lbDesc.textContent  = c.dataset.lbDesc  || '';
+    lbNote.textContent  = c.dataset.lbNote  || '';
+    lbCounter.textContent = `${currentIdx + 1} / ${cards.length}`;
+    lbTags.innerHTML = (c.dataset.lbTags || '').split(',').map(t =>
+      `<span class="lightbox__info-tag">${t.trim()}</span>`
+    ).join('');
+    lb.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function close() {
+    lb.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  cards.forEach((c, i) => c.addEventListener('click', () => openAt(i)));
+  lbClose.addEventListener('click', close);
+  lbPrev.addEventListener('click', () => openAt(currentIdx - 1));
+  lbNext.addEventListener('click', () => openAt(currentIdx + 1));
+  lb.addEventListener('click', e => { if (e.target === lb) close(); });
+
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('is-open')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft')  openAt(currentIdx - 1);
+    if (e.key === 'ArrowRight') openAt(currentIdx + 1);
+  });
+
+  // ── Filter tabs
+  const tabs = document.querySelectorAll('.amb-tab');
+  const wraps = document.querySelectorAll('.amb-card-wrap');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('is-active'));
+      tab.classList.add('is-active');
+      const filter = tab.dataset.filter;
+      wraps.forEach(w => {
+        if (filter === 'todos' || w.dataset.cat === filter) {
+          w.style.display = '';
+        } else {
+          w.style.display = 'none';
+        }
+      });
+    });
+  });
+})();
+</script>
 </body>
 </html>

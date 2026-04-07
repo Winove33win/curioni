@@ -121,7 +121,7 @@
 /* ── PAGE WRAPPER ───────────────────────────────────────────── */
 .prod-page {
   min-height: 100vh;
-  background: #faf8f4;
+  background: #ffffff;
 }
 
 .prod-container {
@@ -805,9 +805,20 @@
 
 .prod-card__price strong {
   display: block;
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 700;
   color: #111;
+  letter-spacing: -0.01em;
+}
+
+.price-from {
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  vertical-align: middle;
+  margin-right: 2px;
 }
 
 .prod-card__price span {

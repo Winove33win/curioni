@@ -265,6 +265,122 @@
   transform: translateY(-1px);
 }
 
+/* ── DROPDOWN PRODUTOS ───────────────────────────────────── */
+.nav-item {
+  position: relative;
+}
+
+.nav-item__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #2a2622;
+  padding: 8px 13px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  transition: background 0.18s ease, color 0.18s ease;
+  white-space: nowrap;
+}
+
+.nav-item__link:hover,
+.nav-item--has-dropdown:hover .nav-item__link {
+  background: rgba(17, 17, 17, 0.06);
+  color: #111;
+}
+
+.nav-item__link[aria-current="page"] {
+  background: #111;
+  color: #fff;
+}
+
+.nav-item__chevron {
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.nav-item--has-dropdown:hover .nav-item__chevron {
+  transform: rotate(180deg);
+}
+
+.nav-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 380px;
+  background: rgba(255,255,255,0.98);
+  border: 1px solid rgba(17,17,17,0.08);
+  border-radius: 20px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.12);
+  backdrop-filter: blur(20px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  padding: 8px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.18s ease, visibility 0.18s ease, transform 0.18s ease;
+  transform: translateX(-50%) translateY(-6px);
+  z-index: 200;
+}
+
+.nav-item--has-dropdown:hover .nav-dropdown {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.nav-dropdown__col {
+  padding: 10px 6px;
+}
+
+.nav-dropdown__col + .nav-dropdown__col {
+  border-left: 1px solid rgba(17,17,17,0.06);
+}
+
+.nav-dropdown__head {
+  display: block;
+  padding: 4px 10px 8px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #9a9189;
+}
+
+.nav-dropdown__link {
+  display: block;
+  padding: 9px 10px;
+  border-radius: 10px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #1a1815;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+
+.nav-dropdown__link:hover {
+  background: rgba(17,17,17,0.05);
+  color: #111;
+}
+
+.nav-dropdown__link--all {
+  margin-top: 6px;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.nav-dropdown__link--all:hover {
+  background: rgba(44,90,86,0.07);
+  color: var(--accent);
+}
+
 /* ── TOGGLE MOBILE ───────────────────────────────────────── */
 .site-header__toggle {
   display: none;

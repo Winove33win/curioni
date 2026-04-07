@@ -21,7 +21,7 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:linear-gradient(180deg,#f8f4ee 0%,#f1ebe2 100%);color:var(--text);font-family:var(--body);line-height:1.5}
+body{margin:0;background:#ffffff;color:var(--text);font-family:var(--body);line-height:1.5}
 a{text-decoration:none;color:inherit}
 img{max-width:100%;display:block}
 .container{width:min(100% - 40px,var(--container));margin:0 auto}
