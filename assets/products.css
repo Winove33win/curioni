@@ -679,99 +679,116 @@
 
 .cat-section__head h2 {
   margin: 0;
-  font: 600 clamp(28px, 3.8vw, 46px)/1 var(--title);
-  letter-spacing: -0.04em;
+  font: 400 clamp(11px, 1vw, 13px)/1 var(--body);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #9a9189;
 }
 
 .cat-section__head p {
-  color: var(--muted);
-  font-size: 15px;
-  margin: 6px 0 0;
+  display: none;
 }
 
-/* ── PRODUTO CARD — CATÁLOGO ────────────────────────────────── */
+/* ── PRODUTO CARD — CATÁLOGO (estilo editorial limpo) ───────── */
 .prod-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: 1px solid rgba(17,17,17,0.08);
+  border-left: 1px solid rgba(17,17,17,0.08);
 }
 
 .prod-card {
   background: #fff;
-  border-radius: 18px;
-  overflow: hidden;
-  border: 1px solid rgba(17,17,17,0.06);
-  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-right: 1px solid rgba(17,17,17,0.08);
+  border-bottom: 1px solid rgba(17,17,17,0.08);
   display: flex;
   flex-direction: column;
+  cursor: pointer;
+  transition: background 0.2s ease;
 }
 
 .prod-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 48px rgba(0,0,0,0.11);
+  background: #f9f8f6;
 }
 
 .prod-card__media {
   position: relative;
   overflow: hidden;
+  background: #f4f2ef;
 }
 
 .prod-card__media .thumb {
-  height: 260px;
-  transition: transform 0.5s ease;
+  height: 380px;
+  background-color: #f4f2ef;
+  transition: transform 0.6s ease;
 }
 
 .prod-card:hover .prod-card__media .thumb {
-  transform: scale(1.06);
+  transform: scale(1.03);
 }
 
+/* Badge pronta entrega — discreto */
 .prod-card__badge {
   position: absolute;
-  top: 12px;
-  left: 12px;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 4px 10px;
-  border-radius: 999px;
-  background: rgba(17,17,17,0.85);
-  color: #fff;
-  backdrop-filter: blur(4px);
-}
-
-.prod-card__badge.green {
-  background: #22a35a;
-}
-
-.prod-card__body {
-  padding: 18px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  flex: 1;
-}
-
-.prod-card__cat {
-  font-size: 10px;
+  top: 14px;
+  left: 14px;
+  font-size: 9px;
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--accent);
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: rgba(17,17,17,0.7);
+  color: #fff;
 }
 
-.prod-card__body h3 {
-  margin: 0;
-  font: 600 clamp(18px, 2vw, 22px)/1.1 var(--title);
-  letter-spacing: -0.02em;
+.prod-card__badge.green {
+  background: rgba(34,163,90,0.88);
 }
 
-.prod-card__body p {
-  color: var(--muted);
+/* Info bar inferior — nome esquerda, preço direita */
+.prod-card__body {
+  display: none; /* escondido no novo layout */
+}
+
+.prod-card__footer {
+  padding: 14px 18px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+  border: none;
+  margin-top: 0;
+}
+
+.prod-card__name-block {
+  display: grid;
+  gap: 2px;
+}
+
+.prod-card__cat {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #9a9189;
+}
+
+.prod-card__name {
   font-size: 13px;
-  line-height: 1.6;
-  margin: 0;
+  font-weight: 500;
+  color: #111;
+  letter-spacing: 0.01em;
+}
+
+.prod-card__price strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 400;
+  color: #5a5550;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
 }
 
 .prod-swatches {
@@ -780,35 +797,29 @@
 }
 
 .p-sw {
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   border: 1.5px solid rgba(17,17,17,0.12);
   display: block;
-  cursor: pointer;
-  transition: transform 0.2s;
 }
 
-.p-sw:hover {
-  transform: scale(1.4);
-}
-
-.prod-card__footer {
-  padding: 14px 18px;
-  border-top: 1px solid rgba(17,17,17,0.06);
+/* Botões de ação — aparecem no hover via overlay */
+.prod-card__actions {
+  position: absolute;
+  inset: 0;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-  margin-top: auto;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  background: linear-gradient(to top, rgba(0,0,0,0.35) 0%, transparent 50%);
 }
 
-.prod-card__price strong {
-  display: block;
-  font-size: 15px;
-  font-weight: 700;
-  color: #111;
-  letter-spacing: -0.01em;
+.prod-card:hover .prod-card__actions {
+  opacity: 1;
 }
 
 .price-from {
@@ -1669,7 +1680,9 @@
 
 /* ── RESPONSIVE ─────────────────────────────────────────────── */
 @media (max-width: 1100px) {
-  .prod-grid,
+  .prod-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
   .store-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1742,7 +1755,9 @@
 }
 
 @media (max-width: 768px) {
-  .prod-grid,
+  .prod-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
   .store-grid {
     grid-template-columns: 1fr;
   }

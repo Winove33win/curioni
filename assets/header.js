@@ -9,15 +9,22 @@
 
   const PRODUTOS_DROPDOWN = {
     indoor: [
-      { href: 'categoria-assentos.html',      label: 'Poltronas & Cadeiras' },
-      { href: 'categoria-assentos.html#sofas', label: 'Sofás' },
-      { href: 'categoria-mesas.html',          label: 'Mesas' },
-      { href: 'categoria-complementos.html',   label: 'Complementos' },
-      { href: 'categoria-iluminacao.html',     label: 'Iluminação' },
+      { href: 'categoria-assentos.html',        label: 'Cadeiras' },
+      { href: 'categoria-assentos.html',        label: 'Poltronas' },
+      { href: 'categoria-assentos.html',        label: 'Sofás' },
+      { href: 'categoria-assentos.html',        label: 'Bancos / Puffs' },
+      { href: 'categoria-mesas.html',           label: 'Mesas de Jantar' },
+      { href: 'categoria-mesas.html',           label: 'Mesas de Centro' },
+      { href: 'categoria-mesas.html',           label: 'Mesas Laterais' },
+      { href: 'categoria-complementos.html',    label: 'Estantes / Aparadores' },
+      { href: 'categoria-complementos.html',    label: 'Carrinhos' },
+      { href: 'categoria-iluminacao.html',      label: 'Iluminação' },
     ],
     outdoor: [
-      { href: 'categoria-area-externa.html',           label: 'Poltronas Outdoor' },
-      { href: 'categoria-area-externa.html#bancos',    label: 'Bancos & Balanços' },
+      { href: 'categoria-area-externa.html',    label: 'Poltronas Outdoor' },
+      { href: 'categoria-area-externa.html',    label: 'Cadeiras Outdoor' },
+      { href: 'categoria-area-externa.html',    label: 'Mesas Outdoor' },
+      { href: 'categoria-area-externa.html',    label: 'Bancos & Balanços' },
     ],
   };
 
@@ -42,14 +49,26 @@
 
   const dropdownMarkup = `
     <div class="nav-dropdown">
-      <div class="nav-dropdown__col">
-        <span class="nav-dropdown__head">Indoor</span>
-        ${PRODUTOS_DROPDOWN.indoor.map(l => `<a href="${l.href}" class="nav-dropdown__link">${l.label}</a>`).join('')}
+      <div class="nav-dropdown__item nav-flyout-parent" data-flyout="indoor">
+        <span class="nav-dropdown__group-link">
+          Indoor
+          <svg width="8" height="8" viewBox="0 0 8 8" fill="none" aria-hidden="true"><path d="M3 1.5L5.5 4L3 6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <div class="nav-flyout" id="flyout-indoor">
+          ${PRODUTOS_DROPDOWN.indoor.map(l => `<a href="${l.href}" class="nav-flyout__link">${l.label}</a>`).join('')}
+        </div>
       </div>
-      <div class="nav-dropdown__col">
-        <span class="nav-dropdown__head">Outdoor</span>
-        ${PRODUTOS_DROPDOWN.outdoor.map(l => `<a href="${l.href}" class="nav-dropdown__link">${l.label}</a>`).join('')}
-        <a href="produtos.html" class="nav-dropdown__link nav-dropdown__link--all">Ver todos os produtos →</a>
+      <div class="nav-dropdown__item nav-flyout-parent" data-flyout="outdoor">
+        <span class="nav-dropdown__group-link">
+          Outdoor
+          <svg width="8" height="8" viewBox="0 0 8 8" fill="none" aria-hidden="true"><path d="M3 1.5L5.5 4L3 6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <div class="nav-flyout" id="flyout-outdoor">
+          ${PRODUTOS_DROPDOWN.outdoor.map(l => `<a href="${l.href}" class="nav-flyout__link">${l.label}</a>`).join('')}
+        </div>
+      </div>
+      <div class="nav-dropdown__item">
+        <a href="produtos.html" class="nav-dropdown__group-link nav-dropdown__all">Ver todos os produtos</a>
       </div>
     </div>`;
 
