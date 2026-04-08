@@ -693,15 +693,12 @@
 .prod-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0;
-  border-top: 1px solid rgba(17,17,17,0.08);
-  border-left: 1px solid rgba(17,17,17,0.08);
+  gap: 2px;
+  background: rgba(17,17,17,0.07); /* as "linhas" são o fundo do grid aparecendo */
 }
 
 .prod-card {
   background: #fff;
-  border-right: 1px solid rgba(17,17,17,0.08);
-  border-bottom: 1px solid rgba(17,17,17,0.08);
   display: flex;
   flex-direction: column;
   cursor: pointer;
@@ -718,7 +715,7 @@
 }
 
 .prod-card__media .thumb {
-  height: 380px;
+  height: clamp(260px, 28vw, 420px);
   background-color: #f4f2ef;
   transition: transform 0.6s ease;
 }
@@ -763,13 +760,13 @@
 
 /* Wrapper <a> que envolve o card inteiro nas páginas de categoria */
 .prod-card-link {
-  display: contents; /* o <a> não quebra o layout do grid */
+  display: contents; /* o <a> desaparece do fluxo — o .prod-card vira item do grid */
   text-decoration: none;
   color: inherit;
 }
 
-.prod-card-link .prod-card {
-  cursor: pointer;
+.prod-card-link:hover .prod-card {
+  background: #f9f8f6;
 }
 
 .prod-card-link:hover .prod-card__name {
@@ -802,9 +799,9 @@
   text-underline-offset: 2px;
 }
 
-/* Remove padding do footer pois o link já tem */
-.prod-card__footer {
-  padding: 0 !important;
+/* Quando o footer contém um link wrapper, zerar o padding do container */
+.prod-card__footer:has(.prod-card__footer-link) {
+  padding: 0;
 }
 
 .prod-card__name-block {
