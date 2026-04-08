@@ -70,6 +70,7 @@
   position: sticky;
   top: 0;
   z-index: 120;
+  /* garante contexto de posicionamento para o mega-menu */
   background: rgba(250, 248, 244, 0.94);
   border-bottom: 1px solid rgba(18, 18, 18, 0.07);
   backdrop-filter: blur(20px);
@@ -265,12 +266,13 @@
   transform: translateY(-1px);
 }
 
-/* ── DROPDOWN PRODUTOS — flyout cascata ─────────────────── */
+/* ── NAV ITEM COM MEGA MENU ──────────────────────────────── */
 .nav-item {
-  position: relative;
+  position: static; /* mega usa posição relativa ao header */
 }
 
-.nav-item__link {
+/* Botão trigger */
+.nav-item__btn {
   display: inline-flex;
   align-items: center;
   gap: 4px;
@@ -280,18 +282,20 @@
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.01em;
-  text-decoration: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
   transition: background 0.18s ease, color 0.18s ease;
   white-space: nowrap;
 }
 
-.nav-item__link:hover,
-.nav-item--has-dropdown:hover .nav-item__link {
+.nav-item__btn:hover,
+.nav-item__btn.is-open {
   background: rgba(17, 17, 17, 0.06);
   color: #111;
 }
 
-.nav-item__link[aria-current="page"] {
+.nav-item__btn.is-current {
   background: #111;
   color: #fff;
 }
@@ -301,112 +305,186 @@
   flex-shrink: 0;
 }
 
-.nav-item--has-dropdown:hover .nav-item__chevron {
-  transform: rotate(180deg);
-}
-
-/* Dropdown nível 1 — lista Indoor / Outdoor */
-.nav-dropdown {
+/* ── MEGA MENU ───────────────────────────────────────────── */
+.mega-menu {
   position: absolute;
-  top: calc(100% + 10px);
+  top: 100%; /* relativo ao .site-header (sticky) */
   left: 0;
-  min-width: 200px;
+  width: 100vw;
   background: #fff;
-  border: 1px solid rgba(17,17,17,0.09);
-  border-radius: 14px;
-  box-shadow: 0 20px 56px rgba(0,0,0,0.13);
-  padding: 6px;
+  border-top: 1px solid rgba(17,17,17,0.07);
+  border-bottom: 1px solid rgba(17,17,17,0.07);
+  box-shadow: 0 24px 48px rgba(0,0,0,0.10);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+  transform: translateY(-4px);
   transition: opacity 0.18s ease, visibility 0.18s ease, transform 0.18s ease;
-  transform: translateY(-6px);
-  z-index: 200;
+  z-index: 150;
 }
 
-.nav-item--has-dropdown:hover .nav-dropdown {
+.mega-menu.is-open {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
   transform: translateY(0);
 }
 
-/* Cada item do nível 1 */
-.nav-dropdown__item {
-  position: relative;
+.mega-menu__inner {
+  width: min(100% - 48px, 1280px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  min-height: 220px;
 }
 
-.nav-dropdown__group-link {
+/* Coluna esquerda — grupos (Indoor / Outdoor) */
+.mega-menu__groups {
+  border-right: 1px solid rgba(17,17,17,0.07);
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.mega-menu__group-all {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-decoration: none;
+  border-radius: 0;
+  transition: background 0.15s;
+  margin-bottom: 8px;
+  border-bottom: 1px solid rgba(17,17,17,0.06);
+  padding-bottom: 16px;
+}
+
+.mega-menu__group-all:hover {
+  background: rgba(44,90,86,0.05);
+}
+
+.mega-menu__group-btn {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding: 10px 14px;
-  border-radius: 10px;
-  font-size: 14px;
-  font-weight: 500;
-  color: #1a1815;
+  width: 100%;
+  padding: 12px 20px;
+  background: transparent;
+  border: none;
+  font: 500 15px/1 var(--body);
+  color: #5a5550;
   cursor: pointer;
-  transition: background 0.15s;
-  white-space: nowrap;
-  text-decoration: none;
+  text-align: left;
+  transition: background 0.15s, color 0.15s;
+  border-radius: 0;
 }
 
-.nav-dropdown__group-link:hover {
-  background: rgba(17,17,17,0.05);
+.mega-menu__group-btn:hover,
+.mega-menu__group-btn.is-active {
+  background: rgba(17,17,17,0.04);
   color: #111;
-}
-
-.nav-dropdown__item + .nav-dropdown__item {
-  border-top: 1px solid rgba(17,17,17,0.05);
-}
-
-.nav-dropdown__all {
-  font-size: 13px;
-  color: var(--accent);
   font-weight: 600;
 }
 
-/* Flyout nível 2 — subcategorias */
-.nav-flyout {
-  position: absolute;
-  top: -6px;
-  left: calc(100% + 6px);
-  min-width: 200px;
-  background: #fff;
-  border: 1px solid rgba(17,17,17,0.09);
-  border-radius: 14px;
-  box-shadow: 0 20px 56px rgba(0,0,0,0.13);
-  padding: 6px;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: opacity 0.15s ease, visibility 0.15s ease;
-  z-index: 201;
+.mega-menu__group-btn svg {
+  flex-shrink: 0;
+  opacity: 0.35;
+  transition: opacity 0.15s;
 }
 
-.nav-flyout-parent:hover .nav-flyout {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
+.mega-menu__group-btn.is-active svg {
+  opacity: 0.8;
 }
 
-.nav-flyout__link {
+/* Coluna direita — sublists */
+.mega-menu__panel {
+  padding: 20px 32px;
+  position: relative;
+}
+
+.mega-menu__sublist {
+  display: none;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.mega-menu__sublist.is-active {
+  display: flex;
+}
+
+.mega-menu__sublist-head {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #9a9189;
+  padding: 4px 10px 10px;
   display: block;
-  padding: 9px 14px;
-  border-radius: 10px;
-  font-size: 13.5px;
+}
+
+.mega-menu__sublink {
+  display: block;
+  padding: 9px 10px;
+  border-radius: 8px;
+  font-size: 14px;
   font-weight: 400;
   color: #1a1815;
   text-decoration: none;
-  transition: background 0.15s, color 0.15s;
-  white-space: nowrap;
+  transition: background 0.15s, color 0.15s, padding-left 0.15s;
 }
 
-.nav-flyout__link:hover {
+.mega-menu__sublink:hover {
   background: rgba(17,17,17,0.05);
   color: #111;
-  font-weight: 500;
+  padding-left: 16px;
+}
+
+/* Mobile nav sublists */
+.mobile-main-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 12px;
+  padding: 11px 12px;
+  color: #1a1815;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.mobile-sub-head {
+  display: block;
+  padding: 10px 12px 4px 24px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #9a9189;
+}
+
+.mobile-sub-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px;
+  padding: 9px 12px 9px 28px;
+  color: #5a5550;
+  font-size: 13px;
+  font-weight: 400;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.mobile-sub-link:hover {
+  background: rgba(17,17,17,0.05);
+  color: #111;
 }
 
 /* ── TOGGLE MOBILE ───────────────────────────────────────── */
