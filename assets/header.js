@@ -67,10 +67,9 @@
   const primaryLinks = [
     { href: 'curioni-preview.html', label: 'Home' },
     { href: 'produtos.html',        label: 'Produtos', mega: true },
-    { href: 'pronta-entrega.html',  label: 'Pronta Entrega', live: true },
+    { href: 'pronta-entrega.html',  label: 'Loja Online', live: true },
     { href: 'ambientes.html',       label: 'Ambientes' },
     { href: 'profissionais.html',   label: 'Profissionais' },
-    { href: 'sobre.html',           label: 'Marca' },
   ];
 
   const utilityLinks = [

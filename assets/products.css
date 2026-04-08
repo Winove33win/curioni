@@ -714,7 +714,6 @@
 
 .prod-card__media {
   position: relative;
-  overflow: hidden;
   background: #f4f2ef;
 }
 
@@ -760,6 +759,36 @@
   gap: 10px;
   border: none;
   margin-top: 0;
+}
+
+/* Link que envolve toda a imagem */
+.prod-card__img-link {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+/* Link que envolve o footer */
+.prod-card__footer-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+  width: 100%;
+  text-decoration: none;
+  color: inherit;
+  padding: 14px 18px 16px;
+}
+
+.prod-card__footer-link:hover .prod-card__name {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Remove padding do footer pois o link já tem */
+.prod-card__footer {
+  padding: 0 !important;
 }
 
 .prod-card__name-block {
