@@ -761,6 +761,22 @@
   margin-top: 0;
 }
 
+/* Wrapper <a> que envolve o card inteiro nas páginas de categoria */
+.prod-card-link {
+  display: contents; /* o <a> não quebra o layout do grid */
+  text-decoration: none;
+  color: inherit;
+}
+
+.prod-card-link .prod-card {
+  cursor: pointer;
+}
+
+.prod-card-link:hover .prod-card__name {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 /* Link que envolve toda a imagem */
 .prod-card__img-link {
   display: block;
