@@ -65,11 +65,9 @@
     </div>`;
 
   const primaryLinks = [
-    { href: 'curioni-preview.html',    label: 'Home' },
-    { href: 'produtos.html',           label: 'Produtos', mega: true },
-    { href: 'ambientes.html',          label: 'Ambientes' },
-    { href: 'biblioteca-tecnica.html', label: 'Biblioteca 3D' },
-    { href: 'orcamento.html',          label: 'Contato' },
+    { href: 'curioni-preview.html', label: 'Home' },
+    { href: 'produtos.html',        label: 'Produtos', mega: true },
+    { href: 'ambientes.html',       label: 'Ambientes' },
   ];
 
 
@@ -124,11 +122,7 @@
     return `<a href="${href}"${cur}>${label}${dot}</a>`;
   }).join('');
 
-  const mobileUtility = [{ href: 'orcamento.html', label: 'Solicitar orçamento' }]
-    .map(({ href, label }) => {
-      const cur = isCurrent(href) ? ' aria-current="page"' : '';
-      return `<a href="${href}"${cur}>${label}</a>`;
-    }).join('');
+  const mobileUtility = `<a href="biblioteca-tecnica.html"${isCurrent('biblioteca-tecnica.html') ? ' aria-current="page"' : ''}>Biblioteca 3D</a>`;
 
   const TOPBAR = `
     <div class="site-topbar">
@@ -158,6 +152,8 @@
         </nav>
 
         <div class="site-header__actions">
+          <a class="site-header__mini-link" href="biblioteca-tecnica.html">Biblioteca 3D</a>
+          <div class="site-header__sep" aria-hidden="true"></div>
           <a class="site-header__wa" href="${WA_URL}" target="_blank" rel="noopener" aria-label="Falar pelo WhatsApp">
             ${WA_SVG}
             WhatsApp
