@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Pronta Entrega | Curioni — Loja Online</title>
+  <title>Loja Online | Curioni</title>
   <meta name="description" content="Loja Curioni Pronta Entrega: produtos de alto padrão disponíveis em estoque com entrega em até 48h. Compre pelo WhatsApp." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,173 +11,477 @@
   <link rel="stylesheet" href="assets/header.css" />
   <link rel="stylesheet" href="assets/site.css" />
   <link rel="stylesheet" href="assets/products.css" />
+  <style>
+    /* ── WIX STORE LAYOUT ─────────────────────────────────────── */
+    body.wix-store-page {
+      background: #fff;
+      color: #1a1a1a;
+    }
+
+    /* Page header */
+    .wix-store-header {
+      padding: 56px 0 32px;
+      border-bottom: 1px solid #e8e8e8;
+      background: #fff;
+    }
+    .wix-store-header__inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+    .wix-store-header__title {
+      font-family: var(--title, 'Playfair Display', serif);
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      color: #1a1a1a;
+      margin: 0 0 8px;
+    }
+    .wix-store-header__sub {
+      font-size: 15px;
+      color: #888;
+      margin: 0;
+      font-weight: 400;
+    }
+
+    /* Filter bar */
+    .wix-filter-bar {
+      background: #fff;
+      border-bottom: 1px solid #e8e8e8;
+      position: sticky;
+      top: 72px;
+      z-index: 100;
+    }
+    .wix-filter-bar__inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      height: 60px;
+    }
+    .wix-filter-pills {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .wix-filter-pills::-webkit-scrollbar { display: none; }
+    .wix-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 18px;
+      border: 1.5px solid #e0e0e0;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #444;
+      background: #fff;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+      user-select: none;
+    }
+    .wix-pill:hover {
+      border-color: #1a1a1a;
+      color: #1a1a1a;
+    }
+    .wix-pill.active {
+      background: #1a1a1a;
+      border-color: #1a1a1a;
+      color: #fff;
+    }
+    .wix-filter-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+    .wix-search {
+      border: 1.5px solid #e0e0e0;
+      border-radius: 999px;
+      padding: 7px 16px 7px 36px;
+      font-size: 13px;
+      color: #1a1a1a;
+      background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='none' stroke='%23999' stroke-width='2' viewBox='0 0 24 24'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E") no-repeat 12px center;
+      outline: none;
+      width: 180px;
+      transition: border-color 0.15s;
+    }
+    .wix-search:focus { border-color: #1a1a1a; }
+    .wix-sort {
+      border: 1.5px solid #e0e0e0;
+      border-radius: 999px;
+      padding: 7px 32px 7px 14px;
+      font-size: 13px;
+      color: #444;
+      background: #fff;
+      outline: none;
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none' stroke='%23999' stroke-width='1.5' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      transition: border-color 0.15s;
+    }
+    .wix-sort:focus { border-color: #1a1a1a; }
+
+    /* Results bar */
+    .wix-results-bar {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 24px 40px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .wix-results-count {
+      font-size: 13px;
+      color: #888;
+    }
+
+    /* Product grid */
+    .wix-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 40px 80px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+    }
+
+    /* Product card */
+    .wix-card {
+      background: #fff;
+      cursor: pointer;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    .wix-card__media {
+      position: relative;
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      background: #f5f4f2;
+    }
+    .wix-card__media .thumb {
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.5s ease;
+    }
+    .wix-card:hover .thumb {
+      transform: scale(1.04);
+    }
+    .wix-card__badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: #fff;
+      color: #1a1a1a;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 2px;
+    }
+    .wix-card__badge.gold {
+      background: #1a1a1a;
+      color: #fff;
+    }
+    .wix-card__quick-buy {
+      position: absolute;
+      bottom: 14px;
+      left: 14px;
+      right: 14px;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+    .wix-card:hover .wix-card__quick-buy {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .wix-card__info {
+      padding: 14px 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex: 1;
+    }
+    .wix-card__type {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #aaa;
+      font-weight: 500;
+    }
+    .wix-card__name {
+      font-size: 15px;
+      font-weight: 500;
+      color: #1a1a1a;
+      line-height: 1.3;
+      margin: 0;
+    }
+    .wix-card__price {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-top: 6px;
+    }
+    .wix-card__delivery {
+      font-size: 12px;
+      color: #25a85a;
+      font-weight: 500;
+    }
+
+    /* Quick buy button */
+    .btn-quick-buy {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 12px;
+      background: #25d366;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .btn-quick-buy:hover { background: #1fba5a; }
+
+    /* Empty state */
+    .wix-empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 80px 20px;
+      color: #888;
+    }
+    .wix-empty h3 {
+      font-size: 20px;
+      margin: 0 0 8px;
+      color: #1a1a1a;
+    }
+
+    /* CTA block */
+    .wix-cta-block {
+      max-width: 1280px;
+      margin: 0 auto 80px;
+      padding: 0 40px;
+    }
+    .wix-cta-inner {
+      background: #1a1a1a;
+      border-radius: 4px;
+      padding: 48px;
+      text-align: center;
+      color: #fff;
+    }
+    .wix-cta-inner h3 {
+      font-family: var(--title, 'Playfair Display', serif);
+      font-size: 28px;
+      font-weight: 600;
+      margin: 0 0 12px;
+      letter-spacing: -0.03em;
+    }
+    .wix-cta-inner p {
+      color: rgba(255,255,255,0.6);
+      font-size: 15px;
+      margin: 0 0 24px;
+    }
+    .wix-cta-btns {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Footer */
+    .wix-footer {
+      border-top: 1px solid #e8e8e8;
+      background: #fff;
+      padding: 56px 0 32px;
+    }
+    .wix-footer__inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+    }
+    .wix-footer__brand {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .wix-footer__logo {
+      font-family: var(--title, 'Playfair Display', serif);
+      font-size: 20px;
+      font-weight: 600;
+      color: #1a1a1a;
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .wix-footer__brand p {
+      font-size: 13px;
+      color: #888;
+      margin: 0;
+      line-height: 1.6;
+    }
+    .wix-footer__brand a {
+      font-size: 13px;
+      color: #888;
+      text-decoration: none;
+    }
+    .wix-footer__brand a:hover { color: #1a1a1a; }
+    .wix-footer__col h4 {
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #1a1a1a;
+      margin: 0 0 16px;
+    }
+    .wix-footer__col a {
+      display: block;
+      font-size: 13px;
+      color: #888;
+      text-decoration: none;
+      margin-bottom: 10px;
+      transition: color 0.15s;
+    }
+    .wix-footer__col a:hover { color: #1a1a1a; }
+    .wix-footer__bottom {
+      max-width: 1280px;
+      margin: 40px auto 0;
+      padding: 24px 40px 0;
+      border-top: 1px solid #e8e8e8;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      color: #aaa;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .wix-grid { grid-template-columns: repeat(3, 1fr); }
+      .wix-footer__inner { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+    @media (max-width: 768px) {
+      .wix-store-header__inner,
+      .wix-filter-bar__inner { padding: 0 20px; }
+      .wix-filter-bar__inner { flex-wrap: wrap; height: auto; padding: 12px 20px; gap: 8px; }
+      .wix-grid { grid-template-columns: repeat(2, 1fr); padding: 0 20px 60px; }
+      .wix-results-bar,
+      .wix-cta-block { padding-left: 20px; padding-right: 20px; }
+      .wix-search { width: 140px; }
+    }
+    @media (max-width: 480px) {
+      .wix-grid { grid-template-columns: 1fr 1fr; gap: 1px; }
+    }
+  </style>
 </head>
-<body class="prod-page">
+<body class="wix-store-page">
 <header class="site-header" data-site-header></header>
 
-<!-- ── HERO DA LOJA ──────────────────────────────────────────── -->
-<div class="store-hero">
-  <div class="prod-container">
-    <div class="store-hero__inner">
-      <div>
-        <span class="store-hero__tag">Loja Curioni · Estoque Imediato</span>
-        <h1>Pronta Entrega.<br>Qualidade Curioni,<br>agora.</h1>
-        <p class="store-hero__desc">Seleção curada de peças de alto padrão disponíveis em estoque. Compre pelo WhatsApp e receba em até 48 horas em todo o Brasil.</p>
-        <div class="store-hero__badges">
-          <span class="store-badge">⚡ Envio em até 48h</span>
-          <span class="store-badge">📦 Frete para todo o Brasil</span>
-          <span class="store-badge">✅ Qualidade certificada</span>
-          <span class="store-badge">💬 Compra pelo WhatsApp</span>
-        </div>
-      </div>
-      <div class="store-hero__metrics">
-        <div class="store-metric">
-          <strong id="metrics-count">12</strong>
-          <span>Produtos em estoque</span>
-        </div>
-        <div class="store-metric">
-          <strong>48h</strong>
-          <span>Entrega express</span>
-        </div>
-      </div>
-    </div>
+<!-- ── PAGE HEADER ──────────────────────────────────────────── -->
+<div class="wix-store-header">
+  <div class="wix-store-header__inner">
+    <h1 class="wix-store-header__title">Loja Online</h1>
+    <p class="wix-store-header__sub">Peças disponíveis em estoque · Compra pelo WhatsApp · Entrega em todo o Brasil</p>
   </div>
 </div>
 
-<!-- ── TRUST STRIP ──────────────────────────────────────────── -->
-<div class="store-trust">
-  <div class="prod-container">
-    <div class="store-trust__grid">
-      <div class="store-trust-item">
-        <span class="store-trust-item__icon">💬</span>
-        <div class="store-trust-item__text">
-          <strong>Compra pelo WhatsApp</strong>
-          <span>Atendimento humano, sem checkout complicado</span>
-        </div>
-      </div>
-      <div class="store-trust-item">
-        <span class="store-trust-item__icon">⚡</span>
-        <div class="store-trust-item__text">
-          <strong>Entrega em até 48h</strong>
-          <span>Para capitais e regiões metropolitanas</span>
-        </div>
-      </div>
-      <div class="store-trust-item">
-        <span class="store-trust-item__icon">🔒</span>
-        <div class="store-trust-item__text">
-          <strong>Garantia total Curioni</strong>
-          <span>2 a 5 anos dependendo do produto</span>
-        </div>
-      </div>
-      <div class="store-trust-item">
-        <span class="store-trust-item__icon">🔄</span>
-        <div class="store-trust-item__text">
-          <strong>Troca sem burocracia</strong>
-          <span>Política de troca simplificada</span>
-        </div>
-      </div>
+<!-- ── FILTER BAR ────────────────────────────────────────────── -->
+<div class="wix-filter-bar">
+  <div class="wix-filter-bar__inner">
+    <div class="wix-filter-pills" id="cat-pills">
+      <button class="wix-pill active" data-cat="todos">Todos</button>
+      <button class="wix-pill" data-cat="Assentos">Assentos</button>
+      <button class="wix-pill" data-cat="Mesas">Mesas</button>
+      <button class="wix-pill" data-cat="Complementos">Complementos</button>
+      <button class="wix-pill" data-cat="Iluminação">Iluminação</button>
+      <button class="wix-pill" data-cat="Outdoor">Outdoor</button>
     </div>
-  </div>
-</div>
-
-<!-- ── FILTROS ──────────────────────────────────────────────── -->
-<div class="store-filters">
-  <div class="prod-container">
-    <div class="store-filters__inner">
-      <span class="store-filter-label">Filtrar:</span>
-      <select class="store-select" id="filtro-cat">
-        <option value="todos">Todas as categorias</option>
-        <option value="Assentos">Assentos</option>
-        <option value="Mesas">Mesas</option>
-        <option value="Complementos">Complementos</option>
-        <option value="Iluminação">Iluminação</option>
-        <option value="Outdoor">Outdoor</option>
-      </select>
-      <select class="store-select" id="filtro-preco">
-        <option value="todos">Todos os valores</option>
-        <option value="ate-3000">Até R$ 3.000</option>
-        <option value="3000-7000">R$ 3.000 a R$ 7.000</option>
-        <option value="7000-15000">R$ 7.000 a R$ 15.000</option>
-        <option value="acima-15000">Acima de R$ 15.000</option>
-      </select>
-      <select class="store-select" id="filtro-prazo">
-        <option value="todos">Qualquer prazo</option>
-        <option value="1">Envio hoje</option>
-        <option value="2">Até 2 dias</option>
-        <option value="5">Até 5 dias</option>
-      </select>
-      <select class="store-select" id="filtro-ordem">
-        <option value="relevancia">Mais relevantes</option>
+    <div class="wix-filter-right">
+      <input type="search" class="wix-search" id="filtro-busca" placeholder="Buscar..." />
+      <select class="wix-sort" id="filtro-ordem">
+        <option value="relevancia">Relevância</option>
         <option value="menor-preco">Menor preço</option>
         <option value="maior-preco">Maior preço</option>
-        <option value="mais-rapido">Entrega mais rápida</option>
-        <option value="mais-estoque">Maior estoque</option>
+        <option value="mais-rapido">Entrega rápida</option>
       </select>
-      <input type="search" class="store-search" id="filtro-busca" placeholder="Buscar produto..." />
-      <span class="store-filter-count" id="resultado-count">12 produtos</span>
     </div>
   </div>
 </div>
 
-<!-- ── GRADE DE PRODUTOS ────────────────────────────────────── -->
-<div class="store-body">
-  <div class="prod-container">
+<!-- ── RESULTS BAR ───────────────────────────────────────────── -->
+<div class="wix-results-bar">
+  <span class="wix-results-count" id="resultado-count">12 produtos</span>
+</div>
 
-    <div class="store-results-bar">
-      <strong id="resultado-label">Toda a curadoria de pronta entrega</strong>
-      <span id="resultado-desc">Ordenado por relevância · Envio em todo o Brasil</span>
+<!-- ── PRODUCT GRID ──────────────────────────────────────────── -->
+<div class="wix-grid" id="store-grid" aria-live="polite"></div>
+
+<!-- ── CTA ──────────────────────────────────────────────────── -->
+<div class="wix-cta-block" id="catalog-cta" style="display:none;">
+  <div class="wix-cta-inner">
+    <h3>Não encontrou o que procura?</h3>
+    <p>Explore o catálogo completo — produzimos sob consulta com os acabamentos e dimensões que você precisa.</p>
+    <div class="wix-cta-btns">
+      <a href="produtos.html" class="btn-sec" style="color:#fff;border-color:rgba(255,255,255,.3);">Ver catálogo completo</a>
+      <a href="https://wa.me/5511999999999?text=Olá! Não encontrei o produto que preciso na pronta entrega. Podem me ajudar?" target="_blank" rel="noopener" class="btn-wa">
+        <svg style="width:18px;height:18px;" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Falar com consultor
+      </a>
     </div>
-
-    <div class="store-grid" id="store-grid" aria-live="polite"></div>
-
-    <!-- CTA catálogo completo -->
-    <div id="catalog-cta" style="display:none;margin-top:48px;padding:36px;background:#111;border-radius:20px;text-align:center;">
-      <h3 style="margin:0 0 10px;font:600 28px/1 var(--title);color:#fff;letter-spacing:-.04em;">Não encontrou o que procura?</h3>
-      <p style="color:rgba(255,255,255,.6);margin:0 0 20px;font-size:15px;">Explore o catálogo completo — produzimos sob consulta com os acabamentos e dimensões que você precisa.</p>
-      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-        <a href="produtos.html" class="btn-sec" style="color:#fff;border-color:rgba(255,255,255,.3);">Ver catálogo completo</a>
-        <a href="https://wa.me/5511999999999?text=Olá! Não encontrei o produto que preciso na pronta entrega. Podem me ajudar?" target="_blank" rel="noopener" class="btn-wa">
-          <svg style="width:18px;height:18px;" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Falar com consultor
-        </a>
-      </div>
-    </div>
-
   </div>
 </div>
 
-<footer class="prod-footer">
-  <div class="prod-container">
-    <div class="prod-footer__grid">
-      <div class="prod-footer__brand">
-        <a class="prod-footer__logo" href="curioni-preview.html">curioni</a>
-        <p>Design autoral brasileiro. Loja pronta entrega com qualidade garantida.</p>
-        <a href="mailto:fale@curioni.com.br">fale@curioni.com.br</a>
-        <a href="https://wa.me/5511999999999" target="_blank" rel="noopener">WhatsApp: (11) 9 9999-9999</a>
-      </div>
-      <div class="prod-footer__col">
-        <h4>Loja</h4>
-        <a href="#store-grid">Ver todos os produtos</a>
-        <a href="produtos.html">Catálogo completo</a>
-        <a href="orcamento.html">Solicitar orçamento</a>
-      </div>
-      <div class="prod-footer__col">
-        <h4>Atendimento</h4>
-        <a href="https://wa.me/5511999999999" target="_blank" rel="noopener">WhatsApp comercial</a>
-        <a href="profissionais.html">Área profissional</a>
-        <a href="suporte-arquitetos.html">Para arquitetos</a>
-      </div>
-      <div class="prod-footer__col">
-        <h4>Marca</h4>
-        <a href="curioni-preview.html">Home</a>
-        <a href="sobre.html">Nossa História</a>
-        <a href="ambientes.html">Ambientes</a>
-      </div>
+<!-- ── FOOTER ────────────────────────────────────────────────── -->
+<footer class="wix-footer">
+  <div class="wix-footer__inner">
+    <div class="wix-footer__brand">
+      <a class="wix-footer__logo" href="curioni-preview.html">curioni</a>
+      <p>Design autoral brasileiro. Loja pronta entrega com qualidade garantida.</p>
+      <a href="mailto:fale@curioni.com.br">fale@curioni.com.br</a>
+      <a href="https://wa.me/5511999999999" target="_blank" rel="noopener">WhatsApp: (11) 9 9999-9999</a>
     </div>
-    <div class="prod-footer__bottom">
-      <span>© 2025 Curioni Design. Todos os direitos reservados.</span>
-      <span>Loja Pronta Entrega · Qualidade garantida</span>
+    <div class="wix-footer__col">
+      <h4>Loja</h4>
+      <a href="#store-grid">Ver todos os produtos</a>
+      <a href="produtos.html">Catálogo completo</a>
+      <a href="orcamento.html">Solicitar orçamento</a>
     </div>
+    <div class="wix-footer__col">
+      <h4>Atendimento</h4>
+      <a href="https://wa.me/5511999999999" target="_blank" rel="noopener">WhatsApp comercial</a>
+      <a href="profissionais.html">Área profissional</a>
+      <a href="suporte-arquitetos.html">Para arquitetos</a>
+    </div>
+    <div class="wix-footer__col">
+      <h4>Marca</h4>
+      <a href="curioni-preview.html">Home</a>
+      <a href="sobre.html">Nossa História</a>
+      <a href="ambientes.html">Ambientes</a>
+    </div>
+  </div>
+  <div class="wix-footer__bottom">
+    <span>© 2025 Curioni Design. Todos os direitos reservados.</span>
+    <span>Loja Pronta Entrega · Qualidade garantida</span>
   </div>
 </footer>
 
@@ -186,7 +490,7 @@
 <script>
 (function () {
   const WA_NUM = '5511999999999';
-  const WA_SVG = `<svg style="width:18px;height:18px;flex-shrink:0;" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>`;
+  const WA_SVG = `<svg style="width:16px;height:16px;flex-shrink:0;" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>`;
 
   const PRODUTOS = [
     { slug:'cadeira-fly',      nome:'Cadeira Fly',           tipo:'Cadeira',       cat:'Assentos',     preco:4290,  estoque:12, prazo:2, imageKey:'pdpMain1',           desc:'Estrutura em madeira maciça com desenho leve. Ergonomia refinada para uso prolongado.', tags:['design','residencial','corporativo'] },
@@ -205,26 +509,19 @@
 
   const fmt = v => v.toLocaleString('pt-BR', { style:'currency', currency:'BRL' });
 
-  const state = { busca:'', cat:'todos', preco:'todos', prazo:'todos', ordem:'relevancia' };
+  const state = { busca:'', cat:'todos', ordem:'relevancia' };
 
   function filtrar() {
     let lista = PRODUTOS.filter(p => {
       const q = state.busca.trim().toLowerCase();
       const matchQ = !q || p.nome.toLowerCase().includes(q) || p.tipo.toLowerCase().includes(q) || p.tags.some(t => t.includes(q));
       const matchCat = state.cat === 'todos' || p.cat === state.cat;
-      const matchPrazo = state.prazo === 'todos' || p.prazo <= parseInt(state.prazo);
-      let matchPreco = true;
-      if (state.preco === 'ate-3000')      matchPreco = p.preco <= 3000;
-      if (state.preco === '3000-7000')     matchPreco = p.preco > 3000 && p.preco <= 7000;
-      if (state.preco === '7000-15000')    matchPreco = p.preco > 7000 && p.preco <= 15000;
-      if (state.preco === 'acima-15000')   matchPreco = p.preco > 15000;
-      return matchQ && matchCat && matchPrazo && matchPreco;
+      return matchQ && matchCat;
     });
 
-    if (state.ordem === 'menor-preco')   lista.sort((a,b) => a.preco - b.preco);
-    if (state.ordem === 'maior-preco')   lista.sort((a,b) => b.preco - a.preco);
-    if (state.ordem === 'mais-rapido')   lista.sort((a,b) => a.prazo - b.prazo);
-    if (state.ordem === 'mais-estoque')  lista.sort((a,b) => b.estoque - a.estoque);
+    if (state.ordem === 'menor-preco')  lista.sort((a,b) => a.preco - b.preco);
+    if (state.ordem === 'maior-preco')  lista.sort((a,b) => b.preco - a.preco);
+    if (state.ordem === 'mais-rapido')  lista.sort((a,b) => a.prazo - b.prazo);
 
     return lista;
   }
@@ -236,30 +533,25 @@
   }
 
   function badgeLabel(p) {
-    if (p.tags.includes('destaque')) return '<span class="store-tag gold">Destaque</span>';
-    if (p.prazo <= 1) return '<span class="store-tag green">Envio hoje</span>';
-    return '<span class="store-tag green">Em estoque</span>';
+    if (p.tags.includes('destaque')) return `<span class="wix-card__badge gold">Destaque</span>`;
+    if (p.prazo <= 1) return `<span class="wix-card__badge">Envio hoje</span>`;
+    return '';
   }
 
   function renderizar() {
     const lista = filtrar();
     const grid = document.getElementById('store-grid');
     const countEl = document.getElementById('resultado-count');
-    const labelEl = document.getElementById('resultado-label');
     const ctaCatalog = document.getElementById('catalog-cta');
 
     countEl.textContent = `${lista.length} produto${lista.length !== 1 ? 's' : ''}`;
-    labelEl.textContent = state.cat !== 'todos'
-      ? `${lista.length} produto${lista.length !== 1 ? 's' : ''} em ${state.cat}`
-      : `${lista.length} produto${lista.length !== 1 ? 's' : ''} disponíveis`;
 
     if (!lista.length) {
       grid.innerHTML = `
-        <div class="store-empty">
-          <div style="font-size:40px;margin-bottom:8px;">🔍</div>
+        <div class="wix-empty">
           <h3>Nenhum produto encontrado</h3>
-          <p>Tente ajustar os filtros ou veja o catálogo completo com produção sob encomenda.</p>
-          <a href="produtos.html" class="btn-sec" style="margin-top:16px;display:inline-flex;">Ver catálogo completo</a>
+          <p>Tente outros filtros ou veja o catálogo completo.</p>
+          <a href="produtos.html" class="btn-sec" style="margin-top:20px;display:inline-flex;">Ver catálogo</a>
         </div>`;
       ctaCatalog.style.display = 'block';
       return;
@@ -272,34 +564,21 @@
       const waUrl = `https://wa.me/${WA_NUM}?text=${waMsg}`;
       const detUrl = `produtos-detalhes.html?produto=${p.slug}&origem=pronta-entrega`;
       return `
-        <div class="store-card">
-          <div class="store-card__media">
+        <div class="wix-card">
+          <div class="wix-card__media">
             <div class="thumb" data-image-key="${p.imageKey}"></div>
-            <div class="store-card__badges">
-              ${badgeLabel(p)}
-            </div>
-            <div class="store-card__stock">
-              <span class="stock-dot-sm"></span>
-              ${p.estoque} em estoque
-            </div>
-          </div>
-          <div class="store-card__body">
-            <span class="store-card__type">${p.tipo}</span>
-            <h3>${p.nome}</h3>
-            <p>${p.desc}</p>
-            <div class="store-card__delivery">${prazoLabel(p.prazo)}</div>
-          </div>
-          <div class="store-card__price-block">
-            <div class="store-card__price">
-              <strong>${fmt(p.preco)}</strong>
-              <span>à vista ou parcelado</span>
-            </div>
-            <div class="store-card__actions">
-              <a href="${waUrl}" target="_blank" rel="noopener" class="btn-wa">
-                ${WA_SVG} Comprar agora
+            ${badgeLabel(p)}
+            <div class="wix-card__quick-buy">
+              <a href="${waUrl}" target="_blank" rel="noopener" class="btn-quick-buy">
+                ${WA_SVG} Comprar
               </a>
-              <a href="${detUrl}" class="btn-sec sm" style="flex-shrink:0;">Ver detalhes</a>
             </div>
+          </div>
+          <div class="wix-card__info">
+            <span class="wix-card__type">${p.tipo}</span>
+            <h3 class="wix-card__name">${p.nome}</h3>
+            <div class="wix-card__price">${fmt(p.preco)}</div>
+            <div class="wix-card__delivery">${prazoLabel(p.prazo)}</div>
           </div>
         </div>
       `;
@@ -308,15 +587,19 @@
     if (window.applyCurioniImageInventory) window.applyCurioniImageInventory();
   }
 
-  // Bindings
-  document.getElementById('filtro-cat').addEventListener('change', e => { state.cat = e.target.value; renderizar(); });
-  document.getElementById('filtro-preco').addEventListener('change', e => { state.preco = e.target.value; renderizar(); });
-  document.getElementById('filtro-prazo').addEventListener('change', e => { state.prazo = e.target.value; renderizar(); });
+  // Category pills
+  document.getElementById('cat-pills').addEventListener('click', e => {
+    const pill = e.target.closest('.wix-pill');
+    if (!pill) return;
+    document.querySelectorAll('.wix-pill').forEach(p => p.classList.remove('active'));
+    pill.classList.add('active');
+    state.cat = pill.dataset.cat;
+    renderizar();
+  });
+
   document.getElementById('filtro-ordem').addEventListener('change', e => { state.ordem = e.target.value; renderizar(); });
   document.getElementById('filtro-busca').addEventListener('input', e => { state.busca = e.target.value; renderizar(); });
 
-  // Inicializa
-  document.getElementById('metrics-count').textContent = PRODUTOS.length;
   renderizar();
 })();
 </script>

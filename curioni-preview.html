@@ -4,656 +4,648 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Curioni | Mobiliário de Alto Padrão — Design Autoral Brasileiro</title>
-  <meta name="description" content="Curioni: design autoral brasileiro para interiores sofisticados. Poltronas, sofás, mesas e luminárias de alto padrão. Entrega para todo o Brasil." />
+  <meta name="description" content="Curioni: design autoral brasileiro para interiores sofisticados. Poltronas, sofás, mesas e luminárias de alto padrão." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/header.css" />
   <link rel="stylesheet" href="assets/site.css" />
-  <link rel="stylesheet" href="assets/home.css" />
+  <style>
+    /* ── RESET LOCAL ───────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    img { display: block; width: 100%; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ── TOKENS ────────────────────────────────────────────────── */
+    :root {
+      --black: #0d0b09;
+      --mid:   #5a5550;
+      --light: #9a9189;
+      --line:  rgba(17,17,17,.08);
+      --bg:    #faf9f7;
+      --title: 'Playfair Display', serif;
+      --body:  'Inter', sans-serif;
+    }
+    body { font-family: var(--body); background: var(--bg); color: var(--black); }
+
+    /* ── CONTAINER ─────────────────────────────────────────────── */
+    .wrap { max-width: 1240px; margin: 0 auto; padding: 0 40px; }
+    @media (max-width: 640px) { .wrap { padding: 0 20px; } }
+
+
+    /* ══════════════════════════════════════════════════════════════
+       1. HERO
+    ══════════════════════════════════════════════════════════════ */
+    .pg-hero {
+      position: relative;
+      height: calc(100vh - 90px);
+      min-height: 560px;
+      overflow: hidden;
+    }
+    .pg-hero__bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+    }
+    .pg-hero__bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(10,9,8,.18) 0%, rgba(10,9,8,.52) 100%);
+    }
+    .pg-hero__content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: 72px;
+    }
+    .pg-hero__inner {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 40px;
+    }
+    .pg-hero__title {
+      font: 400 clamp(48px,6vw,88px)/.88 var(--title);
+      letter-spacing: -.03em;
+      color: #fff;
+      max-width: 12ch;
+    }
+    .pg-hero__title em { font-style: italic; }
+    .pg-hero__side {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 24px;
+      flex-shrink: 0;
+    }
+    .pg-hero__desc {
+      font-size: 14px;
+      color: rgba(255,255,255,.65);
+      line-height: 1.7;
+      max-width: 30ch;
+      text-align: right;
+      letter-spacing: .01em;
+    }
+    .pg-hero__cta {
+      display: inline-block;
+      padding: 13px 28px;
+      border: 1px solid rgba(255,255,255,.55);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      transition: background .2s, border-color .2s;
+    }
+    .pg-hero__cta:hover { background: rgba(255,255,255,.12); border-color: #fff; }
+    .pg-hero__scroll {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,.4);
+      font-size: 10px;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+    .pg-hero__scroll-line {
+      width: 1px;
+      height: 40px;
+      background: rgba(255,255,255,.3);
+      animation: scrollLine 1.8s ease-in-out infinite;
+    }
+    @keyframes scrollLine {
+      0%,100% { opacity: .3; transform: scaleY(1); }
+      50%      { opacity: .8; transform: scaleY(.6); }
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       2. PRODUTOS — grid limpo
+    ══════════════════════════════════════════════════════════════ */
+    .section { padding: 80px 0; border-top: 1px solid var(--line); }
+    .product-item__name-below { padding: 14px 0 0; }
+    .section__head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 48px;
+    }
+    .section__label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--light);
+    }
+    .section__title {
+      margin-top: 10px;
+      font: 400 clamp(26px,3vw,38px)/1.1 var(--title);
+      letter-spacing: -.02em;
+    }
+    .section__link {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--mid);
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 2px;
+      transition: color .2s, border-color .2s;
+    }
+    .section__link:hover { color: var(--black); border-color: var(--black); }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .product-item {
+      position: relative;
+      overflow: hidden;
+      background: #ede9e2;
+      aspect-ratio: 3/4;
+    }
+    .product-item__img {
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      transition: transform .6s ease;
+    }
+    .product-item:hover .product-item__img { transform: scale(1.04); }
+    .product-item__info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 20px;
+      background: linear-gradient(to top, rgba(10,9,8,.7) 0%, transparent 100%);
+      transform: translateY(100%);
+      transition: transform .3s ease;
+    }
+    .product-item:hover .product-item__info { transform: translateY(0); }
+    .product-item__name-below {
+      padding: 16px 0 0;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: .04em;
+      color: var(--black);
+    }
+    .product-item__cat {
+      font-size: 10px;
+      color: var(--light);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .product-item__info-name {
+      font: 400 16px/1.1 var(--title);
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .product-item__info-link {
+      font-size: 11px;
+      color: rgba(255,255,255,.7);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       3. AMBIENTE — reutiliza .editorial
+    ══════════════════════════════════════════════════════════════ */
+
+    /* ══════════════════════════════════════════════════════════════
+       4. EDITORIAL — lançamento em destaque
+    ══════════════════════════════════════════════════════════════ */
+    .editorial {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .editorial__img {
+      aspect-ratio: 1;
+      background-size: cover;
+      background-position: center;
+      background-color: #ede9e2;
+    }
+    .editorial__label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--light);
+      margin-bottom: 20px;
+    }
+    .editorial__title {
+      font: 400 clamp(32px,4vw,56px)/.95 var(--title);
+      letter-spacing: -.03em;
+      margin-bottom: 24px;
+    }
+    .editorial__title em { font-style: italic; }
+    .editorial__text {
+      font-size: 15px;
+      color: var(--mid);
+      line-height: 1.8;
+      margin-bottom: 36px;
+      max-width: 44ch;
+    }
+    .editorial__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--black);
+      padding-bottom: 3px;
+      transition: opacity .2s;
+    }
+    .editorial__cta:hover { opacity: .6; }
+
+    /* ══════════════════════════════════════════════════════════════
+       5. IF AWARDS
+    ══════════════════════════════════════════════════════════════ */
+    .awards { background: var(--black); }
+    .awards .section__label { color: rgba(255,255,255,.3); }
+    .awards .section__title { color: #fff; }
+    .awards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,.06);
+      margin-top: 48px;
+    }
+    .award-item {
+      background: var(--black);
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      transition: background .2s;
+    }
+    .award-item:hover { background: #1a1714; }
+    .award-item__img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background-size: cover;
+      background-position: center;
+      background-color: #1a1714;
+    }
+    .award-item__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .award-item__if {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      background: #e8001c;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      flex-shrink: 0;
+    }
+    .award-item__year {
+      font-size: 11px;
+      color: rgba(255,255,255,.35);
+      letter-spacing: .1em;
+    }
+    .award-item__name {
+      font: 400 18px/1.1 var(--title);
+      color: #fff;
+    }
+    .award-item__cat {
+      font-size: 11px;
+      color: rgba(255,255,255,.3);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════════════════════════ */
+    .footer-min {
+      border-top: 1px solid var(--line);
+      padding: 56px 0 40px;
+    }
+    .footer-min__inner {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 48px;
+    }
+    .footer-min__logo {
+      font-family: var(--title);
+      font-size: 28px;
+      font-weight: 400;
+      letter-spacing: -.03em;
+      color: var(--black);
+      display: block;
+      margin-bottom: 12px;
+    }
+    .footer-min__tagline {
+      font-size: 12px;
+      color: var(--light);
+      line-height: 1.6;
+      max-width: 24ch;
+    }
+    .footer-col h4 {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--light);
+      margin-bottom: 16px;
+    }
+    .footer-col a {
+      display: block;
+      font-size: 13px;
+      color: var(--mid);
+      margin-bottom: 10px;
+      transition: color .15s;
+    }
+    .footer-col a:hover { color: var(--black); }
+    .footer-min__bottom {
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--light);
+      letter-spacing: .04em;
+    }
+
+    /* ── RESPONSIVE ─────────────────────────────────────────────── */
+    @media (max-width: 960px) {
+      .pg-hero__inner { flex-direction: column; align-items: flex-start; }
+      .pg-hero__side { align-items: flex-start; }
+      .pg-hero__desc { text-align: left; }
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+      .amb-feature { grid-template-columns: 1fr; }
+      .amb-feature__copy { padding: 40px 32px; }
+      .editorial { grid-template-columns: 1fr; gap: 40px; }
+      .awards-grid { grid-template-columns: 1fr 1fr; }
+      .footer-min__inner { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+    @media (max-width: 600px) {
+      .products-grid { grid-template-columns: 1fr; }
+      .awards-grid { grid-template-columns: 1fr; }
+      .footer-min__inner { grid-template-columns: 1fr; }
+      .section { padding: 56px 0; }
+    }
+  </style>
 </head>
-<body class="home-page">
+<body>
 
 <header class="site-header" data-site-header></header>
 
-<!-- ============================================================
-     HERO — Tela cheia cinemática
-     ============================================================ -->
-<section class="home-hero">
-  <div class="home-hero__bg" data-image-key="homeHero"></div>
-  <div class="home-hero__gradient"></div>
+<!-- ══════════════════════════════════════════════════════════════
+     1. HERO
+══════════════════════════════════════════════════════════════ -->
+<section class="pg-hero">
+  <div class="pg-hero__bg" data-image-key="homeHero"></div>
 
-  <div class="home-hero__content">
-    <div class="home-hero__inner">
-      <div class="home-hero__text">
-        <span class="home-hero__tag">Design Autoral Brasileiro · Desde 2003</span>
-        <h1 class="home-hero__title">Mobiliário que<br>define espaços<br>extraordinários</h1>
-        <p class="home-hero__desc">Peças únicas que nascem do gesto humano — curvas pensadas para o corpo, materiais que envelhecem com beleza, design que transforma ambientes em experiências.</p>
-        <div class="home-hero__actions">
-          <a href="produtos.html" class="btn-luxury dark">Explorar Coleções</a>
-          <a href="orcamento.html" class="btn-ghost-light">Solicitar Orçamento</a>
-        </div>
-      </div>
-
-      <div class="home-hero__stats">
-        <div class="home-hero__stat">
-          <strong>+20</strong>
-          <span>Anos de mercado</span>
-        </div>
-        <div class="home-hero__stat">
-          <strong>500+</strong>
-          <span>Projetos entregues</span>
-        </div>
-        <div class="home-hero__stat">
-          <strong>100%</strong>
-          <span>Design autoral</span>
+  <div class="pg-hero__content">
+    <div class="wrap">
+      <div class="pg-hero__inner">
+        <h1 class="pg-hero__title">Design que<br><em>define</em><br>espaços.</h1>
+        <div class="pg-hero__side">
+          <p class="pg-hero__desc">Mobiliário autoral brasileiro desde 2003. Peças que envelhecem com beleza e transformam ambientes em experiências.</p>
+          <a href="produtos.html" class="pg-hero__cta">Ver coleções</a>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="home-hero__scroll-cue" aria-hidden="true">
+  <div class="pg-hero__scroll" aria-hidden="true">
     <span>Rolar</span>
-    <div class="home-hero__scroll-line"></div>
+    <div class="pg-hero__scroll-line"></div>
   </div>
 </section>
 
-<!-- ============================================================
-     TRUST BAR — Credibilidade imediata
-     ============================================================ -->
-<div class="trust-bar">
-  <div class="trust-bar__inner">
-    <div class="trust-bar__grid">
-      <div class="trust-item">
-        <strong>+20</strong>
-        <span>Anos de experiência</span>
-      </div>
-      <div class="trust-item">
-        <strong>500+</strong>
-        <span>Projetos entregues</span>
-      </div>
-      <div class="trust-item">
-        <strong>5</strong>
-        <span>Categorias de produto</span>
-      </div>
-      <div class="trust-item">
-        <strong>Brasil</strong>
-        <span>Cobertura nacional</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ============================================================
-     COLEÇÃO EM DESTAQUE — Editorial split
-     ============================================================ -->
-<section class="home-section">
-  <div class="section-container">
-    <div class="editorial-split">
-
-      <div class="editorial-split__media">
-        <div class="thumb" data-image-key="ambSalaPrincipal"></div>
-        <div class="editorial-split__badge">
-          <strong>Lançamento 2025</strong>
-          <span>Coleção Alma</span>
-        </div>
-      </div>
-
-      <div class="editorial-split__copy">
-        <div>
-          <span class="sec-label">Coleção em destaque</span>
-          <h2>Alma: onde a forma encontra o sentimento</h2>
-        </div>
-        <p>Peças que nascem de um diálogo profundo entre material, forma e propósito. Cada curva foi pensada para o corpo humano, cada superfície escolhida para envelhecer com beleza e dignidade.</p>
-        <ul class="feature-checklist">
-          <li>Estruturas em madeira maciça certificada FSC</li>
-          <li>Tecidos e couros de fornecedores europeus selecionados</li>
-          <li>Acabamentos personalizáveis por projeto</li>
-          <li>Produção artesanal com controle rigoroso de qualidade</li>
-        </ul>
-        <div class="action-row">
-          <a href="categoria-assentos.html" class="btn-luxury dark">Ver a Coleção</a>
-          <a href="ambientes.html" class="btn-text-link">Ver ambientes inspiradores →</a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     NAVEGAÇÃO DE CATEGORIAS — Browser interativo
-     ============================================================ -->
-<section class="home-section category-browser">
-  <div class="section-container">
-
-    <div class="sec-intro-row">
+<!-- ══════════════════════════════════════════════════════════════
+     2. AMBIENTE — destaque editorial
+══════════════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section__head">
       <div>
-        <span class="sec-label">Catálogo Curioni</span>
-        <h2>Explore por categoria</h2>
+        <p class="section__label">Ambientes</p>
+        <h2 class="section__title">Espaços que inspiram.</h2>
       </div>
-      <a href="produtos.html" class="btn-outline-dark">Ver catálogo completo</a>
+      <a href="ambientes.html" class="section__link">Explorar ambientes</a>
     </div>
-
-    <div class="cat-tabs-bar" role="tablist" aria-label="Categorias Curioni">
-      <button class="cat-tab-btn active" type="button" role="tab" aria-selected="true" data-category-tab="assentos">Assentos</button>
-      <button class="cat-tab-btn" type="button" role="tab" aria-selected="false" data-category-tab="mesas">Mesas</button>
-      <button class="cat-tab-btn" type="button" role="tab" aria-selected="false" data-category-tab="complementos">Complementos</button>
-      <button class="cat-tab-btn" type="button" role="tab" aria-selected="false" data-category-tab="iluminacao">Iluminação</button>
-      <button class="cat-tab-btn" type="button" role="tab" aria-selected="false" data-category-tab="externa">Outdoor</button>
-    </div>
-
-    <a class="cat-display" data-category-link href="categoria-assentos.html">
-      <div class="cat-display__image">
-        <div class="thumb" data-category-image data-image-key="launchPoltronaAlma"></div>
-      </div>
-      <div class="cat-display__info">
-        <span class="sec-label" data-category-label>Assentos</span>
-        <h3 data-category-title>Poltrona Alma</h3>
-        <p data-category-reference>Assinatura escultural com conforto profundo, tecidos premium e configuração para living, lobby ou escritório.</p>
-        <div style="margin-top: 8px;">
-          <span class="btn-luxury dark">Abrir categoria</span>
-        </div>
-      </div>
-    </a>
-
-  </div>
-</section>
-
-<!-- ============================================================
-     PRODUTOS EM DESTAQUE — Grid de conversão
-     ============================================================ -->
-<section class="home-section">
-  <div class="section-container">
-
-    <div class="sec-intro-row">
+    <div class="editorial">
+      <div class="editorial__img" data-image-key="ambJantar"></div>
       <div>
-        <span class="sec-label">Destaques</span>
-        <h2>Peças que definem ambientes</h2>
-      </div>
-      <a href="produtos.html" class="btn-outline-dark">Ver todos os produtos</a>
-    </div>
-
-    <div class="products-home-grid">
-
-      <a class="product-card-lux" href="produtos-detalhes.html?produto=poltrona-alma">
-        <div class="product-card-lux__media">
-          <div class="thumb" data-image-key="launchPoltronaAlma"></div>
-          <span class="product-card-lux__badge gold">Mais Vendido</span>
-          <span class="product-card-lux__quick-btn">Ver detalhes completos →</span>
-        </div>
-        <div class="product-card-lux__body">
-          <span class="product-cat-tag">Assentos</span>
-          <h3>Poltrona Alma</h3>
-          <p>Assinatura escultural com conforto profundo e tecidos premium selecionados.</p>
-          <div class="product-swatches-row">
-            <span class="p-swatch" style="background:#221d1a" title="Nogueira Escura"></span>
-            <span class="p-swatch" style="background:#8b7355" title="Carvalho Natural"></span>
-            <span class="p-swatch" style="background:#c8b49a" title="Freijó Claro"></span>
-            <span class="p-swatch" style="background:#4a3728" title="Imbuia"></span>
-          </div>
-          <div class="product-card-lux__footer">
-            <div class="product-price-tag">
-              <span class="label">Preço</span>
-              <strong>Sob consulta</strong>
-            </div>
-            <span class="btn-luxury sm dark">Consultar</span>
-          </div>
-        </div>
-      </a>
-
-      <a class="product-card-lux" href="produtos-detalhes.html?produto=mesa-velo">
-        <div class="product-card-lux__media">
-          <div class="thumb" data-image-key="launchMesaVelo"></div>
-          <span class="product-card-lux__badge">Destaque</span>
-          <span class="product-card-lux__quick-btn">Ver detalhes completos →</span>
-        </div>
-        <div class="product-card-lux__body">
-          <span class="product-cat-tag">Mesas</span>
-          <h3>Mesa Vélo</h3>
-          <p>Tampo mineral com base volumétrica escultural — presença de galeria para sala de jantar.</p>
-          <div class="product-swatches-row">
-            <span class="p-swatch" style="background:#d8d0c4" title="Mármore Branco"></span>
-            <span class="p-swatch" style="background:#2a2520" title="Granito Negro"></span>
-            <span class="p-swatch" style="background:#8d7d6a" title="Travertino"></span>
-          </div>
-          <div class="product-card-lux__footer">
-            <div class="product-price-tag">
-              <span class="label">Preço</span>
-              <strong>Sob consulta</strong>
-            </div>
-            <span class="btn-luxury sm dark">Consultar</span>
-          </div>
-        </div>
-      </a>
-
-      <a class="product-card-lux" href="produtos-detalhes.html?produto=pendente-arco">
-        <div class="product-card-lux__media">
-          <div class="thumb" data-image-key="launchPendenteArco"></div>
-          <span class="product-card-lux__badge green">Pronta Entrega</span>
-          <span class="product-card-lux__quick-btn">Ver detalhes completos →</span>
-        </div>
-        <div class="product-card-lux__body">
-          <span class="product-cat-tag">Iluminação</span>
-          <h3>Pendente Arco</h3>
-          <p>Luz difusa e gesto arquitetônico para mesas de jantar, halls e lounges sofisticados.</p>
-          <div class="product-swatches-row">
-            <span class="p-swatch" style="background:#c0a980" title="Latão Escovado"></span>
-            <span class="p-swatch" style="background:#1a1a1a" title="Preto Fosco"></span>
-            <span class="p-swatch" style="background:#c0bdb8" title="Alumínio Polido"></span>
-          </div>
-          <div class="product-card-lux__footer">
-            <div class="product-price-tag">
-              <span class="label">Preço</span>
-              <strong>Sob consulta</strong>
-            </div>
-            <span class="btn-luxury sm dark">Consultar</span>
-          </div>
-        </div>
-      </a>
-
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     MANIFESTO — Seção imersiva escura
-     ============================================================ -->
-<section class="manifesto-section">
-  <div class="manifesto-section__bg" data-image-key="ambLounge"></div>
-  <div class="manifesto-section__tint"></div>
-
-  <div class="manifesto-section__content">
-    <div class="section-container">
-      <div class="manifesto-inner">
-        <span class="sec-label gold">Nossa Filosofia</span>
-        <div class="manifesto-divider"></div>
-        <blockquote class="manifesto-quote">
-          "Não fabricamos móveis —<br>criamos objetos de desejo que<br>transformam espaços em memórias."
-        </blockquote>
-        <cite class="manifesto-cite">— Manifesto Curioni Design</cite>
-        <div>
-          <a href="sobre.html" class="btn-ghost-light" style="display: inline-flex;">Conhecer a Marca →</a>
-        </div>
+        <p class="editorial__label">Cenografia autoral</p>
+        <h3 class="editorial__title">Cada composição nasce de uma <em>intenção.</em></h3>
+        <p class="editorial__text">Um material escolhido, uma luz que define volume, uma peça que ancora o espaço. Não são galerias — são ambientes com ponto de vista.</p>
+        <a href="ambientes.html" class="editorial__cta">
+          Ver todos os ambientes
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     PRONTA ENTREGA — Urgência e conversão imediata
-     ============================================================ -->
-<section class="home-section">
-  <div class="section-container">
-    <div class="pronta-split">
-
-      <div class="pronta-split__copy">
-        <div>
-          <span class="sec-label">Pronta Entrega</span>
-          <h2>Disponível agora. Entrega em até 48 horas.</h2>
-        </div>
-        <p>Seleção exclusiva de peças prontas para envio imediato. Estoque limitado com qualidade Curioni garantida — para quem não pode esperar pelo extraordinário.</p>
-
-        <div class="urgency-metrics">
-          <div class="urgency-metric">
-            <strong>12</strong>
-            <span>Produtos disponíveis</span>
-          </div>
-          <div class="urgency-metric">
-            <strong>48h</strong>
-            <span>Prazo de entrega</span>
-          </div>
-          <div class="urgency-metric">
-            <strong>Todo<br>Brasil</strong>
-            <span>Cobertura nacional</span>
-          </div>
-        </div>
-
-        <div class="action-row">
-          <a href="pronta-entrega.html" class="btn-luxury dark">Ver produtos disponíveis</a>
-          <a href="orcamento.html" class="btn-text-link">Ou solicite orçamento →</a>
-        </div>
+<!-- ══════════════════════════════════════════════════════════════
+     3. PRODUTOS — grid limpo
+══════════════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section__head">
+      <div>
+        <p class="section__label">Coleção</p>
+        <h2 class="section__title">Peças em destaque</h2>
       </div>
+      <a href="produtos.html" class="section__link">Ver catálogo completo</a>
+    </div>
 
-      <div class="pronta-split__media">
-        <div class="thumb pronta-split__image" data-image-key="launchSofaCurva"></div>
-        <div class="live-badge">
-          <span class="live-dot"></span>
-          Em estoque agora
+    <div class="products-grid">
+
+    <div>
+      <a href="produtos-detalhes.html?produto=poltrona-alma" class="product-item" style="display:block;">
+        <div class="product-item__img" data-image-key="launchPoltronaAlma"></div>
+        <div class="product-item__info">
+          <p class="product-item__info-name">Poltrona Alma</p>
+          <span class="product-item__info-link">Ver detalhes →</span>
         </div>
+      </a>
+      <div class="product-item__name-below">
+        <p class="product-item__cat">Assentos</p>
+        Poltrona Alma
       </div>
+    </div>
+
+    <div>
+      <a href="produtos-detalhes.html?produto=mesa-velo" class="product-item" style="display:block;">
+        <div class="product-item__img" data-image-key="launchMesaVelo"></div>
+        <div class="product-item__info">
+          <p class="product-item__info-name">Mesa Vélo</p>
+          <span class="product-item__info-link">Ver detalhes →</span>
+        </div>
+      </a>
+      <div class="product-item__name-below">
+        <p class="product-item__cat">Mesas</p>
+        Mesa Vélo
+      </div>
+    </div>
+
+    <div>
+      <a href="produtos-detalhes.html?produto=cadeira-pierre" class="product-item" style="display:block;">
+        <div class="product-item__img" data-image-key="launchCadeiraPierre"></div>
+        <div class="product-item__info">
+          <p class="product-item__info-name">Cadeira Pierre</p>
+          <span class="product-item__info-link">Ver detalhes →</span>
+        </div>
+      </a>
+      <div class="product-item__name-below">
+        <p class="product-item__cat">Assentos</p>
+        Cadeira Pierre
+      </div>
+    </div>
 
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     AMBIENTES — Galeria editorial de espaços
-     ============================================================ -->
-<section class="home-section compact" style="background: var(--cream-warm, #f3ede3); border-top: 1px solid rgba(17,17,17,0.06); border-bottom: 1px solid rgba(17,17,17,0.06);">
-  <div class="section-container">
+<!-- ══════════════════════════════════════════════════════════════
+     4. EDITORIAL — lançamento em destaque
+══════════════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="wrap">
+    <div class="editorial">
 
-    <div class="sec-intro">
-      <span class="sec-label">Inspiração</span>
-      <h2>Espaços que inspiram especificações</h2>
-      <p>Descubra como o mobiliário Curioni se integra a diferentes projetos — do residencial sofisticado ao corporativo de alto impacto.</p>
-    </div>
-
-    <div class="ambientes-grid">
-      <a class="amb-card featured" href="ambientes.html">
-        <div class="thumb" data-image-key="ambSalaPrincipal"></div>
-        <div class="amb-card__overlay"></div>
-        <div class="amb-card__body">
-          <span class="sec-label light">Residencial</span>
-          <h3>Sala de Estar Integrada</h3>
-        </div>
-      </a>
-      <a class="amb-card" href="ambientes.html">
-        <div class="thumb" data-image-key="ambJantar"></div>
-        <div class="amb-card__overlay"></div>
-        <div class="amb-card__body">
-          <span class="sec-label light">Jantar</span>
-          <h3>Mesa de Jantar Exclusiva</h3>
-        </div>
-      </a>
-      <a class="amb-card" href="ambientes.html">
-        <div class="thumb" data-image-key="ambExterno"></div>
-        <div class="amb-card__overlay"></div>
-        <div class="amb-card__body">
-          <span class="sec-label light">Outdoor</span>
-          <h3>Deck e Área Gourmet</h3>
-        </div>
-      </a>
-    </div>
-
-    <div style="text-align: center; margin-top: 36px;">
-      <a href="ambientes.html" class="btn-outline-dark">Ver todos os ambientes</a>
-    </div>
-
-  </div>
-</section>
-
-<!-- ============================================================
-     DEPOIMENTOS — Prova social
-     ============================================================ -->
-<section class="home-section testimonials-bg">
-  <div class="section-container">
-
-    <div class="sec-intro">
-      <span class="sec-label">Depoimentos</span>
-      <h2>O que dizem nossos clientes</h2>
-      <p>Arquitetos, designers e clientes que escolheram o design Curioni para seus projetos mais especiais.</p>
-    </div>
-
-    <div class="testimonials-grid">
-
-      <div class="testimonial-card">
-        <div class="testimonial-stars">★★★★★</div>
-        <p>"A Poltrona Alma é simplesmente perfeita. O acabamento superou todas as expectativas — é claramente um produto de outra categoria, que valoriza qualquer espaço."</p>
-        <div class="testimonial-author">
-          <strong>Ana Paula Medeiros</strong>
-          <span>São Paulo, SP · Cliente residencial</span>
-        </div>
-      </div>
-
-      <div class="testimonial-card">
-        <div class="testimonial-stars">★★★★★</div>
-        <p>"Trabalhamos com a Curioni em vários projetos de alto padrão. A qualidade das peças e o atendimento personalizado fazem toda a diferença na entrega final ao cliente."</p>
-        <div class="testimonial-author">
-          <strong>Arq. Ricardo Fonseca</strong>
-          <span>Rio de Janeiro, RJ · Arquiteto de Interiores</span>
-        </div>
-      </div>
-
-      <div class="testimonial-card">
-        <div class="testimonial-stars">★★★★★</div>
-        <p>"A Mesa Vélo é a peça central da nossa sala de jantar e conversa de todo jantar que fazemos. A atenção ao detalhe e os materiais usados são verdadeiramente excepcionais."</p>
-        <div class="testimonial-author">
-          <strong>Família Bertolucci</strong>
-          <span>Campinas, SP · Cliente residencial</span>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     ÁREA PROFISSIONAL — B2B
-     ============================================================ -->
-<section class="home-section">
-  <div class="section-container">
-
-    <div class="sec-intro">
-      <span class="sec-label">Para Profissionais</span>
-      <h2>Atendimento especializado<br>para quem especifica e projeta</h2>
-      <p>Suporte técnico, condições diferenciadas e recursos exclusivos para arquitetos, construtoras e lojistas.</p>
-    </div>
-
-    <div class="professional-cards">
-
-      <a href="suporte-arquitetos.html" class="professional-card-home">
-        <div class="professional-icon">◎</div>
-        <h3>Arquitetos &amp; Designers</h3>
-        <p>Suporte completo desde a especificação até a entrega, com recursos técnicos e atendimento personalizado.</p>
-        <ul class="pro-benefits">
-          <li>Biblioteca 3D e BIM completa</li>
-          <li>Fichas técnicas e especificações detalhadas</li>
-          <li>Condições comerciais exclusivas</li>
-          <li>Visita técnica disponível</li>
-        </ul>
-        <span class="professional-card-home__cta">Acessar área de arquitetos →</span>
-      </a>
-
-      <a href="suporte-construtoras.html" class="professional-card-home">
-        <div class="professional-icon">◈</div>
-        <h3>Construtoras</h3>
-        <p>Fornecimento estruturado para empreendimentos residenciais e comerciais com escala e consistência.</p>
-        <ul class="pro-benefits">
-          <li>Projetos residenciais e corporativos</li>
-          <li>Atendimento por gerente de conta</li>
-          <li>Prazos e volumes negociados</li>
-          <li>Suporte em obra disponível</li>
-        </ul>
-        <span class="professional-card-home__cta">Acessar área de construtoras →</span>
-      </a>
-
-      <a href="suporte-lojistas.html" class="professional-card-home">
-        <div class="professional-icon">◇</div>
-        <h3>Lojistas &amp; Revendedores</h3>
-        <p>Programa de representação com margens diferenciadas, suporte de marketing e material de venda.</p>
-        <ul class="pro-benefits">
-          <li>Margens competitivas e exclusividade regional</li>
-          <li>Catálogos e materiais de venda</li>
-          <li>Treinamento de equipe comercial</li>
-          <li>Showroom e mostruário disponíveis</li>
-        </ul>
-        <span class="professional-card-home__cta">Acessar área de lojistas →</span>
-      </a>
-
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     NEWSLETTER — Captura de leads
-     ============================================================ -->
-<section class="home-section newsletter-section">
-  <div class="section-container">
-    <div class="newsletter-grid">
-
-      <div class="newsletter-copy">
-        <span class="sec-label light">Fique por dentro</span>
-        <h2>Novidades e lançamentos exclusivos</h2>
-        <p>Cadastre-se e receba antes de todos as novas coleções, edições limitadas e conteúdo de design para seu projeto.</p>
-        <div class="newsletter-features">
-          <div class="nl-feature">Lançamentos exclusivos antes do público geral</div>
-          <div class="nl-feature">Conteúdo editorial sobre design e interiores</div>
-          <div class="nl-feature">Convites para eventos e showroom</div>
-        </div>
-      </div>
+      <div class="editorial__img" data-image-key="launchSofaCurva"></div>
 
       <div>
-        <form class="newsletter-form-wrap" action="#" method="post" onsubmit="handleNewsletter(event)">
-          <div class="nl-input-row">
-            <input
-              type="email"
-              name="email"
-              placeholder="seu@email.com.br"
-              required
-              class="nl-input"
-              autocomplete="email"
-            />
-            <button type="submit" class="btn-luxury" style="white-space: nowrap; flex-shrink: 0;">Quero receber</button>
-          </div>
-          <p class="nl-disclaimer">Sem spam. Cancelamento fácil a qualquer momento. Seus dados protegidos conforme LGPD.</p>
-        </form>
+        <p class="editorial__label">Lançamento 2025</p>
+        <h2 class="editorial__title">Sofá Curva —<br><em>onde o gesto<br>vira forma.</em></h2>
+        <p class="editorial__text">Modulação inteligente, tecido boucle natural e curvas que nascem do corpo humano. Uma peça que define o espaço antes mesmo de ser ocupada.</p>
+        <a href="produtos.html" class="editorial__cta">
+          Conhecer a peça
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
       </div>
 
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     FOOTER — Rodapé premium
-     ============================================================ -->
-<footer class="footer-lux">
-  <div class="section-container">
-
-    <div class="footer-lux__top">
-      <div class="footer-lux__brand">
-        <a class="footer-lux__logo" href="curioni-preview.html">curioni</a>
-        <p>Design autoral brasileiro para interiores sofisticados. Cada peça, uma assinatura.</p>
-        <div class="footer-lux__contact">
-          <a href="mailto:fale@curioni.com.br">✉ fale@curioni.com.br</a>
-          <a href="tel:+5511999999999">☎ (11) 9 9999-9999</a>
-          <a href="orcamento.html">→ Solicitar orçamento</a>
-        </div>
-      </div>
-
-      <div class="footer-lux__nav">
-        <div class="footer-col">
-          <h4>Produtos</h4>
-          <a href="categoria-assentos.html">Assentos</a>
-          <a href="categoria-mesas.html">Mesas</a>
-          <a href="categoria-complementos.html">Complementos</a>
-          <a href="categoria-iluminacao.html">Iluminação</a>
-          <a href="categoria-area-externa.html">Outdoor</a>
-        </div>
-        <div class="footer-col">
-          <h4>Comprar</h4>
-          <a href="pronta-entrega.html">Pronta Entrega</a>
-          <a href="orcamento.html">Solicitar Orçamento</a>
-          <a href="produtos.html">Catálogo Completo</a>
-          <a href="profissionais.html">Área Profissional</a>
-        </div>
-        <div class="footer-col">
-          <h4>Marca</h4>
-          <a href="sobre.html">Nossa História</a>
-          <a href="ambientes.html">Ambientes</a>
-          <a href="novidades.html">Novidades</a>
-          <a href="biblioteca-tecnica.html">Biblioteca 3D</a>
-        </div>
-        <div class="footer-col">
-          <h4>Atendimento</h4>
-          <a href="suporte-arquitetos.html">Para Arquitetos</a>
-          <a href="suporte-construtoras.html">Para Construtoras</a>
-          <a href="suporte-lojistas.html">Para Lojistas</a>
-          <a href="trabalhe-conosco.html">Trabalhe Conosco</a>
-        </div>
+<!-- ══════════════════════════════════════════════════════════════
+     5. IF AWARDS
+══════════════════════════════════════════════════════════════ -->
+<section class="section awards" style="border-top: none;">
+  <div class="wrap">
+    <div class="section__head">
+      <div>
+        <p class="section__label">Reconhecimento internacional</p>
+        <h2 class="section__title">iF Design Award</h2>
       </div>
     </div>
+  </div>
 
-    <div class="footer-lux__bottom">
+  <div class="wrap" style="max-width:1240px;">
+    <div class="awards-grid">
+
+      <div class="award-item">
+        <div class="award-item__img" data-image-key="launchCadeiraPierre"></div>
+        <div class="award-item__badge">
+          <span class="award-item__if">iF</span>
+          <span class="award-item__year">2025</span>
+        </div>
+        <p class="award-item__name">Cadeira Pierre</p>
+        <p class="award-item__cat">Product Design · Furniture</p>
+      </div>
+
+      <div class="award-item">
+        <div class="award-item__img" data-image-key="launchPoltronaAlma"></div>
+        <div class="award-item__badge">
+          <span class="award-item__if">iF</span>
+          <span class="award-item__year">2025</span>
+        </div>
+        <p class="award-item__name">Poltrona Alma</p>
+        <p class="award-item__cat">Product Design · Furniture</p>
+      </div>
+
+      <div class="award-item">
+        <div class="award-item__img" data-image-key="launchSofaCurva"></div>
+        <div class="award-item__badge">
+          <span class="award-item__if">iF</span>
+          <span class="award-item__year">2024</span>
+        </div>
+        <p class="award-item__name">Sofá Curva</p>
+        <p class="award-item__cat">Product Design · Furniture</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════════════════════ -->
+<footer class="footer-min">
+  <div class="wrap">
+    <div class="footer-min__inner">
+
+      <div>
+        <a class="footer-min__logo" href="curioni-preview.html">curioni</a>
+        <p class="footer-min__tagline">Design autoral brasileiro para interiores sofisticados.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Produtos</h4>
+        <a href="categoria-assentos.html">Assentos</a>
+        <a href="categoria-mesas.html">Mesas</a>
+        <a href="categoria-complementos.html">Complementos</a>
+        <a href="categoria-iluminacao.html">Iluminação</a>
+        <a href="categoria-area-externa.html">Outdoor</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Explorar</h4>
+        <a href="ambientes.html">Ambientes</a>
+        <a href="novidades.html">Novidades</a>
+        <a href="pronta-entrega.html">Loja Online</a>
+        <a href="biblioteca-tecnica.html">Biblioteca 3D</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <a href="orcamento.html">Solicitar orçamento</a>
+        <a href="sobre.html">Nossa história</a>
+        <a href="trabalhe-conosco.html">Trabalhe conosco</a>
+      </div>
+
+    </div>
+
+    <div class="footer-min__bottom">
       <span>© 2025 Curioni Design. Todos os direitos reservados.</span>
-      <span>Design autoral brasileiro · Feito com precisão e intenção</span>
+      <span>Design autoral brasileiro · Desde 2003</span>
     </div>
-
   </div>
 </footer>
 
 <script src="assets/image-inventory.js"></script>
 <script src="assets/header.js"></script>
-<script>
-  // ── NAVEGAÇÃO DE CATEGORIAS ──────────────────────────────────
-  (() => {
-    const categories = {
-      assentos: {
-        label: 'Assentos',
-        title: 'Poltrona Alma',
-        reference: 'Assinatura escultural com conforto profundo, tecidos premium e configuração ideal para living, lobby ou escritório de alto padrão.',
-        imageKey: 'launchPoltronaAlma',
-        href: 'categoria-assentos.html'
-      },
-      mesas: {
-        label: 'Mesas',
-        title: 'Mesa Vélo',
-        reference: 'Tampo mineral com base volumétrica escultural — presença de galeria e sofisticação para qualquer sala de jantar.',
-        imageKey: 'launchMesaVelo',
-        href: 'categoria-mesas.html'
-      },
-      complementos: {
-        label: 'Complementos',
-        title: 'Buffet Módulo',
-        reference: 'Armazenamento sofisticado com modulação inteligente para composições residenciais e corporativas de alto impacto.',
-        imageKey: 'launchBuffetModulo',
-        href: 'categoria-complementos.html'
-      },
-      iluminacao: {
-        label: 'Iluminação',
-        title: 'Pendente Arco',
-        reference: 'Luz difusa e gesto arquitetônico refinado para mesas de jantar, halls e lounges de projetos sofisticados.',
-        imageKey: 'launchPendenteArco',
-        href: 'categoria-iluminacao.html'
-      },
-      externa: {
-        label: 'Outdoor',
-        title: 'Banco Tenda',
-        reference: 'Estrutura leve e resistente para varandas, rooftops, jardins e projetos de hospitalidade de alto padrão.',
-        imageKey: 'launchBancoTenda',
-        href: 'categoria-area-externa.html'
-      }
-    };
-
-    const tabs    = document.querySelectorAll('[data-category-tab]');
-    const link    = document.querySelector('[data-category-link]');
-    const image   = document.querySelector('[data-category-image]');
-    const label   = document.querySelector('[data-category-label]');
-    const title   = document.querySelector('[data-category-title]');
-    const ref     = document.querySelector('[data-category-reference]');
-
-    function renderCategory(key) {
-      const cat = categories[key];
-      if (!cat) return;
-
-      tabs.forEach(tab => {
-        const active = tab.dataset.categoryTab === key;
-        tab.classList.toggle('active', active);
-        tab.setAttribute('aria-selected', String(active));
-      });
-
-      link.href            = cat.href;
-      label.textContent    = cat.label;
-      title.textContent    = cat.title;
-      ref.textContent      = cat.reference;
-      image.dataset.imageKey = cat.imageKey;
-
-      if (window.applyCurioniImageInventory) window.applyCurioniImageInventory();
-    }
-
-    tabs.forEach(tab =>
-      tab.addEventListener('click', () => renderCategory(tab.dataset.categoryTab))
-    );
-  })();
-
-  // ── NEWSLETTER FORM ──────────────────────────────────────────
-  function handleNewsletter(e) {
-    e.preventDefault();
-    const btn = e.target.querySelector('button[type="submit"]');
-    btn.textContent = '✓ Cadastrado!';
-    btn.disabled = true;
-    btn.style.background = '#22a35a';
-  }
-</script>
 </body>
 </html>

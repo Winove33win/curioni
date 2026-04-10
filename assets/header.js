@@ -67,7 +67,9 @@
   const primaryLinks = [
     { href: 'curioni-preview.html', label: 'Home' },
     { href: 'produtos.html',        label: 'Produtos', mega: true },
+    { href: 'pronta-entrega.html',  label: 'Loja Online', live: true },
     { href: 'ambientes.html',       label: 'Ambientes' },
+    { href: 'novidades.html',       label: 'Novidades' },
   ];
 
 
@@ -143,8 +145,7 @@
       <div class="site-header__inner">
 
         <a class="site-header__brand" href="curioni-preview.html" aria-label="Curioni — voltar para home">
-          <span class="site-header__logo">curioni</span>
-          <span class="site-header__caption">mobiliário autoral brasileiro</span>
+          <img class="site-header__logo-img" src="https://static.wixstatic.com/media/0c10a6_40277617365244f0b296c1cd29dd73a3~mv2.png" alt="Curioni" height="32" loading="eager" />
         </a>
 
         <nav class="site-header__nav" aria-label="Navegação principal">

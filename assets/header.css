@@ -104,26 +104,15 @@
   flex-shrink: 0;
 }
 
-.site-header__logo {
-  font-family: "Playfair Display", serif;
-  font-size: clamp(28px, 2.8vw, 38px);
-  line-height: 0.9;
-  letter-spacing: -0.06em;
-  font-weight: 600;
-  color: #0d0b09;
+.site-header__logo-img {
+  height: 32px;
+  width: auto;
+  display: block;
   transition: opacity 0.2s;
 }
 
-.site-header__brand:hover .site-header__logo {
+.site-header__brand:hover .site-header__logo-img {
   opacity: 0.75;
-}
-
-.site-header__caption {
-  font-size: 9px;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: #9a9189;
-  font-weight: 500;
 }
 
 /* ── NAV PRINCIPAL ───────────────────────────────────────── */

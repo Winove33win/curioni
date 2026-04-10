@@ -14,7 +14,15 @@
       "Bash(curl -s ftp://168.75.84.128/curioni.winove.com.br/dist/assets/header.js --user \"winove.com.br_gaupkup6z5s:Ns4zUXip4#akir!8\")",
       "Bash(curl -s -T \"c:/Users/Nrtfe/curioni/assets/header.js\" \"ftp://168.75.84.128/curioni.winove.com.br/dist/assets/header.js\" --user \"winove.com.br_gaupkup6z5s:Ns4zUXip4#akir!8\")",
       "Bash(curl -s ftp://168.75.84.128/curioni.winove.com.br/index.html --user \"winove.com.br_gaupkup6z5s:Ns4zUXip4#akir!8\")",
-      "Bash(curl -s ftp://168.75.84.128/curioni.winove.com.br/dist/ --user \"winove.com.br_gaupkup6z5s:Ns4zUXip4#akir!8\")"
+      "Bash(curl -s ftp://168.75.84.128/curioni.winove.com.br/dist/ --user \"winove.com.br_gaupkup6z5s:Ns4zUXip4#akir!8\")",
+      "Bash(curl -s -T \"c:/Users/Nrtfe/curioni/curioni-preview.html\" \"ftp://168.75.84.128/curioni.winove.com.br/dist/curioni-preview.html\" --user \"winove.com.br_gaupkup6z5s:Ns4zUXip4#akir!8\")",
+      "Bash(curl -s -T \"c:/Users/Nrtfe/curioni/assets/header.css\" \"ftp://168.75.84.128/curioni.winove.com.br/dist/assets/header.css\" --user \"winove.com.br_gaupkup6z5s:Ns4zUXip4#akir!8\")",
+      "Bash(curl -s -T \"c:/Users/Nrtfe/curioni/pronta-entrega.html\" \"ftp://168.75.84.128/curioni.winove.com.br/dist/pronta-entrega.html\" --user \"curioni.winove.com.br|curioni_ftp:M@ntra2025\")",
+      "Bash(curl -v -T \"c:/Users/Nrtfe/curioni/pronta-entrega.html\" \"ftp://168.75.84.128/curioni.winove.com.br/dist/pronta-entrega.html\" --user \"curioni.winove.com.br|curioni_ftp:M@ntra2025\")",
+      "Bash(curl -s -T \"c:/Users/Nrtfe/curioni/pronta-entrega.html\" \"ftp://168.75.84.128/curioni.winove.com.br/dist/pronta-entrega.html\" --user \"curioni.winove.com.br|curioni_ftp\" --pass \"M@ntra2025\")",
+      "Bash(curl -s -T \"c:/Users/Nrtfe/curioni/pronta-entrega.html\" ftp://168.75.84.128/curioni.winove.com.br/dist/pronta-entrega.html -u \"curioni.winove.com.br|curioni_ftp:M%40ntra2025\")",
+      "Bash(curl -v ftp://168.75.84.128/curioni.winove.com.br/dist/pronta-entrega.html -u \"curioni.winove.com.br|curioni_ftp:M%40ntra2025\")",
+      "Read(//c/Users/Nrtfe/.claude/projects/c--Users-Nrtfe-curioni/**)"
     ]
   }
 }
