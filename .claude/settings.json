@@ -1,7 +1,14 @@
 {
   "permissions": {
     "allow": [
-      "Bash(find /c/Users/Nrtfe/curioni -name \"*.html\" -exec grep -l \"gallery\\\\|Gallery\\\\|carousel\\\\|Carousel\" {} \\\\;)"
+      "Bash(find /c/Users/Nrtfe/curioni -name \"*.html\" -exec grep -l \"gallery\\\\|Gallery\\\\|carousel\\\\|Carousel\" {} \\\\;)",
+      "Bash(curl -s --ftp-ssl-reqd ftp://168.75.84.128/ --user \"winove.com.br_gaupkup6z5s:Ns4zUXip4#akir!8\")",
+      "Bash(curl -s ftp://168.75.84.128/ --user \"winove.com.br_gaupkup6z5s:Ns4zUXip4#akir!8\")",
+      "Bash(curl -s ftp://168.75.84.128/curioni.winove.com.br/ --user \"winove.com.br_gaupkup6z5s:Ns4zUXip4#akir!8\")",
+      "Bash(ls c:/Users/Nrtfe/curioni/*.html)",
+      "Bash(curl -s ftp://168.75.84.128/curioni.winove.com.br/assets/ --user \"winove.com.br_gaupkup6z5s:Ns4zUXip4#akir!8\")",
+      "Read(//c/Users/Nrtfe/curioni/**)",
+      "Bash(curl -s ftp://168.75.84.128/curioni.winove.com.br/ambientes.html --user \"winove.com.br_gaupkup6z5s:Ns4zUXip4#akir!8\")"
     ]
   }
 }

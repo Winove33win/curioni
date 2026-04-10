@@ -10,213 +10,211 @@
   <link rel="stylesheet" href="assets/header.css" />
   <link rel="stylesheet" href="assets/site.css" />
   <style>
-    /* ── AMBIENTES PAGE ─── */
-    .amb-hero {
-      background: #fff;
-      padding: 56px 0 40px;
-      border-bottom: 1px solid rgba(17,17,17,.06);
+    /* ── AMBIENTES — EDITORIAL ───────────────────────────────── */
+
+    /* Intro */
+    .ed-intro {
+      padding: 96px 0 80px;
+      border-bottom: 1px solid rgba(17,17,17,.07);
     }
-    .amb-hero__inner {
+    .ed-intro__inner {
       display: grid;
-      grid-template-columns: 1fr auto;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
       align-items: end;
+    }
+    .ed-intro__eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+    .ed-intro__title {
+      margin: 0;
+      font: 600 clamp(44px,5.5vw,76px)/.88 var(--title);
+      letter-spacing: -.04em;
+      color: #0d0b09;
+    }
+    .ed-intro__title em {
+      font-style: italic;
+      color: #9a9189;
+    }
+    .ed-intro__text {
+      margin: 0 0 28px;
+      color: var(--muted);
+      font-size: clamp(15px,1.5vw,17px);
+      line-height: 1.75;
+      max-width: 48ch;
+    }
+    .ed-intro__meta {
+      display: flex;
       gap: 32px;
     }
-    .amb-hero__eyebrow {
+    .ed-intro__stat strong {
+      display: block;
+      font: 600 28px/1 var(--title);
+      letter-spacing: -.03em;
+      color: #0d0b09;
+    }
+    .ed-intro__stat span {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: .04em;
+    }
+
+    /* Chapter */
+    .ed-chapter {
+      border-bottom: 1px solid rgba(17,17,17,.07);
+    }
+
+    /* Visual — full-bleed */
+    .ed-chapter__visual {
+      position: relative;
+      width: 100%;
+      height: 88vh;
+      min-height: 520px;
+      background-size: cover;
+      background-position: center;
+      cursor: zoom-in;
+    }
+    .ed-chapter__visual::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        transparent 40%,
+        rgba(8,7,6,.55) 100%
+      );
+    }
+    .ed-chapter__visual-label {
+      position: absolute;
+      bottom: 40px;
+      left: 48px;
+      z-index: 2;
+      color: rgba(255,255,255,.55);
       font-size: 11px;
       font-weight: 700;
       letter-spacing: .2em;
       text-transform: uppercase;
+    }
+    .ed-chapter__visual-title {
+      position: absolute;
+      bottom: 60px;
+      left: 48px;
+      z-index: 2;
+      color: #fff;
+      font: 600 clamp(26px,3.5vw,48px)/1.05 var(--title);
+      letter-spacing: -.03em;
+      max-width: 14ch;
+    }
+    .ed-chapter__visual-zoom {
+      position: absolute;
+      bottom: 40px;
+      right: 48px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,.6);
+      font-size: 12px;
+      letter-spacing: .06em;
+      font-weight: 500;
+      transition: color .2s;
+    }
+    .ed-chapter__visual:hover .ed-chapter__visual-zoom {
+      color: rgba(255,255,255,.9);
+    }
+
+    /* Content block below image */
+    .ed-chapter__content {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 64px;
+      padding: 56px 0 64px;
+    }
+    .ed-chapter__eyebrow {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .22em;
+      text-transform: uppercase;
       color: var(--accent);
       margin-bottom: 14px;
     }
-    .amb-hero__title {
-      margin: 0 0 16px;
-      font: 600 clamp(38px,5vw,68px)/.92 var(--title);
-      letter-spacing: -.04em;
+    .ed-chapter__title {
+      margin: 0 0 18px;
+      font: 600 clamp(24px,2.8vw,36px)/1.05 var(--title);
+      letter-spacing: -.03em;
       color: #0d0b09;
     }
-    .amb-hero__desc {
-      margin: 0;
+    .ed-chapter__desc {
+      margin: 0 0 28px;
       color: var(--muted);
-      font-size: clamp(15px,1.6vw,18px);
-      max-width: 58ch;
-      line-height: 1.6;
+      font-size: 16px;
+      line-height: 1.75;
+      max-width: 52ch;
     }
-    .amb-hero__tabs {
+    .ed-chapter__products {
       display: flex;
-      gap: 8px;
       flex-wrap: wrap;
-      margin-top: 28px;
+      gap: 8px;
     }
-    .amb-tab {
-      padding: 9px 18px;
-      border: 1px solid rgba(17,17,17,.1);
+    .ed-chapter__product {
+      padding: 7px 16px;
+      border: 1px solid rgba(17,17,17,.12);
       border-radius: 999px;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 500;
-      background: #fff;
-      cursor: pointer;
-      transition: .18s;
       color: #5a5550;
+      text-decoration: none;
+      transition: .15s;
     }
-    .amb-tab.is-active, .amb-tab:hover {
-      background: #111;
+    .ed-chapter__product:hover {
       border-color: #111;
-      color: #fff;
+      color: #111;
     }
 
-    /* ── GALLERY GRID ─── */
-    .amb-section {
-      padding: 64px 0;
-      background: #fff;
+    /* Nota do Autor — editorial aside */
+    .ed-chapter__note {
+      border-left: 2px solid rgba(17,17,17,.1);
+      padding-left: 32px;
+      align-self: start;
+      margin-top: 4px;
     }
-    .amb-section + .amb-section {
-      border-top: 1px solid rgba(17,17,17,.06);
-      padding-top: 56px;
-    }
-    .amb-section__head {
-      margin-bottom: 36px;
-    }
-    .amb-section__label {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 10px;
-    }
-    .amb-section__title {
-      margin: 0 0 10px;
-      font: 600 clamp(26px,3vw,40px)/1 var(--title);
-      letter-spacing: -.03em;
-    }
-    .amb-section__desc {
-      margin: 0;
-      color: var(--muted);
-      max-width: 60ch;
-      font-size: 15px;
-      line-height: 1.65;
-    }
-
-    /* ── MASONRY-STYLE GRID ─── */
-    .amb-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-    .amb-grid--2col {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    .amb-card {
-      position: relative;
-      cursor: zoom-in;
-      border-radius: 16px;
-      overflow: hidden;
-      background: #f0ece5;
-    }
-    .amb-card--tall .amb-img { height: 540px; }
-    .amb-card--med  .amb-img { height: 380px; }
-    .amb-card--wide {
-      grid-column: span 2;
-    }
-    .amb-card--wide .amb-img { height: 420px; }
-    .amb-img {
-      width: 100%;
-      height: 320px;
-      background-size: cover;
-      background-position: center;
-      transition: transform .5s ease;
-    }
-    .amb-card:hover .amb-img {
-      transform: scale(1.04);
-    }
-    /* overlay ao hover */
-    .amb-card__overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(10,9,8,.72) 0%, transparent 55%);
-      opacity: 0;
-      transition: opacity .3s ease;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 24px;
-    }
-    .amb-card:hover .amb-card__overlay {
-      opacity: 1;
-    }
-    .amb-card__label {
+    .ed-chapter__note-label {
       font-size: 10px;
       font-weight: 700;
-      letter-spacing: .18em;
+      letter-spacing: .2em;
       text-transform: uppercase;
-      color: rgba(255,255,255,.65);
-      margin-bottom: 6px;
+      color: #9a9189;
+      margin-bottom: 14px;
     }
-    .amb-card__title {
-      font: 600 18px/1.1 var(--title);
-      color: #fff;
-      margin-bottom: 6px;
-    }
-    .amb-card__zoom {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 12px;
-      color: rgba(255,255,255,.75);
-    }
-    /* notas do autor (abaixo do card) */
-    .amb-card__notes {
-      padding: 14px 4px 4px;
-      display: none;
-    }
-    .amb-card-wrap {
-      display: grid;
-    }
-    .amb-card-wrap.show-notes .amb-card__notes {
-      display: block;
-    }
-    .amb-note-title {
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 6px;
-    }
-    .amb-note-text {
-      font-size: 13px;
+    .ed-chapter__note-text {
+      font: italic 400 15px/1.8 var(--title);
       color: #5a5550;
-      line-height: 1.7;
-      font-style: italic;
+      margin: 0 0 20px;
     }
-    .amb-note-tag {
-      display: inline-block;
-      margin-top: 8px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: rgba(44,90,86,.08);
-      color: var(--accent);
-      font-size: 11px;
+    .ed-chapter__note-sig {
+      font-size: 12px;
       font-weight: 600;
+      color: #0d0b09;
+      letter-spacing: .04em;
     }
 
-    /* ── LIGHTBOX ─── */
+    /* Lightbox */
     .lightbox {
       position: fixed;
       inset: 0;
       z-index: 9000;
-      background: rgba(8,7,6,.95);
+      background: rgba(6,5,4,.96);
       display: none;
       align-items: center;
       justify-content: center;
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(6px);
     }
-    .lightbox.is-open {
-      display: flex;
-    }
+    .lightbox.is-open { display: flex; }
     .lightbox__close {
       position: fixed;
       top: 20px;
@@ -224,8 +222,8 @@
       width: 44px;
       height: 44px;
       border-radius: 50%;
-      background: rgba(255,255,255,.12);
-      border: 1px solid rgba(255,255,255,.15);
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.14);
       color: #fff;
       font-size: 20px;
       display: flex;
@@ -235,16 +233,15 @@
       transition: background .2s;
       z-index: 9010;
     }
-    .lightbox__close:hover { background: rgba(255,255,255,.22); }
-    .lightbox__prev,
-    .lightbox__next {
+    .lightbox__close:hover { background: rgba(255,255,255,.2); }
+    .lightbox__prev, .lightbox__next {
       position: fixed;
       top: 50%;
       transform: translateY(-50%);
       width: 48px;
       height: 48px;
       border-radius: 50%;
-      background: rgba(255,255,255,.1);
+      background: rgba(255,255,255,.09);
       border: 1px solid rgba(255,255,255,.12);
       color: #fff;
       font-size: 22px;
@@ -257,287 +254,72 @@
     }
     .lightbox__prev { left: 20px; }
     .lightbox__next { right: 20px; }
-    .lightbox__prev:hover,
-    .lightbox__next:hover { background: rgba(255,255,255,.2); }
-    .lightbox__body {
-      display: grid;
-      grid-template-columns: 1fr 300px;
-      gap: 0;
-      max-width: min(1200px, 96vw);
-      max-height: 90vh;
-      border-radius: 20px;
-      overflow: hidden;
-      background: #0e0d0c;
-    }
-    .lightbox__img-wrap {
-      position: relative;
-      background: #161412;
-    }
+    .lightbox__prev:hover, .lightbox__next:hover { background: rgba(255,255,255,.18); }
     .lightbox__img {
-      width: 100%;
-      height: 90vh;
+      max-width: 92vw;
+      max-height: 90vh;
       object-fit: contain;
-      display: block;
+      border-radius: 4px;
     }
     .lightbox__img-bg {
-      width: 100%;
-      height: 90vh;
+      width: min(1200px, 90vw);
+      height: min(800px, 85vh);
       background-size: contain;
       background-position: center;
       background-repeat: no-repeat;
     }
-    .lightbox__info {
-      background: #fff;
-      padding: 36px 28px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      overflow-y: auto;
-    }
-    .lightbox__info-cat {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: var(--accent);
-    }
-    .lightbox__info-title {
-      margin: 0;
-      font: 600 22px/1.1 var(--title);
-      color: #0d0b09;
-    }
-    .lightbox__info-desc {
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.7;
-    }
-    .lightbox__info-divider {
-      height: 1px;
-      background: rgba(17,17,17,.08);
-    }
-    .lightbox__info-note-label {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: #9a9189;
-      margin-bottom: 8px;
-    }
-    .lightbox__info-note {
-      font-size: 13px;
-      color: #5a5550;
-      line-height: 1.75;
-      font-style: italic;
-    }
-    .lightbox__info-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-    .lightbox__info-tag {
-      padding: 5px 12px;
-      border-radius: 999px;
-      background: rgba(44,90,86,.08);
-      color: var(--accent);
-      font-size: 11px;
-      font-weight: 600;
-    }
-    .lightbox__info-cta {
-      margin-top: auto;
-    }
-    .lightbox__info-cta a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 13px 20px;
-      background: #111;
-      color: #fff;
-      border-radius: 12px;
-      font-weight: 600;
-      font-size: 14px;
-      text-decoration: none;
-      transition: background .2s;
-    }
-    .lightbox__info-cta a:hover { background: #000; }
     .lightbox__counter {
       position: fixed;
       bottom: 24px;
       left: 50%;
       transform: translateX(-50%);
-      color: rgba(255,255,255,.5);
-      font-size: 13px;
-      letter-spacing: .06em;
+      color: rgba(255,255,255,.45);
+      font-size: 12px;
+      letter-spacing: .08em;
       z-index: 9010;
     }
 
-    /* ── RESPONSIVE ─── */
+    /* Responsive */
     @media (max-width: 960px) {
-      .lightbox__body {
-        grid-template-columns: 1fr;
-        max-height: 95vh;
-      }
-      .lightbox__img-bg { height: 55vw; min-height: 220px; }
-      .lightbox__info { padding: 22px 18px; }
+      .ed-intro__inner { grid-template-columns: 1fr; gap: 40px; }
+      .ed-chapter__content { grid-template-columns: 1fr; gap: 40px; padding: 40px 0 52px; }
+      .ed-chapter__note { border-left: none; border-top: 1px solid rgba(17,17,17,.1); padding-left: 0; padding-top: 28px; }
+      .ed-chapter__visual { height: 70vh; }
+      .ed-chapter__visual-title { left: 24px; bottom: 48px; }
+      .ed-chapter__visual-label { left: 24px; }
+      .ed-chapter__visual-zoom { right: 24px; }
     }
-    @media (max-width: 768px) {
-      .amb-grid { grid-template-columns: repeat(2, 1fr); }
-      .amb-card--wide { grid-column: span 2; }
-      .amb-hero__inner { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 540px) {
-      .amb-grid { grid-template-columns: 1fr; }
-      .amb-card--wide { grid-column: span 1; }
+    @media (max-width: 600px) {
+      .ed-intro { padding: 64px 0 56px; }
+      .ed-chapter__visual { height: 56vh; min-height: 340px; }
     }
   </style>
 </head>
 <body>
 <header class="site-header" data-site-header></header>
 
-<!-- HERO -->
-<div class="amb-hero">
+<!-- ── INTRO ──────────────────────────────────────────────────── -->
+<section class="ed-intro">
   <div class="container">
-    <div class="amb-hero__inner">
+    <div class="ed-intro__inner">
       <div>
-        <p class="amb-hero__eyebrow">Galeria de Ambientes</p>
-        <h1 class="amb-hero__title">Espaços que<br><em style="font-style:italic;color:#9a9189;">inspiram</em> composição.</h1>
-        <p class="amb-hero__desc">Cada imagem documenta uma cenografia real ou conceitual criada com mobiliário Curioni. Clique para ver os detalhes, a nota de inspiração e os produtos presentes no ambiente.</p>
-        <div class="amb-hero__tabs">
-          <button class="amb-tab is-active" data-filter="todos">Todos</button>
-          <button class="amb-tab" data-filter="sala">Sala</button>
-          <button class="amb-tab" data-filter="jantar">Jantar</button>
-          <button class="amb-tab" data-filter="suite">Suíte</button>
-          <button class="amb-tab" data-filter="outdoor">Outdoor</button>
-          <button class="amb-tab" data-filter="homeoffice">Home Office</button>
-        </div>
+        <p class="ed-intro__eyebrow">Ambientes · Curioni</p>
+        <h1 class="ed-intro__title">Espaços que<br>ganham <em>forma</em><br>e narrativa.</h1>
       </div>
-    </div>
-  </div>
-</div>
-
-<!-- ── SALA ─────────────────────────────────────────────────── -->
-<section class="amb-section" data-section="sala">
-  <div class="container">
-    <div class="amb-section__head">
-      <span class="amb-section__label">Indoor · Sala</span>
-      <h2 class="amb-section__title">Convivência & Estar</h2>
-      <p class="amb-section__desc">Composições de salas com poltronas, sofás e complementos Curioni. Paleta clara, materiais nobres e presença escultural.</p>
-    </div>
-
-    <div class="amb-grid">
-
-      <!-- Card 1 -->
-      <div class="amb-card-wrap" data-cat="sala">
-        <div class="amb-card amb-card--tall"
-             data-lb-src="assets/asset-462448481431453704.jpg"
-             data-lb-cat="Sala · Indoor"
-             data-lb-title="Sala Central com Poltrona Alma"
-             data-lb-desc="Composição central com Poltrona Alma em boucle natural, mesa lateral Ciano e abajur Lía. Presença escultural equilibrada com leveza dos materiais."
-             data-lb-note="Referência: interiores escandinavos contemporâneos. Paleta neutra com toque de madeira. Prompt: 'sala minimalista, luz natural lateral, poltrona ampla com tecido texturizado, madeira freijó, atmosfera serena e acolhedora.'"
-             data-lb-tags="Poltrona Alma,Mesa Ciano,Abajur Lía">
-          <div class="amb-img" data-image-key="ambHeroSala"></div>
-          <div class="amb-card__overlay">
-            <span class="amb-card__label">Sala Central</span>
-            <span class="amb-card__title">Poltrona Alma + Ciano</span>
-            <span class="amb-card__zoom">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/></svg>
-              Ver em tela cheia
-            </span>
+      <div>
+        <p class="ed-intro__text">Cada composição aqui documentada nasce de uma intenção específica — um material escolhido, uma luz que define volume, uma peça que ancora o espaço. Não são catálogos: são cenografias com ponto de vista autoral.</p>
+        <div class="ed-intro__meta">
+          <div class="ed-intro__stat">
+            <strong>8</strong>
+            <span>Composições</span>
           </div>
-        </div>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="amb-card-wrap" data-cat="sala">
-        <div class="amb-card amb-card--tall"
-             data-lb-src="assets/asset-462449680457158665.jpg"
-             data-lb-cat="Sala · Indoor"
-             data-lb-title="Sala Integrada — luz difusa"
-             data-lb-desc="Ambiente amplo com sofá Curva em composição modular e Banco Tenda como apoio. Iluminação rasante que realça a textura dos materiais."
-             data-lb-note="Inspiração: casas de campo paulistanas, anos 1970 reinterpretados. Prompt: 'living room open plan, warm afternoon light, curved sofa in neutral fabric, travertine floor, minimalist architecture.'"
-             data-lb-tags="Sofá Curva,Banco Tenda,Pendente Arco">
-          <div class="amb-img" data-image-key="ambSalaPrincipal"></div>
-          <div class="amb-card__overlay">
-            <span class="amb-card__label">Sala Integrada</span>
-            <span class="amb-card__title">Sofá Curva + Banco Tenda</span>
-            <span class="amb-card__zoom">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/></svg>
-              Ver em tela cheia
-            </span>
+          <div class="ed-intro__stat">
+            <strong>5</strong>
+            <span>Ambientes</span>
           </div>
-        </div>
-      </div>
-
-      <!-- Card 3 — wide -->
-      <div class="amb-card-wrap" data-cat="sala" style="grid-column:span 1">
-        <div class="amb-card amb-card--med"
-             data-lb-src="assets/asset-462425873725923334.jpg"
-             data-lb-cat="Sala · Lounge"
-             data-lb-title="Lounge — Recepção Corporativa"
-             data-lb-desc="Composição de lounge com Sofá Curva e Poltrona Alma para ambientes de recepção de alto padrão corporativo."
-             data-lb-note="Referência: lobbies de boutique hotels europeus. Prompt: 'luxury hotel lobby seating area, white walls, curved sofa light fabric, architectural lighting, editorial photography.'"
-             data-lb-tags="Sofá Curva,Poltrona Alma,Pendente Arco">
-          <div class="amb-img" data-image-key="ambLounge"></div>
-          <div class="amb-card__overlay">
-            <span class="amb-card__label">Lounge</span>
-            <span class="amb-card__title">Recepção corporativa</span>
-            <span class="amb-card__zoom">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/></svg>
-              Ver em tela cheia
-            </span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ── JANTAR ─────────────────────────────────────────────────── -->
-<section class="amb-section" data-section="jantar">
-  <div class="container">
-    <div class="amb-section__head">
-      <span class="amb-section__label">Indoor · Jantar</span>
-      <h2 class="amb-section__title">Mesa & Refeições</h2>
-      <p class="amb-section__desc">Ambientes de jantar com materialidade protagonista — pedra natural, madeira maciça e iluminação de presença cênica.</p>
-    </div>
-    <div class="amb-grid amb-grid--2col">
-      <div class="amb-card-wrap" data-cat="jantar">
-        <div class="amb-card amb-card--med"
-             data-lb-src="assets/asset-462142869560242180.jpg"
-             data-lb-cat="Jantar · Indoor"
-             data-lb-title="Mesa Vélo — Tampo Travertino"
-             data-lb-desc="Mesa Vélo com tampo em travertino romano e base escultórica. Cadeira Pierre em freijó natural ao redor. Pendente Arco em latão escovado."
-             data-lb-note="Inspiração: jantares italianos contemporâneos. Materiais minerais contrastando com madeira aquecida. Prompt: 'dining room, travertine table, wooden chairs, brass pendant light, white walls, natural light, editorial.'"
-             data-lb-tags="Mesa Vélo,Cadeira Pierre,Pendente Arco">
-          <div class="amb-img" data-image-key="ambJantar"></div>
-          <div class="amb-card__overlay">
-            <span class="amb-card__label">Jantar</span>
-            <span class="amb-card__title">Mesa Vélo + Pendente Arco</span>
-            <span class="amb-card__zoom">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/></svg>
-              Ver em tela cheia
-            </span>
-          </div>
-        </div>
-      </div>
-      <div class="amb-card-wrap" data-cat="jantar">
-        <div class="amb-card amb-card--med"
-             data-lb-src="assets/asset-461111335750721541.jpg"
-             data-lb-cat="Jantar · Indoor"
-             data-lb-title="Cadeira Pierre em ambiente de jantar íntimo"
-             data-lb-desc="Cadeira Pierre com encosto laminado curvado em composição de jantar para 4 pessoas. Leitura limpa e contemporânea."
-             data-lb-note="Referência: arquitetura japonesa e seus princípios de leveza visual. A cadeira Pierre nasce desse diálogo. Prompt: 'intimate dining room, Japanese minimalism, wooden chair sculptural backrest, warm light, white space.'"
-             data-lb-tags="Cadeira Pierre,Mesa Vélo">
-          <div class="amb-img" data-image-key="launchCadeiraPierre"></div>
-          <div class="amb-card__overlay">
-            <span class="amb-card__label">Jantar Íntimo</span>
-            <span class="amb-card__title">Cadeira Pierre</span>
-            <span class="amb-card__zoom">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/></svg>
-              Ver em tela cheia
-            </span>
+          <div class="ed-intro__stat">
+            <strong>+20</strong>
+            <span>Anos de design</span>
           </div>
         </div>
       </div>
@@ -545,119 +327,283 @@
   </div>
 </section>
 
-<!-- ── SUÍTE ─────────────────────────────────────────────────── -->
-<section class="amb-section" data-section="suite">
+<!-- ── CAPÍTULO 01 — SALA CENTRAL ────────────────────────────── -->
+<article class="ed-chapter"
+         data-lb-src="assets/asset-462448481431453704.jpg"
+         data-lb-index="0">
+  <div class="ed-chapter__visual"
+       style="background-image:url('assets/asset-462448481431453704.jpg')">
+    <span class="ed-chapter__visual-label">01 · Sala · Indoor</span>
+    <h2 class="ed-chapter__visual-title">Poltrona Alma + Ciano</h2>
+    <span class="ed-chapter__visual-zoom" aria-hidden="true">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/></svg>
+      Ampliar
+    </span>
+  </div>
   <div class="container">
-    <div class="amb-section__head">
-      <span class="amb-section__label">Indoor · Suíte & Descanso</span>
-      <h2 class="amb-section__title">Repouso com Intenção</h2>
-      <p class="amb-section__desc">Ambientes de descanso com peças de apoio, iluminação suave e materialidade que convida ao silêncio.</p>
-    </div>
-    <div class="amb-grid">
-      <div class="amb-card-wrap" data-cat="suite" style="grid-column:span 2">
-        <div class="amb-card amb-card--wide"
-             data-lb-src="assets/asset-462177549890211848.jpg"
-             data-lb-cat="Suíte · Indoor"
-             data-lb-title="Suíte Master — Iluminação Suave"
-             data-lb-desc="Composição de suíte com Abajur Lía e Banco Tenda. Paleta monocromática em off-white com toque de madeira aquecida."
-             data-lb-note="Referência: quartos de spas de luxo asiáticos. A intenção era criar atmosfera contemplativa sem excessos. Prompt: 'luxury suite bedroom, warm ambient light, linen bedding, wood side table, reading lamp linen shade, white walls, calm.'"
-             data-lb-tags="Abajur Lía,Banco Tenda">
-          <div class="amb-img" data-image-key="ambSuite"></div>
-          <div class="amb-card__overlay">
-            <span class="amb-card__label">Suíte Master</span>
-            <span class="amb-card__title">Abajur Lía + Banco Tenda</span>
-            <span class="amb-card__zoom">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/></svg>
-              Ver em tela cheia
-            </span>
-          </div>
+    <div class="ed-chapter__content">
+      <div>
+        <p class="ed-chapter__eyebrow">Sala Central</p>
+        <h3 class="ed-chapter__title">Sala Central com Poltrona Alma</h3>
+        <p class="ed-chapter__desc">Composição central com Poltrona Alma em boucle natural, mesa lateral Ciano e abajur Lía. Presença escultural equilibrada com leveza dos materiais. Paleta neutra que conversa com qualquer arquitetura.</p>
+        <div class="ed-chapter__products">
+          <a href="produtos.html" class="ed-chapter__product">Poltrona Alma</a>
+          <a href="produtos.html" class="ed-chapter__product">Mesa Ciano</a>
+          <a href="produtos.html" class="ed-chapter__product">Abajur Lía</a>
         </div>
       </div>
-      <div class="amb-card-wrap" data-cat="homeoffice">
-        <div class="amb-card amb-card--med"
-             data-lb-src="assets/asset-461402256836988932.jpg"
-             data-lb-cat="Home Office"
-             data-lb-title="Home Office — Funcional e Elegante"
-             data-lb-desc="Ambiente de trabalho em casa com mesa de apoio e poltrona em acabamento sóbrio. Funcionalidade sem abrir mão da estética."
-             data-lb-note="Referência: estúdios de arquitetos europeus. Minimalismo funcional. Prompt: 'home office minimal, wooden desk, lounge chair, bookshelves, white room, afternoon light, architect studio.'"
-             data-lb-tags="Poltrona Alma,Buffet Módulo">
-          <div class="amb-img" data-image-key="ambHomeOffice"></div>
-          <div class="amb-card__overlay">
-            <span class="amb-card__label">Home Office</span>
-            <span class="amb-card__title">Funcional e elegante</span>
-            <span class="amb-card__zoom">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/></svg>
-              Ver em tela cheia
-            </span>
-          </div>
-        </div>
-      </div>
+      <aside class="ed-chapter__note">
+        <p class="ed-chapter__note-label">Nota do Autor</p>
+        <p class="ed-chapter__note-text">A referência aqui são interiores escandinavos contemporâneos — paleta neutra com toque de madeira, luz natural lateral. Queria que a poltrona fosse o argumento do espaço, não o complemento. O boucle natural resolve isso: ele absorve a luz e devolve volume.</p>
+        <span class="ed-chapter__note-sig">— Curioni Ateliê</span>
+      </aside>
     </div>
   </div>
-</section>
+</article>
 
-<!-- ── OUTDOOR ─────────────────────────────────────────────────── -->
-<section class="amb-section" data-section="outdoor">
+<!-- ── CAPÍTULO 02 — SALA INTEGRADA ──────────────────────────── -->
+<article class="ed-chapter"
+         data-lb-src="assets/asset-462449680457158665.jpg"
+         data-lb-index="1">
+  <div class="ed-chapter__visual"
+       style="background-image:url('assets/asset-462449680457158665.jpg')">
+    <span class="ed-chapter__visual-label">02 · Sala · Indoor</span>
+    <h2 class="ed-chapter__visual-title">Sofá Curva + Banco Tenda</h2>
+    <span class="ed-chapter__visual-zoom" aria-hidden="true">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/></svg>
+      Ampliar
+    </span>
+  </div>
   <div class="container">
-    <div class="amb-section__head">
-      <span class="amb-section__label">Outdoor · Varanda & Jardim</span>
-      <h2 class="amb-section__title">Refinamento ao Ar Livre</h2>
-      <p class="amb-section__desc">Mobiliário resistente para varandas, jardins e rooftops — sem perder leveza e sofisticação visual.</p>
-    </div>
-    <div class="amb-grid amb-grid--2col">
-      <div class="amb-card-wrap" data-cat="outdoor">
-        <div class="amb-card amb-card--tall"
-             data-lb-src="assets/asset-461714159790497796.jpg"
-             data-lb-cat="Outdoor · Varanda"
-             data-lb-title="Varanda com Banco Tenda Outdoor"
-             data-lb-desc="Varanda aberta com Banco Tenda em versão outdoor: pintura eletrostática e tecido técnico UV. Composição leve para ambientes de transição."
-             data-lb-note="Referência: terraços de apartamentos paulistanos voltados para o verde. Prompt: 'outdoor terrace, minimalist furniture aluminum, technical fabric, green view, afternoon light São Paulo.'"
-             data-lb-tags="Banco Tenda Outdoor,Balanço Oca">
-          <div class="amb-img" data-image-key="ambVaranda"></div>
-          <div class="amb-card__overlay">
-            <span class="amb-card__label">Varanda</span>
-            <span class="amb-card__title">Banco Tenda Outdoor</span>
-            <span class="amb-card__zoom">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/></svg>
-              Ver em tela cheia
-            </span>
-          </div>
+    <div class="ed-chapter__content">
+      <div>
+        <p class="ed-chapter__eyebrow">Sala Integrada</p>
+        <h3 class="ed-chapter__title">Sala Integrada — luz difusa</h3>
+        <p class="ed-chapter__desc">Ambiente amplo com sofá Curva em composição modular e Banco Tenda como apoio. Iluminação rasante que realça a textura dos materiais. Piso em travertino que ancora o peso visual da composição.</p>
+        <div class="ed-chapter__products">
+          <a href="produtos.html" class="ed-chapter__product">Sofá Curva</a>
+          <a href="produtos.html" class="ed-chapter__product">Banco Tenda</a>
+          <a href="produtos.html" class="ed-chapter__product">Pendente Arco</a>
         </div>
       </div>
-      <div class="amb-card-wrap" data-cat="outdoor">
-        <div class="amb-card amb-card--tall"
-             data-lb-src="assets/asset-461698222936862725.jpg"
-             data-lb-cat="Outdoor · Deck"
-             data-lb-title="Deck Externo — Balanço Oca"
-             data-lb-desc="Deck com Balanço Oca em trama náutica e estrutura em alumínio pintado. Alta durabilidade para uso externo continuado."
-             data-lb-note="Referência: casas de campo no interior paulista, arquitetura orgânica. Prompt: 'outdoor deck, swing chair nautical rope, aluminum frame, lush garden, natural wood floor, tropical minimalism.'"
-             data-lb-tags="Balanço Oca">
-          <div class="amb-img" data-image-key="ambExterno"></div>
-          <div class="amb-card__overlay">
-            <span class="amb-card__label">Deck Externo</span>
-            <span class="amb-card__title">Balanço Oca</span>
-            <span class="amb-card__zoom">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/></svg>
-              Ver em tela cheia
-            </span>
-          </div>
-        </div>
-      </div>
+      <aside class="ed-chapter__note">
+        <p class="ed-chapter__note-label">Nota do Autor</p>
+        <p class="ed-chapter__note-text">Casas de campo paulistanas dos anos 1970, reinterpretadas. O que me interessa nessa referência é a generosidade dos volumes — sofás que convidam, não que decoram. A curva do Sofá Curva não é formal: é um gesto de acolhimento.</p>
+        <span class="ed-chapter__note-sig">— Curioni Ateliê</span>
+      </aside>
     </div>
   </div>
-</section>
+</article>
 
-<!-- CTA -->
-<section style="padding:64px 0;background:#fff;border-top:1px solid rgba(17,17,17,.06);">
-  <div class="container" style="display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;">
+<!-- ── CAPÍTULO 03 — JANTAR ───────────────────────────────────── -->
+<article class="ed-chapter"
+         data-lb-src="assets/asset-462142869560242180.jpg"
+         data-lb-index="2">
+  <div class="ed-chapter__visual"
+       style="background-image:url('assets/asset-462142869560242180.jpg')">
+    <span class="ed-chapter__visual-label">03 · Jantar · Indoor</span>
+    <h2 class="ed-chapter__visual-title">Mesa Vélo — Travertino</h2>
+    <span class="ed-chapter__visual-zoom" aria-hidden="true">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/></svg>
+      Ampliar
+    </span>
+  </div>
+  <div class="container">
+    <div class="ed-chapter__content">
+      <div>
+        <p class="ed-chapter__eyebrow">Jantar</p>
+        <h3 class="ed-chapter__title">Mesa Vélo — Tampo Travertino</h3>
+        <p class="ed-chapter__desc">Mesa Vélo com tampo em travertino romano e base escultórica. Cadeira Pierre em freijó natural ao redor. Pendente Arco em latão escovado que define a cota vertical do ambiente.</p>
+        <div class="ed-chapter__products">
+          <a href="produtos.html" class="ed-chapter__product">Mesa Vélo</a>
+          <a href="produtos.html" class="ed-chapter__product">Cadeira Pierre</a>
+          <a href="produtos.html" class="ed-chapter__product">Pendente Arco</a>
+        </div>
+      </div>
+      <aside class="ed-chapter__note">
+        <p class="ed-chapter__note-label">Nota do Autor</p>
+        <p class="ed-chapter__note-text">Jantares italianos contemporâneos. O que me move nessa composição é o atrito entre materiais: o frio mineral do travertino contra o calor orgânico do freijó. Não é contraste pela decoração — é tensão que cria presença.</p>
+        <span class="ed-chapter__note-sig">— Curioni Ateliê</span>
+      </aside>
+    </div>
+  </div>
+</article>
+
+<!-- ── CAPÍTULO 04 — CADEIRA PIERRE ──────────────────────────── -->
+<article class="ed-chapter"
+         data-lb-src="assets/asset-461111335750721541.jpg"
+         data-lb-index="3">
+  <div class="ed-chapter__visual"
+       style="background-image:url('assets/asset-461111335750721541.jpg')">
+    <span class="ed-chapter__visual-label">04 · Jantar Íntimo</span>
+    <h2 class="ed-chapter__visual-title">Cadeira Pierre</h2>
+    <span class="ed-chapter__visual-zoom" aria-hidden="true">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/></svg>
+      Ampliar
+    </span>
+  </div>
+  <div class="container">
+    <div class="ed-chapter__content">
+      <div>
+        <p class="ed-chapter__eyebrow">Jantar Íntimo</p>
+        <h3 class="ed-chapter__title">Cadeira Pierre em ambiente de jantar</h3>
+        <p class="ed-chapter__desc">Cadeira Pierre com encosto laminado curvado em composição de jantar para 4 pessoas. Leitura limpa e contemporânea — a peça se apresenta sem precisar competir com o espaço.</p>
+        <div class="ed-chapter__products">
+          <a href="produtos.html" class="ed-chapter__product">Cadeira Pierre</a>
+          <a href="produtos.html" class="ed-chapter__product">Mesa Vélo</a>
+        </div>
+      </div>
+      <aside class="ed-chapter__note">
+        <p class="ed-chapter__note-label">Nota do Autor</p>
+        <p class="ed-chapter__note-text">A Pierre nasce de um diálogo com a arquitetura japonesa — especificamente os princípios de leveza visual, de estrutura que revela o esforço sem ostentá-lo. O encosto curvado não é ornamento: é a solução estrutural que virou linguagem.</p>
+        <span class="ed-chapter__note-sig">— Curioni Ateliê</span>
+      </aside>
+    </div>
+  </div>
+</article>
+
+<!-- ── CAPÍTULO 05 — SUÍTE ────────────────────────────────────── -->
+<article class="ed-chapter"
+         data-lb-src="assets/asset-462177549890211848.jpg"
+         data-lb-index="4">
+  <div class="ed-chapter__visual"
+       style="background-image:url('assets/asset-462177549890211848.jpg')">
+    <span class="ed-chapter__visual-label">05 · Suíte Master</span>
+    <h2 class="ed-chapter__visual-title">Abajur Lía + Banco Tenda</h2>
+    <span class="ed-chapter__visual-zoom" aria-hidden="true">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/></svg>
+      Ampliar
+    </span>
+  </div>
+  <div class="container">
+    <div class="ed-chapter__content">
+      <div>
+        <p class="ed-chapter__eyebrow">Suíte Master</p>
+        <h3 class="ed-chapter__title">Repouso com intenção</h3>
+        <p class="ed-chapter__desc">Composição de suíte com Abajur Lía e Banco Tenda. Paleta monocromática em off-white com toque de madeira aquecida. O silêncio visual como escolha deliberada.</p>
+        <div class="ed-chapter__products">
+          <a href="produtos.html" class="ed-chapter__product">Abajur Lía</a>
+          <a href="produtos.html" class="ed-chapter__product">Banco Tenda</a>
+        </div>
+      </div>
+      <aside class="ed-chapter__note">
+        <p class="ed-chapter__note-label">Nota do Autor</p>
+        <p class="ed-chapter__note-text">Quartos de spas de luxo asiáticos — especificamente essa capacidade de criar atmosfera contemplativa sem nenhum gesto excessivo. Aqui, menos não é minimalismo: é generosidade. O espaço que sobra pertence a quem dorme.</p>
+        <span class="ed-chapter__note-sig">— Curioni Ateliê</span>
+      </aside>
+    </div>
+  </div>
+</article>
+
+<!-- ── CAPÍTULO 06 — HOME OFFICE ─────────────────────────────── -->
+<article class="ed-chapter"
+         data-lb-src="assets/asset-461402256836988932.jpg"
+         data-lb-index="5">
+  <div class="ed-chapter__visual"
+       style="background-image:url('assets/asset-461402256836988932.jpg')">
+    <span class="ed-chapter__visual-label">06 · Home Office</span>
+    <h2 class="ed-chapter__visual-title">Funcional e elegante</h2>
+    <span class="ed-chapter__visual-zoom" aria-hidden="true">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/></svg>
+      Ampliar
+    </span>
+  </div>
+  <div class="container">
+    <div class="ed-chapter__content">
+      <div>
+        <p class="ed-chapter__eyebrow">Home Office</p>
+        <h3 class="ed-chapter__title">Funcional e elegante</h3>
+        <p class="ed-chapter__desc">Ambiente de trabalho com Poltrona Alma e apoios em acabamento sóbrio. Funcionalidade que não abdica da estética — o espaço de trabalho como extensão do projeto de vida.</p>
+        <div class="ed-chapter__products">
+          <a href="produtos.html" class="ed-chapter__product">Poltrona Alma</a>
+          <a href="produtos.html" class="ed-chapter__product">Buffet Módulo</a>
+        </div>
+      </div>
+      <aside class="ed-chapter__note">
+        <p class="ed-chapter__note-label">Nota do Autor</p>
+        <p class="ed-chapter__note-text">Estúdios de arquitetos europeus — o minimalismo funcional que os caracteriza. O que me interessa não é a austeridade, é a clareza: cada objeto tem razão de estar. A poltrona num home office é permissão para parar e pensar.</p>
+        <span class="ed-chapter__note-sig">— Curioni Ateliê</span>
+      </aside>
+    </div>
+  </div>
+</article>
+
+<!-- ── CAPÍTULO 07 — VARANDA ──────────────────────────────────── -->
+<article class="ed-chapter"
+         data-lb-src="assets/asset-461714159790497796.jpg"
+         data-lb-index="6">
+  <div class="ed-chapter__visual"
+       style="background-image:url('assets/asset-461714159790497796.jpg')">
+    <span class="ed-chapter__visual-label">07 · Outdoor · Varanda</span>
+    <h2 class="ed-chapter__visual-title">Banco Tenda Outdoor</h2>
+    <span class="ed-chapter__visual-zoom" aria-hidden="true">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/></svg>
+      Ampliar
+    </span>
+  </div>
+  <div class="container">
+    <div class="ed-chapter__content">
+      <div>
+        <p class="ed-chapter__eyebrow">Outdoor · Varanda</p>
+        <h3 class="ed-chapter__title">Varanda com Banco Tenda Outdoor</h3>
+        <p class="ed-chapter__desc">Varanda aberta com Banco Tenda em versão outdoor: pintura eletrostática e tecido técnico UV. Composição leve para ambientes de transição entre interno e externo.</p>
+        <div class="ed-chapter__products">
+          <a href="produtos.html" class="ed-chapter__product">Banco Tenda Outdoor</a>
+          <a href="produtos.html" class="ed-chapter__product">Balanço Oca</a>
+        </div>
+      </div>
+      <aside class="ed-chapter__note">
+        <p class="ed-chapter__note-label">Nota do Autor</p>
+        <p class="ed-chapter__note-text">Terraços de apartamentos paulistanos voltados para o verde. O desafio do outdoor não é a resistência técnica — é manter a linguagem. Não queremos que a peça "pareça outdoor": queremos que pareça Curioni, independentemente de onde esteja.</p>
+        <span class="ed-chapter__note-sig">— Curioni Ateliê</span>
+      </aside>
+    </div>
+  </div>
+</article>
+
+<!-- ── CAPÍTULO 08 — DECK / BALANÇO ──────────────────────────── -->
+<article class="ed-chapter"
+         data-lb-src="assets/asset-461698222936862725.jpg"
+         data-lb-index="7">
+  <div class="ed-chapter__visual"
+       style="background-image:url('assets/asset-461698222936862725.jpg')">
+    <span class="ed-chapter__visual-label">08 · Outdoor · Deck</span>
+    <h2 class="ed-chapter__visual-title">Balanço Oca</h2>
+    <span class="ed-chapter__visual-zoom" aria-hidden="true">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/></svg>
+      Ampliar
+    </span>
+  </div>
+  <div class="container">
+    <div class="ed-chapter__content">
+      <div>
+        <p class="ed-chapter__eyebrow">Outdoor · Deck</p>
+        <h3 class="ed-chapter__title">Deck externo — Balanço Oca</h3>
+        <p class="ed-chapter__desc">Deck com Balanço Oca em trama náutica e estrutura em alumínio pintado. Alta durabilidade para uso externo continuado — uma peça que ganha caráter com o tempo e o clima.</p>
+        <div class="ed-chapter__products">
+          <a href="produtos.html" class="ed-chapter__product">Balanço Oca</a>
+        </div>
+      </div>
+      <aside class="ed-chapter__note">
+        <p class="ed-chapter__note-label">Nota do Autor</p>
+        <p class="ed-chapter__note-text">Casas de campo no interior paulista, arquitetura orgânica — onde o móvel e a vegetação negociam o mesmo espaço. O Balanço Oca nasce desse diálogo: a trama náutica deixa passar o vento, a sombra, a luz. É poroso como deveria ser tudo que está ao ar livre.</p>
+        <span class="ed-chapter__note-sig">— Curioni Ateliê</span>
+      </aside>
+    </div>
+  </div>
+</article>
+
+<!-- ── CTA ────────────────────────────────────────────────────── -->
+<section style="padding:80px 0;background:#0d0b09;">
+  <div class="container" style="display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center;">
     <div>
-      <span style="display:block;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;">Projetos personalizados</span>
-      <h2 style="margin:0 0 12px;font:600 clamp(28px,3.5vw,44px)/1 var(--title);letter-spacing:-.04em;">Quer esses ambientes<br>no seu projeto?</h2>
-      <p style="margin:0;color:var(--muted);font-size:16px;max-width:52ch;">Nossa equipe apoia arquitetos com especificações técnicas, amostras de materiais e orçamentos personalizados para projetos contract e residenciais.</p>
+      <span style="display:block;font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:16px;">Projetos personalizados</span>
+      <h2 style="margin:0 0 16px;font:600 clamp(28px,3.5vw,48px)/.95 var(--title);letter-spacing:-.04em;color:#fff;">Quer esses ambientes<br>no seu projeto?</h2>
+      <p style="margin:0;color:rgba(255,255,255,.55);font-size:16px;line-height:1.7;max-width:50ch;">Nossa equipe apoia com especificações técnicas, amostras de materiais e orçamentos personalizados.</p>
     </div>
-    <div style="display:flex;flex-direction:column;gap:10px;flex-shrink:0;">
-      <a href="profissionais.html" style="display:inline-flex;align-items:center;justify-content:center;padding:14px 28px;background:#111;color:#fff;border-radius:999px;font-weight:600;font-size:14px;text-decoration:none;">Área do Arquiteto</a>
-      <a href="produtos.html" style="display:inline-flex;align-items:center;justify-content:center;padding:13px 28px;border:1.5px solid rgba(17,17,17,.18);border-radius:999px;font-weight:500;font-size:14px;text-decoration:none;color:#111;">Ver catálogo completo</a>
+    <div style="display:flex;flex-direction:column;gap:12px;flex-shrink:0;">
+      <a href="orcamento.html" style="display:inline-flex;align-items:center;justify-content:center;padding:15px 32px;background:#fff;color:#0d0b09;border-radius:999px;font-weight:600;font-size:14px;text-decoration:none;">Falar com a equipe</a>
+      <a href="produtos.html" style="display:inline-flex;align-items:center;justify-content:center;padding:14px 32px;border:1px solid rgba(255,255,255,.2);border-radius:999px;font-weight:500;font-size:14px;text-decoration:none;color:rgba(255,255,255,.75);">Ver catálogo completo</a>
     </div>
   </div>
 </section>
@@ -667,33 +613,15 @@
   <button class="lightbox__close" id="lb-close" aria-label="Fechar">✕</button>
   <button class="lightbox__prev" id="lb-prev" aria-label="Anterior">‹</button>
   <button class="lightbox__next" id="lb-next" aria-label="Próximo">›</button>
-  <div class="lightbox__body">
-    <div class="lightbox__img-wrap">
-      <div class="lightbox__img-bg" id="lb-img"></div>
-    </div>
-    <div class="lightbox__info">
-      <span class="lightbox__info-cat" id="lb-cat">—</span>
-      <h2 class="lightbox__info-title" id="lb-title">—</h2>
-      <p class="lightbox__info-desc" id="lb-desc">—</p>
-      <div class="lightbox__info-divider"></div>
-      <div>
-        <p class="lightbox__info-note-label">Nota do autor · Inspiração</p>
-        <p class="lightbox__info-note" id="lb-note">—</p>
-      </div>
-      <div class="lightbox__info-tags" id="lb-tags"></div>
-      <div class="lightbox__info-cta">
-        <a href="produtos.html" id="lb-cta">Ver produtos do ambiente →</a>
-      </div>
-    </div>
-  </div>
+  <div class="lightbox__img-bg" id="lb-img"></div>
   <span class="lightbox__counter" id="lb-counter">1 / 8</span>
 </div>
 
 <footer class="footer">
   <div class="container footer-grid">
     <div><a class="site-header__logo" href="curioni-preview.html" style="font-size:32px">curioni</a><p>Mobiliário autoral brasileiro para ambientes de alto padrão.</p></div>
-    <div><h4>Explorar</h4><a href="produtos.html">Produtos</a><a href="pronta-entrega.html">Pronta entrega</a></div>
-    <div><h4>Projetos</h4><a href="profissionais.html">Área profissional</a><a href="orcamento.html">Solicitar orçamento</a></div>
+    <div><h4>Explorar</h4><a href="produtos.html">Produtos</a><a href="ambientes.html">Ambientes</a><a href="biblioteca-tecnica.html">Biblioteca 3D</a></div>
+    <div><h4>Contato</h4><a href="orcamento.html">Solicitar orçamento</a></div>
   </div>
 </footer>
 
@@ -701,34 +629,20 @@
 <script src="assets/header.js"></script>
 <script>
 (function () {
-  // ── Collect all gallery cards
-  const cards = Array.from(document.querySelectorAll('[data-lb-src]'));
+  const chapters = Array.from(document.querySelectorAll('[data-lb-src]'));
   let currentIdx = 0;
 
-  const lb       = document.getElementById('lightbox');
-  const lbImg    = document.getElementById('lb-img');
-  const lbCat    = document.getElementById('lb-cat');
-  const lbTitle  = document.getElementById('lb-title');
-  const lbDesc   = document.getElementById('lb-desc');
-  const lbNote   = document.getElementById('lb-note');
-  const lbTags   = document.getElementById('lb-tags');
-  const lbCounter= document.getElementById('lb-counter');
-  const lbClose  = document.getElementById('lb-close');
-  const lbPrev   = document.getElementById('lb-prev');
-  const lbNext   = document.getElementById('lb-next');
+  const lb      = document.getElementById('lightbox');
+  const lbImg   = document.getElementById('lb-img');
+  const lbCtr   = document.getElementById('lb-counter');
+  const lbClose = document.getElementById('lb-close');
+  const lbPrev  = document.getElementById('lb-prev');
+  const lbNext  = document.getElementById('lb-next');
 
   function openAt(idx) {
-    currentIdx = (idx + cards.length) % cards.length;
-    const c = cards[currentIdx];
-    lbImg.style.backgroundImage   = `url('${c.dataset.lbSrc}')`;
-    lbCat.textContent   = c.dataset.lbCat   || '';
-    lbTitle.textContent = c.dataset.lbTitle || '';
-    lbDesc.textContent  = c.dataset.lbDesc  || '';
-    lbNote.textContent  = c.dataset.lbNote  || '';
-    lbCounter.textContent = `${currentIdx + 1} / ${cards.length}`;
-    lbTags.innerHTML = (c.dataset.lbTags || '').split(',').map(t =>
-      `<span class="lightbox__info-tag">${t.trim()}</span>`
-    ).join('');
+    currentIdx = (idx + chapters.length) % chapters.length;
+    lbImg.style.backgroundImage = `url('${chapters[currentIdx].dataset.lbSrc}')`;
+    lbCtr.textContent = `${currentIdx + 1} / ${chapters.length}`;
     lb.classList.add('is-open');
     document.body.style.overflow = 'hidden';
   }
@@ -738,7 +652,10 @@
     document.body.style.overflow = '';
   }
 
-  cards.forEach((c, i) => c.addEventListener('click', () => openAt(i)));
+  chapters.forEach((ch, i) => {
+    ch.querySelector('.ed-chapter__visual').addEventListener('click', () => openAt(i));
+  });
+
   lbClose.addEventListener('click', close);
   lbPrev.addEventListener('click', () => openAt(currentIdx - 1));
   lbNext.addEventListener('click', () => openAt(currentIdx + 1));
@@ -749,25 +666,6 @@
     if (e.key === 'Escape') close();
     if (e.key === 'ArrowLeft')  openAt(currentIdx - 1);
     if (e.key === 'ArrowRight') openAt(currentIdx + 1);
-  });
-
-  // ── Filter tabs
-  const tabs = document.querySelectorAll('.amb-tab');
-  const wraps = document.querySelectorAll('.amb-card-wrap');
-
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('is-active'));
-      tab.classList.add('is-active');
-      const filter = tab.dataset.filter;
-      wraps.forEach(w => {
-        if (filter === 'todos' || w.dataset.cat === filter) {
-          w.style.display = '';
-        } else {
-          w.style.display = 'none';
-        }
-      });
-    });
   });
 })();
 </script>

@@ -65,17 +65,13 @@
     </div>`;
 
   const primaryLinks = [
-    { href: 'curioni-preview.html', label: 'Home' },
-    { href: 'produtos.html',        label: 'Produtos', mega: true },
-    { href: 'pronta-entrega.html',  label: 'Loja Online', live: true },
-    { href: 'ambientes.html',       label: 'Ambientes' },
-    { href: 'profissionais.html',   label: 'Profissionais' },
+    { href: 'curioni-preview.html',    label: 'Home' },
+    { href: 'produtos.html',           label: 'Produtos', mega: true },
+    { href: 'ambientes.html',          label: 'Ambientes' },
+    { href: 'biblioteca-tecnica.html', label: 'Biblioteca 3D' },
+    { href: 'orcamento.html',          label: 'Contato' },
   ];
 
-  const utilityLinks = [
-    { href: 'novidades.html',          label: 'Novidades' },
-    { href: 'biblioteca-tecnica.html', label: 'Biblioteca 3D' },
-  ];
 
   const isCurrent = (href) => {
     if (currentPath === 'index.html' && href === 'curioni-preview.html') return true;
@@ -103,10 +99,6 @@
     return `<a href="${href}"${cur}${liveClass}>${liveDot}${label}</a>`;
   }).join('');
 
-  const utilMarkup = utilityLinks.map(({ href, label }) => {
-    const cur = isCurrent(href) ? ' aria-current="page"' : '';
-    return `<a class="site-header__mini-link" href="${href}"${cur}>${label}</a>`;
-  }).join('');
 
   // Nav mobile — hierarquica
   const mobileAllLinks = [
@@ -132,7 +124,7 @@
     return `<a href="${href}"${cur}>${label}${dot}</a>`;
   }).join('');
 
-  const mobileUtility = [...utilityLinks, { href: 'orcamento.html', label: 'Solicitar orçamento' }]
+  const mobileUtility = [{ href: 'orcamento.html', label: 'Solicitar orçamento' }]
     .map(({ href, label }) => {
       const cur = isCurrent(href) ? ' aria-current="page"' : '';
       return `<a href="${href}"${cur}>${label}</a>`;
@@ -147,7 +139,6 @@
         </span>
         <div class="site-topbar__links">
           <a href="pronta-entrega.html" class="site-topbar__link">Ver produtos →</a>
-          <a href="novidades.html" class="site-topbar__link">Novidades</a>
         </div>
       </div>
     </div>`;
@@ -167,13 +158,10 @@
         </nav>
 
         <div class="site-header__actions">
-          ${utilMarkup}
-          <div class="site-header__sep" aria-hidden="true"></div>
           <a class="site-header__wa" href="${WA_URL}" target="_blank" rel="noopener" aria-label="Falar pelo WhatsApp">
             ${WA_SVG}
             WhatsApp
           </a>
-          <a class="site-header__cta" href="orcamento.html">Orçamento</a>
           <button class="site-header__toggle" type="button" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="site-mobile-menu" data-header-toggle>
             <span aria-hidden="true">☰</span>
           </button>
